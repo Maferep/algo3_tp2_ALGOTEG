@@ -24,6 +24,23 @@ public class Pais {
 
 	public void quitarEjercitos(long cantidadEjercitos) { ejercitos -= cantidadEjercitos; }
 
+	public long calcularCantidadVictorias(TiroDeDados dadosAtacante, TiroDeDados dadosDefensor) {
+		return dadosAtacante
+				.batallarConDesventaja(dadosDefensor)
+				.stream()
+				.filter(
+						ganador -> ganador == dadosAtacante
+				).count();
+	}
+
+	public long calcularCantidadDerrotas(TiroDeDados dadosAtacante, TiroDeDados dadosDefensor) {
+		return dadosAtacante
+				.batallarConDesventaja(dadosDefensor)
+				.stream()
+				.filter(
+						ganador -> ganador == dadosDefensor
+				).count();
+	}
 	public Boolean atacar(Pais defensor, int cantEjercitos) {
 		//tirar dados
 		TiroDeDados dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3));
