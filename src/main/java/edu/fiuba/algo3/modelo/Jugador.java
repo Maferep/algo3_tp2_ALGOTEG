@@ -25,8 +25,6 @@ public class Jugador {
 		return ejercitos;
 	}
 
-	public int obtenerCantidadEjercitos() { return ejercitos; }
-
 	public void agregarEjercitos(int cantidad) throws Exception {
 		if(cantidad <= 0)
 			throw new Exception();
@@ -43,6 +41,5 @@ public class Jugador {
 			throw new Exception();
 		
 	}
-	public void atacar(int cantidadSoldadosDefensor) {}
 
 }
