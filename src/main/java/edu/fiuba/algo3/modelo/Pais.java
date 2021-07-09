@@ -22,6 +22,8 @@ public class Pais {
         ejercitos += cantidadEjercitos;
 	}
 
+	public void quitarEjercitos(long cantidadEjercitos) { ejercitos -= cantidadEjercitos; }
+
 	public Boolean atacar(Pais defensor, int cantEjercitos) {
 		//tirar dados
 		TiroDeDados dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3));
