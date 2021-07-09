@@ -13,3 +13,4 @@ buildNumber.properties
 .classpath
 .project
 *.prefs
+.vscode/settings.json
