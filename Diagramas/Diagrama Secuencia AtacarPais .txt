@@ -1,0 +1,30 @@
+title Diagrama de secuencia: AtacarPais.
+actor Actor
+participant Juego
+participant Mapa
+participant Pais
+
+Actor ->Juego:AtacarPais(paisAtacante,paisDefensor,cantidadSoldados)
+
+activate Actor
+activate Juego
+
+Juego->Mapa: sonAdyacentes(pais1,pais2)
+
+activate Mapa
+
+Mapa --> Juego: true
+
+deactivate Mapa
+
+Juego -> Pais: minimoSoldados(cantidadSoldados)
+
+activate Pais
+
+Pais --> Juego: true
+
+Juego -> Pais: atacar(paisDefensor,cantidadSoldados)
+
+deactivate Pais
+deactivate Juego
+deactivate Actor

@@ -4,14 +4,14 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 10
 
-* **Di Nardo, Chiara A.** - [chiaradinardo](https://github.com/chiaradinardo)
-* **Gaddi, María Pilar.** - [mpiligaddi](https://github.com/mpiligaddi)
+* **Di Nardo, Chiara A** - [chiaradinardo](https://github.com/chiaradinardo)
+* **Gaddi, María Pilar** - [mpiligaddi](https://github.com/mpiligaddi)
 * **Pont, María Fernanda** - [Maferep](https://github.com/Maferep)
 * **Serrano, María Candela** - [cndeserrano](https://github.com/cndeserrano)
 
-Corrector: **{Corrector}**
+Corrector: **Pablo Rodríguez Massuh - Maia Naftali**
 
 ## Aplicación
 
