@@ -10,7 +10,7 @@ public class PaisTest {
         assertEquals("Estados Unidos", pais.obtenerNombre());
     }
     @Test
-    public void test01AtacarPais() {
+    public void test02AtacarPais() {
         Pais atacante = new Pais("Estados Unidos");
         Pais defensor = new Pais("Canada");
 
