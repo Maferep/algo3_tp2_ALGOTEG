@@ -97,9 +97,5 @@ public class AtaqueTest {
         Boolean conquisto = ataqueFalso.atacar(atacante, defensor, 3);
         assertEquals(false, conquisto);
     }
-
-    //pruebas no falsas a partir de pais ataque.
-
-
 }
 
