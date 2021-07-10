@@ -1,6 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
+
 public class AtaqueFalso {
+    int numeroDeDadoAtacante;
+    int numeroDeDadoDefensor;
+    public AtaqueFalso(int numeroAtacante, int numeroDefensor) {
+        numeroDeDadoAtacante = numeroAtacante;
+        numeroDeDadoDefensor = numeroDefensor;
+    }
 
     public long calcularCantidadVictorias(TiroDeDadosFalso dadosAtacante, TiroDeDadosFalso dadosDefensor) {
         return dadosAtacante
@@ -20,10 +27,10 @@ public class AtaqueFalso {
                 ).count();
     }
 
-    public Boolean atacar(Pais atacante, Pais defensor, int cantEjercitos, int numeroParaDado) {
+    public Boolean atacar(Pais atacante, Pais defensor, int cantEjercitos) {
         //tirar dados
-        TiroDeDadosFalso dadosAtacante = new TiroDeDadosFalso(Math.min(cantEjercitos, 3-1),numeroParaDado); // siempre es la cantidad de ejercitos menos 1
-        TiroDeDadosFalso dadosDefensor = new TiroDeDadosFalso(Math.min(defensor.ejercitos, 3),numeroParaDado);
+        TiroDeDadosFalso dadosAtacante = new TiroDeDadosFalso(Math.min(cantEjercitos, 3-1),numeroDeDadoAtacante); // siempre es la cantidad de ejercitos menos 1
+        TiroDeDadosFalso dadosDefensor = new TiroDeDadosFalso(Math.min(defensor.ejercitos, 3),numeroDeDadoDefensor);
         //calcular victorias de nuestros dados
         long cantVictorias = calcularCantidadVictorias(dadosAtacante, dadosDefensor);
         //calcular derrotas de nuestros dados
