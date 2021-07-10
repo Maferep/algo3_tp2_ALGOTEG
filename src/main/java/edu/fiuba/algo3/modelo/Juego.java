@@ -94,7 +94,7 @@ public class Juego {
 			.collect(Collectors.toList());
 	}
 
-	public void realizarAtaque(String paisAtacante, int cantSoldados, String paisDefensor) throws Exception {
+	/*public void realizarAtaque(String paisAtacante, int cantSoldados, String paisDefensor) throws Exception {
 		Pais atacante = paises.stream()
 				.filter(j -> j.obtenerNombre() == paisAtacante)
 				.findAny().orElseThrow();
@@ -103,8 +103,8 @@ public class Juego {
 				.filter(j -> j.obtenerNombre() == paisDefensor)
 				.findAny().orElseThrow();
 
-		atacante.atacar(defensor, cantSoldados);
-	}
+		atacante.atacar(defensor,cantSoldados);
+	}*/
 
 	public void agregarEjercitosAlPais(String pais, int cantidadEjercitos) {
 		paisPorNombre(pais).agregarEjercitos(cantidadEjercitos);

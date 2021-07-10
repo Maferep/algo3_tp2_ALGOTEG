@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-
 public class Pais {
     String nombre;
     int ejercitos;
@@ -26,8 +25,7 @@ public class Pais {
 		ejercitos -= cantidadEjercitos;
 	}
 
-	public Boolean atacar(Pais defensor, int cantEjercitos) {
-		Ataque nuevoAtaque = new Ataque(defensor,cantEjercitos);
-		return nuevoAtaque.atacar(this, defensor,cantEjercitos);
+	public Boolean atacar(Pais defensor, int cantEjercitos,Ataque tipoAtaque) {
+		return tipoAtaque.atacar(this, defensor,cantEjercitos);
 	}
 }
