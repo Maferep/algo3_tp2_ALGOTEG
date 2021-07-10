@@ -22,7 +22,7 @@ public long calcularCantidadDerrotas(TiroDeDados dadosAtacante, TiroDeDados dado
 
 public Boolean atacar(Pais atacante, Pais defensor, int cantEjercitos) {
         //tirar dados
-        TiroDeDados dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3-1)); // siempre es la cantidad de ejercitos menos 1
+        TiroDeDados dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3));
         TiroDeDados dadosDefensor = new TiroDeDados(Math.min(defensor.ejercitos, 3));
         //calcular victorias de nuestros dados
         long cantVictorias = calcularCantidadVictorias(dadosAtacante, dadosDefensor);

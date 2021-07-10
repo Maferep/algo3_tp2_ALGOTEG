@@ -28,8 +28,10 @@ public class AtaqueFalso {
     }
 
     public Boolean atacar(Pais atacante, Pais defensor, int cantEjercitos) {
+        //tirar excepcion en caso de que la cant de ejercitos sea mayor a la cant de soldados que se tiene
+        if(cantEjercitos >= atacante.cantidadEjercitos()) {return false;} // aca iria la excepcion
         //tirar dados
-        TiroDeDadosFalso dadosAtacante = new TiroDeDadosFalso(Math.min(cantEjercitos, 3-1),numeroDeDadoAtacante); // siempre es la cantidad de ejercitos menos 1
+        TiroDeDadosFalso dadosAtacante = new TiroDeDadosFalso(Math.min(cantEjercitos, 3),numeroDeDadoAtacante);
         TiroDeDadosFalso dadosDefensor = new TiroDeDadosFalso(Math.min(defensor.ejercitos, 3),numeroDeDadoDefensor);
         //calcular victorias de nuestros dados
         long cantVictorias = calcularCantidadVictorias(dadosAtacante, dadosDefensor);
