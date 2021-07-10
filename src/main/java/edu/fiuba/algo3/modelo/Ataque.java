@@ -1,6 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
 public class Ataque {
+        TiroDeDados dadosAtacante;
+        TiroDeDados dadosDefensor;
+        public Ataque(Pais defensor, int cantEjercitos, int numeroAtacante, int numeroDefensor) {
+                dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3),numeroAtacante);
+                dadosDefensor = new TiroDeDados(Math.min(defensor.ejercitos, 3),numeroDefensor);
+        }
+        public Ataque(Pais defensor, int cantEjercitos) {
+                dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3));
+                dadosDefensor = new TiroDeDados(Math.min(defensor.ejercitos, 3));
+        }
 
 public long calcularCantidadVictorias(TiroDeDados dadosAtacante, TiroDeDados dadosDefensor) {
         return dadosAtacante
@@ -20,10 +30,12 @@ public long calcularCantidadDerrotas(TiroDeDados dadosAtacante, TiroDeDados dado
         ).count();
 }
 
-public Boolean atacar(Pais atacante, Pais defensor, int cantEjercitos) {
+public Boolean atacar(Pais atacante, Pais defensor,int cantEjercitos) { //paso x param el constructor
         //tirar dados
-        TiroDeDados dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3));
-        TiroDeDados dadosDefensor = new TiroDeDados(Math.min(defensor.ejercitos, 3));
+                //TiroDeDados dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3),tipoDeAtaque);
+                //TiroDeDados dadosDefensor = new TiroDeDados(Math.min(defensor.ejercitos, 3),tipoDeAtaque);
+        //tirar excepcion en caso de que la cant de ejercitos sea mayor a la cant de soldados que se tiene
+        if(cantEjercitos >= atacante.cantidadEjercitos()) {return false;} // aca iria la excepcion
         //calcular victorias de nuestros dados
         long cantVictorias = calcularCantidadVictorias(dadosAtacante, dadosDefensor);
         //calcular derrotas de nuestros dados

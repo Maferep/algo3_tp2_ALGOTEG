@@ -11,11 +11,15 @@ import java.util.stream.Collectors;
 // Estos dados siempre devuelven 1.
 public class TiroDeDados implements ITiroDeDados {
     List<Integer> valores;
-    int cantidadDados;
+
     public TiroDeDados (int cantidadDeDados) {
-        cantidadDados = cantidadDeDados;
         valores = new ArrayList<Integer>();
 		for(int i = 0; i < cantidadDeDados; i++) valores.add ((int)((Math.random()*6)+1));
+    }
+
+    public TiroDeDados (int cantidadDeDados,int numero) {
+        valores = new ArrayList<Integer>();
+        for(int i = 0; i < cantidadDeDados; i++) valores.add (numero);
     }
 
     public int cantidadDados() {

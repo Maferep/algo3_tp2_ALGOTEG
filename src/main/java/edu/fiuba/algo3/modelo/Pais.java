@@ -27,7 +27,7 @@ public class Pais {
 	}
 
 	public Boolean atacar(Pais defensor, int cantEjercitos) {
-		Ataque nuevoAtaque = new Ataque();
-		return nuevoAtaque.atacar(this, defensor, cantEjercitos);
+		Ataque nuevoAtaque = new Ataque(defensor,cantEjercitos);
+		return nuevoAtaque.atacar(this, defensor,cantEjercitos);
 	}
 }
