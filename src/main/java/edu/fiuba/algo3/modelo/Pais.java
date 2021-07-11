@@ -4,6 +4,7 @@ package edu.fiuba.algo3.modelo;
 public class Pais {
     String nombre;
     int ejercitos;
+    Jugador conquistador;
 
 	public Pais(String n) {
 		this.nombre = n;
@@ -37,5 +38,9 @@ public class Pais {
 		//como ejercitos tiene el pais defensor
 		return cantVictorias >= defensor.ejercitos;
 	}
+
+	public void asignarConquistador(Jugador conquistador) { this.conquistador = conquistador; }
+
+	public Jugador obtenerConquistador() { return this.conquistador; }
 
 }
