@@ -14,11 +14,12 @@ public class Ataque {
                 this.atacante = atacante;
                 this.defensor = defensor;
 
-                if(atacante.ejercitos <= cantEjercitos || cantEjercitos > maxDados)
+                if(atacante.ejercitos <= cantEjercitos 
+                || cantEjercitos > maxDados)
                         throw new Exception();
 
                 asignarDados(
-                        new TiroDeDados(Math.min(cantEjercitos, maxDados)),
+                        new TiroDeDados(cantEjercitos),
                         new TiroDeDados(Math.min(defensor.ejercitos, maxDados))
                 );
         }
