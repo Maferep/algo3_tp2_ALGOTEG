@@ -19,24 +19,16 @@ public class Ataque {
                 dadosAtacante = dadoFalso;
                 dadosDefensor = dadoFalso;
         }
-        
-        public long calcularCantidadVictorias(ITiroDeDados dadosAtacante, ITiroDeDados dadosDefensor) {
-                return dadosAtacante.cantidadVictorias();
-        }
-
-        public long calcularCantidadDerrotas(ITiroDeDados dadosAtacante, ITiroDeDados dadosDefensor) {
-                return dadosAtacante.cantidadDerrotas();
-        }
 
         public Boolean atacar(Pais atacante, Pais defensor,int cantEjercitos) {
                 if(cantEjercitos >= atacante.cantidadEjercitos()) { return false;}
 
-                dadosAtacante.batallarConDesventaja(dadosDefensor);
-                
+                dadosAtacante.batallar(dadosDefensor);
+
                 //calcular victorias de nuestros dados
-                long cantVictorias = calcularCantidadVictorias(dadosAtacante, dadosDefensor);
+                long cantVictorias = dadosAtacante.cantidadVictorias();
                 //calcular derrotas de nuestros dados
-                long cantDerrotas = calcularCantidadDerrotas(dadosAtacante, dadosDefensor);
+                long cantDerrotas = dadosAtacante.cantidadDerrotas();
                 //cuento la cantidad de derrotas para poder saber cuantos soldados quitar.
                 atacante.quitarEjercitos(cantDerrotas);
                 defensor.quitarEjercitos(cantVictorias);

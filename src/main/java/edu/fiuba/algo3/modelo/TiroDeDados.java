@@ -36,7 +36,7 @@ public class TiroDeDados implements ITiroDeDados {
     }
 
     @Override
-    public void batallarConDesventaja(ITiroDeDados rival) {
+    public void batallar(ITiroDeDados rival) {
         //ordenar dados de mayor a menor
         this.ordenarDescendientemente();
         rival.ordenarDescendientemente();

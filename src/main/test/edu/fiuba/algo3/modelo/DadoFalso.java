@@ -18,7 +18,7 @@ public class DadoFalso implements ITiroDeDados {
         return 0;
     }
     public void ordenarDescendientemente() {}
-    public void batallarConDesventaja(ITiroDeDados rival) {}
+    public void batallar(ITiroDeDados rival) {}
 
     @Override
     public int cantidadVictorias() {
