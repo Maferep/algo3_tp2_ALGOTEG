@@ -12,7 +12,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(defensor,1, 1, 1);
+        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(1,1));
 
        // Boolean conquisto = atacante.atacar(defensor, 1);
         Boolean conquisto = ataqueFalso.atacar(atacante, defensor,1);
