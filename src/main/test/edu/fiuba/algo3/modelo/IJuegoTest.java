@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.modelo.Interfaces.*;
 
 import java.util.*;
 import java.util.stream.*;
@@ -84,8 +83,6 @@ public class IJuegoTest {
         .filter(j -> j.obtenerNombre() == "Colombia")
         .findAny().orElseThrow();
 
-        IAtaque ataqueFalso = new AtaqueFalso(atacante, defensor);
-
-        assertDoesNotThrow(() -> juego.realizarAtaque("Colombia", 3, "Venezuela",ataqueFalso));
+        atacante.atacar(defensor, 3, new AtaqueFalso(atacante, defensor));
     }
 }
