@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 
 public class Pais {
     String nombre;
@@ -34,7 +35,7 @@ public class Pais {
 		return this.conquistador; 
 	}
 
-	public void atacar(Pais defensor, int cantEjercitos,Ataque tipoAtaque) {
+	public void atacar(Pais defensor, int cantEjercitos, IAtaque tipoAtaque) {
 		tipoAtaque.atacar();
 	}
 }

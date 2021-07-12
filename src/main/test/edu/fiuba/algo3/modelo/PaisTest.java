@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 
 
 public class PaisTest {
@@ -17,7 +18,7 @@ public class PaisTest {
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
-        Ataque ataqueFalso = new Ataque(atacante, defensor,new DadoFalso(3,0));
+        IAtaque ataqueFalso = new AtaqueFalso(atacante, defensor);
         atacante.atacar(defensor, 1, ataqueFalso);
         assertEquals(atacante.obtenerConquistador(), defensor.obtenerConquistador());
     }

@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -94,7 +95,12 @@ public class Juego {
 			.collect(Collectors.toList());
 	}
 
-	public void realizarAtaque(String paisAtacante, int cantSoldados, String paisDefensor,Ataque tipoAtaque) throws Exception {
+	public void realizarAtaque(
+		String paisAtacante, 
+		int cantSoldados, 
+		String paisDefensor,
+		IAtaque tipoAtaque) 
+	throws Exception {
 		Pais atacante = paises.stream()
 				.filter(j -> j.obtenerNombre() == paisAtacante)
 				.findAny().orElseThrow();
