@@ -30,7 +30,7 @@ public class Pais {
 
 	public Jugador obtenerConquistador() { return this.conquistador; }
 
-	public Boolean atacar(Pais defensor, int cantEjercitos,Ataque tipoAtaque) {
-		return tipoAtaque.atacar(this, defensor,cantEjercitos);
+	public void atacar(Pais defensor, int cantEjercitos,Ataque tipoAtaque) throws Exception {
+		tipoAtaque.atacar(this, defensor,cantEjercitos);
 	}
 }

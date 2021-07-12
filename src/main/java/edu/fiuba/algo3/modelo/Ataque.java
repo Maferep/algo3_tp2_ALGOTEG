@@ -30,8 +30,10 @@ public long calcularCantidadDerrotas(TiroDeDados dadosAtacante, TiroDeDados dado
         ).count();
 }
 
-public Boolean atacar(Pais atacante, Pais defensor,int cantEjercitos) { //paso x param el constructor
-        if(cantEjercitos >= atacante.cantidadEjercitos()) { return false;}
+public void atacar(Pais atacante, Pais defensor, int cantEjercitos) throws Exception { //paso x param el constructor
+        if (cantEjercitos >= atacante.cantidadEjercitos()) {
+                throw new Exception("No es posible atacar con" + cantEjercitos + ".");
+        }
         //calcular victorias de nuestros dados
         long cantVictorias = calcularCantidadVictorias(dadosAtacante, dadosDefensor);
         //calcular derrotas de nuestros dados
@@ -41,6 +43,9 @@ public Boolean atacar(Pais atacante, Pais defensor,int cantEjercitos) { //paso x
         defensor.quitarEjercitos(cantVictorias);
         //es victorioso si derrota tantos dados
         //como ejercitos tiene el pais defensor
-        return cantVictorias >= defensor.ejercitos; // aca se deberia llamar a la clase Conquista para ver si conquistó o no, creo.
-        }
+        if (cantVictorias >= defensor.ejercitos) {
+                Conquista conquista = new Conquista();
+                conquista.conquistar(atacante.obtenerConquistador(), defensor);
+        }// aca se deberia llamar a la clase Conquista para ver si conquistó o no, creo.
+}
 }
