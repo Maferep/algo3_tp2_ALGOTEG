@@ -79,7 +79,7 @@ public class IJuegoTest {
                 .filter(j -> j.obtenerNombre() == "Venezuela")
                 .findAny().orElseThrow();
 
-        Ataque ataqueFalso = new Ataque(defensor,1, 1, 1);
+        Ataque ataqueFalso = new Ataque(defensor,new DadoFalso(3,3));
 
         assertDoesNotThrow(() -> juego.realizarAtaque("Colombia", 3, "Venezuela",ataqueFalso));
     }

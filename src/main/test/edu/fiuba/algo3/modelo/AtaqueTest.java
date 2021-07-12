@@ -29,9 +29,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(defensor,2, 1, 1);
-
-       // Boolean conquisto = atacante.atacar(defensor, 3);
+        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(2, 2));
         Boolean conquisto = ataqueFalso.atacar(atacante, defensor,2);
         assertEquals(false, conquisto);
         assertEquals(1, atacante.cantidadEjercitos());
@@ -44,7 +42,7 @@ public class AtaqueTest {
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
-        Ataque ataqueFalso = new Ataque(defensor,2, 6, 1);
+        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(3,2));
         //Boolean conquisto = atacante.atacar(defensor, 3);
         Boolean conquisto = ataqueFalso.atacar(atacante, defensor,2);
         assertEquals(true, conquisto);
@@ -59,7 +57,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(4);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(defensor,3, 6, 1);
+        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(3,1));
 
         //Boolean conquisto = atacante.atacar(defensor, 3);
         Boolean conquisto = ataqueFalso.atacar(atacante, defensor, 3);
@@ -76,7 +74,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(1);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(defensor,4, 6, 1);
+        Ataque ataqueFalso = new Ataque(defensor,new DadoFalso(3,3));
 
         Boolean conquisto = ataqueFalso.atacar(atacante, defensor,4);
         assertEquals(false, conquisto);
@@ -92,7 +90,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(defensor,3, 6, 1);;
+        Ataque ataqueFalso = new Ataque(defensor,new DadoFalso(3,3));
         Boolean conquisto = ataqueFalso.atacar(atacante, defensor, 3);
         assertEquals(false, conquisto);
     }
