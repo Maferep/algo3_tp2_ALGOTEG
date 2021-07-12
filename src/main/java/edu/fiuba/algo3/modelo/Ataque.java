@@ -30,7 +30,7 @@ public long calcularCantidadDerrotas(TiroDeDados dadosAtacante, TiroDeDados dado
         ).count();
 }
 
-public Boolean atacar(Pais atacante, Pais defensor,int cantEjercitos) { //paso x param el constructor
+public Boolean atacar(Pais atacante, Pais defensor,int cantEjercitos) {
         if(cantEjercitos >= atacante.cantidadEjercitos()) { return false;}
         //calcular victorias de nuestros dados
         long cantVictorias = calcularCantidadVictorias(dadosAtacante, dadosDefensor);
