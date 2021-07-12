@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-
 public class Pais {
     String nombre;
     int ejercitos;
@@ -23,24 +22,15 @@ public class Pais {
         ejercitos += cantidadEjercitos;
 	}
 
-	public Boolean atacar(Pais defensor, int cantEjercitos) {
-		//tirar dados
-		TiroDeDados dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3));
-		TiroDeDados dadosDefensor = new TiroDeDados(Math.min(defensor.ejercitos, 3));
-		//calcular victorias de nuestros dados
-		long cantVictorias = dadosAtacante
-			.batallarConDesventaja(dadosDefensor)
-			.stream()
-			.filter(
-				ganador -> ganador == dadosAtacante
-			).count();
-		//es victorioso si derrota tantos dados 
-		//como ejercitos tiene el pais defensor
-		return cantVictorias >= defensor.ejercitos;
+	public void quitarEjercitos(long cantidadEjercitos) {
+		ejercitos -= cantidadEjercitos;
 	}
 
 	public void asignarConquistador(Jugador conquistador) { this.conquistador = conquistador; }
 
 	public Jugador obtenerConquistador() { return this.conquistador; }
 
+	public Boolean atacar(Pais defensor, int cantEjercitos,Ataque tipoAtaque) {
+		return tipoAtaque.atacar(this, defensor,cantEjercitos);
+	}
 }

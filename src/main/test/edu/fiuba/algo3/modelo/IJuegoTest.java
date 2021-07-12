@@ -62,7 +62,7 @@ public class IJuegoTest {
         assertEquals(juego.cantidadEjercitosDe("Pablo"), 7);
     }
 
-    @Test
+   /* @Test
     public void test05AtaqueDeUnPaisAOtro() throws Exception {
         String[] jugadores = {"Pablo", "Mohammed"};
         Juego juego = new Juego(jugadores);
@@ -74,7 +74,6 @@ public class IJuegoTest {
 
         juego.agregarEjercitosAlPais("Colombia", 6);
         juego.agregarEjercitosAlPais("Venezuela", 1);
-
-        assertDoesNotThrow(() -> juego.realizarAtaque("Colombia", 3, "Venezuela"));
-    }
+        assertDoesNotThrow(() -> juego.realizarAtaque("Colombia", 3, "Venezuela" ));
+    }*/
 }

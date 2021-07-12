@@ -10,14 +10,14 @@ public class PaisTest {
         assertEquals("Estados Unidos", pais.obtenerNombre());
     }
     @Test
-    public void test01AtacarPais() {
+    public void test02AtacarPais() {
         Pais atacante = new Pais("Estados Unidos");
         Pais defensor = new Pais("Canada");
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
-
-        Boolean conquisto = atacante.atacar(defensor, 1);
+        Ataque ataqueFalso = new Ataque(defensor,1, 1, 1);
+        Boolean conquisto = atacante.atacar(defensor, 1,ataqueFalso);
         assertEquals(false, conquisto);
     }
 }

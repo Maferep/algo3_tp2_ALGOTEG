@@ -1,0 +1,20 @@
+GITHUB
+-Vamos a tner una rama cada una y la vamos a ir actualizando
+
+COMO FUNCIONAN LOS OBJETIVOS
+- Preguntar cosntantemente si el objetivo se cumplio pasandole todo el tiempo informacion 
+- Que el objetivo sea una clase que se autopregunte
+
+CONTROLAR ERRORES DEL JUEGO
+- El jugador no puede avanzar si no relizao los primeros pasos de la fase inicial
+- Va a haber 4 fases
+
+-¿Quien tiene la responsabilidad el mapa o los paises?
+
+BENEFICIOS DE LOS JUGADORES 
+
+Los jugadores podrán tener distintos 'beneficios' a medida que vayan conquistando los países del mapa. Es decir, obtendrán cartas que podrán intercambiar por soldados (fichas) para agregar a los países propios que consideren necesarios.
+
+La responsabilidad de acceder a los beneficios (que irán apareciendo a lo largo del juego) será responsabilidad del jugador, de esta forma no se agregará una responsabilidad extra al juego. 
+
+Los jugadores tendrán una lista de países en donde ellos son dueños. Esta lista tendrá un máximo de 50 elementos, ya que es el máximo de países que posee el mapa del juego TEG. De esta forma podrán ir cambiando los elementos de la lista de cada uno de los jugadores, ya sea para el caso de que se conquisten o se pierdan países (ganar o perder la batalla).
