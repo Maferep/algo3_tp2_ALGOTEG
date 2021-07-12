@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 public class Pais {
     String nombre;
     int ejercitos;
+    Jugador conquistador;
 
 	public Pais(String n) {
 		this.nombre = n;
@@ -25,7 +26,11 @@ public class Pais {
 		ejercitos -= cantidadEjercitos;
 	}
 
-	public Boolean atacar(Pais defensor, int cantEjercitos,Ataque tipoAtaque) {
-		return tipoAtaque.atacar(this, defensor,cantEjercitos);
+	public void asignarConquistador(Jugador conquistador) { this.conquistador = conquistador; }
+
+	public Jugador obtenerConquistador() { return this.conquistador; }
+
+	public void atacar(Pais defensor, int cantEjercitos,Ataque tipoAtaque) {
+		tipoAtaque.atacar(this, defensor,cantEjercitos);
 	}
 }

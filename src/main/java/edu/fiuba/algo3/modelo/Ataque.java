@@ -16,11 +16,8 @@ public class Ataque {
                 dadosDefensor = dado;
         }
 
-        public Boolean atacar(Pais atacante, Pais defensor,int cantEjercitos) {
-                if(cantEjercitos >= atacante.cantidadEjercitos()) { return false;}
-
+        public void atacar(Pais atacante, Pais defensor,int cantEjercitos) {
                 dadosAtacante.batallar(dadosDefensor);
-
                 //calcular victorias de nuestros dados
                 long cantVictorias = dadosAtacante.cantidadVictorias();
                 //calcular derrotas de nuestros dados
@@ -30,6 +27,9 @@ public class Ataque {
                 defensor.quitarEjercitos(cantVictorias);
                 //es victorioso si derrota tantos dados
                 //como ejercitos tiene el pais defensor
-                return defensor.ejercitos <= 0; // aca se deberia llamar a la clase Conquista para ver si conquistó o no, creo.
+                if (cantVictorias >= defensor.ejercitos) {
+                        Conquista conquista = new Conquista();
+                        conquista.conquistar(atacante.obtenerConquistador(), defensor);
+                }
         }
 }
