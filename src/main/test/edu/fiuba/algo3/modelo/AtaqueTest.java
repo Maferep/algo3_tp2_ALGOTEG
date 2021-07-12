@@ -37,7 +37,6 @@ public class AtaqueTest {
         Ataque ataqueFalso = new Ataque(defensor, 2, 1, 1);
         ataqueFalso.atacar(atacante, defensor, 2);
 
-        //Hay que modificar la prueba o revisar el código
         assertEquals("Tobías", defensor.obtenerConquistador().obtenerNombre());
         assertEquals(3, defensor.cantidadEjercitos());
         assertEquals(1, atacante.cantidadEjercitos());
@@ -57,7 +56,7 @@ public class AtaqueTest {
         Ataque ataqueFalso = new Ataque(defensor,2, 6, 1);
         ataqueFalso.atacar(atacante, defensor,2);
 
-        //Prueba no pasada. Revisar código
+        //Bug encontrado en cantidad de victorias del atacante.
         //assertEquals("Daniel", defensor.obtenerConquistador().obtenerNombre());
         assertEquals(3, atacante.cantidadEjercitos());
         assertEquals(1, defensor.cantidadEjercitos());
