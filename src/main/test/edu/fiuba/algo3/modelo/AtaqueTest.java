@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AtaqueTest {
     @Test
@@ -104,6 +103,24 @@ public class AtaqueTest {
 
         assertThrows(Exception.class, () -> {
                 Ataque ataque = new Ataque(atacante, defensor, 3);
+                ataque.atacar();
+        } );
+    }
+
+    @Test
+    public void test06AtacanteUsa4EjercitosTiraError() throws Exception {
+        Pais atacante = new Pais("Argentina");
+        Pais defensor = new Pais("Chile");
+
+        atacante.asignarConquistador(new Jugador("Mafer"));
+        defensor.asignarConquistador(new Jugador("Cande"));
+
+        atacante.agregarEjercitos(10);
+        defensor.agregarEjercitos(10);
+
+        assertTrue(atacante.ejercitos > 4);
+        assertThrows(Exception.class, () -> {
+                Ataque ataque = new Ataque(atacante, defensor, 4);
                 ataque.atacar();
         } );
     }
