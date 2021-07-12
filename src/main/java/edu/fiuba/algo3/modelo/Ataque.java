@@ -16,21 +16,11 @@ public class Ataque {
         public Ataque(Pais defensor, ITiroDeDados dadoFalso) {
         }
         public long calcularCantidadVictorias(ITiroDeDados dadosAtacante, ITiroDeDados dadosDefensor) {
-                return dadosAtacante
-                .batallarConDesventaja(dadosDefensor)
-                .stream()
-                .filter(
-                ganador -> ganador == dadosAtacante
-                ).count();
+                return dadosAtacante.cantidadVictorias();
         }
 
         public long calcularCantidadDerrotas(ITiroDeDados dadosAtacante, ITiroDeDados dadosDefensor) {
-                return dadosAtacante
-                .batallarConDesventaja(dadosDefensor)
-                .stream()
-                .filter(
-                ganador -> ganador == dadosDefensor
-                ).count();
+                return dadosAtacante.cantidadDerrotas();
         }
 
         public Boolean atacar(Pais atacante, Pais defensor,int cantEjercitos) {

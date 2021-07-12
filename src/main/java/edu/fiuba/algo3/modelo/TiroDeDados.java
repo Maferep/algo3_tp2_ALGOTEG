@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 // Estos dados siempre devuelven 1.
 public class TiroDeDados implements ITiroDeDados {
     List<Integer> valores;
+    List<ITiroDeDados> resultado;
 
     public TiroDeDados (int cantidadDeDados) {
         valores = new ArrayList<Integer>();
@@ -34,9 +35,8 @@ public class TiroDeDados implements ITiroDeDados {
         this.valores.sort(Comparator.reverseOrder());
     }
 
-    //compara los dados de mayor tamaño de cada TiroDeDados, uno a uno, y devuelve
-    // una lista de cual TiroDeDados gano
-    public List<ITiroDeDados> batallarConDesventaja(ITiroDeDados rival) {
+    @Override
+    public void batallarConDesventaja(ITiroDeDados rival) {
         //ordenar dados de mayor a menor
         this.ordenarDescendientemente();
         rival.ordenarDescendientemente();
@@ -45,12 +45,29 @@ public class TiroDeDados implements ITiroDeDados {
         int minCantidadDados =  Math.min(this.cantidadDados(), rival.cantidadDados());
 
         // obtener lista de cada ganador
-        return IntStream
-        .range(0, minCantidadDados)
-        .mapToObj(i -> 
-			this.obtenerDado(i) > rival.obtenerDado(i)
-				? this
-				: rival
-		).collect(Collectors.toList());
+        resultado = IntStream
+            .range(0, minCantidadDados)
+            .mapToObj(i -> 
+                this.obtenerDado(i) > rival.obtenerDado(i)
+                    ? this
+                    : rival
+            ).collect(Collectors.toList());
+
+    }
+
+    @Override
+    public int cantidadVictorias() {
+        return (int) resultado
+            .stream()
+            .filter(ganador -> ganador.equals(this))
+            .count();
+    }
+
+    @Override
+    public int cantidadDerrotas() {
+        return (int) resultado
+            .stream()
+            .filter(ganador -> !ganador.equals(this))
+            .count();
     }
 }
