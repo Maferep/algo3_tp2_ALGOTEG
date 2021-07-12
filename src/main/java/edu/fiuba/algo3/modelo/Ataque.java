@@ -13,13 +13,11 @@ public class Ataque {
         public Ataque(Pais defensor, int cantEjercitos) {
                 dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3));
                 dadosDefensor = new TiroDeDados(Math.min(defensor.ejercitos, 3));
-                dadosAtacante.batallarConDesventaja(dadosDefensor);
         }
 
         public Ataque(Pais defensor, ITiroDeDados dadoFalso) {
                 dadosAtacante = dadoFalso;
                 dadosDefensor = dadoFalso;
-                dadosAtacante.batallarConDesventaja(dadosDefensor);
         }
         
         public long calcularCantidadVictorias(ITiroDeDados dadosAtacante, ITiroDeDados dadosDefensor) {
@@ -32,6 +30,9 @@ public class Ataque {
 
         public Boolean atacar(Pais atacante, Pais defensor,int cantEjercitos) {
                 if(cantEjercitos >= atacante.cantidadEjercitos()) { return false;}
+
+                dadosAtacante.batallarConDesventaja(dadosDefensor);
+                
                 //calcular victorias de nuestros dados
                 long cantVictorias = calcularCantidadVictorias(dadosAtacante, dadosDefensor);
                 //calcular derrotas de nuestros dados
