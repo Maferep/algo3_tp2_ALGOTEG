@@ -62,7 +62,7 @@ public class IJuegoTest {
         assertEquals(juego.cantidadEjercitosDe("Pablo"), 7);
     }
 
-   /* @Test
+    @Test
     public void test05AtaqueDeUnPaisAOtro() throws Exception {
         String[] jugadores = {"Pablo", "Mohammed"};
         Juego juego = new Juego(jugadores);
@@ -74,6 +74,13 @@ public class IJuegoTest {
 
         juego.agregarEjercitosAlPais("Colombia", 6);
         juego.agregarEjercitosAlPais("Venezuela", 1);
-        assertDoesNotThrow(() -> juego.realizarAtaque("Colombia", 3, "Venezuela" ));
-    }*/
+
+        Pais defensor = juego.paises.stream()
+                .filter(j -> j.obtenerNombre() == "Venezuela")
+                .findAny().orElseThrow();
+
+        Ataque ataqueFalso = new Ataque(defensor,1, 1, 1);
+
+        assertDoesNotThrow(() -> juego.realizarAtaque("Colombia", 3, "Venezuela",ataqueFalso));
+    }
 }
