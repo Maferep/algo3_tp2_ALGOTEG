@@ -31,11 +31,9 @@ public class Pais {
 		this.conquistador = conquistador; 
 	}
 
-	public Jugador obtenerConquistador() { 
-		return this.conquistador; 
-	}
+	public Jugador obtenerConquistador() { return this.conquistador; }
 
-	public void atacar(Pais defensor, int cantEjercitos, IAtaque tipoAtaque) {
+	public void atacar(IAtaque tipoAtaque) {
 		tipoAtaque.atacar();
 	}
 }

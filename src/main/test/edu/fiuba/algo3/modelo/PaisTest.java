@@ -19,7 +19,7 @@ public class PaisTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
         IAtaque ataqueFalso = new AtaqueFalso(atacante, defensor);
-        atacante.atacar(defensor, 1, ataqueFalso);
+        atacante.atacar(ataqueFalso);
         assertEquals(atacante.obtenerConquistador(), defensor.obtenerConquistador());
     }
 }

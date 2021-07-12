@@ -83,6 +83,6 @@ public class IJuegoTest {
         .filter(j -> j.obtenerNombre() == "Colombia")
         .findAny().orElseThrow();
 
-        atacante.atacar(defensor, 3, new AtaqueFalso(atacante, defensor));
+        atacante.atacar(new AtaqueFalso(atacante, defensor));
     }
 }
