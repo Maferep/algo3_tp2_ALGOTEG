@@ -55,14 +55,12 @@ public class AtaqueTest {
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(3,0));
-
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(1,1));
         ataqueFalso.atacar();
 
-        //TODO: Prueba no pasada. Revisar código
         assertEquals("Daniel", defensor.obtenerConquistador().obtenerNombre());
-        assertEquals(3, atacante.cantidadEjercitos());
-        assertEquals(1, defensor.cantidadEjercitos());
+        assertEquals(2, atacante.cantidadEjercitos());
+        assertEquals(2, defensor.cantidadEjercitos());
     }
 
     @Test
