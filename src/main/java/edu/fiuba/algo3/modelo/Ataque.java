@@ -4,25 +4,40 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 public class Ataque {
         ITiroDeDados dadosAtacante;
         ITiroDeDados dadosDefensor;
-        
 
-        public Ataque(Pais defensor, int cantEjercitos) {
+        Pais atacante;
+        Pais defensor;
+
+        static int maxDados = 3;
+
+        public Ataque(Pais atacante, Pais defensor, int cantEjercitos) throws Exception {
+                this.atacante = atacante;
+                this.defensor = defensor;
+
+                if(atacante.ejercitos <= cantEjercitos)
+                        throw new Exception();
+
                 asignarDados(
                         new TiroDeDados(Math.min(cantEjercitos, 3)),
                         new TiroDeDados(Math.min(defensor.ejercitos, 3))
                 );
         }
 
-        public Ataque(Pais defensor, ITiroDeDados dado) {
+        public Ataque(Pais atacante, Pais defensor, ITiroDeDados dado) throws Exception{
+                this.atacante = atacante;
+                this.defensor = defensor;
+
                 asignarDados(dado, dado);
         }
 
-        private void asignarDados(ITiroDeDados dadosAtacante, ITiroDeDados dadosDefensor) {
+        private void asignarDados(ITiroDeDados dadosAtacante, ITiroDeDados dadosDefensor) throws Exception {
+                if(dadosAtacante.cantidadDados() > maxDados || dadosAtacante.cantidadDados() > maxDados)
+                        throw new Exception("no puedes tirar más de" + maxDados + "dados");
                 this.dadosAtacante = dadosAtacante;
                 this.dadosDefensor = dadosDefensor;
         }
 
-        public void atacar(Pais atacante, Pais defensor,int cantEjercitos) {
+        public void atacar() {
                 dadosAtacante.batallar(dadosDefensor);
                 long cantVictorias = dadosAtacante.cantidadVictorias();
                 long cantDerrotas = dadosAtacante.cantidadDerrotas();

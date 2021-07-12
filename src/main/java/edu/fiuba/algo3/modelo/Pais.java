@@ -26,11 +26,15 @@ public class Pais {
 		ejercitos -= cantidadEjercitos;
 	}
 
-	public void asignarConquistador(Jugador conquistador) { this.conquistador = conquistador; }
+	public void asignarConquistador(Jugador conquistador) { 
+		this.conquistador = conquistador; 
+	}
 
-	public Jugador obtenerConquistador() { return this.conquistador; }
+	public Jugador obtenerConquistador() { 
+		return this.conquistador; 
+	}
 
 	public void atacar(Pais defensor, int cantEjercitos,Ataque tipoAtaque) {
-		tipoAtaque.atacar(this, defensor,cantEjercitos);
+		tipoAtaque.atacar();
 	}
 }

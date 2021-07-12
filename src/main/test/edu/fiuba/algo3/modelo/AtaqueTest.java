@@ -16,8 +16,8 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(1,1));
-        ataqueFalso.atacar(atacante, defensor, 1);
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(1,1));
+        ataqueFalso.atacar();
 
         assertEquals("Cande", defensor.obtenerConquistador().obtenerNombre());
         assertEquals(2, atacante.cantidadEjercitos());
@@ -34,14 +34,11 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        assertEquals(atacante.ejercitos, 3);
-        assertEquals(defensor.ejercitos, 3);
-
-        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(2, 2));
-        ataqueFalso.atacar(atacante, defensor,2);
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(0, 2));
+        ataqueFalso.atacar();
 
         assertEquals(1, atacante.ejercitos);
-        assertEquals(1, defensor.ejercitos);
+        assertEquals(3, defensor.ejercitos);
 
         //TODO: corregir error donde Martin conquista
         assertEquals("Tobías", defensor.obtenerConquistador().obtenerNombre());
@@ -59,9 +56,9 @@ public class AtaqueTest {
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
-        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(3,0));
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(3,0));
 
-        ataqueFalso.atacar(atacante, defensor,2);
+        ataqueFalso.atacar();
 
         //TODO: Prueba no pasada. Revisar código
         assertEquals("Daniel", defensor.obtenerConquistador().obtenerNombre());
@@ -80,8 +77,8 @@ public class AtaqueTest {
         atacante.agregarEjercitos(4);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(3,1));
-        ataqueFalso.atacar(atacante, defensor, 3);
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(3,0));
+        ataqueFalso.atacar();
 
         assertEquals(atacante.obtenerConquistador().obtenerNombre(), defensor.obtenerConquistador().obtenerNombre());
         assertEquals(0, defensor.cantidadEjercitos());
@@ -93,5 +90,23 @@ public class AtaqueTest {
     //TODO: validar que 1. el atacante no ataque con todos sus ejercitos, y 
     //2. ningun soldado use mas de 3 ejercitos
     //3. el atacante tenga ejercitos con los cuales atacar
+
+    @Test
+    public void test05AtacanteTrataDeAtacarConTodosSusEjercitos() throws Exception {
+        Pais atacante = new Pais("Argentina");
+        Pais defensor = new Pais("Chile");
+
+        atacante.asignarConquistador(new Jugador("Mafer"));
+        defensor.asignarConquistador(new Jugador("Cande"));
+
+        atacante.agregarEjercitos(3);
+        defensor.agregarEjercitos(3);
+
+        assertThrows(Exception.class, () -> {
+                Ataque ataque = new Ataque(atacante, defensor, 3);
+                ataque.atacar();
+        } );
+    }
+
 }
 
