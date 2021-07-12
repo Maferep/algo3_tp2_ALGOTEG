@@ -13,12 +13,15 @@ public class Ataque {
         public Ataque(Pais defensor, int cantEjercitos) {
                 dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3));
                 dadosDefensor = new TiroDeDados(Math.min(defensor.ejercitos, 3));
+                dadosAtacante.batallarConDesventaja(dadosDefensor);
         }
 
         public Ataque(Pais defensor, ITiroDeDados dadoFalso) {
                 dadosAtacante = dadoFalso;
                 dadosDefensor = dadoFalso;
+                dadosAtacante.batallarConDesventaja(dadosDefensor);
         }
+        
         public long calcularCantidadVictorias(ITiroDeDados dadosAtacante, ITiroDeDados dadosDefensor) {
                 return dadosAtacante.cantidadVictorias();
         }
