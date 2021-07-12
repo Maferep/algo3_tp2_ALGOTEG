@@ -7,6 +7,8 @@ public class DadoFalso implements ITiroDeDados {
     int cantidadDerrotas;
 
     public DadoFalso(int cantidadVictorias, int cantidadDerrotas) {
+        this.cantidadVictorias = cantidadVictorias;
+        this.cantidadDerrotas = cantidadDerrotas;
 	}
 	public int cantidadDados() {
         return cantidadVictorias + cantidadDerrotas;
