@@ -29,8 +29,15 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
+        assertEquals(atacante.ejercitos, 3);
+        assertEquals(defensor.ejercitos, 3);
+
         Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(2, 2));
         Boolean conquisto = ataqueFalso.atacar(atacante, defensor,2);
+
+        assertEquals(1, atacante.ejercitos);
+        assertEquals(1, defensor.ejercitos);
+
         assertEquals(false, conquisto);
         assertEquals(1, atacante.cantidadEjercitos());
     }
@@ -42,7 +49,7 @@ public class AtaqueTest {
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
-        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(3,2));
+        Ataque ataqueFalso = new Ataque(defensor, new DadoFalso(3,0));
         //Boolean conquisto = atacante.atacar(defensor, 3);
         Boolean conquisto = ataqueFalso.atacar(atacante, defensor,2);
         assertEquals(true, conquisto);

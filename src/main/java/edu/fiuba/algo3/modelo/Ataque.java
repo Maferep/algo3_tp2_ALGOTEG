@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 public class Ataque {
         ITiroDeDados dadosAtacante;
         ITiroDeDados dadosDefensor;
-
+        
 
         public Ataque(Pais defensor, int cantEjercitos) {
                 dadosAtacante = new TiroDeDados(Math.min(cantEjercitos, 3));
@@ -30,6 +30,6 @@ public class Ataque {
                 defensor.quitarEjercitos(cantVictorias);
                 //es victorioso si derrota tantos dados
                 //como ejercitos tiene el pais defensor
-                return cantVictorias >= defensor.ejercitos; // aca se deberia llamar a la clase Conquista para ver si conquistó o no, creo.
+                return defensor.ejercitos <= 0; // aca se deberia llamar a la clase Conquista para ver si conquistó o no, creo.
         }
 }
