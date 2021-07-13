@@ -17,7 +17,7 @@ public class IJuegoTest {
     }
 
     @Test
-    public void test01Agregar4Jugadores() {
+    public void test01NoAgregarJugadores() {
         String[] jugadores = { };
         assertThrows(Exception.class, () -> new Juego(jugadores) );
     }
