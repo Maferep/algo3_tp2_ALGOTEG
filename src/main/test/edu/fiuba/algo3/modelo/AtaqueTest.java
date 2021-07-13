@@ -40,7 +40,6 @@ public class AtaqueTest {
         assertEquals(1, atacante.ejercitos);
         assertEquals(3, defensor.ejercitos);
 
-        //TODO: corregir error donde Martin conquista
         assertEquals("Tobías", defensor.obtenerConquistador().obtenerNombre());
         assertEquals(3, defensor.cantidadEjercitos());
         assertEquals(1, atacante.cantidadEjercitos());
@@ -81,13 +80,6 @@ public class AtaqueTest {
         assertEquals(atacante.obtenerConquistador().obtenerNombre(), defensor.obtenerConquistador().obtenerNombre());
         assertEquals(0, defensor.cantidadEjercitos());
     }
-
-    //prueba para que atacante si o si deba tener mas de una ficha para atacar
-
-
-    //TODO: validar que 1. el atacante no ataque con todos sus ejercitos, y 
-    //2. ningun soldado use mas de 3 ejercitos
-    //3. el atacante tenga ejercitos con los cuales atacar
 
     @Test
     public void test05AtacanteTrataDeAtacarConTodosSusEjercitos() throws Exception {
