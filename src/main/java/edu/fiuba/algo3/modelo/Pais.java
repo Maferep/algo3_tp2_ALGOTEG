@@ -33,7 +33,12 @@ public class Pais {
 
 	public Jugador obtenerConquistador() { return this.conquistador; }
 
-	public void atacar(IAtaque tipoAtaque) {
-		tipoAtaque.atacar();
+	public void atacar(Pais defensor, int numeroEjercitos) throws Exception {
+		IAtaque ataque = new Ataque(this, defensor, numeroEjercitos);
+		atacar(ataque);
+	}
+
+	public void atacar(IAtaque ataque) {
+		ataque.atacar();
 	}
 }

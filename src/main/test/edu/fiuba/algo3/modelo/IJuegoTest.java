@@ -65,20 +65,16 @@ public class IJuegoTest {
     @Test
     public void test05AtaqueDeUnPaisAOtro() throws Exception {
         String[] jugadores = {"Pablo", "Mohammed"};
-        IAltego IAltego = new Juego(jugadores);
-        IAltego.asignarPaisAJugador("Pablo", "Colombia");
-        IAltego.asignarPaisAJugador("Mohammed", "Venezuela");
+        IAltego altego = new Juego(jugadores);
+        altego.asignarPaisAJugador("Pablo", "Colombia");
+        altego.asignarPaisAJugador("Mohammed", "Venezuela");
 
-        IAltego.agregarEjercitosAlJugador("Pablo", 10);
-        IAltego.agregarEjercitosAlJugador("Mohammed", 10);
+        altego.agregarEjercitosAlJugador("Pablo", 10);
+        altego.agregarEjercitosAlJugador("Mohammed", 10);
 
-        IAltego.agregarEjercitosAlPais("Colombia", 6);
-        IAltego.agregarEjercitosAlPais("Venezuela", 1);
+        altego.agregarEjercitosAlPais("Colombia", 6);
+        altego.agregarEjercitosAlPais("Venezuela", 1);
 
-        Pais defensor = IAltego.paisPorNombre("Venezuela");
-
-        Pais atacante = IAltego.paisPorNombre("Colombia");
-
-        atacante.atacar(new AtaqueFalso(atacante, defensor));
+        altego.realizarAtaque("Colombia", 3, "Venezuela");
     }
 }

@@ -92,7 +92,9 @@ public class Juego implements IAltego {
 		paisPorNombre(pais).agregarEjercitos(cantidadEjercitos);
 	}
 
-	//TODO: corregir tests que acceden a la clase Pais
+	public void realizarAtaque(String atacante, int numEjercitos, String defensor) throws Exception{
+		paisPorNombre(atacante).atacar(paisPorNombre(defensor), numEjercitos);
+	}
 
 	public Pais paisPorNombre(String nombre) {
 		return paises.stream()

@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
 
-public class Ataque {
+public class Ataque implements IAtaque{
         ITiroDeDados dadosAtacante;
         ITiroDeDados dadosDefensor;
 

@@ -22,7 +22,12 @@ public interface IAltego {
 	public List<String> paisesDe(String nombre);
 
 	public void agregarEjercitosAlPais(String pais, int cantidadEjercitos);
-	
+
+	public void realizarAtaque(
+		String atacante, 
+		int numEjercitos, 
+		String defensor) throws Exception;
+
 	public Pais paisPorNombre(String nombre);
 
 }
