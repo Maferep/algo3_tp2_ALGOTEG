@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 
-public class Juego {
+public class Juego implements IAltego {
 	List<Jugador> jugadores;
 	List<Pais> paises = Arrays.asList(
 		"Puerto Rico", 
@@ -22,11 +22,6 @@ public class Juego {
 		return this.paises.stream()
 			.map(p -> p.obtenerNombre())
 			.collect(Collectors.toList());
-	}
-
-	// Constructores 
-	Juego() {
-		jugadores = new ArrayList<Jugador>();
 	}
 
 	public Juego(String[] nombresJugadores) throws Exception {
@@ -94,25 +89,15 @@ public class Juego {
 			.collect(Collectors.toList());
 	}
 
-	public void realizarAtaque(String paisAtacante, int cantSoldados, String paisDefensor) throws Exception {
-		Pais atacante = paises.stream()
-				.filter(j -> j.obtenerNombre() == paisAtacante)
-				.findAny().orElseThrow();
-
-		Pais defensor = paises.stream()
-				.filter(j -> j.obtenerNombre() == paisDefensor)
-				.findAny().orElseThrow();
-
-		atacante.atacar(defensor, cantSoldados);
-	}
-
 	public void agregarEjercitosAlPais(String pais, int cantidadEjercitos) {
 		paisPorNombre(pais).agregarEjercitos(cantidadEjercitos);
 	}
 
-	//Auxiliares
-	
-	private Pais paisPorNombre(String nombre) {
+	public void realizarAtaque(String atacante, int numEjercitos, String defensor) throws Exception{
+		paisPorNombre(atacante).atacar(paisPorNombre(defensor), numEjercitos);
+	}
+
+	public Pais paisPorNombre(String nombre) {
 		return paises.stream()
 			.filter(p -> p.obtenerNombre() == nombre)
 			.findAny().get();

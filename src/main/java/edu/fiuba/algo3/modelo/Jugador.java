@@ -1,4 +1,6 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -25,8 +27,6 @@ public class Jugador {
 		return ejercitos;
 	}
 
-	public int obtenerCantidadEjercitos() { return ejercitos; }
-
 	public void agregarEjercitos(int cantidad) throws Exception {
 		if(cantidad <= 0)
 			throw new Exception();
@@ -38,11 +38,9 @@ public class Jugador {
 
 	public void asignarEjercitosAPais(int cantidad, Pais pais) throws Exception {
 		if(cantidad > ejercitos)
-			throw new Exception();
+			throw new FichasInsuficientesError("El jugador no tiene suficientes fichas.");
 		if (!paises.contains(pais)) 
 			throw new Exception();
-		
 	}
-	public void atacar(int cantidadSoldadosDefensor) {}
 
 }
