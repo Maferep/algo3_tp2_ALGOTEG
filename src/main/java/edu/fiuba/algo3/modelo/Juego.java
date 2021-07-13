@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.modelo;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 
-public class Juego {
+public class Juego implements IAltego {
 	List<Jugador> jugadores;
 	List<Pais> paises = Arrays.asList(
 		"Puerto Rico", 
@@ -22,11 +21,6 @@ public class Juego {
 		return this.paises.stream()
 			.map(p -> p.obtenerNombre())
 			.collect(Collectors.toList());
-	}
-
-	// Constructores 
-	Juego() {
-		jugadores = new ArrayList<Jugador>();
 	}
 
 	public Juego(String[] nombresJugadores) throws Exception {
@@ -98,9 +92,9 @@ public class Juego {
 		paisPorNombre(pais).agregarEjercitos(cantidadEjercitos);
 	}
 
-	//Auxiliares
-	
-	private Pais paisPorNombre(String nombre) {
+	//TODO: corregir tests que acceden a la clase Pais
+
+	public Pais paisPorNombre(String nombre) {
 		return paises.stream()
 			.filter(p -> p.obtenerNombre() == nombre)
 			.findAny().get();

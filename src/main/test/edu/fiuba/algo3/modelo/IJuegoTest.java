@@ -11,8 +11,8 @@ public class IJuegoTest {
     @Test
     public void test00AgregarJugadores() throws Exception {
         String[] jugadores = { "Pablo", "Mohammed", "Alexis" };
-        Juego juego = new Juego(jugadores);
-        assertEquals(juego.cantidadDeJugadores(), 3);
+        IAltego IAltego = new Juego(jugadores);
+        assertEquals(IAltego.cantidadDeJugadores(), 3);
     }
 
     @Test
@@ -24,64 +24,60 @@ public class IJuegoTest {
     @Test
     public void test02ColocarEjercitos() throws Exception {
         String[] jugadores = { "Pablo", "Mohammed", "Alexis" };
-        Juego juego = new Juego(jugadores);
-        juego.agregarEjercitosAlJugador("Pablo", 3);
+        IAltego IAltego = new Juego(jugadores);
+        IAltego.agregarEjercitosAlJugador("Pablo", 3);
 
         assertThrows(Exception.class, () -> 
-            juego.colocarEjercitos("Pablo", 3, "Colombia"));
-        juego.asignarPaisAJugador("Pablo", "Colombia");
+            IAltego.colocarEjercitos("Pablo", 3, "Colombia"));
+        IAltego.asignarPaisAJugador("Pablo", "Colombia");
         assertDoesNotThrow(() -> 
-            juego.colocarEjercitos("Pablo", 3, "Colombia"));
+            IAltego.colocarEjercitos("Pablo", 3, "Colombia"));
 
-        assertEquals(juego.cantidadEjercitosDe("Pablo"), 3);
+        assertEquals(IAltego.cantidadEjercitosDe("Pablo"), 3);
     }
 
     @Test
     public void test03AsignarPaisesAJugadores() throws Exception {
         String[] jugadores = { "Pedro", "Mohammed", "Alexis" };
-        Juego juego = new Juego(jugadores);
-        juego.asignarPaisesAleatoriamente();
-        assertTrue(juego.paisesDe("Pedro").size() > 0);
+        IAltego IAltego = new Juego(jugadores);
+        IAltego.asignarPaisesAleatoriamente();
+        assertTrue(IAltego.paisesDe("Pedro").size() > 0);
 
         //repartir paises entre los jugadores es una particion
         List<String> paisesDeJugadores = Arrays.asList(jugadores)
             .stream()
-            .flatMap( j -> juego.paisesDe(j).stream())
+            .flatMap( j -> IAltego.paisesDe(j).stream())
             .collect(Collectors.toList());
-        assertEquals(juego.obtenerPaises().size(), paisesDeJugadores.size());
-        assertEquals(new HashSet<>(juego.obtenerPaises()), new HashSet<>(paisesDeJugadores));
+        assertEquals(IAltego.obtenerPaises().size(), paisesDeJugadores.size());
+        assertEquals(new HashSet<>(IAltego.obtenerPaises()), new HashSet<>(paisesDeJugadores));
     }
 
     @Test
     public void test04AgregarVariosSoldados() throws Exception {
         String[] jugadores = {"Pablo", "Avneet", "Sasha", "Sam"};
-        Juego juego = new Juego(jugadores);
-        juego.agregarEjercitosAlJugador("Pablo", 3);
-        assertEquals(juego.cantidadEjercitosDe("Pablo"), 3);
-        juego.agregarEjercitosAlJugador("Pablo", 4);
-        assertEquals(juego.cantidadEjercitosDe("Pablo"), 7);
+        IAltego IAltego = new Juego(jugadores);
+        IAltego.agregarEjercitosAlJugador("Pablo", 3);
+        assertEquals(IAltego.cantidadEjercitosDe("Pablo"), 3);
+        IAltego.agregarEjercitosAlJugador("Pablo", 4);
+        assertEquals(IAltego.cantidadEjercitosDe("Pablo"), 7);
     }
 
     @Test
     public void test05AtaqueDeUnPaisAOtro() throws Exception {
         String[] jugadores = {"Pablo", "Mohammed"};
-        Juego juego = new Juego(jugadores);
-        juego.asignarPaisAJugador("Pablo", "Colombia");
-        juego.asignarPaisAJugador("Mohammed", "Venezuela");
+        IAltego IAltego = new Juego(jugadores);
+        IAltego.asignarPaisAJugador("Pablo", "Colombia");
+        IAltego.asignarPaisAJugador("Mohammed", "Venezuela");
 
-        juego.agregarEjercitosAlJugador("Pablo", 10);
-        juego.agregarEjercitosAlJugador("Mohammed", 10);
+        IAltego.agregarEjercitosAlJugador("Pablo", 10);
+        IAltego.agregarEjercitosAlJugador("Mohammed", 10);
 
-        juego.agregarEjercitosAlPais("Colombia", 6);
-        juego.agregarEjercitosAlPais("Venezuela", 1);
+        IAltego.agregarEjercitosAlPais("Colombia", 6);
+        IAltego.agregarEjercitosAlPais("Venezuela", 1);
 
-        Pais defensor = juego.paises.stream()
-                .filter(j -> j.obtenerNombre() == "Venezuela")
-                .findAny().orElseThrow();
+        Pais defensor = IAltego.paisPorNombre("Venezuela");
 
-        Pais atacante = juego.paises.stream()
-        .filter(j -> j.obtenerNombre() == "Colombia")
-        .findAny().orElseThrow();
+        Pais atacante = IAltego.paisPorNombre("Colombia");
 
         atacante.atacar(new AtaqueFalso(atacante, defensor));
     }
