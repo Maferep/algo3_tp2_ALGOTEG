@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -99,7 +100,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        assertThrows(Exception.class, () -> {
+        assertThrows(FichasInsuficientesError.class, () -> {
                 Ataque ataque = new Ataque(atacante, defensor, 3);
                 ataque.atacar();
         } );
@@ -117,7 +118,7 @@ public class AtaqueTest {
         defensor.agregarEjercitos(10);
 
         assertTrue(atacante.ejercitos > 4);
-        assertThrows(Exception.class, () -> {
+        assertThrows(FichasInsuficientesError.class, () -> {
                 Ataque ataque = new Ataque(atacante, defensor, 4);
                 ataque.atacar();
         } );
