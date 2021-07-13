@@ -1,4 +1,5 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Interfaces;
+import edu.fiuba.algo3.modelo.*;
 import java.util.List;
 
 public interface IAltego {
