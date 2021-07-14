@@ -16,7 +16,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(1,1));
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosMock(1,1));
         ataqueFalso.atacar();
 
         assertEquals("Cande", defensor.obtenerConquistador().obtenerNombre());
@@ -34,7 +34,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(0, 2));
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosMock(0, 2));
         ataqueFalso.atacar();
 
         assertEquals(1, atacante.ejercitos);
@@ -55,7 +55,7 @@ public class AtaqueTest {
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(1,1));
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosMock(1,1));
         ataqueFalso.atacar();
 
         assertEquals("Daniel", defensor.obtenerConquistador().obtenerNombre());
@@ -74,7 +74,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(4);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(3,0));
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosMock(3,0));
         ataqueFalso.atacar();
 
         assertEquals(atacante.obtenerConquistador().obtenerNombre(), defensor.obtenerConquistador().obtenerNombre());

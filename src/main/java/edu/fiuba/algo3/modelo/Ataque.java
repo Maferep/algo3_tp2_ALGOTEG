@@ -20,8 +20,8 @@ public class Ataque implements IAtaque{
                         throw new FichasInsuficientesError("El jugador sólo puede atacar con" + (atacante.ejercitos - 1) + "ejércitos.");
 
                 asignarDados(
-                        new TiroDeDados(cantEjercitos),
-                        new TiroDeDados(Math.min(defensor.ejercitos, maxDados))
+                        new Dados(cantEjercitos),
+                        new Dados(Math.min(defensor.ejercitos, maxDados))
                 );
         }
 

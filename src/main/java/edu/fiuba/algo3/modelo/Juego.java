@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.modelo.Interfaces.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-public class Juego implements IAltego {
+public class Juego {
 	List<Jugador> jugadores;
 	List<Pais> paises = Arrays.asList(
 		"Puerto Rico", 

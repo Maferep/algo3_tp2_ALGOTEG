@@ -2,11 +2,11 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.ITiroDeDados;
 
-public class DadoFalso implements ITiroDeDados {
+public class DadosMock implements ITiroDeDados {
     int cantidadVictorias;
     int cantidadDerrotas;
 
-    public DadoFalso(int cantidadVictorias, int cantidadDerrotas) {
+    public DadosMock(int cantidadVictorias, int cantidadDerrotas) {
         this.cantidadVictorias = cantidadVictorias;
         this.cantidadDerrotas = cantidadDerrotas;
 	}

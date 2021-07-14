@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.modelo.Interfaces.*;
 
 import java.util.*;
 import java.util.stream.*;
@@ -12,7 +11,7 @@ public class IJuegoTest {
     @Test
     public void test00AgregarJugadores() throws Exception {
         String[] jugadores = { "Pablo", "Mohammed", "Alexis" };
-        IAltego juego = new Juego(jugadores);
+        Juego juego = new Juego(jugadores);
         assertEquals(juego.cantidadDeJugadores(), 3);
     }
 
@@ -25,7 +24,7 @@ public class IJuegoTest {
     @Test
     public void test02ColocarEjercitos() throws Exception {
         String[] jugadores = { "Pablo", "Mohammed", "Alexis" };
-        IAltego juego = new Juego(jugadores);
+        Juego juego = new Juego(jugadores);
         juego.agregarEjercitosAlJugador("Pablo", 3);
 
         assertThrows(Exception.class, () -> 
@@ -40,7 +39,7 @@ public class IJuegoTest {
     @Test
     public void test03AsignarPaisesAJugadores() throws Exception {
         String[] jugadores = { "Pedro", "Mohammed", "Alexis" };
-        IAltego juego = new Juego(jugadores);
+        Juego juego = new Juego(jugadores);
         juego.asignarPaisesAleatoriamente();
         assertTrue(juego.paisesDe("Pedro").size() > 0);
 
@@ -56,7 +55,7 @@ public class IJuegoTest {
     @Test
     public void test04AgregarVariosSoldados() throws Exception {
         String[] jugadores = {"Pablo", "Avneet", "Sasha", "Sam"};
-        IAltego juego = new Juego(jugadores);
+        Juego juego = new Juego(jugadores);
         juego.agregarEjercitosAlJugador("Pablo", 3);
         assertEquals(juego.cantidadEjercitosDe("Pablo"), 3);
         juego.agregarEjercitosAlJugador("Pablo", 4);
@@ -66,7 +65,7 @@ public class IJuegoTest {
     @Test
     public void test05AtaqueDeUnPaisAOtro() throws Exception {
         String[] jugadores = {"Pablo", "Mohammed"};
-        IAltego juego = new Juego(jugadores);
+        Juego juego = new Juego(jugadores);
         juego.asignarPaisAJugador("Pablo", "Colombia");
         juego.asignarPaisAJugador("Mohammed", "Venezuela");
 

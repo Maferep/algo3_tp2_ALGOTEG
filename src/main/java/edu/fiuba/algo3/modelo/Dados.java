@@ -9,16 +9,16 @@ import java.util.stream.Collectors;
 
 //Un conjunto de dados es una lista de valores aleatorios.
 // Estos dados siempre devuelven 1.
-public class TiroDeDados implements ITiroDeDados {
+public class Dados implements ITiroDeDados {
     List<Integer> valores;
     List<ITiroDeDados> resultado;
 
-    public TiroDeDados (int cantidadDeDados) {
+    public Dados(int cantidadDeDados) {
         valores = new ArrayList<Integer>();
 		for(int i = 0; i < cantidadDeDados; i++) valores.add ((int)((Math.random()*6)+1));
     }
 
-    public TiroDeDados (int cantidadDeDados,int numero) {
+    public Dados(int cantidadDeDados, int numero) {
         valores = new ArrayList<Integer>();
         for(int i = 0; i < cantidadDeDados; i++) valores.add (numero);
     }
