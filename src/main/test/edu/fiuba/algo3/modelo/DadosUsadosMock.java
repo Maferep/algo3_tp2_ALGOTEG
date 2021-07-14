@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Interfaces.ITiroDeDados;
+import edu.fiuba.algo3.modelo.Interfaces.IDadosUsados;
 
-public class DadosMock implements ITiroDeDados {
+public class DadosUsadosMock implements IDadosUsados {
     int cantidadVictorias;
     int cantidadDerrotas;
 
-    public DadosMock(int cantidadVictorias, int cantidadDerrotas) {
+    public DadosUsadosMock(int cantidadVictorias, int cantidadDerrotas) {
         this.cantidadVictorias = cantidadVictorias;
         this.cantidadDerrotas = cantidadDerrotas;
 	}
@@ -18,7 +18,7 @@ public class DadosMock implements ITiroDeDados {
         return 0;
     }
     public void ordenarDescendientemente() {}
-    public void batallar(ITiroDeDados rival) {}
+    public void batallar(IDadosUsados rival) {}
 
     @Override
     public int cantidadVictorias() {
