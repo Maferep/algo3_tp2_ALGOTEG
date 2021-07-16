@@ -9,6 +9,7 @@ public class Jugador {
 	String color;
 	List<Pais> paises;
 	int ejercitos;
+	int numeroDeTurno;
 
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
@@ -51,6 +52,14 @@ public class Jugador {
 			throw new FichasInsuficientesError("El jugador no tiene suficientes fichas.");
 		if (!paises.contains(pais)) 
 			throw new Exception();
+	}
+
+	public void asignarNumeroParaTurno() {
+		numeroDeTurno = (((int)(Math.random()*6))+1);
+	}
+
+	public int numeroDeTurno() {
+		return numeroDeTurno;
 	}
 
 }

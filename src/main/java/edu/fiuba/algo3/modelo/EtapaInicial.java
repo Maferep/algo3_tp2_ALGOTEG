@@ -44,8 +44,15 @@ public class EtapaInicial {
         }
     }
 
-    public void asignarTurnosAleatoriamente() {
-
+    public void asignarTurnosAleatoriamente() throws Exception {
+        Turno sistemaDeTurnos = new Turno();
+        for(int i = 0 ; i < cantidadDeJugadores() ; i++) {
+            jugadores(i).asignarNumeroParaTurno();
+            //de menor a mayor: ascendente
+            //tengo que ordenar la lista de menor a mayor.
+           // sistemaDeTurnos.determinarTurnos(jugadores((int)(Math.random()*i)));
+        }
+        sistemaDeTurnos.determinarTurnos(jugadores);
     }
 
     //se va a tener que leer el archivo de paises e ir cargandose en la lista en la etapa inicial.
