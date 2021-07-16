@@ -72,7 +72,7 @@ public class Juego {
 
 	public void asignarPaisAJugador(String nombreJugador, String pais) {
 		jugadores.stream()
-			.filter(j -> j.nombre == nombreJugador)
+			.filter(j -> j.color == nombreJugador)
 			.findAny().get()
 			.asignarPais(paisPorNombre(pais));
 	}

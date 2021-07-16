@@ -16,6 +16,14 @@ public class Jugador {
 		ejercitos = 0;
 	}
 
+	public void asignarPaises(int cantidadJugadores) {
+		for(int i = 0 ; i < cantidadJugadores ; i++) {
+			//leer archivo
+		//	paises.add();
+					//pais del archivo leido
+		}
+	}
+
 	public Object obtenerNombre() {
 		return color;
 	}
@@ -33,6 +41,7 @@ public class Jugador {
 			throw new Exception();
 		ejercitos += cantidad;
 	}
+
 	public void asignarPais(Pais pais) {
 		paises.add(pais);
 	}
