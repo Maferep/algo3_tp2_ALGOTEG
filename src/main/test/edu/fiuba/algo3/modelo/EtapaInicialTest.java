@@ -3,6 +3,11 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeJugadoresError;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EtapaInicialTest {
@@ -29,7 +34,7 @@ public class EtapaInicialTest {
     }
 
     @Test
-    public void test03ColocarEjercitos() throws Exception {
+    public void test03ColocarFichasInicialesParaLosJugadores() throws Exception {
         EtapaInicial primeraEtapa = new EtapaInicial(6);
         assertEquals(primeraEtapa.cantidadDeJugadores(), 6);
 
@@ -39,4 +44,12 @@ public class EtapaInicialTest {
         assertDoesNotThrow(() ->
                 primeraEtapa.jugadores(2).cantidadEjercitos());
     }
+
+    @Test
+    public void test04AsignarPaisesAJugadores() throws Exception {
+        EtapaInicial primeraEtapa = new EtapaInicial(6);
+        assertEquals(primeraEtapa.cantidadDeJugadores(), 6);
+        assertTrue((primeraEtapa.jugadores(1).obtenerPaises()).size() > 0);
+    }
+
 }
