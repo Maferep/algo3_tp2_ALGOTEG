@@ -1,22 +1,23 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
 public class Jugador {
-	String nombre;
+	String color;
 	List<Pais> paises;
 	int ejercitos;
 
-	public Jugador(String n) {
-		nombre = n;
+	public Jugador(String colorDelJugador) {
+		color = colorDelJugador;
 		paises = new ArrayList<Pais>();
 		ejercitos = 0;
 	}
 
 	public Object obtenerNombre() {
-		return nombre;
+		return color;
 	}
 
 	public List<Pais> obtenerPaises() {
