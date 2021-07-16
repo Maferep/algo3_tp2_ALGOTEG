@@ -10,4 +10,6 @@ public interface IFase {
 
 	void realizar();
 
+	Integer cantidadDeJugadores();
+
 }
