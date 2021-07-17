@@ -31,7 +31,7 @@ public class EtapasTest {
             //realizar() contiene toda la lógica e interacción de usuario
             fase.realizar();
             assertTrue(fase.faseCompletada());
-            fase.siguienteFase();
+            fase = fase.siguienteFase();
         }
         
     }
