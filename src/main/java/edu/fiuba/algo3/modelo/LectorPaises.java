@@ -21,7 +21,6 @@ public class LectorPaises {
 
         try (FileReader reader = new FileReader("fronteras.json")) {
             Object obj = jsonParser.parse(reader);
-            JSONArray paisesList = (JSONArray) obj;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
