@@ -1,7 +1,10 @@
-package edu.fiuba.algo3.modelo.Interfaces;
+package edu.fiuba.algo3.modelo;
+
+import edu.fiuba.algo3.modelo.Interfaces.IFase;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 
-public interface IFase {
+public interface IEstrategiaFase {
+	public IEstrategiaFase actualizar();
 
 	Boolean faseCompletada();
 
@@ -10,7 +13,4 @@ public interface IFase {
 	Boolean finDeJuego();
 
 	void realizar();
-
-	Integer cantidadDeJugadores();
-
 }

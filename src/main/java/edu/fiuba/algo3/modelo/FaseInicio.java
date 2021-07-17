@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FaseInicio implements IFaseInicio {
+public class FaseInicio implements IFase {
     List<Jugador> colores;
     List<Jugador> jugadores;
     IJugadorBuilder jugadorBuilder = new JugadorBuilder();
-    IEstrategiaInicio estrategia = new EstrategiaInicio();
+
+    //puede ser
+    IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
 
     public FaseInicio(int cantJugadores) {
         jugadores = new ArrayList<Jugador>();
@@ -26,65 +28,26 @@ public class FaseInicio implements IFaseInicio {
     }
 
     @Override
-    public void asignarColores() {
-        // TODO Auto-generated method stub
-        estrategia.asignarColores();
-        estrategia = estrategia.actualizar();
-
-    }
-
-    @Override
-    public void ubicarEjercitos(int cantEjercitos) {
-        estrategia.ubicarEjercitos(cantEjercitos);
-        estrategia = estrategia.actualizar();
-
-    }
-
-    @Override
     public Boolean faseCompletada() {
         return estrategia.faseCompletada();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public IFase siguienteFase() {
         // TODO Auto-generated method stub
-        return null;
+        return estrategia.siguienteFase();
     }
 
     @Override
     public Boolean finDeJuego() {
-        // TODO Auto-generated method stub
-        return false;
+        // devuelve si ha terminado el juego
+        return estrategia.finDeJuego();
     }
 
     @Override
     public void realizar() {
-        // TODO Auto-generated method stub
-
+        // Aqui realizo acciones que podrian cambiar la fase en la que estoy
+        
     }
 
 }

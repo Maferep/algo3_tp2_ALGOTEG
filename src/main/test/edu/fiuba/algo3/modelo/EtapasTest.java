@@ -17,27 +17,14 @@ public class EtapasTest {
     public void test01agregarEjercitos() {
         //internamente, asigna paises y objetivos a 4 colores
         IFase fase = juegoBuilder.crearJuegoTEG(4);
-
         fase.realizar();
-
         assertTrue(fase.faseCompletada());
     }
-
-    //ejemplo de ubicarEjercitos en juegoInicio 
-
-    /* public void ubicarEjercitos(int max, List<Paises> paisesEscogidos) {
-        for(int i = 0; i < self.cantJugadores(); i++) {
-            // ubicar soldados
-            self.colocarEjercitosEn(paisesEscogidos);
-            self.turnoSiguiente();
-        }
-    } */
 
     @Test
     public void test02PasarPorEtapasDistintas() {
         //genera una etapa de inicio en estado 'finalizado' de ejemplo
-        IFase faseInicio = new FaseInicioMock();
-
+        IFase fase = juegoBuilder.crearJuegoTEG(4);
         while(!fase.finDeJuego()){
             //realizar() contiene toda la lógica e interacción de usuario
             fase.realizar();
