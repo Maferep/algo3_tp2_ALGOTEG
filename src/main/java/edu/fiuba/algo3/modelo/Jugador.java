@@ -58,6 +58,10 @@ public class Jugador {
 		numeroDeTurno = (((int)(Math.random()*6))+1);
 	}
 
+	public void asignarNumeroParaTurnoMock(int numeroTurno) {
+		numeroDeTurno = numeroTurno;
+	}
+
 	public int numeroDeTurno() {
 		return numeroDeTurno;
 	}

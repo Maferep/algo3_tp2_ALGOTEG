@@ -14,6 +14,7 @@ public class EtapaInicial {
     static int maximoJugadores = 6;
     static int cantidadEjercitos = 8; //la cantidad de ejercitos para cada jugador en la etapa inicial es 8
     static int cantidadInicial = 0;
+    Turno sistemaDeTurnos = new Turno();
 
     //para que pasen los test hago una lista de paises random
     List<Pais> paises = Arrays.asList(
@@ -36,6 +37,15 @@ public class EtapaInicial {
         asignarEjercitosAJugadores();
     }
 
+    public EtapaInicial(int cantidadJugadores, int numeroDeTurno) throws Exception {
+        if(cantidadJugadores < minimoJugadores || cantidadJugadores > maximoJugadores)
+            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + (minimoJugadores) + "y un máximo de" + (maximoJugadores) + "jugadores.");
+        asignarJugadores(cantidadJugadores);
+        asignarTurnosNoAleatoriamente(numeroDeTurno);
+        asignarPaisesAleatoriamenteAJugadores();
+        asignarEjercitosAJugadores();
+    }
+
     public void asignarJugadores(int cantidadJugadores) {
         jugadores = new ArrayList<Jugador>();
         for(int i = 0 ; i < cantidadJugadores ; i++ ) {
@@ -45,9 +55,17 @@ public class EtapaInicial {
     }
 
     public void asignarTurnosAleatoriamente() throws Exception {
-        Turno sistemaDeTurnos = new Turno();
+        //Turno sistemaDeTurnos = new Turno();
         for(int i = 0 ; i < cantidadDeJugadores() ; i++) {
             jugadores(i).asignarNumeroParaTurno();
+        }
+        sistemaDeTurnos.determinarTurnos(jugadores);
+    }
+
+    public void asignarTurnosNoAleatoriamente(int numero) throws Exception {
+        //Turno sistemaDeTurnos = new Turno();
+        for(int i = 0 ; i < cantidadDeJugadores() ; i++) {
+            jugadores(i).asignarNumeroParaTurnoMock(numero+i);
         }
         sistemaDeTurnos.determinarTurnos(jugadores);
     }
