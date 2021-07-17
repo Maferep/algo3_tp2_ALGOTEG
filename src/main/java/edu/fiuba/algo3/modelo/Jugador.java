@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
+import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -35,9 +35,9 @@ public class Jugador {
 		return ejercitos;
 	}
 
-	public void agregarEjercitos(int cantidad) throws Exception {
+	public void agregarEjercitos(int cantidad) throws EjercitosException {
 		if(cantidad <= 0)
-			throw new Exception();
+			throw new EjercitosException(null);
 		ejercitos += cantidad;
 	}
 
