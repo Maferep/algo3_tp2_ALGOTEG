@@ -34,14 +34,6 @@ public class EstrategiaInicioSinCompletar implements IEstrategiaFase {
 
     @Override
     public void realizar() throws Exception {
-        agregarEjercitos(3);
-        agregarEjercitos(5);
+        //llamar a la clase fase inicial
         estrategiaActualizada = new EstrategiaJuegoInicializado();
     }
-
-    private void agregarEjercitos(int cantidad) {
-        IntStream.of(cantidad).forEach(() -> {
-            Jugador j = new Jugador();
-        });
-    }
-}
