@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.Interfaces;
+
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 
 public interface IFase {
@@ -7,10 +8,8 @@ public interface IFase {
 
 	IFase siguienteFase() throws FaseIncompletaException;
 
-	Boolean finDeJuego();
+	void realizar() throws Exception;
 
-	void realizar();
-
-	Integer cantidadDeJugadores();
+	Boolean esFinDeJuego();
 
 }

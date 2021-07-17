@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.Interfaces.IJuegoBuilder;
 public class JuegoBuilder implements IJuegoBuilder {
 
   @Override
-  public IFase crearJuegoTEG(int cantJugadores) {
-    return new FaseInicio(cantJugadores);
+  public IFase crearJuegoTEG(int cantJugadores) throws Exception {
+    return new EtapaInicial(cantJugadores);
   }
 }

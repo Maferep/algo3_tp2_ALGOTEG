@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 

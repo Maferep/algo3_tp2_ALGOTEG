@@ -4,13 +4,9 @@ import edu.fiuba.algo3.modelo.Interfaces.IFase;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 
 public interface IEstrategiaFase {
-	public IEstrategiaFase actualizar();
+	public IEstrategiaFase actualizar() throws Exception;
 
-	Boolean faseCompletada();
+	public Boolean faseCompletada();
 
-	IFase siguienteFase() throws FaseIncompletaException;
-
-	Boolean finDeJuego();
-
-	void realizar();
+	public IFase siguienteFase(IFase actual) throws FaseIncompletaException;
 }
