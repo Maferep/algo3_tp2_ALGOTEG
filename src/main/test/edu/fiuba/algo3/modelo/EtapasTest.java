@@ -29,10 +29,13 @@ public class EtapasTest {
     public void test02PasarPorEtapasDistintas() throws Exception {
         //genera una etapa de inicio en estado 'finalizado' de ejemplo
         IFase fase = juegoBuilder.crearJuegoTEG(4);
-        while(!fase.esFinDeJuego()) {
-            assertTrue(fase.faseCompletada());
-            fase = fase.siguienteFase();
-        }
-        
+        assertFalse(fase.faseCompletada());
+
+        fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("Francia"));
+        assertTrue(fase.faseCompletada());
+        fase = fase.siguienteFase();
+
+        fase.asFaseAtacar().atacar(null, 0, null);
+        assertTrue(fase.faseCompletada());
     }
 }
