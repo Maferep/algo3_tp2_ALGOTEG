@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 
-public class FaseAtacar implements IFaseAtacar, IFase {
+public class FaseAtacar implements IFase {
     // cambiar por SistemaTurnos?
     List<Jugador> jugadores;
 
@@ -31,19 +31,16 @@ public class FaseAtacar implements IFaseAtacar, IFase {
         return true;
     }
 
-    @Override
     public void atacar(Pais atacante, int cantidadDeSoldados, Pais defensor) {
         // TODO Auto-generated method stub
 
     }
 
-    @Override
-    public IFaseInicio asFaseInicio() throws FaseErroneaException {
+    public EtapaInicial asFaseInicio() throws FaseErroneaException {
         throw new FaseErroneaException("Estamos en fase atacar");
     }
 
-    @Override
-    public IFaseAtacar asFaseAtacar() throws FaseErroneaException {
+    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
         // TODO Auto-generated method stub
         return this;
     }

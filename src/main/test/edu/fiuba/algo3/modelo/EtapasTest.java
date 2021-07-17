@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.builders.*;
-import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 
 import org.junit.jupiter.api.Test;
 

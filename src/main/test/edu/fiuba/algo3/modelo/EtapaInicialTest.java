@@ -15,7 +15,7 @@ public class EtapaInicialTest {
     @Test
     public void test01NoSePuedeComenzarElJuegoConMenosDeDosJugadores() throws Exception {
         assertThrows(CantidadDeJugadoresError.class, () ->  {
-            EtapaInicial primeraEtapa = new EtapaInicial(0);
+            new EtapaInicial(0);
         }
         );
     }
@@ -23,7 +23,7 @@ public class EtapaInicialTest {
     @Test
     public void test02NoSePuedeComenzarElJuegoConMasDeSeisJugadores() throws Exception {
         assertThrows(CantidadDeJugadoresError.class, () ->  {
-                    EtapaInicial primeraEtapa = new EtapaInicial(7);
+                    new EtapaInicial(7);
                 }
         );
     }

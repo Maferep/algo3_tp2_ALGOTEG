@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 public interface IFase {
@@ -10,7 +11,7 @@ public interface IFase {
 
 	Boolean esFinDeJuego();
 
-	IFaseInicio asFaseInicio() throws FaseErroneaException;
+	EtapaInicial asFaseInicio() throws FaseErroneaException;
 
-	IFaseAtacar asFaseAtacar() throws FaseErroneaException;
+	FaseAtacar asFaseAtacar() throws FaseErroneaException;
 }

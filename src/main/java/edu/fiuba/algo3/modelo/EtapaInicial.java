@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 import java.util.*;
 import java.util.stream.*;
 
-public class EtapaInicial implements IFaseInicio, IFase {
+public class EtapaInicial implements IFase {
     List<Jugador> jugadores;
     List<String> colores;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
@@ -119,20 +119,17 @@ public class EtapaInicial implements IFaseInicio, IFase {
         return false;
     }
 
-    @Override
     public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
         // TODO Auto-generated method stub
         //al 'terminar de ubicar' la etapa inicial se considera completada
         estrategia = estrategia.actualizar();
     }
 
-    @Override
-    public IFaseInicio asFaseInicio() {
+    public EtapaInicial asFaseInicio() {
         return this;
     }
 
-    @Override
-    public IFaseAtacar asFaseAtacar() throws FaseErroneaException {
+    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
         // TODO Auto-generated method stub
         throw new FaseErroneaException(null);
     }
