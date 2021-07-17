@@ -31,7 +31,7 @@ public class EtapaInicial {
         if(cantidadJugadores < minimoJugadores || cantidadJugadores > maximoJugadores)
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + (minimoJugadores) + "y un máximo de" + (maximoJugadores) + "jugadores.");
         asignarJugadores(cantidadJugadores);
-        //asignarTurnosAleatoriamente();
+        asignarTurnosAleatoriamente();
         asignarPaisesAleatoriamenteAJugadores();
         asignarEjercitosAJugadores();
     }
@@ -48,9 +48,6 @@ public class EtapaInicial {
         Turno sistemaDeTurnos = new Turno();
         for(int i = 0 ; i < cantidadDeJugadores() ; i++) {
             jugadores(i).asignarNumeroParaTurno();
-            //de menor a mayor: ascendente
-            //tengo que ordenar la lista de menor a mayor.
-           // sistemaDeTurnos.determinarTurnos(jugadores((int)(Math.random()*i)));
         }
         sistemaDeTurnos.determinarTurnos(jugadores);
     }
