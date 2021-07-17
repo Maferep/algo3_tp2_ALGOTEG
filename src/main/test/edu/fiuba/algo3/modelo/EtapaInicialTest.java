@@ -28,23 +28,25 @@ public class EtapaInicialTest {
         );
     }
 
+    //TODO: evitar acceso directo por getter a Jugador
     @Test
     public void test03ColocarFichasInicialesParaLosJugadores() throws Exception {
         EtapaInicial primeraEtapa = new EtapaInicial(6);
         assertEquals(primeraEtapa.cantidadDeJugadores(), 6);
 
-        assertEquals(primeraEtapa.jugadores(1).cantidadEjercitos(), 8);
+        assertEquals(primeraEtapa.obtenerJugador(1).cantidadEjercitos(), 8);
 
-        assertThrows(Exception.class, () -> primeraEtapa.jugadores(8).cantidadEjercitos());
+        assertThrows(Exception.class, () -> primeraEtapa.obtenerJugador(8).cantidadEjercitos());
         assertDoesNotThrow(() ->
-                primeraEtapa.jugadores(2).cantidadEjercitos());
+                primeraEtapa.obtenerJugador(2).cantidadEjercitos());
     }
 
+    //TODO: evitar acceso por getter a Jugador
     @Test
     public void test04AsignarPaisesAJugadores() throws Exception {
         EtapaInicial primeraEtapa = new EtapaInicial(6);
         assertEquals(primeraEtapa.cantidadDeJugadores(), 6);
-        assertTrue((primeraEtapa.jugadores(1).obtenerPaises()).size() > 0);
+        assertTrue((primeraEtapa.obtenerJugador(1).obtenerPaises()).size() > 0);
     }
 
 }

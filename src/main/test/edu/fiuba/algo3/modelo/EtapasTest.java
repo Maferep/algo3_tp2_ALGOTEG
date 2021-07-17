@@ -19,7 +19,9 @@ public class EtapasTest {
     public void test01agregarEjercitos() throws Exception {
         // internamente, asigna paises y objetivos a 4 colores
         IFase fase = juegoBuilder.crearJuegoTEG(4);
-        fase.realizar();
+        assertFalse(fase.faseCompletada());
+        fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("EEUU"));
+        fase.asFaseInicio().ubicarEjercitosEnPais(5, new Pais("EEUU"));
         assertTrue(fase.faseCompletada());
     }
 
@@ -28,8 +30,6 @@ public class EtapasTest {
         //genera una etapa de inicio en estado 'finalizado' de ejemplo
         IFase fase = juegoBuilder.crearJuegoTEG(4);
         while(!fase.esFinDeJuego()) {
-            //realizar() contiene toda la lógica e interacción de usuario
-            fase.realizar();
             assertTrue(fase.faseCompletada());
             fase = fase.siguienteFase();
         }

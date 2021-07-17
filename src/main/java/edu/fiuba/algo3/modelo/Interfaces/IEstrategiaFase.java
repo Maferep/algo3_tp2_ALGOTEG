@@ -1,6 +1,4 @@
-package edu.fiuba.algo3.modelo;
-
-import edu.fiuba.algo3.modelo.Interfaces.IFase;
+package edu.fiuba.algo3.modelo.Interfaces;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 
 public interface IEstrategiaFase {
