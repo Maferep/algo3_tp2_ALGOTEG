@@ -3,13 +3,10 @@ package edu.fiuba.algo3.modelo;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Dictionary;
+import java.util.*;
 
 public class MapaFachada {
     private List<String> paisesParse;
-
 
     public MapaFachada() {
         LectorPaises lectorPaises = new LectorPaises();
@@ -17,11 +14,13 @@ public class MapaFachada {
     }
 
     public List<Pais> inicializarMapa() {
-        Dictionary<String, Pais> dicAux;
+        Dictionary<String, Pais> dicAux = new Hashtable<String, Pais>();
         List<Pais> paises = new ArrayList<Pais>();
 
         for (int i = 0; i < paisesParse.size(); i++) {
-            paises.add(new Pais(paisesParse.get(i)));
+            Pais nuevoPais = new Pais(paisesParse.get(i));
+            paises.add(nuevoPais);
+            dicAux.put(paisesParse.get(i), nuevoPais);
         }
 
         return paises;

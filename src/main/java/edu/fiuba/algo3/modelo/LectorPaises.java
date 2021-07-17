@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -21,6 +22,11 @@ public class LectorPaises {
 
         try (FileReader reader = new FileReader("fronteras.json")) {
             Object obj = jsonParser.parse(reader);
+            JSONArray paisesList = (JSONArray) obj;
+
+            paisesList.forEach(pais -> this.paisesList.add(
+                    ((JSONObject) pais).get("Pais")
+            ));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
