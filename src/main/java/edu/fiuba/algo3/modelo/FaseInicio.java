@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 import java.util.*;
 import java.util.stream.*;
 
-public class FaseInicio implements IFase {
+public class FaseInicio implements IFase, IFaseInicio {
     List<Jugador> jugadores;
     List<String> colores;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
@@ -57,10 +57,10 @@ public class FaseInicio implements IFase {
 
     private List<Jugador> inicializarJugadores(int cantJugadores) throws EjercitosException {
         List<Jugador> jugadores = new ArrayList<Jugador>();
-        for (int i = 0; i < cantJugadores; i++) {
-            Jugador jugador = new Jugador(colores.get(i));
-            jugadores.add(jugador);
-        }
+        jugadores = IntStream.range(0, cantJugadores)
+                .mapToObj(i ->new Jugador(colores.get(i % colores.size()))
+                ).collect(Collectors.toList());
+
         asignarPaisesAleatoriamenteAJugadores(jugadores);
         asignarEjercitosAJugadores(jugadores);
         return jugadores;
@@ -74,6 +74,7 @@ public class FaseInicio implements IFase {
     }
 
     private void asignarPaisesAleatoriamenteAJugadores(List<Jugador> jugadores) {
+        Collections.shuffle(paises);
         for (int i = 0; i < paises.size(); i++) {
             jugadores.get(i % jugadores.size()).asignarPais(paises.get(i));
         }
