@@ -14,4 +14,8 @@ public interface IFase {
 	FaseInicio asFaseInicio() throws FaseErroneaException;
 
 	FaseAtacar asFaseAtacar() throws FaseErroneaException;
+
+	FaseColocar asFaseColocar() throws FaseErroneaException;
+
+	FaseReagrupar asFaseReagrupar() throws FaseErroneaException;
 }

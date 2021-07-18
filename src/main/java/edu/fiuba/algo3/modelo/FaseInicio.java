@@ -124,8 +124,16 @@ public class FaseInicio implements IFase {
     }
 
     public FaseAtacar asFaseAtacar() throws FaseErroneaException {
-        // TODO Auto-generated method stub
         throw new FaseErroneaException(null);
     }
 
+    @Override
+    public FaseColocar asFaseColocar() throws FaseErroneaException {
+        throw new FaseErroneaException(null);
+    }
+
+    @Override
+    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
+        throw new FaseErroneaException(null);
+    }
 }

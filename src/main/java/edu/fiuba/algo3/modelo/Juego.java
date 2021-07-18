@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 
 public class Juego {
     IFase faseActual;
-    IJuegoBuilder builder;
+    JuegoBuilder builder;
 
     public Juego(int cantidadDeJugadores) throws Exception {
         builder = new JuegoBuilder();
