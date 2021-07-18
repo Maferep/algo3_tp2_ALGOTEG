@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Turno {
     private LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
-    //TODO: colores duplicado en etapa inicial. en espera de sistema de colores
 
     public Turno(List<Jugador> jugadores) {
         this.jugadores.addAll(jugadores);

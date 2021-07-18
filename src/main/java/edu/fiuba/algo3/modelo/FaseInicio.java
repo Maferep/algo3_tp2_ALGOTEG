@@ -5,16 +5,12 @@ import edu.fiuba.algo3.modelo.builders.TurnoBuilder;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.*;
-import java.util.stream.*;
 
 public class FaseInicio implements IFase, IFaseInicio {
-    private List<String> colores;
-    private List<Jugador> jugadores;
     List<Pais> paises;
-
     Turno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
-    TurnoBuilder builder;
+    TurnoBuilder builder = new TurnoBuilder();
 
     static int minJugadores = 2;
     static int maxJugadores = 6;
@@ -23,16 +19,13 @@ public class FaseInicio implements IFase, IFaseInicio {
         if (!validarCantidad(cantJugadores))
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
-
-        colores = inicializarColores();
-        paises = inicializarPaises();
-        turno = builder.crearTurno(colores, paises, cantJugadores);
+        turno = builder.crearTurno(cantJugadores);
     }
 
     // interfaz de inicio
 
     public int cantidadDeJugadores() {
-        return jugadores.size();
+        return turno.cantidadDeJugadores();
     }
 
     public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
@@ -43,21 +36,12 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     // lógica interna
 
-    private List<Pais> inicializarPaises() {
-        return Arrays.asList("Puerto Rico", "Colombia", "Venezuela", "Honduras", "Guayana", "Guatemala").stream()
-                .map(n -> new Pais(n)).collect(Collectors.toList());
-    }
-
-    // TODO: fetch colores default de un archivo o clase distintos
-    private List<String> inicializarColores() {
-        return Arrays.asList("Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro");
-    }
-
     private Boolean validarCantidad(int cant) {
         return (cant >= minJugadores && cant <= maxJugadores);
     }
 
     // métodos de fase
+    //TODO: heredar de Fase abstracta en lugar de interfaz
 
     @Override
     public Boolean faseCompletada() {
