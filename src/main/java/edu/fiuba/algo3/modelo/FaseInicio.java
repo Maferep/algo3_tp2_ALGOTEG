@@ -18,8 +18,6 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     static int minJugadores = 2;
     static int maxJugadores = 6;
-    static int cantidadEjercitos = 8; // la cantidad de ejercitos para cada jugador en la etapa inicial es 8
-    static int cantidadInicial = 0;
 
     public FaseInicio(int cantJugadores) throws Exception {
         if (!validarCantidad(cantJugadores))
@@ -39,7 +37,7 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     //TODO: eliminar acceso directo a jugador con mocks
     Jugador obtenerJugador(int i) throws Exception {
-        if (i < cantidadInicial || i > cantidadDeJugadores())
+        if (i < 0 || i > cantidadDeJugadores())
             throw new CantidadDeJugadoresError("No puedes tener una cantidad de jugadores menor a" + cantidadInicial
                     + "ni mayor a" + cantidadDeJugadores());
         return jugadores.get(i);
