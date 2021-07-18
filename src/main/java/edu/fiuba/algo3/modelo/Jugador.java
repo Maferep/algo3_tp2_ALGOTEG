@@ -46,6 +46,11 @@ public class Jugador {
 		paises.add(pais);
 	}
 
+	public boolean cumpleObjetivoGeneral() {
+		Objetivo nuevoObjetivo = new Objetivo();
+		return (nuevoObjetivo.objetivoGeneralCumplido(this));
+	}
+
 	public void asignarEjercitosAPais(int cantidad, Pais pais) throws Exception {
 		if(cantidad > ejercitos)
 			throw new FichasInsuficientesError("El jugador no tiene suficientes fichas.");
