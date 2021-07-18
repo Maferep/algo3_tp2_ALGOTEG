@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.builders.TurnoBuilder;
+import edu.fiuba.algo3.modelo.factories.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.*;
@@ -10,7 +10,7 @@ public class FaseInicio implements IFase, IFaseInicio {
     List<Pais> paises;
     Turno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
-    TurnoBuilder builder = new TurnoBuilder();
+    TurnoFactory builder = new TurnoFactory();
 
     static int minJugadores = 2;
     static int maxJugadores = 6;

@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 
-public class JugadorBuilderTest {
+public class JugadorFactoryTest {
     @Test
     public void test01CrearJugador() throws EjercitosException {
-        JugadorBuilder builder = new JugadorBuilder();
+        JugadorFactory builder = new JugadorFactory();
         List<String> colores =  Arrays.asList(
         "Azul", 
         "Rojo", 

@@ -1,15 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.builders.JuegoBuilder;
+import edu.fiuba.algo3.modelo.factories.*;
 import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 
 public class Juego {
     IFase faseActual;
-    JuegoBuilder builder;
+    JuegoFactory builder;
 
     public Juego(int cantidadDeJugadores) throws Exception {
-        builder = new JuegoBuilder();
+        builder = new JuegoFactory();
         faseActual = builder.crearJuegoTEG(3);
     }
 

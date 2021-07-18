@@ -1,13 +1,13 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.builders.*;
+import edu.fiuba.algo3.modelo.factories.*;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EtapasTest {
-    JuegoBuilder juegoBuilder = new JuegoBuilder();
+    JuegoFactory juegoBuilder = new JuegoFactory();
 
     @Test
     public void test00AgregarJugadores() throws Exception {

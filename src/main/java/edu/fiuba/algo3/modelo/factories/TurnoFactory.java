@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.builders;
+package edu.fiuba.algo3.modelo.factories;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class TurnoBuilder {
+public class TurnoFactory {
 
-    JugadorBuilder builder = new JugadorBuilder();
+    JugadorFactory builder = new JugadorFactory();
     List<String> colores =  Arrays.asList(
         "Azul", 
         "Rojo", 

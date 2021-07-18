@@ -1,8 +1,8 @@
-package edu.fiuba.algo3.modelo.builders;
+package edu.fiuba.algo3.modelo.factories;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.IFase;
 
-public class JuegoBuilder {
+public class JuegoFactory {
   public IFase crearJuegoTEG(int cantJugadores) throws Exception {
     return new FaseInicio(cantJugadores);
   }

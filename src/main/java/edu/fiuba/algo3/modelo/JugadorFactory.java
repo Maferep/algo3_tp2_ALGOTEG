@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 
-public class JugadorBuilder {
+public class JugadorFactory {
     List<Pais> paises = Arrays.asList(
             "Estados Unidos",
             "Canadá", 
