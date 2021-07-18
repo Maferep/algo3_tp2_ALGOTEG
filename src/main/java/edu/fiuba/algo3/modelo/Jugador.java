@@ -24,7 +24,7 @@ public class Jugador {
 		}
 	}
 
-	public Object obtenerNombre() {
+	public String obtenerColor() {
 		return color;
 	}
 

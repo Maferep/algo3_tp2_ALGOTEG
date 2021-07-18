@@ -17,7 +17,7 @@ public class EtapaInicial implements IFase {
     static int maximoJugadores = 6;
     static int cantidadEjercitos = 8; // la cantidad de ejercitos para cada jugador en la etapa inicial es 8
     static int cantidadInicial = 0;
-    Turno sistemaDeTurnos = new Turno();
+    Turno sistemaDeTurnos;
 
     // para que pasen los test hago una lista de paises random
     List<Pais> paises;
@@ -66,25 +66,12 @@ public class EtapaInicial implements IFase {
         return jugadores;
     }
             
-
-    private void asignarTurnosAleatoriamente() throws Exception {
-        //Turno sistemaDeTurnos = new Turno();
-        for(int i = 0 ; i < cantidadDeJugadores() ; i++) {
-            obtenerJugador(i).asignarNumeroParaTurno();
-        }
-        sistemaDeTurnos.determinarTurnos(jugadores);
-    }
-
-    public void asignarTurnosNoAleatoriamente(int numero) throws Exception {
-        //Turno sistemaDeTurnos = new Turno();
-        for(int i = 0 ; i < cantidadDeJugadores() ; i++) {
-            obtenerJugador(i).asignarNumeroParaTurnoMock(numero+i);
-        }
-        sistemaDeTurnos.determinarTurnos(jugadores);
-    }
-
     // se va a tener que leer el archivo de paises e ir cargandose en la lista en la
     // etapa inicial.
+    private void asignarTurnosAleatoriamente() throws Exception {
+        Collections.shuffle(colores);
+        sistemaDeTurnos = new Turno(colores);
+    }
 
     private void asignarPaisesAleatoriamenteAJugadores(List<Jugador> jugadores) {
         for (int i = 0; i < paises.size(); i++) {

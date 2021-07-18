@@ -1,49 +1,40 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Turno {
+    private LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
+    //TODO: colores duplicado en etapa inicial. en espera de sistema de colores
+    private List<String> colores = Arrays.asList("Azul", "Rojo", "Amarillo", "Verde");
 
-    int [] numeroDeTurnos = new int[6];
-    //List<Integer> numeroDeTurnos = new ArrayList<Integer>();
-    List<Jugador> jugadoresOrdenados = new ArrayList<Jugador>();
-    List<Jugador> jugadoresNoOrdenados = new ArrayList<Jugador>();
-    List<Integer> nuevaLista = new ArrayList<Integer>();
+    public Turno(int cantJugadores) {
+        jugadores.addAll( 
+            colores.stream()
+                .limit(cantJugadores)
+                .map(c -> new Jugador(c))
+                .collect(Collectors.toList())
+        );
+    } 
+    
+    public Turno(List<String> colores) {
+        jugadores.addAll( 
+            colores.stream()
+                .map(c -> new Jugador(c))
+                .collect(Collectors.toList())
+        );
+    } 
 
-    public void determinarTurnos(List<Jugador> jugadores) {
-        for(int i = 0 ; i < jugadores.size() ; i++) {
-            numeroDeTurnos[i] = (jugadores.get(i)).numeroDeTurno();
-            //numeroDeTurnos.add(jugadores.get(i).numeroDeTurno());
-            jugadoresNoOrdenados.add(jugadores.get(i));
-        }
-        this.ordenarAscendentemente();
-        this.ordenarJugadoresPorTurno(jugadores);
+    public Jugador jugadorActual() {
+        return jugadores.peekFirst();
     }
 
-    public void ordenarAscendentemente() {
-       // Arrays.sort(new List[]{numeroDeTurnos}); //de menor a mayor: ascendente
-        Arrays.sort(numeroDeTurnos);
+    public void siguienteJugador() {
+        Jugador j = jugadores.removeFirst();
+        jugadores.add(j);
     }
 
-    public void ordenarJugadoresPorTurno(List<Jugador> jugadores) {
-        for(int i = 0 ; i < jugadores.size() ; i++) {
-            for(int j = 0 ; j < jugadores.size() ; j++) {
-                if((jugadoresNoOrdenados.get(j)).numeroDeTurno() == numeroDeTurnos[i]) { //este if solo es true dos veces. deberian ser cuatro
-                //if((jugadoresNoOrdenados.get(j)).numeroDeTurno() == numeroDeTurnos.get(i)) {
-                    jugadoresOrdenados.add(jugadoresNoOrdenados.get(j));
-                }
-            }
-        }
+    public int cantidadDeJugadores() {
+        return jugadores.size();
     }
-
-    //numeroDePosicionRequerida me excede lo que yo necesito ...
-    public String colorDejugadorEnOrden(int numeroDePosicionRequerida) {
-        return (jugadoresOrdenados.get(numeroDePosicionRequerida)).color; //solo tiene de tamanio 2. No se porque no se llenaron todos los necesarios.
-        //return (jugadoresNoOrdenados.get(numeroDePosicionRequerida)).color;
-    }
-
-    public int cantidad() {
-        return jugadoresOrdenados.size();
-    }
-
 }
