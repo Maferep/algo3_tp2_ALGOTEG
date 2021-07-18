@@ -17,6 +17,7 @@ public class EtapaInicial implements IFase {
     static int maximoJugadores = 6;
     static int cantidadEjercitos = 8; // la cantidad de ejercitos para cada jugador en la etapa inicial es 8
     static int cantidadInicial = 0;
+    Turno sistemaDeTurnos = new Turno();
 
     // para que pasen los test hago una lista de paises random
     List<Pais> paises;
@@ -26,19 +27,10 @@ public class EtapaInicial implements IFase {
             throw new CantidadDeJugadoresError(
                     "El juego tiene un mínimo de" + minimoJugadores 
                     + "y un máximo de"  + maximoJugadores + "jugadores.");
-
-
-
-
-
-
         colores = inicializarColores();
         paises = inicializarPaises();
         jugadores = inicializarJugadores(cantJugadores);
         asignarTurnosAleatoriamente();
-        
-        // asignarTurnosAleatoriamente();
-        
     }
 
     private List<Pais> inicializarPaises() {
@@ -49,7 +41,9 @@ public class EtapaInicial implements IFase {
             "Honduras", 
             "Guayana", 
             "Guatemala")
-        .stream().map(n -> new Pais(n)).collect(Collectors.toList());
+        .stream()
+        .map(n -> new Pais(n))
+        .collect(Collectors.toList());
     }
 
     // TODO: fetch colores default de un archivo o clase distintos
@@ -71,9 +65,22 @@ public class EtapaInicial implements IFase {
         asignarEjercitosAJugadores(jugadores);
         return jugadores;
     }
+            
 
-    private void asignarTurnosAleatoriamente() {
+    private void asignarTurnosAleatoriamente() throws Exception {
+        //Turno sistemaDeTurnos = new Turno();
+        for(int i = 0 ; i < cantidadDeJugadores() ; i++) {
+            obtenerJugador(i).asignarNumeroParaTurno();
+        }
+        sistemaDeTurnos.determinarTurnos(jugadores);
+    }
 
+    public void asignarTurnosNoAleatoriamente(int numero) throws Exception {
+        //Turno sistemaDeTurnos = new Turno();
+        for(int i = 0 ; i < cantidadDeJugadores() ; i++) {
+            obtenerJugador(i).asignarNumeroParaTurnoMock(numero+i);
+        }
+        sistemaDeTurnos.determinarTurnos(jugadores);
     }
 
     // se va a tener que leer el archivo de paises e ir cargandose en la lista en la
