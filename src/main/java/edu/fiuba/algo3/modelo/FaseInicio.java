@@ -9,6 +9,8 @@ import java.util.stream.*;
 public class FaseInicio implements IFase, IFaseInicio {
     private List<String> colores;
     private List<Jugador> jugadores;
+    List<Pais> paises;
+
     Turno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
 
@@ -16,10 +18,6 @@ public class FaseInicio implements IFase, IFaseInicio {
     static int maxJugadores = 6;
     static int cantidadEjercitos = 8; // la cantidad de ejercitos para cada jugador en la etapa inicial es 8
     static int cantidadInicial = 0;
-
-    // para que pasen los test hago una lista de paises random
-    List<Pais> paises;
-    
 
     public FaseInicio(int cantJugadores) throws Exception {
         if (!validarCantidad(cantJugadores))
@@ -32,49 +30,21 @@ public class FaseInicio implements IFase, IFaseInicio {
         turno = new Turno(jugadores);
     }
 
-    @Override
-    public Boolean faseCompletada() {
-        return estrategia.faseCompletada();
-    }
-
-    @Override
-    public IFase siguienteFase() throws FaseIncompletaException {
-        return estrategia.siguienteFase(this);
-    }
-    
-    @Override
-    public Boolean esFinDeJuego() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
-        // TODO Auto-generated method stub
-        //al 'terminar de ubicar' la etapa inicial se considera completada
-        estrategia = estrategia.actualizar();
-    }
-
-    public FaseInicio asFaseInicio() {
-        return this;
-    }
-
-    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
-    }
-
-    @Override
-    public FaseColocar asFaseColocar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
-    }
-
-    @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
-    }
+    // interfaz de inicio
 
     public int cantidadDeJugadores() {
         return jugadores.size();
     }
+
+    //TODO: eliminar acceso directo a jugador con mocks
+    Jugador obtenerJugador(int i) throws Exception {
+        if (i < cantidadInicial || i > cantidadDeJugadores())
+            throw new CantidadDeJugadoresError("No puedes tener una cantidad de jugadores menor a" + cantidadInicial
+                    + "ni mayor a" + cantidadDeJugadores());
+        return jugadores.get(i);
+    }
+
+    // lógica interna
 
     private List<Pais> inicializarPaises() {
         return Arrays.asList("Puerto Rico", "Colombia", "Venezuela", "Honduras", "Guayana", "Guatemala").stream()
@@ -116,11 +86,46 @@ public class FaseInicio implements IFase, IFaseInicio {
         }
     }
 
-    Jugador obtenerJugador(int i) throws Exception {
-        if (i < cantidadInicial || i > cantidadDeJugadores())
-            throw new CantidadDeJugadoresError("No puedes tener una cantidad de jugadores menor a" + cantidadInicial
-                    + "ni mayor a" + cantidadDeJugadores());
-        return jugadores.get(i);
+    // métodos de fase
+
+    @Override
+    public Boolean faseCompletada() {
+        return estrategia.faseCompletada();
+    }
+
+    @Override
+    public IFase siguienteFase() throws FaseIncompletaException {
+        return estrategia.siguienteFase(this);
+    }
+    
+    @Override
+    public Boolean esFinDeJuego() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
+        // TODO Auto-generated method stub
+        //al 'terminar de ubicar' la etapa inicial se considera completada
+        estrategia = estrategia.actualizar();
+    }
+    
+    public FaseInicio asFaseInicio() {
+        return this;
+    }
+
+    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
+        throw new FaseErroneaException(null);
+    }
+
+    @Override
+    public FaseColocar asFaseColocar() throws FaseErroneaException {
+        throw new FaseErroneaException(null);
+    }
+
+    @Override
+    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
+        throw new FaseErroneaException(null);
     }
 
 
