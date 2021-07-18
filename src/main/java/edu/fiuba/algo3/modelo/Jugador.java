@@ -51,6 +51,11 @@ public class Jugador {
 		return (nuevoObjetivo.objetivoGeneralCumplido(this));
 	}
 
+	public boolean cumpleObjetivoDeDestruirAUnEjercitoEspecifico(Jugador jugadorADestruir, List<Pais> paises) {
+		Objetivo nuevoObjetivo = new Objetivo();
+		return (nuevoObjetivo.objetivoDestruirEjercitoCumplido(jugadorADestruir, paises));
+	}
+
 	public void asignarEjercitosAPais(int cantidad, Pais pais) throws Exception {
 		if(cantidad > ejercitos)
 			throw new FichasInsuficientesError("El jugador no tiene suficientes fichas.");

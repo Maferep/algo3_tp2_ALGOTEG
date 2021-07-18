@@ -28,7 +28,8 @@ public class Pais {
 	}
 
 	public void asignarConquistador(Jugador conquistador) { 
-		this.conquistador = conquistador; 
+		this.conquistador = conquistador;
+		conquistador.asignarPais(this);
 	}
 
 	public Jugador obtenerConquistador() { return this.conquistador; }
