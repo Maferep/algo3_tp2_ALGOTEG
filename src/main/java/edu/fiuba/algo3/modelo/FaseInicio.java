@@ -35,12 +35,10 @@ public class FaseInicio implements IFase, IFaseInicio {
         return jugadores.size();
     }
 
-    //TODO: eliminar acceso directo a jugador con mocks
-    Jugador obtenerJugador(int i) throws Exception {
-        if (i < 0 || i > cantidadDeJugadores())
-            throw new CantidadDeJugadoresError("No puedes tener una cantidad de jugadores menor a" + cantidadInicial
-                    + "ni mayor a" + cantidadDeJugadores());
-        return jugadores.get(i);
+    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
+        // TODO ubicarEjercitos
+        //al 'terminar de ubicar' la etapa inicial se considera completada
+        estrategia = estrategia.actualizar();
     }
 
     // lógica interna
@@ -76,17 +74,13 @@ public class FaseInicio implements IFase, IFaseInicio {
         // TODO Auto-generated method stub
         return false;
     }
-
-    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
-        // TODO ubicarEjercitos
-        //al 'terminar de ubicar' la etapa inicial se considera completada
-        estrategia = estrategia.actualizar();
-    }
     
+    @Override
     public FaseInicio asFaseInicio() {
         return this;
     }
 
+    @Override
     public FaseAtacar asFaseAtacar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }

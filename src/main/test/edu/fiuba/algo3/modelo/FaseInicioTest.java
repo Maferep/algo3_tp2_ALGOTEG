@@ -28,25 +28,5 @@ public class FaseInicioTest {
         );
     }
 
-    //TODO: evitar acceso directo por getter a Jugador
-    @Test
-    public void test03ColocarFichasInicialesParaLosJugadores() throws Exception {
-        FaseInicio primeraEtapa = new FaseInicio(6);
-        assertEquals(primeraEtapa.cantidadDeJugadores(), 6);
-
-        assertEquals(primeraEtapa.obtenerJugador(1).cantidadEjercitos(), 8);
-
-        assertThrows(Exception.class, () -> primeraEtapa.obtenerJugador(8).cantidadEjercitos());
-        assertDoesNotThrow(() ->
-                primeraEtapa.obtenerJugador(2).cantidadEjercitos());
-    }
-
-    //TODO: evitar acceso por getter a Jugador
-    @Test
-    public void test04AsignarPaisesAJugadores() throws Exception {
-        FaseInicio primeraEtapa = new FaseInicio(6);
-        assertEquals(primeraEtapa.cantidadDeJugadores(), 6);
-        assertTrue((primeraEtapa.obtenerJugador(1).obtenerPaises()).size() > 0);
-    }
-
+    
 }
