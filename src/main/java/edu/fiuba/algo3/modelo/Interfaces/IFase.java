@@ -11,7 +11,7 @@ public interface IFase {
 
 	Boolean esFinDeJuego();
 
-	EtapaInicial asFaseInicio() throws FaseErroneaException;
+	FaseInicio asFaseInicio() throws FaseErroneaException;
 
 	FaseAtacar asFaseAtacar() throws FaseErroneaException;
 }

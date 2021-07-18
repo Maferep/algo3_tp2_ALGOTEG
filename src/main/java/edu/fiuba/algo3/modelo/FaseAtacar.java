@@ -36,7 +36,7 @@ public class FaseAtacar implements IFase {
 
     }
 
-    public EtapaInicial asFaseInicio() throws FaseErroneaException {
+    public FaseInicio asFaseInicio() throws FaseErroneaException {
         throw new FaseErroneaException("Estamos en fase atacar");
     }
 

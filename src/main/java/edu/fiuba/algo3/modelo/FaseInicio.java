@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 import java.util.*;
 import java.util.stream.*;
 
-public class EtapaInicial implements IFase {
+public class FaseInicio implements IFase {
     List<Jugador> jugadores;
     List<String> colores;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
@@ -22,7 +22,7 @@ public class EtapaInicial implements IFase {
     // para que pasen los test hago una lista de paises random
     List<Pais> paises;
 
-    public EtapaInicial(int cantJugadores) throws Exception {
+    public FaseInicio(int cantJugadores) throws Exception {
         if(!validarCantidad(cantJugadores))
             throw new CantidadDeJugadoresError(
                     "El juego tiene un mínimo de" + minimoJugadores 
@@ -119,7 +119,7 @@ public class EtapaInicial implements IFase {
         estrategia = estrategia.actualizar();
     }
 
-    public EtapaInicial asFaseInicio() {
+    public FaseInicio asFaseInicio() {
         return this;
     }
 

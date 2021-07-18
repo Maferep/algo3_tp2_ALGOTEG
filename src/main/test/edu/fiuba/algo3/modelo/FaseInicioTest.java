@@ -5,17 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EtapaInicialTest {
+public class FaseInicioTest {
     @Test
     public void test00AgregarJugadores() throws Exception {
-        EtapaInicial primeraEtapa = new EtapaInicial(3);
+        FaseInicio primeraEtapa = new FaseInicio(3);
         assertEquals(primeraEtapa.cantidadDeJugadores(), 3);
     }
 
     @Test
     public void test01NoSePuedeComenzarElJuegoConMenosDeDosJugadores() throws Exception {
         assertThrows(CantidadDeJugadoresError.class, () ->  {
-            new EtapaInicial(0);
+            new FaseInicio(0);
         }
         );
     }
@@ -23,7 +23,7 @@ public class EtapaInicialTest {
     @Test
     public void test02NoSePuedeComenzarElJuegoConMasDeSeisJugadores() throws Exception {
         assertThrows(CantidadDeJugadoresError.class, () ->  {
-                    new EtapaInicial(7);
+                    new FaseInicio(7);
                 }
         );
     }
@@ -31,7 +31,7 @@ public class EtapaInicialTest {
     //TODO: evitar acceso directo por getter a Jugador
     @Test
     public void test03ColocarFichasInicialesParaLosJugadores() throws Exception {
-        EtapaInicial primeraEtapa = new EtapaInicial(6);
+        FaseInicio primeraEtapa = new FaseInicio(6);
         assertEquals(primeraEtapa.cantidadDeJugadores(), 6);
 
         assertEquals(primeraEtapa.obtenerJugador(1).cantidadEjercitos(), 8);
@@ -44,7 +44,7 @@ public class EtapaInicialTest {
     //TODO: evitar acceso por getter a Jugador
     @Test
     public void test04AsignarPaisesAJugadores() throws Exception {
-        EtapaInicial primeraEtapa = new EtapaInicial(6);
+        FaseInicio primeraEtapa = new FaseInicio(6);
         assertEquals(primeraEtapa.cantidadDeJugadores(), 6);
         assertTrue((primeraEtapa.obtenerJugador(1).obtenerPaises()).size() > 0);
     }

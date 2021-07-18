@@ -7,6 +7,6 @@ public class JuegoBuilder implements IJuegoBuilder {
 
   @Override
   public IFase crearJuegoTEG(int cantJugadores) throws Exception {
-    return new EtapaInicial(cantJugadores);
+    return new FaseInicio(cantJugadores);
   }
 }
