@@ -26,64 +26,11 @@ public class FaseInicio implements IFase, IFaseInicio {
         if (!validarCantidad(cantJugadores))
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minimoJugadores + "y un máximo de"
                     + maximoJugadores + "jugadores.");
-                    
+
         colores = inicializarColores();
         paises = inicializarPaises();
-
-        List<Jugador> jugadores = jugadoresDeColores(this.colores);
-        asignarPaisesAleatoriamenteAJugadores(jugadores);
-        asignarEjercitosAJugadores(jugadores);
-
-        turno = inicializarTurno(jugadores);
-    }
-
-    private List<Pais> inicializarPaises() {
-        return Arrays.asList("Puerto Rico", "Colombia", "Venezuela", "Honduras", "Guayana", "Guatemala").stream()
-                .map(n -> new Pais(n)).collect(Collectors.toList());
-    }
-
-    // TODO: fetch colores default de un archivo o clase distintos
-    private List<String> inicializarColores() {
-        return Arrays.asList("Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro");
-    }
-
-    private Boolean validarCantidad(int cantidad) {
-        return (cantidad >= minimoJugadores && cantidad <= maximoJugadores);
-    }
-
-    private Turno inicializarTurno(List<Jugador> jugadores) throws EjercitosException {
-        return new Turno(jugadores);
-    }
-
-    private List<Jugador> jugadoresDeColores(List<String> colores) {
-        return jugadores = colores.stream()
-            .map(c -> new Jugador(c))
-            .collect(Collectors.toList());
-    }
-    private void asignarPaisesAleatoriamenteAJugadores(List<Jugador> jugadores) {
-        Collections.shuffle(paises);
-        for (int i = 0; i < paises.size(); i++) {
-            Pais actual = paises.get(i);
-            jugadores.get(i).asignarPais(actual);
-        }
-    }
-
-    @Deprecated
-    private void asignarEjercitosAJugadores(List<Jugador> jugadores) throws EjercitosException {
-        for(Jugador j : jugadores) {
-            j.agregarEjercitos(cantidadEjercitos);
-        }
-    }
-
-    public int cantidadDeJugadores() {
-        return jugadores.size();
-    }
-
-    Jugador obtenerJugador(int i) throws Exception {
-        if (i < cantidadInicial || i > cantidadDeJugadores())
-            throw new CantidadDeJugadoresError("No puedes tener una cantidad de jugadores menor a" + cantidadInicial
-                    + "ni mayor a" + cantidadDeJugadores());
-        return jugadores.get(i);
+        jugadores = inicializarJugadores(cantJugadores);
+        turno = new Turno(jugadores);
     }
 
     @Override
@@ -125,4 +72,57 @@ public class FaseInicio implements IFase, IFaseInicio {
     public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
+
+    public int cantidadDeJugadores() {
+        return jugadores.size();
+    }
+
+    private List<Pais> inicializarPaises() {
+        return Arrays.asList("Puerto Rico", "Colombia", "Venezuela", "Honduras", "Guayana", "Guatemala").stream()
+                .map(n -> new Pais(n)).collect(Collectors.toList());
+    }
+
+    // TODO: fetch colores default de un archivo o clase distintos
+    private List<String> inicializarColores() {
+        return Arrays.asList("Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro");
+    }
+
+    private List<Jugador> inicializarJugadores(int cantJugadores) throws EjercitosException {
+        jugadores = jugadoresDeColores(this.colores.subList(0, cantJugadores));
+        asignarPaisesAleatoriamenteAJugadores(jugadores);
+        asignarEjercitosAJugadores(jugadores);
+        return jugadores;
+    }
+    
+    private Boolean validarCantidad(int cant) {
+        return (cant >= minimoJugadores && cant <= maximoJugadores);
+    }
+
+    private List<Jugador> jugadoresDeColores(List<String> colores) {
+        return jugadores = colores.stream()
+            .map(c -> new Jugador(c))
+            .collect(Collectors.toList());
+    }
+    private void asignarPaisesAleatoriamenteAJugadores(List<Jugador> jugadores) {
+        Collections.shuffle(paises);
+        for (int i = 0; i < paises.size(); i++) {
+            Pais actual = paises.get(i);
+            jugadores.get(i % jugadores.size()).asignarPais(actual);
+        }
+    }
+
+    private void asignarEjercitosAJugadores(List<Jugador> jugadores) throws EjercitosException {
+        for(Jugador j : jugadores) {
+            j.agregarEjercitos(cantidadEjercitos);
+        }
+    }
+
+    Jugador obtenerJugador(int i) throws Exception {
+        if (i < cantidadInicial || i > cantidadDeJugadores())
+            throw new CantidadDeJugadoresError("No puedes tener una cantidad de jugadores menor a" + cantidadInicial
+                    + "ni mayor a" + cantidadDeJugadores());
+        return jugadores.get(i);
+    }
+
+
 }
