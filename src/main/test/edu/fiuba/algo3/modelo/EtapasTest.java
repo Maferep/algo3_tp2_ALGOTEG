@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EtapasTest {
-    IJuegoBuilder juegoBuilder = new JuegoBuilder();
+    JuegoBuilder juegoBuilder = new JuegoBuilder();
 
     @Test
     public void test00AgregarJugadores() throws Exception {
