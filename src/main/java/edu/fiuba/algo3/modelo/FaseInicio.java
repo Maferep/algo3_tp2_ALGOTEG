@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
+import edu.fiuba.algo3.modelo.builders.TurnoBuilder;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.*;
@@ -13,6 +14,7 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     Turno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
+    TurnoBuilder builder;
 
     static int minJugadores = 2;
     static int maxJugadores = 6;
@@ -26,8 +28,7 @@ public class FaseInicio implements IFase, IFaseInicio {
 
         colores = inicializarColores();
         paises = inicializarPaises();
-        jugadores = inicializarJugadores(cantJugadores);
-        turno = new Turno(jugadores);
+        turno = builder.crearTurno(colores, paises, cantJugadores);
     }
 
     // interfaz de inicio
@@ -56,34 +57,8 @@ public class FaseInicio implements IFase, IFaseInicio {
         return Arrays.asList("Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro");
     }
 
-    private List<Jugador> inicializarJugadores(int cantJugadores) throws EjercitosException {
-        jugadores = jugadoresDeColores(this.colores.subList(0, cantJugadores));
-        asignarPaisesAleatoriamenteAJugadores(jugadores);
-        asignarEjercitosAJugadores(jugadores);
-        return jugadores;
-    }
-    
     private Boolean validarCantidad(int cant) {
         return (cant >= minJugadores && cant <= maxJugadores);
-    }
-
-    private List<Jugador> jugadoresDeColores(List<String> colores) {
-        return jugadores = colores.stream()
-            .map(c -> new Jugador(c))
-            .collect(Collectors.toList());
-    }
-    private void asignarPaisesAleatoriamenteAJugadores(List<Jugador> jugadores) {
-        Collections.shuffle(paises);
-        for (int i = 0; i < paises.size(); i++) {
-            Pais actual = paises.get(i);
-            jugadores.get(i % jugadores.size()).asignarPais(actual);
-        }
-    }
-
-    private void asignarEjercitosAJugadores(List<Jugador> jugadores) throws EjercitosException {
-        for(Jugador j : jugadores) {
-            j.agregarEjercitos(cantidadEjercitos);
-        }
     }
 
     // métodos de fase
@@ -105,7 +80,7 @@ public class FaseInicio implements IFase, IFaseInicio {
     }
 
     public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
-        // TODO Auto-generated method stub
+        // TODO ubicarEjercitos
         //al 'terminar de ubicar' la etapa inicial se considera completada
         estrategia = estrategia.actualizar();
     }
