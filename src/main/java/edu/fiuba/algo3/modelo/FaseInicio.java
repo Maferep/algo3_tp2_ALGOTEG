@@ -7,12 +7,11 @@ import java.util.*;
 import java.util.stream.*;
 
 public class FaseInicio implements IFase, IFaseInicio {
-    List<Jugador> jugadores;
-    List<String> colores;
+    private List<String> colores;
+    private List<Jugador> jugadores;
+    Turno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
-    
-    
-    
+
     static int minimoJugadores = 2;
     static int maximoJugadores = 6;
     static int cantidadEjercitos = 8; // la cantidad de ejercitos para cada jugador en la etapa inicial es 8
@@ -21,29 +20,26 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     // para que pasen los test hago una lista de paises random
     List<Pais> paises;
+    
 
     public FaseInicio(int cantJugadores) throws Exception {
-        if(!validarCantidad(cantJugadores))
-            throw new CantidadDeJugadoresError(
-                    "El juego tiene un mínimo de" + minimoJugadores 
-                    + "y un máximo de"  + maximoJugadores + "jugadores.");
+        if (!validarCantidad(cantJugadores))
+            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minimoJugadores + "y un máximo de"
+                    + maximoJugadores + "jugadores.");
+                    
         colores = inicializarColores();
         paises = inicializarPaises();
-        jugadores = inicializarJugadores(cantJugadores);
-        asignarTurnosAleatoriamente();
+
+        List<Jugador> jugadores = jugadoresDeColores(this.colores);
+        asignarPaisesAleatoriamenteAJugadores(jugadores);
+        asignarEjercitosAJugadores(jugadores);
+
+        turno = inicializarTurno(jugadores);
     }
 
     private List<Pais> inicializarPaises() {
-        return Arrays.asList(
-            "Puerto Rico", 
-            "Colombia", 
-            "Venezuela", 
-            "Honduras", 
-            "Guayana", 
-            "Guatemala")
-        .stream()
-        .map(n -> new Pais(n))
-        .collect(Collectors.toList());
+        return Arrays.asList("Puerto Rico", "Colombia", "Venezuela", "Honduras", "Guayana", "Guatemala").stream()
+                .map(n -> new Pais(n)).collect(Collectors.toList());
     }
 
     // TODO: fetch colores default de un archivo o clase distintos
@@ -55,35 +51,27 @@ public class FaseInicio implements IFase, IFaseInicio {
         return (cantidad >= minimoJugadores && cantidad <= maximoJugadores);
     }
 
-    private List<Jugador> inicializarJugadores(int cantJugadores) throws EjercitosException {
-        List<Jugador> jugadores = new ArrayList<Jugador>();
-        jugadores = IntStream.range(0, cantJugadores)
-                .mapToObj(i ->new Jugador(colores.get(i % colores.size()))
-                ).collect(Collectors.toList());
-
-        asignarPaisesAleatoriamenteAJugadores(jugadores);
-        asignarEjercitosAJugadores(jugadores);
-        return jugadores;
-    }
-            
-    // se va a tener que leer el archivo de paises e ir cargandose en la lista en la
-    // etapa inicial.
-    private void asignarTurnosAleatoriamente() throws Exception {
-        Collections.shuffle(colores);
-        sistemaDeTurnos = new Turno(colores);
+    private Turno inicializarTurno(List<Jugador> jugadores) throws EjercitosException {
+        return new Turno(jugadores);
     }
 
+    private List<Jugador> jugadoresDeColores(List<String> colores) {
+        return jugadores = colores.stream()
+            .map(c -> new Jugador(c))
+            .collect(Collectors.toList());
+    }
     private void asignarPaisesAleatoriamenteAJugadores(List<Jugador> jugadores) {
         Collections.shuffle(paises);
         for (int i = 0; i < paises.size(); i++) {
-            jugadores.get(i % jugadores.size()).asignarPais(paises.get(i));
+            Pais actual = paises.get(i);
+            jugadores.get(i).asignarPais(actual);
         }
     }
 
     @Deprecated
     private void asignarEjercitosAJugadores(List<Jugador> jugadores) throws EjercitosException {
-        for (int i = 0; i < jugadores.size(); i++) {
-            (jugadores.get(i)).agregarEjercitos(cantidadEjercitos);
+        for(Jugador j : jugadores) {
+            j.agregarEjercitos(cantidadEjercitos);
         }
     }
 
