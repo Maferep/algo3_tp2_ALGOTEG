@@ -12,11 +12,10 @@ public class FaseInicio implements IFase, IFaseInicio {
     Turno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
 
-    static int minimoJugadores = 2;
-    static int maximoJugadores = 6;
+    static int minJugadores = 2;
+    static int maxJugadores = 6;
     static int cantidadEjercitos = 8; // la cantidad de ejercitos para cada jugador en la etapa inicial es 8
     static int cantidadInicial = 0;
-    Turno sistemaDeTurnos;
 
     // para que pasen los test hago una lista de paises random
     List<Pais> paises;
@@ -24,8 +23,8 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     public FaseInicio(int cantJugadores) throws Exception {
         if (!validarCantidad(cantJugadores))
-            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minimoJugadores + "y un máximo de"
-                    + maximoJugadores + "jugadores.");
+            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minJugadores + "y un máximo de"
+                    + maxJugadores + "jugadores.");
 
         colores = inicializarColores();
         paises = inicializarPaises();
@@ -95,7 +94,7 @@ public class FaseInicio implements IFase, IFaseInicio {
     }
     
     private Boolean validarCantidad(int cant) {
-        return (cant >= minimoJugadores && cant <= maximoJugadores);
+        return (cant >= minJugadores && cant <= maxJugadores);
     }
 
     private List<Jugador> jugadoresDeColores(List<String> colores) {
