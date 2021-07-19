@@ -14,6 +14,14 @@ public class Objetivo {
         return jugadorADestruir.esDestruido(paises);
     }
 
-    //objetivo conquistar paises y/o continentes
+    //objetivo conquistar continentes
+    public boolean objetivoConquistarContinenteCumplido(Jugador jugadorActual, List<Continente> continentes) {
+        return jugadorActual.conquistaContinentes(jugadorActual,continentes);
+    }
+
+    //objetivo conquistar paises
+    public boolean objetivoConquistarPaisesCumplido(Jugador jugadorActual, List<Pais> paises) {
+        return jugadorActual.conquistaPaises(jugadorActual,paises);
+    }
 
 }

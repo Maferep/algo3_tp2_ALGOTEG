@@ -32,6 +32,24 @@ public class Jugador {
 		return conquistador.verificarConquista(continente);
 	}
 
+	public boolean conquistaContinentes(Jugador conquistador,List<Continente> continentes) {
+		for (int i = 0; i < continentes.size(); i++) {
+			if(!(conquistador.verificarConquista(continentes.get(i)))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean conquistaPaises(Jugador conquistador,List<Pais> paises) {
+		for (int i = 0; i < paises.size(); i++) {
+			if(!paises.get(i).conquistador.color.equals(conquistador.color)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public String obtenerColor() {
 		return color;
 	}
