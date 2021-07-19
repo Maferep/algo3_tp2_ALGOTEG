@@ -65,6 +65,15 @@ public class Jugador {
 		return (nuevoObjetivo.objetivoDestruirEjercitoCumplido(jugadorADestruir, paises));
 	}
 
+	public boolean esDestruido(List<Pais> paises) {
+		for(int i = 0 ; i < paises.size() ; i++) {
+			if(paises.get(i).conquistador.color.equals(this.color)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public void asignarEjercitosAPais(int cantidad, Pais pais) throws Exception {
 		if(cantidad > ejercitos)
 			throw new FichasInsuficientesError("El jugador no tiene suficientes fichas.");
