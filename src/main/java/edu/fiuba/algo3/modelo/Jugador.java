@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Jugador {
+
 	String color;
 	List<Pais> paises;
 	int ejercitos;
 	int numeroDeTurno;
 	Continente continente = new Continente();
+
+	static int minimoPaises = 30;
 
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
@@ -72,6 +75,10 @@ public class Jugador {
 			}
 		}
 		return true;
+	}
+
+	public boolean tieneMinimoPaises() {
+		return (this.paises.size() >= minimoPaises);
 	}
 
 	public void asignarEjercitosAPais(int cantidad, Pais pais) throws Exception {

@@ -4,11 +4,9 @@ import java.util.List;
 
 public class Objetivo {
 
-    static int minimoPaises = 30;
-
     //objetivo general
     public boolean objetivoGeneralCumplido(Jugador jugadorActual) {
-        return (jugadorActual.paises.size() >= minimoPaises);
+        return jugadorActual.tieneMinimoPaises();
     }
 
     //objetivo destruir ejercito
@@ -16,5 +14,6 @@ public class Objetivo {
         return jugadorADestruir.esDestruido(paises);
     }
 
-    //seguir con el tema de los objetivos y refactorizar si es necesario.
+    //objetivo conquistar paises y/o continentes
+
 }
