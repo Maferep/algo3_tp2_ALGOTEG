@@ -74,6 +74,7 @@ public class ObjetivoTest {
 
         Continente continente = new Continente("Europa",2);
         Continente continenteNuevo = new Continente("Asia",4);
+        List<Continente> continentes = Arrays.asList(continente);
         paises.get(0).asignarContinente(continente);
         paises.get(1).asignarContinente(continente);
 
@@ -89,5 +90,49 @@ public class ObjetivoTest {
         ataqueFalso.atacar();
         assertEquals(jugador1.conquistaContinente(jugador1,continente), true);
         assertEquals(jugador1.conquistaContinente(jugador1,continenteNuevo), false);
+
+
+        Turno turno = new Turno(jugadores);
+        assertEquals(turno.jugadorActual().obtenerColor(), "Azul");
+        assertEquals(turno.jugadorActual().cumpleObjetivoDeConquistarNContinentes(jugador1, continentes), true);
     }
+
+    @Test
+    public void test03JugadorConquistaFranciaYEspania() throws Exception {
+        List<Jugador> jugadores = Arrays.asList(
+                new Jugador("Azul"),
+                new Jugador("Rojo"),
+                new Jugador("Amarillo"),
+                new Jugador("Verde"));
+        Jugador jugador1 = jugadores.get(0);
+        Jugador jugador2 = jugadores.get(1);
+
+        List<Pais> paises = Arrays.asList(
+                new Pais("España"),
+                new Pais("Francia"));
+
+        Continente continente = new Continente("Europa",2);
+        Continente continenteNuevo = new Continente("Asia",4);
+        List<Continente> continentes = Arrays.asList(continente);
+        paises.get(0).asignarContinente(continente);
+        paises.get(1).asignarContinente(continente);
+
+        Pais atacante = paises.get(0);
+        Pais defensor = paises.get(1);
+        atacante.asignarConquistador(jugador1);
+        defensor.asignarConquistador(jugador2);
+
+        atacante.agregarEjercitos(4);
+        defensor.agregarEjercitos(3);
+
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(3,0));
+        ataqueFalso.atacar();
+        assertEquals(jugador1.conquistaContinente(jugador1,continente), true);
+        assertEquals(jugador1.conquistaContinente(jugador1,continenteNuevo), false);
+
+        Turno turno = new Turno(jugadores);
+        assertEquals(turno.jugadorActual().obtenerColor(), "Azul");
+        assertEquals(turno.jugadorActual().cumpleObjetivoDeConquistarNPaises(jugador1, paises), true);
+    }
+
 }

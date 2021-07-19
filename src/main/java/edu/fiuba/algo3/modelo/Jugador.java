@@ -86,6 +86,16 @@ public class Jugador {
 		return (nuevoObjetivo.objetivoDestruirEjercitoCumplido(jugadorADestruir, paises));
 	}
 
+	public boolean cumpleObjetivoDeConquistarNContinentes(Jugador jugador, List<Continente> continentes) {
+		Objetivo nuevoObjetivo = new Objetivo();
+		return (nuevoObjetivo.objetivoConquistarContinenteCumplido(jugador,continentes));
+	}
+
+	public boolean cumpleObjetivoDeConquistarNPaises(Jugador jugador, List<Pais> paises) {
+		Objetivo nuevoObjetivo = new Objetivo();
+		return (nuevoObjetivo.objetivoConquistarPaisesCumplido(jugador,paises));
+	}
+
 	public boolean esDestruido(List<Pais> paises) {
 		for(int i = 0 ; i < paises.size() ; i++) {
 			if(paises.get(i).conquistador.color.equals(this.color)) {
