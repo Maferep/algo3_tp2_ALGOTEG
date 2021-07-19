@@ -10,7 +10,14 @@ public class FaseInicio implements IFase, IFaseInicio {
     List<Pais> paises;
     Turno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
-    TurnoFactory factory = new TurnoFactory();
+    JugadorFactory factory = new JugadorFactory();
+    List<String> colores =  Arrays.asList(
+        "Azul", 
+        "Rojo", 
+        "Amarillo", 
+        "Verde", 
+        "Rosa", 
+        "Negro");
 
     static int minJugadores = 2;
     static int maxJugadores = 6;
@@ -19,7 +26,7 @@ public class FaseInicio implements IFase, IFaseInicio {
         if (!validarCantidad(cantJugadores))
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
-        turno = factory.crearTurno(cantJugadores);
+        turno = new Turno(factory.construirJugadores(colores, cantJugadores));
     }
 
     // interfaz de inicio
