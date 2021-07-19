@@ -20,7 +20,10 @@ public class JugadorFactoryTest {
         "Rosa", 
         "Negro");
         List<Jugador> jugadores = builder.construirJugadores(colores, 5);
+        assertEquals(5, jugadores.size());
         assertEquals(8, jugadores.get(0).cantidadEjercitos());
         assertEquals(8, jugadores.get(4).cantidadEjercitos());
+        assertEquals("Azul", jugadores.get(0).obtenerColor());
+        assertEquals("Rosa", jugadores.get(4).obtenerColor());
     }
 }
