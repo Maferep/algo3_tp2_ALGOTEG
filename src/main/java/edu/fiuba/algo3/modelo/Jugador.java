@@ -9,6 +9,7 @@ public class Jugador {
 	List<Pais> paises;
 	int ejercitos;
 	int numeroDeTurno;
+	Continente continente = new Continente();
 
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
@@ -22,6 +23,10 @@ public class Jugador {
 		//	paises.add();
 					//pais del archivo leido
 		}
+	}
+
+	public boolean conquistaContinente(Jugador conquistador,Continente continente) {
+		return conquistador.verificarConquista(continente);
 	}
 
 	public String obtenerColor() {
@@ -44,6 +49,10 @@ public class Jugador {
 
 	public void asignarPais(Pais pais) {
 		paises.add(pais);
+	}
+
+	public boolean verificarConquista(Continente continente) {
+		return this.continente.verificarConquista(continente);
 	}
 
 	public boolean cumpleObjetivoGeneral() {

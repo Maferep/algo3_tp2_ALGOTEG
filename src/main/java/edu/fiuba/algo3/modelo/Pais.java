@@ -5,6 +5,7 @@ public class Pais {
     String nombre;
     int ejercitos;
     Jugador conquistador;
+    Continente continente;
 
 	public Pais(String n) {
 		this.nombre = n;
@@ -27,9 +28,13 @@ public class Pais {
 		ejercitos -= cantidadEjercitos;
 	}
 
-	public void asignarConquistador(Jugador conquistador) { 
+	public void asignarConquistador(Jugador conquistador) {
 		this.conquistador = conquistador;
-		conquistador.asignarPais(this);
+		conquistador.continente.agregarPais();
+	}
+
+	public void asignarContinente(Continente continenteAsignado) { //IContinente
+		continente = continenteAsignado;
 	}
 
 	public Jugador obtenerConquistador() { return this.conquistador; }

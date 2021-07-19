@@ -12,6 +12,7 @@ public class Objetivo {
     }
 
     //objetivo destruir ejercito
+    //rompe el tell dont ask. modificar
     public boolean objetivoDestruirEjercitoCumplido(Jugador jugadorADestruir, List<Pais> paises) {
         for(int i = 0 ; i < paises.size() ; i++) {
             if(paises.get(i).conquistador.color.equals(jugadorADestruir.color)) {
@@ -20,6 +21,4 @@ public class Objetivo {
         }
         return true;
     }
-
-
 }

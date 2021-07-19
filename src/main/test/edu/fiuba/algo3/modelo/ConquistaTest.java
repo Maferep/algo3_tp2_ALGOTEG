@@ -7,12 +7,14 @@ public class ConquistaTest {
 
     @Test
     public void test00JugadorConquistaPais() {
-        Jugador jugador = new Jugador("Valen");
+        Jugador jugador = new Jugador("Rosa");
         Pais argentina = new Pais("Argentina");
-        Conquista conquista = new Conquista();
 
-        conquista.conquistar(jugador, argentina);
+        Continente continente = new Continente("America del Sur",2);
+        argentina.asignarContinente(continente);
 
-        assertEquals(argentina.obtenerConquistador().obtenerColor(), "Valen");
+        argentina.asignarConquistador(jugador);
+
+        assertEquals(argentina.obtenerConquistador().obtenerColor(), "Rosa");
     }
 }
