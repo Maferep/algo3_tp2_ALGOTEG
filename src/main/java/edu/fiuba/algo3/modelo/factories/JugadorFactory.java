@@ -1,11 +1,11 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.factories;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.excepciones.*;
+import java.util.*;
+import java.util.stream.*;
 
-import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
+
 
 public class JugadorFactory {
     List<Pais> paises = Arrays.asList(
