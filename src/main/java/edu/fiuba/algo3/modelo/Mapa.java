@@ -6,15 +6,11 @@ public class Mapa {
     public List<Pais> paises;
 
     public Mapa() {
-        //inicializa mapa fachada
-        //obtiene los paises
+        MapaFachada fachada = new MapaFachada();
+        paises = fachada.inicializarMapa();
     }
 
-    public void asignarPaises(Jugador ... jugador) {
-        //asigna los paises aleatoriamente
-    }
-
-    public int cantidadPaises() {
-        return 55;
+    public List<Pais> obtenerPaises() {
+        return paises;
     }
 }

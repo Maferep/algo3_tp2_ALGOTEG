@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
@@ -19,13 +20,14 @@ public class LectorPaises {
 
     public LectorPaises() {
         JSONParser jsonParser = new JSONParser();
+        paises = new ArrayList<String>();
 
-        try (FileReader reader = new FileReader("fronteras.json")) {
+        try (FileReader reader = new FileReader("src/main/resources/fronteras.json")) {
             Object obj = jsonParser.parse(reader);
             JSONArray paisesList = (JSONArray) obj;
 
-            paisesList.forEach(pais -> this.paisesList.add(
-                    ((JSONObject) pais).get("Pais")
+            paisesList.forEach(pais -> this.paises.add(
+                    (String) ((JSONObject) pais).get("Pais")
             ));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
