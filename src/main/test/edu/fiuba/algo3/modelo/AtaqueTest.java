@@ -16,10 +16,10 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(1,1));
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(1,1));
         ataqueFalso.atacar();
 
-        assertEquals("Cande", defensor.obtenerConquistador().obtenerNombre());
+        assertEquals("Cande", defensor.obtenerConquistador().obtenerColor());
         assertEquals(2, atacante.cantidadEjercitos());
     }
 
@@ -34,13 +34,13 @@ public class AtaqueTest {
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(0, 2));
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(0, 2));
         ataqueFalso.atacar();
 
         assertEquals(1, atacante.ejercitos);
         assertEquals(3, defensor.ejercitos);
 
-        assertEquals("Tobías", defensor.obtenerConquistador().obtenerNombre());
+        assertEquals("Tobías", defensor.obtenerConquistador().obtenerColor());
         assertEquals(3, defensor.cantidadEjercitos());
         assertEquals(1, atacante.cantidadEjercitos());
     }
@@ -55,10 +55,10 @@ public class AtaqueTest {
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(1,1));
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(1,1));
         ataqueFalso.atacar();
 
-        assertEquals("Daniel", defensor.obtenerConquistador().obtenerNombre());
+        assertEquals("Daniel", defensor.obtenerConquistador().obtenerColor());
         assertEquals(2, atacante.cantidadEjercitos());
         assertEquals(2, defensor.cantidadEjercitos());
     }
@@ -74,10 +74,10 @@ public class AtaqueTest {
         atacante.agregarEjercitos(4);
         defensor.agregarEjercitos(3);
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadoFalso(3,0));
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(3,0));
         ataqueFalso.atacar();
 
-        assertEquals(atacante.obtenerConquistador().obtenerNombre(), defensor.obtenerConquistador().obtenerNombre());
+        assertEquals(atacante.obtenerConquistador().obtenerColor(), defensor.obtenerConquistador().obtenerColor());
         assertEquals(0, defensor.cantidadEjercitos());
     }
 

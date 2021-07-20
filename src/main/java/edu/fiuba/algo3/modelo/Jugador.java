@@ -1,22 +1,31 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
+import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.List;
 import java.util.ArrayList;
 
 public class Jugador {
-	String nombre;
+	String color;
 	List<Pais> paises;
 	int ejercitos;
+	int numeroDeTurno;
 
-	public Jugador(String n) {
-		nombre = n;
+	public Jugador(String colorDelJugador) {
+		color = colorDelJugador;
 		paises = new ArrayList<Pais>();
 		ejercitos = 0;
 	}
 
-	public Object obtenerNombre() {
-		return nombre;
+	public void asignarPaises(int cantidadJugadores) {
+		for(int i = 0 ; i < cantidadJugadores ; i++) {
+			//leer archivo
+		//	paises.add();
+					//pais del archivo leido
+		}
+	}
+
+	public String obtenerColor() {
+		return color;
 	}
 
 	public List<Pais> obtenerPaises() {
@@ -27,11 +36,12 @@ public class Jugador {
 		return ejercitos;
 	}
 
-	public void agregarEjercitos(int cantidad) throws Exception {
+	public void agregarEjercitos(int cantidad) throws EjercitosException {
 		if(cantidad <= 0)
-			throw new Exception();
+			throw new EjercitosException(null);
 		ejercitos += cantidad;
 	}
+
 	public void asignarPais(Pais pais) {
 		paises.add(pais);
 	}
@@ -41,6 +51,18 @@ public class Jugador {
 			throw new FichasInsuficientesError("El jugador no tiene suficientes fichas.");
 		if (!paises.contains(pais)) 
 			throw new Exception();
+	}
+
+	public void asignarNumeroParaTurno() {
+		numeroDeTurno = (((int)(Math.random()*6))+1);
+	}
+
+	public void asignarNumeroParaTurnoMock(int numeroTurno) {
+		numeroDeTurno = numeroTurno;
+	}
+
+	public int numeroDeTurno() {
+		return numeroDeTurno;
 	}
 
 }

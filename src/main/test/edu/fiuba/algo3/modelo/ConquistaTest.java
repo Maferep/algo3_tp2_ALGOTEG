@@ -13,6 +13,6 @@ public class ConquistaTest {
 
         conquista.conquistar(jugador, argentina);
 
-        assertEquals(argentina.obtenerConquistador().obtenerNombre(), "Valen");
+        assertEquals(argentina.obtenerConquistador().obtenerColor(), "Valen");
     }
 }
