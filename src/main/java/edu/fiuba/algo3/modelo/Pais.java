@@ -1,14 +1,19 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pais {
     String nombre;
     int ejercitos;
     Jugador conquistador;
+    List<Pais> adyacentes;
 
 	public Pais(String n) {
 		this.nombre = n;
 		this.ejercitos = 0;
+		adyacentes = new ArrayList<Pais>();
 	}
 
 	public String obtenerNombre() {
@@ -41,4 +46,8 @@ public class Pais {
 	public void atacar(IAtaque ataque) {
 		ataque.atacar();
 	}
+
+	public void agregarAdyacente(Pais pais) { adyacentes.add(pais); }
+
+	public List<Pais> obtenerAdyacentes() { return adyacentes; }
 }
