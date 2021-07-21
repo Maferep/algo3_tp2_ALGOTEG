@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.IFase;
 import edu.fiuba.algo3.modelo.factories.*;
 import org.junit.jupiter.api.Test;
-import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.Mocks.*;
 
 import static org.junit.jupiter.api.Assertions.*;

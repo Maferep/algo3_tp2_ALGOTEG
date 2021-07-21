@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.Mocks.*;
 
 import org.junit.jupiter.api.Test;
@@ -116,7 +115,6 @@ public class ObjetivoTest {
 
         Continente continente = new Continente("Europa",2);
         Continente continenteNuevo = new Continente("Asia",4);
-        List<Continente> continentes = Arrays.asList(continente);
         paises.get(0).asignarContinente(continente);
         paises.get(1).asignarContinente(continente);
 

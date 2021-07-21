@@ -4,8 +4,6 @@ import edu.fiuba.algo3.modelo.Mocks.*;
 
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.fases.*;
-
 public class FaseAtaqueTest {
     @Test
     public void test00Atacar() throws Exception {
