@@ -12,22 +12,30 @@ public class RondaTest {
     @Test
     public void test00RondaDeDosJugadoresSinAtaques() throws Exception {
         // fase inicial
-        IFase fase = juegoBuilder.crearJuegoTEG(4);
+        IFase fase = juegoBuilder.crearJuegoTEG(2);
         assertFalse(fase.faseCompletada());
         // aca debo asignar los paises a los jugadores: etapa inicio.
         fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("EEUU"));
         fase.asFaseInicio().ubicarEjercitosEnPais(5, new Pais("EEUU"));
         assertTrue(fase.faseCompletada());
-
         fase = fase.siguienteFase();
+
         // fase juego : atacar
         fase.asFaseAtacar().atacar(null, 0, null);
         assertTrue(fase.faseCompletada());
+        fase = fase.siguienteFase();
 
-        fase = fase.siguienteFase(); //fase es null, cambiar eso.
         // fase juego : reagrupar
         fase.asFaseReagrupar().reagrupar();
-        // fase juego : colocarEjercitos
-       // fase.asFaseColocar().ubicarEjercitosEnPais(5, new Pais("EEUU"));
+        assertTrue(fase.faseCompletada());
+        fase = fase.siguienteFase();
+
+        // fase juego : colocar
+        fase.asFaseColocar().ubicarEjercitosEnPais(5, new Pais("EEUU"));
+        assertTrue(fase.faseCompletada());
+        fase = fase.siguienteFase();
+
+        // comienzo a atacar devuelta
+        fase.asFaseAtacar().atacar(null, 0, null);
     }
 }
