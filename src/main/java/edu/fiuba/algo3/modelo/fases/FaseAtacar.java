@@ -38,6 +38,7 @@ public class FaseAtacar implements IFase {
         atacante.atacar(defensor, cantidadDeSoldados);
     }
 
+
     public FaseInicio asFaseInicio() throws FaseErroneaException {
         throw new FaseErroneaException("Estamos en fase atacar");
     }

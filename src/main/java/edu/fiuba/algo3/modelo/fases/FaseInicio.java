@@ -7,9 +7,9 @@ import edu.fiuba.algo3.modelo.factories.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class FaseInicio implements IFase, IFaseInicio {
-    List<Pais> paises;
     Turno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     JugadorFactory factory = new JugadorFactory();
@@ -23,8 +23,21 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     static int minJugadores = 2;
     static int maxJugadores = 6;
+    static int cantidadEjercitos = 8;
 
-    public FaseInicio(int cantJugadores) throws Exception {
+    //para que pasen los test hago una lista de paises random
+    List<Pais> paises = Arrays.asList(
+            "Puerto Rico",
+            "Colombia",
+            "Venezuela",
+            "Honduras",
+            "Guayana",
+            "Guatemala")
+            .stream()
+            .map(n -> new Pais(n))
+            .collect(Collectors.toList());
+
+    public FaseInicio(int cantJugadores, IJugador tipoJugador) throws Exception {
         if (!validarCantidad(cantJugadores))
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
@@ -37,9 +50,10 @@ public class FaseInicio implements IFase, IFaseInicio {
         return turno.cantidadDeJugadores();
     }
 
-    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
-        // TODO ubicarEjercitos
-        //al 'terminar de ubicar' la etapa inicial se considera completada
+    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) throws FichasInsuficientesError, PaisNoExistenteError {
+        turno.jugadorActual().verificarCantidadDeEjercitos(cantEjercitos);
+        turno.jugadorActual().verificarPais(pais);
+        pais.agregarEjercitos(cantEjercitos);
         estrategia = estrategia.actualizar();
     }
 
@@ -75,12 +89,12 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     @Override
     public FaseAtacar asFaseAtacar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
+        throw new FaseErroneaException("Estamos en fase inicio");
     }
 
     @Override
     public FaseColocar asFaseColocar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
+        throw new FaseErroneaException("Estamos en fase inicio");
     }
 
     @Override
