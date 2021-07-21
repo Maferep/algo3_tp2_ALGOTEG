@@ -14,7 +14,6 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     static int minJugadores = 2;
     static int maxJugadores = 6;
-    static int cantidadEjercitos = 8;
 
     //para que pasen los test hago una lista de paises random
     List<Pais> paises = Arrays.asList(

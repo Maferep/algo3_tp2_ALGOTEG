@@ -43,11 +43,11 @@ public class JugadorFactoryMock implements IJugador {
             j.agregarEjercitos(cantidadEjercitos);
         }
     }
-    //corregir edto
+    //corregir esto
     @Override
     public void asignarPaisesAJugadores(List<Pais> paises, List<Jugador> jugadores) {
         for(int j = 0 ; j < jugadores.size() ; j++) {
-            for (int i = 0; i < paises.size(); i++) {
+            for (int i = 0; i < (paises.size())/(jugadores.size()); i++) {
                 Pais actual = paises.get(i);
                 jugadores.get(j).asignarPais(actual);
             }
