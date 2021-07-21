@@ -23,7 +23,7 @@ public class FaseAtaqueTest {
 
         ITurno turno = new TurnoMock();
         List<Pais> p = Arrays.asList(atacante, defensor);
-        FaseAtacar fase = new FaseAtacar(turno, p);
+        FaseAtacar fase = new FaseAtacar(turno, p, null);
         fase.atacar(atacante, 1, defensor);
     }
 }

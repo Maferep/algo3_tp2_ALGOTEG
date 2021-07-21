@@ -9,11 +9,13 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public class FaseAtacar extends FaseAbstracta {
     List<Pais> paises;
     ITurno turno;
+    Canje canje;
     //No usa estrtegias pues puede terminar sin hacer nada
 
-    public FaseAtacar(ITurno turno2, List<Pais> paises) {
+    public FaseAtacar(ITurno turno2, List<Pais> paises, Canje canje) {
         this.turno = turno2;
         this.paises = paises;
+        this.canje = canje;
     }
 
     @Override
@@ -23,7 +25,7 @@ public class FaseAtacar extends FaseAbstracta {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return new FaseReagrupar(turno, paises);
+        return new FaseReagrupar(turno, paises, canje);
     }
 
     @Override

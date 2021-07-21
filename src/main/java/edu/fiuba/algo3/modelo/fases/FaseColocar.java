@@ -10,10 +10,12 @@ public class FaseColocar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     ITurno turno;
     List<Pais> paises;
+    Canje canje;
 
-    public FaseColocar(ITurno turno2, List<Pais> paises) {
+    public FaseColocar(ITurno turno2, List<Pais> paises, Canje canje) {
         this.turno = turno2;
         this.paises = paises;
+        this.canje = canje;
 	}
 
 	public void asignarNuevosEjercitosAJugadores() throws EjercitosException {
@@ -41,7 +43,7 @@ public class FaseColocar extends FaseAbstracta {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return estrategia.siguienteFase(turno, paises);
+        return estrategia.siguienteFase(turno, paises, canje);
     }
 
     @Override

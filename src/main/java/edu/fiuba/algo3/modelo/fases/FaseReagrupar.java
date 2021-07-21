@@ -10,9 +10,13 @@ public class FaseReagrupar extends FaseAbstracta {
 
     IEstrategiaFase estrategia = new EstrategiaReagruparSinCompletar();
     ITurno turno;
+    List<Pais> paises;
+    private Canje canje;
 
-    public FaseReagrupar(ITurno turno2, List<Pais> paises) {
-        this.turno = turno2;
+    public FaseReagrupar(ITurno turno, List<Pais> paises, Canje canje) {
+        this.turno = turno;
+        this.paises = paises;
+        this.canje = canje;
     }
     public void reagrupar() {
         // TODO reagrupar
@@ -27,7 +31,7 @@ public class FaseReagrupar extends FaseAbstracta {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return estrategia.siguienteFase(turno, null);
+        return estrategia.siguienteFase(turno, paises, canje);
     }
 
     @Override

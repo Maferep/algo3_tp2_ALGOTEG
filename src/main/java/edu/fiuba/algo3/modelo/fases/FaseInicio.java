@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     ITurno turno;
-    Canje mazo;
+    Canje canje;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     JugadorFactory factory = new JugadorFactory();
     List<String> colores =  Arrays.asList(
@@ -45,7 +45,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
                     + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
         turno = new Turno(factory.construirJugadores(colores, cantJugadores));
-        mazo = new Canje(paises);
+        canje = new Canje(paises);
     }
 
     //version para mock
@@ -82,7 +82,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return estrategia.siguienteFase(turno, paises);
+        return estrategia.siguienteFase(turno, paises, canje);
     }
     
     @Override
