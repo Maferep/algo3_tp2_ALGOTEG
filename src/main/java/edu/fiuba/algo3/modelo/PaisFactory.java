@@ -5,13 +5,13 @@ import org.json.simple.JSONObject;
 
 import java.util.*;
 
-public class MapaFachada {
+public class PaisFactory {
     private List<String> paisesParse;
     private Dictionary<String, List<String>> adyacenciasParse;
     private Dictionary<String, Pais> paisesDic;
     public List<Pais> paises;
 
-    public MapaFachada() {
+    public PaisFactory() {
         LectorPaises lectorPaises = new LectorPaises();
         paisesParse = lectorPaises.obtenerPaises();
         adyacenciasParse = lectorPaises.obtenerAdyacencias();
@@ -26,6 +26,9 @@ public class MapaFachada {
         return paises;
     }
 
+    @Deprecated
+    //SUGERENCIA: Esto se comporta como una factory de paises que usa Mapa, 
+    //deberiamos testear usando la lista 'paises' que devuelve
     public Pais obtenerPais(String pais) {
         return paisesDic.get(pais);
     }

@@ -6,7 +6,7 @@ public class Mapa {
     public List<Pais> paises;
 
     public Mapa() {
-        MapaFachada fachada = new MapaFachada();
+        PaisFactoryTest fachada = new PaisFactoryTest();
         paises = fachada.inicializarMapa();
     }
 

@@ -6,10 +6,10 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class MapaFachadaTest {
+public class PaisFactoryTest {
     @Test
     public void test01PaisSeInicializa() {
-        MapaFachada mapa = new MapaFachada();
+        PaisFactory mapa = new PaisFactory();
         mapa.inicializarMapa();
 
         Pais francia = mapa.obtenerPais("Francia");
@@ -21,7 +21,7 @@ public class MapaFachadaTest {
 
     @Test
     public void test02PaisTieneAdyacentes() {
-        MapaFachada mapa = new MapaFachada();
+        PaisFactory mapa = new PaisFactory();
         mapa.inicializarMapa();
 
         Pais italia = mapa.obtenerPais("Italia");
