@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class FaseColocar implements IFase {
+public class FaseColocar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     Turno turno;
     List<Pais> paises;
@@ -53,27 +53,7 @@ public class FaseColocar implements IFase {
     }
 
     @Override
-    public FaseInicio asFaseInicio() throws FaseErroneaException {
-        // TODO Auto-generated method stub
-        throw new FaseErroneaException("Estamos en fase colocar");
-    }
-
-    @Override
-    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
-        // TODO Auto-generated method stub
-        throw new FaseErroneaException("Estamos en fase colocar");
-    }
-
-    @Override
     public FaseColocar asFaseColocar() {
-        // TODO Auto-generated method stub
         return this;
     }
-
-    @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
-        // TODO Auto-generated method stub
-        throw new FaseErroneaException("Estamos en fase colocar");
-    }
-
 }

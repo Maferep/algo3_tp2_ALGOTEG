@@ -10,7 +10,7 @@ import edu.fiuba.algo3.modelo.factories.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class FaseInicio implements IFase, IFaseInicio {
+public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     Turno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     JugadorFactory factory = new JugadorFactory();
@@ -79,7 +79,6 @@ public class FaseInicio implements IFase, IFaseInicio {
     
     @Override
     public Boolean esFinDeJuego() {
-        // TODO Auto-generated method stub
         return false;
     }
     
@@ -87,21 +86,4 @@ public class FaseInicio implements IFase, IFaseInicio {
     public FaseInicio asFaseInicio() {
         return this;
     }
-
-    @Override
-    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
-        throw new FaseErroneaException("Estamos en fase inicio");
-    }
-
-    @Override
-    public FaseColocar asFaseColocar() throws FaseErroneaException {
-        throw new FaseErroneaException("Estamos en fase inicio");
-    }
-
-    @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
-    }
-
-
 }

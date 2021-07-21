@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class FaseAtacar implements IFase {
+public class FaseAtacar extends FaseAbstracta {
     List<Pais> paises;
     Turno turno;
     //No usa estrtegias pues puede terminar sin hacer nada
@@ -36,23 +36,9 @@ public class FaseAtacar implements IFase {
         atacante.atacar(defensor, cantidadDeSoldados);
     }
 
-
-    public FaseInicio asFaseInicio() throws FaseErroneaException {
-        throw new FaseErroneaException("Estamos en fase atacar");
-    }
-
+    @Override
     public FaseAtacar asFaseAtacar() throws FaseErroneaException {
         return this;
-    }
-
-    @Override
-    public FaseColocar asFaseColocar() throws FaseErroneaException {
-        throw new FaseErroneaException("Estamos en fase atacar");
-    }
-
-    @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
-        throw new FaseErroneaException("Estamos en fase atacar");
     }
 
 }
