@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class FaseInicio extends FaseAbstracta implements IFaseInicio {
-    Turno turno;
+    ITurno turno;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     JugadorFactory factory = new JugadorFactory();
     List<String> colores =  Arrays.asList(
@@ -38,11 +38,17 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
 
-    public FaseInicio(int cantJugadores, IJugador tipoJugador) throws Exception {
+    public FaseInicio(int cantJugadores) throws Exception {
         if (!validarCantidad(cantJugadores))
-            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minJugadores + "y un máximo de"
+            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
+                    + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
         turno = new Turno(factory.construirJugadores(colores, cantJugadores));
+    }
+
+    //version para mock
+    public FaseInicio(ITurno turno) throws Exception {
+        this.turno = turno;
     }
 
     // interfaz de inicio
