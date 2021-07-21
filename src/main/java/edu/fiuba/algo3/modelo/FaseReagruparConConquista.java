@@ -9,7 +9,7 @@ public class FaseReagruparConConquista implements IFase {
 
     private List<Pais> paises;
     private Turno turno;
-    private Mazo mazo = new Mazo();
+    private Mazo mazo = new Mazo(null);
 
     public FaseReagruparConConquista(Turno turno, List<Pais> paises) {
         this.turno = turno;
