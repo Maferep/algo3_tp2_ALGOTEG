@@ -16,7 +16,7 @@ public class EstrategiaReagruparCompletado implements IEstrategiaFase {
     }
 
     @Override
-    public IFase siguienteFase(IFase actual) throws FaseIncompletaException {
-        return new FaseColocar();
+    public IFase siguienteFase(IFase actual, Turno sistemaDeTurnos) throws FaseIncompletaException {
+        return new FaseColocar(actual, sistemaDeTurnos);
     }
 }

@@ -9,10 +9,12 @@ import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 public class FaseAtacar implements IFase {
     // cambiar por SistemaTurnos?
     List<Jugador> jugadores;
+    Turno turno;
 
     IEstrategiaFase estrategia = new EstrategiaAtaqueSinCompletar();
-
-    public FaseAtacar(IFase faseAnterior) {
+    public FaseAtacar(IFase faseAnterior) { }
+    public FaseAtacar(IFase faseAnterior, Turno sistemaDeTurnos) {
+        turno = sistemaDeTurnos;
     }
 
     @Override
@@ -24,7 +26,7 @@ public class FaseAtacar implements IFase {
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
         // TODO Auto-generated method stub
-        return estrategia.siguienteFase(this);
+        return estrategia.siguienteFase(this, turno);
     }
 
     @Override
@@ -33,10 +35,18 @@ public class FaseAtacar implements IFase {
         return false;
     }
 
-    public void atacar(Pais atacante, int cantidadDeSoldados, Pais defensor) {
+    public void atacar(Pais atacante, int cantidadDeSoldados, Pais defensor,Ataque tipoDeAtaque) {
         // TODO Auto-generated method stub
+        // Cuando se termina de atacar la fase se considera completada
+        // Deben atacar todos los jugadores cuantas veces quieran y puedan
+        tipoDeAtaque.atacar();
         estrategia = estrategia.actualizar();
     }
+
+    public void saltearAtaque() {
+        estrategia = estrategia.actualizar();
+    }
+
 
     public FaseInicio asFaseInicio() throws FaseErroneaException {
         throw new FaseErroneaException("Estamos en fase atacar");

@@ -14,9 +14,8 @@ public class Juego {
         faseActual = builder.crearJuegoTEG(3);
     }
 
-    public void atacar(Pais atacante, int cantSoldados, Pais defensor) 
-        throws FaseErroneaException {
-        faseActual.asFaseAtacar().atacar(atacante, cantSoldados, defensor);
+    public void atacar(Pais atacante, int cantSoldados, Pais defensor, Ataque tipoAtaque) throws FaseErroneaException {
+        faseActual.asFaseAtacar().atacar(atacante, cantSoldados, defensor, tipoAtaque);
     }
 
     public int cantidadDeJugadores() 

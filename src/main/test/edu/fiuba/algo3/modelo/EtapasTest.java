@@ -34,7 +34,7 @@ public class EtapasTest {
         assertTrue(fase.faseCompletada());
         fase = fase.siguienteFase();
 
-        fase.asFaseAtacar().atacar(null, 0, null);
+        fase.asFaseAtacar().atacar(null, 0, null, null);
         assertTrue(fase.faseCompletada());
     }
 }

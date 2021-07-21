@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.FaseAtacar;
 import edu.fiuba.algo3.modelo.FaseInicio;
 import edu.fiuba.algo3.modelo.Interfaces.IEstrategiaFase;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 import edu.fiuba.algo3.modelo.Interfaces.IFase;
@@ -10,12 +11,17 @@ import edu.fiuba.algo3.modelo.Interfaces.IFase;
 public class FaseReagrupar implements IFase {
 
     IEstrategiaFase estrategia = new EstrategiaReagruparSinCompletar();
-
+    Turno turno;
+    public FaseReagrupar(IFase faseAnterior) { }
+    public FaseReagrupar(IFase faseAnterior, Turno sistemaDeTurnos) {
+        turno = sistemaDeTurnos;
+    }
     public FaseReagrupar() {}
     public void reagrupar() {
         // TODO reagrupar
         estrategia = estrategia.actualizar();
     }
+
     // métodos de fase
     @Override
     public Boolean faseCompletada() {
@@ -26,7 +32,7 @@ public class FaseReagrupar implements IFase {
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
         // TODO Auto-generated method stub
-        return estrategia.siguienteFase(this);
+        return estrategia.siguienteFase(this, turno);
     }
 
     @Override

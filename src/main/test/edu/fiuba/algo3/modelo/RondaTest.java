@@ -21,7 +21,7 @@ public class RondaTest {
         fase = fase.siguienteFase();
 
         // fase juego : atacar
-        fase.asFaseAtacar().atacar(null, 0, null);
+        fase.asFaseAtacar().saltearAtaque();
         assertTrue(fase.faseCompletada());
         fase = fase.siguienteFase();
 
@@ -31,11 +31,17 @@ public class RondaTest {
         fase = fase.siguienteFase();
 
         // fase juego : colocar
-        fase.asFaseColocar().ubicarEjercitosEnPais(5, new Pais("EEUU"));
+        Pais pais = new Pais("EEUU");
+        fase.asFaseColocar().ubicarEjercitosEnPais(3, pais);
+        //probar la excepcion tambien
         assertTrue(fase.faseCompletada());
+        //assertEquals(fase.asFaseColocar().turno.jugadorActual().paises.size(), 3);
+        assertEquals(fase.asFaseColocar().turno.jugadorActual().cantidadEjercitos(), 3);
+
+        //assertEquals(pais.cantidadEjercitos(), 3);
         fase = fase.siguienteFase();
 
         // comienzo a atacar devuelta
-        fase.asFaseAtacar().atacar(null, 0, null);
+        //fase.asFaseAtacar().atacar(null, 0, null, null);
     }
 }

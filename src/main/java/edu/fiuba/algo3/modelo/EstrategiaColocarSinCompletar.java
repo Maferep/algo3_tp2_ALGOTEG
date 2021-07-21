@@ -14,7 +14,7 @@ public class EstrategiaColocarSinCompletar implements IEstrategiaFase {
             return false;
         }
         @Override
-        public IFase siguienteFase(IFase actual) throws FaseIncompletaException {
+        public IFase siguienteFase(IFase actual,Turno sistemaDeTurnos) throws FaseIncompletaException {
             throw new FaseIncompletaException(null);
         }
 }
