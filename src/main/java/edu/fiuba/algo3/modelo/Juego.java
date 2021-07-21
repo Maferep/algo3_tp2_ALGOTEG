@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.factories.*;
 import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 
@@ -23,8 +24,9 @@ public class Juego {
         return faseActual.asFaseInicio().cantidadDeJugadores();
     }
 
-    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) 
-        throws FaseErroneaException {
+    public void completarEtapaInicio(int cantEjercitos, Pais pais) throws FaseErroneaException, EjercitosException {
+        faseActual.asFaseInicio().asignarEjercitosAJugadores();
+        faseActual.asFaseInicio().asignarPaisesAleatoriamenteAJugadores();
         faseActual.asFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
     }
 
