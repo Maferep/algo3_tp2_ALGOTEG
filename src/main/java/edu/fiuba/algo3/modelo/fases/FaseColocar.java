@@ -36,19 +36,16 @@ public class FaseColocar extends FaseAbstracta {
     // métodos de fase
     @Override
     public Boolean faseCompletada() {
-        // TODO Auto-generated method stub
         return estrategia.faseCompletada();
     }
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        // TODO Auto-generated method stub
-        return estrategia.siguienteFase(turno, null);
+        return estrategia.siguienteFase(turno, paises);
     }
 
     @Override
     public Boolean esFinDeJuego() {
-        // TODO Auto-generated method stub
         return false;
     }
 

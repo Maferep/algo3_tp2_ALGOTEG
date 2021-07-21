@@ -19,7 +19,6 @@ public class EstrategiaColocarSinCompletar implements IEstrategiaFase {
 
     @Override
     public IFase siguienteFase(Turno turno, List<Pais> paises) throws FaseIncompletaException {
-        // TODO Auto-generated method stub
         throw new FaseIncompletaException(null);
     }
 }
