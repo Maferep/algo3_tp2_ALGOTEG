@@ -1,26 +1,25 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.fases;
 
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
-import edu.fiuba.algo3.modelo.fases.*;
 
-public class EstrategiaJuegoInicializado implements IEstrategiaFase {
-
+public class EstrategiaColocarSinCompletar implements IEstrategiaFase {
     @Override
     public IEstrategiaFase actualizar() {
-        return this;
+        return new EstrategiaColocarCompletado();
     }
 
     @Override
     public Boolean faseCompletada() {
-        return true;
+        return false;
     }
 
     @Override
     public IFase siguienteFase(Turno turno, List<Pais> paises) throws FaseIncompletaException {
-        return new FaseAtacar(turno, paises);
+        // TODO Auto-generated method stub
+        throw new FaseIncompletaException(null);
     }
-
 }

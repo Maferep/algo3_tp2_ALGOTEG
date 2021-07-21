@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.modelo.Interfaces;
-
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.fases.*;
 
@@ -17,5 +16,5 @@ public interface IFase {
 
 	FaseColocar asFaseColocar() throws FaseErroneaException;
 
-	FaseReagruparConConquista asFaseReagrupar() throws FaseErroneaException;
+	FaseReagrupar asFaseReagrupar() throws FaseErroneaException;
 }

@@ -43,7 +43,7 @@ public class FaseInicioMock implements IFaseInicio, IFase {
     }
 
     @Override
-    public FaseReagruparConConquista asFaseReagrupar() throws FaseErroneaException {
+    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
         // TODO Auto-generated method stub
         return null;
     }

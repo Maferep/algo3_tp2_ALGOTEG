@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import edu.fiuba.algo3.modelo.*;
-
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
-import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
+import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class FaseAtacar implements IFase {
     List<Pais> paises;
@@ -25,7 +23,7 @@ public class FaseAtacar implements IFase {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return new FaseReagruparConConquista(turno, paises);
+        return new FaseReagrupar(turno, paises);
     }
 
     @Override
@@ -53,7 +51,7 @@ public class FaseAtacar implements IFase {
     }
 
     @Override
-    public FaseReagruparConConquista asFaseReagrupar() throws FaseErroneaException {
+    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
         throw new FaseErroneaException("Estamos en fase atacar");
     }
 

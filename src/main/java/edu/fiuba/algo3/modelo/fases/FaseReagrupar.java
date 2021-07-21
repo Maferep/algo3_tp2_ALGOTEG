@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.modelo;
-
-import edu.fiuba.algo3.modelo.fases.*;
+package edu.fiuba.algo3.modelo.fases;
 
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.modelo.Turno;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
@@ -11,11 +11,10 @@ public class FaseReagrupar implements IFase {
 
     IEstrategiaFase estrategia = new EstrategiaReagruparSinCompletar();
     Turno turno;
-    public FaseReagrupar(IFase faseAnterior) { }
-    public FaseReagrupar(Turno turno2, List<Pais> paises) {
-        turno = paises;
+
+    public FaseReagrupar(Turno turno, List<Pais> paises) {
+        this.turno = turno;
     }
-    public FaseReagrupar() {}
     public void reagrupar() {
         // TODO reagrupar
         estrategia = estrategia.actualizar();

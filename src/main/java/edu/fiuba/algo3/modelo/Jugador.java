@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Jugador {
 
 	String color;
-	List<Pais> paises;
+	public List<Pais> paises;
 	List<Tarjeta> tarjetas;
 	int ejercitos;
 	int numeroDeTurno;

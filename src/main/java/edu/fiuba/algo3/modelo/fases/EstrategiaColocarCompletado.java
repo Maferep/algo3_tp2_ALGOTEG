@@ -1,11 +1,10 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.fases;
 
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.Interfaces.IEstrategiaFase;
-import edu.fiuba.algo3.modelo.Interfaces.IFase;
-import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
-import edu.fiuba.algo3.modelo.fases.FaseAtacar;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Interfaces.*;
+import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class EstrategiaColocarCompletado implements IEstrategiaFase {
     @Override
