@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.Mocks.*;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

@@ -1,8 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Mocks;
 
+import edu.fiuba.algo3.modelo.fases.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
-import edu.fiuba.algo3.modelo.fases.*;
 
 public class FaseInicioMock implements IFaseInicio, IFase {
 
