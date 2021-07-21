@@ -14,7 +14,7 @@ public class Juego {
     }
 
     public void atacar(Pais atacante, int cantSoldados, Pais defensor) 
-        throws FaseErroneaException {
+        throws Exception {
         faseActual.asFaseAtacar().atacar(atacante, cantSoldados, defensor);
     }
 

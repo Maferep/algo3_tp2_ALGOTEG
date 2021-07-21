@@ -30,11 +30,17 @@ public class EtapasTest {
         IFase fase = juegoBuilder.crearJuegoTEG(4);
         assertFalse(fase.faseCompletada());
 
-        fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("Francia"));
+        Pais pais = new Pais("Francia");
+        pais.agregarEjercitos(3);
+        Pais pais2 = new Pais("Alemania");
+        pais2.agregarEjercitos(3);
+
+        fase.asFaseInicio().ubicarEjercitosEnPais(3, pais);
         assertTrue(fase.faseCompletada());
         fase = fase.siguienteFase();
 
-        fase.asFaseAtacar().atacar(null, 0, null);
+        fase.asFaseAtacar().atacar(pais, 1, pais2);
         assertTrue(fase.faseCompletada());
+        fase = fase.siguienteFase();
     }
 }

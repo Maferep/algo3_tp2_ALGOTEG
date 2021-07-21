@@ -57,7 +57,7 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return estrategia.siguienteFase(this);
+        return estrategia.siguienteFase(turno, paises);
     }
     
     @Override

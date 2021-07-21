@@ -11,7 +11,9 @@ public class FaseAtacar implements IFase {
     Turno turno;
     //No usa estrtegias pues puede terminar sin hacer nada
 
-    public FaseAtacar(IFase faseAnterior) {
+    public FaseAtacar(Turno turno, List<Pais> paises) {
+        this.turno = turno;
+        this.paises = paises;
     }
 
     @Override
@@ -21,17 +23,16 @@ public class FaseAtacar implements IFase {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        // TODO Auto-generated method stub
-        return null;
+        return new FaseColocar(this);
     }
 
     @Override
     public Boolean esFinDeJuego() {
-        // TODO el juego no termina aqui, es para probar tests
-        return true;
+        return false;
     }
 
     public void atacar(Pais atacante, int cantidadDeSoldados, Pais defensor) throws Exception {
+        //TODO: validar existencia de paises y turno correcto
         atacante.atacar(defensor, cantidadDeSoldados);
     }
 

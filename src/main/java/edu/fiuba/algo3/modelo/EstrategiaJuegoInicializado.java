@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.List;
+
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 
@@ -16,8 +18,8 @@ public class EstrategiaJuegoInicializado implements IEstrategiaFase {
     }
 
     @Override
-    public IFase siguienteFase(IFase actual) throws FaseIncompletaException {
-        return new FaseAtacar(actual);
+    public IFase siguienteFase(Turno turno, List<Pais> paises) throws FaseIncompletaException {
+        return new FaseAtacar(turno, paises);
     }
 
 }

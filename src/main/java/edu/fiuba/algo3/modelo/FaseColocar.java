@@ -6,7 +6,9 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public class FaseColocar implements IFase {
     //métodos de colocar
 
-    
+    public FaseColocar(IFase anterior) {
+        
+    }
 
 
     //métodos de IFase
