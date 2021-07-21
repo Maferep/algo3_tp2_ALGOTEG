@@ -10,30 +10,32 @@ public class FaseAtacar implements IFase {
     // cambiar por SistemaTurnos?
     List<Jugador> jugadores;
 
+    IEstrategiaFase estrategia = new EstrategiaAtaqueSinCompletar();
+
     public FaseAtacar(IFase faseAnterior) {
     }
 
     @Override
     public Boolean faseCompletada() {
         // TODO Auto-generated method stub
-        return true;
+        return estrategia.faseCompletada();
     }
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
         // TODO Auto-generated method stub
-        return null;
+        return estrategia.siguienteFase(this);
     }
 
     @Override
     public Boolean esFinDeJuego() {
         // TODO el juego no termina aqui, es para probar tests
-        return true;
+        return false;
     }
 
     public void atacar(Pais atacante, int cantidadDeSoldados, Pais defensor) {
         // TODO Auto-generated method stub
-
+        estrategia = estrategia.actualizar();
     }
 
     public FaseInicio asFaseInicio() throws FaseErroneaException {

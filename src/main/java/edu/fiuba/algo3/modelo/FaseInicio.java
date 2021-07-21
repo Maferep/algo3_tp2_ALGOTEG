@@ -66,17 +66,17 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     @Override
     public FaseAtacar asFaseAtacar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
+        throw new FaseErroneaException("Estamos en fase inicio");
     }
 
     @Override
     public FaseColocar asFaseColocar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
+        throw new FaseErroneaException("Estamos en fase inicio");
     }
 
     @Override
     public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
+        throw new FaseErroneaException("Estamos en fase inicio");
     }
 
 
