@@ -17,33 +17,31 @@ public class RondaTest {
         IFase fase = juegoBuilder.crearJuegoTEG(2, tipoDeJugador);
         assertFalse(fase.faseCompletada());
         // aca debo asignar los paises a los jugadores: etapa inicio.
-                    /*fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("Estados Unidos"));
+                    fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("Estados Unidos"));
                     fase.asFaseInicio().ubicarEjercitosEnPais(5, new Pais("Estados Unidos"));
         assertTrue(fase.faseCompletada());
-        fase = fase.siguienteFase();*/
+        fase = fase.siguienteFase();
 
-        // fase juego : atacar
-        /*fase.asFaseAtacar().saltearAtaque();
-        assertTrue(fase.faseCompletada());
-        fase = fase.siguienteFase();*/
+        // fase juego : atacar (sin conquista);
+        fase = fase.siguienteFase();
 
         // fase juego : reagrupar
-       /* fase.asFaseReagrupar().reagrupar();
+        fase.asFaseReagrupar().reagrupar();
         assertTrue(fase.faseCompletada());
-        fase = fase.siguienteFase();*/
+        fase = fase.siguienteFase();
 
         // fase juego : colocar
-       /* Pais pais = new Pais("EEUU");
-        fase.asFaseColocar().ubicarEjercitosEnPais(3, pais);*/
-        //probar la excepcion tambien
-       // assertTrue(fase.faseCompletada());
+        Pais pais = new Pais("EEUU");
+        fase.asFaseColocar().ubicarEjercitosEnPais(3, pais);
+        //TODO probar la excepcion tambien
+        assertTrue(fase.faseCompletada());
         //assertEquals(fase.asFaseColocar().turno.jugadorActual().paises.size(), 3);
         //assertEquals(fase.asFaseColocar().turno.jugadorActual().cantidadEjercitos(), 3);
 
-        //assertEquals(pais.cantidadEjercitos(), 3);
-        //fase = fase.siguienteFase();
+        assertEquals(pais.cantidadEjercitos(), 3);
+        fase = fase.siguienteFase();
 
         // comienzo a atacar devuelta
-        //fase.asFaseAtacar().atacar(null, 0, null, null);
+        fase.asFaseAtacar().atacar(null, 0, null);
     }
 }
