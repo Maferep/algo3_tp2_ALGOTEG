@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class FaseColocar implements IFase {
-    
 
     private List<Pais> paises;
     private Turno turno;

@@ -23,7 +23,7 @@ public class FaseAtacar implements IFase {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return new FaseColocar(turno, paises);
+        return new FaseReagrupar(turno, paises);
     }
 
     @Override
