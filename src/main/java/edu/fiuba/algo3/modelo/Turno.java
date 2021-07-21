@@ -2,7 +2,9 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.*;
 
-public class Turno {
+import edu.fiuba.algo3.modelo.Interfaces.ITurno;
+
+public class Turno implements ITurno {
     private LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 
     public Turno(List<Jugador> jugadores) {

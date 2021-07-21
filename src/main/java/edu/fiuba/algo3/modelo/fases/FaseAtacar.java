@@ -8,11 +8,11 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class FaseAtacar extends FaseAbstracta {
     List<Pais> paises;
-    Turno turno;
+    ITurno turno;
     //No usa estrtegias pues puede terminar sin hacer nada
 
-    public FaseAtacar(Turno turno, List<Pais> paises) {
-        this.turno = turno;
+    public FaseAtacar(ITurno turno2, List<Pais> paises) {
+        this.turno = turno2;
         this.paises = paises;
     }
 
