@@ -51,8 +51,8 @@ public class FaseInicioTest {
         //TODO test ejemplo
     @Test
     public void test03QueUsaMocks() throws Exception {
-        ITurno unJugador = new TurnoMockUnJugadorCadaPais(paises);
-        ITurno mockDeEjemplo = new TurnoMockEjemplo(paises);
+        ITurno ejemplo = new TurnoMockEjemplo(paises);
+        ITurno unJugador = new TurnoMockUnJugador(paises);
         
         new FaseInicio(unJugador);
     }
