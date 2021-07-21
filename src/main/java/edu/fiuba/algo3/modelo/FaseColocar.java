@@ -22,44 +22,38 @@ public class FaseColocar implements IFase {
 
     @Override
     public Boolean faseCompletada() {
-        // TODO Auto-generated method stub
-        return null;
+        return true;
     }
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        // TODO Auto-generated method stub
-        return null;
+        turno.siguienteJugador();
+        return new FaseAtacar(turno, paises);
     }
 
     @Override
     public Boolean esFinDeJuego() {
-        // TODO Auto-generated method stub
-        return null;
+        return false;
     }
 
     @Override
     public FaseInicio asFaseInicio() throws FaseErroneaException {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
-        // TODO Auto-generated method stub
-        return null;
+        throw new FaseErroneaException("Estamos en fase colocar");
     }
 
     @Override
     public FaseColocar asFaseColocar() throws FaseErroneaException {
-        // TODO Auto-generated method stub
-        return null;
+        return this;
+    }
+
+    @Override
+    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
+        throw new FaseErroneaException("Estamos en fase colocar");
     }
 
     @Override
     public FaseReagruparConConquista asFaseReagrupar() throws FaseErroneaException {
-        // TODO Auto-generated method stub
-        return null;
+        throw new FaseErroneaException("Estamos en fase colocar");
     }
 
 }

@@ -9,35 +9,31 @@ public class FaseReagruparConConquista implements IFase {
 
     private List<Pais> paises;
     private Turno turno;
+    private Mazo mazo = new Mazo();
 
     public FaseReagruparConConquista(Turno turno, List<Pais> paises) {
         this.turno = turno;
         this.paises = paises;
-        this.turno.jugadorActual().agregarTarjetaAleatoria();
+        turno.jugadorActual().agregarTarjetaAleatoria(mazo.obtenerTarjeta());
     }
     //metodos de reagrupar 
 
-    
-    
 
     //metodos de IFase
 
     @Override
     public Boolean faseCompletada() {
-        // TODO Auto-generated method stub
         return true;
     }
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        // TODO Auto-generated method stub
-        return null;
+        return new FaseColocar(turno, paises);
     }
 
     @Override
     public Boolean esFinDeJuego() {
-        // TODO Auto-generated method stub
-        return null;
+        return false;
     }
 
     @Override
