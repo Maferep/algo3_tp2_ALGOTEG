@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeJugadoresError;
 import org.junit.jupiter.api.Test;
-
+import edu.fiuba.algo3.modelo.fases.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FaseInicioTest {
