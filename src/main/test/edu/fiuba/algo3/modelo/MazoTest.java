@@ -20,7 +20,7 @@ public class MazoTest {
         .collect(Collectors.toList());
     @Test
     public void test01MazoDePaises() {
-        Mazo mazo = new Mazo(paises);
+        Canje mazo = new Canje(paises);
         Pais eeuu = paises.stream()
             .filter(p -> p.obtenerNombre() == "Estados Unidos")
             .findAny()

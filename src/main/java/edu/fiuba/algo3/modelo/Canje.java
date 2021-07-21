@@ -3,9 +3,9 @@ package edu.fiuba.algo3.modelo;
 import java.util.*;
 import java.util.stream.*;
 
-public class Mazo {
+public class Canje {
     LinkedList<Tarjeta> tarjetas = new LinkedList<Tarjeta>();
-    public Mazo(List<Pais> paises) {
+    public Canje(List<Pais> paises) {
         tarjetas.addAll(
             paises.stream()
                 .map(p -> new Tarjeta(p))
