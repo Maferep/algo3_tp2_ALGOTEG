@@ -30,4 +30,19 @@ public class MapaFachadaTest {
         assertTrue(adyacentes.contains(mapa.obtenerPais("Alemania")));
         assertTrue(adyacentes.contains(mapa.obtenerPais("Francia")));
     }
+
+    @Test
+    public void test03PaisTieneAdyacentes() {
+        MapaFachada mapa = new MapaFachada();
+        List<Pais> paises = mapa.inicializarMapa();
+        assertFalse(paises.isEmpty());
+
+        //codigo rompe porque no hay un pais con este nombre
+        Pais italia = paises
+            .stream()
+            .filter(p -> (p.obtenerNombre() == "Italia"))
+            .findAny()
+            .get();
+    }
+
 }
