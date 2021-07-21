@@ -7,12 +7,14 @@ import java.util.ArrayList;
 public class Jugador {
 	String color;
 	List<Pais> paises;
+	List<Tarjeta> tarjetas;
 	int ejercitos;
 	int numeroDeTurno;
 
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
 		paises = new ArrayList<Pais>();
+		tarjetas = new ArrayList<Tarjeta>();
 		ejercitos = 0;
 	}
 
@@ -66,6 +68,7 @@ public class Jugador {
 	}
 
 	public void agregarTarjetaAleatoria() {
+		
 	}
 
 }
