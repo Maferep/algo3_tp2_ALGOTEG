@@ -28,11 +28,11 @@ public class FaseInicio implements IFase, IFaseInicio {
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
 
-    public FaseInicio(int cantJugadores) throws Exception {
+    public FaseInicio(int cantJugadores, IJugador tipoJugador) throws Exception {
         if (!validarCantidad(cantJugadores))
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
-        turno = builder.crearTurno(cantJugadores);
+        turno = builder.crearTurno(cantJugadores, tipoJugador);
     }
 
     // interfaz de inicio
@@ -41,24 +41,10 @@ public class FaseInicio implements IFase, IFaseInicio {
         return turno.cantidadDeJugadores();
     }
 
-    //se va a tener que leer el archivo de paises e ir cargandose en la lista en la etapa inicial.
-
-    public void asignarPaisesAleatoriamenteAJugadores() {
-        for(int i = 0; i < paises.size(); i++){
-            (turno.jugadorActual()).asignarPais(paises.get(i % paises.size()));
-            turno.siguienteJugador();
-        }
-    }
-
-    public void asignarEjercitosAJugadores() throws EjercitosException {
-        for(int i = 0 ; i < cantidadDeJugadores() ; i++ ) {
-            (turno.jugadorActual()).agregarEjercitos(cantidadEjercitos);
-            turno.siguienteJugador();
-        }
-    }
-
-    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
-        //al 'terminar de ubicar' la etapa inicial se considera completada
+    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) throws FichasInsuficientesError, PaisNoExistenteError {
+        turno.jugadorActual().verificarCantidadDeEjercitos(cantEjercitos);
+        turno.jugadorActual().verificarPais(pais);
+        pais.agregarEjercitos(cantEjercitos);
         estrategia = estrategia.actualizar();
     }
 

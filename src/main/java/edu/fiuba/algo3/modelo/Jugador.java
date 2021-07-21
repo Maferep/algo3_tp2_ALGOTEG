@@ -83,6 +83,25 @@ public class Jugador {
 		paises.add(pais);
 	}
 
+	public void quitarPais(Pais pais) {
+		paises.remove(pais);
+	}
+
+	public boolean verificarPais(Pais pais) throws PaisNoExistenteError {
+		for(int i = 0 ; i < paises.size() ; i++) {
+			if(paises.get(i).nombre.equals(pais.nombre)) {
+				return true;
+			}
+		}
+		throw new PaisNoExistenteError("El jugador no es conquistador del pais " + pais.nombre);
+	}
+
+	public void verificarCantidadDeEjercitos(int cantEjercitos) throws FichasInsuficientesError{
+		if(cantEjercitos > this.cantidadEjercitos()) {
+			throw new FichasInsuficientesError("No tienes esa cantidad de fichas para colocar en el pais");
+		}
+	}
+
 	public boolean verificarConquista(Continente continente) {
 		return this.continente.verificarConquista(continente);
 	}

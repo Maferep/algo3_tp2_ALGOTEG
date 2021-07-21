@@ -30,6 +30,7 @@ public class Pais {
 
 	public void asignarConquistador(Jugador conquistador) {
 		this.conquistador = conquistador;
+		conquistador.asignarPais(this);
 		conquistador.continente.agregarPais();
 	}
 

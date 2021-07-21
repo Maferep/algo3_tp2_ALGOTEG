@@ -5,10 +5,10 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 
 public class TurnoFactory {
-
-    JugadorFactory builder = new JugadorFactory();
+    IJugador builder;
     List<String> colores =  Arrays.asList(
         "Azul", 
         "Rojo", 
@@ -17,7 +17,8 @@ public class TurnoFactory {
         "Rosa", 
         "Negro");
 
-    public Turno crearTurno(int cantJugadores) throws EjercitosException {
+    public Turno crearTurno(int cantJugadores, IJugador tipoJugador) throws EjercitosException {
+        builder = tipoJugador;
         return new Turno(
             builder.construirJugadores(colores, cantJugadores)
         );
