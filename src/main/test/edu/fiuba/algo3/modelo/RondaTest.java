@@ -48,38 +48,36 @@ public class RondaTest {
     
     //Juego de una ronda con 2 jugadores. 
     //En esta ronda no se deben atacar pero sí colocar nuevos ejércitos.
-    @Test
-    public void test03RondaDeDosJugadoresSinAtaques() throws Exception {
-        // fase inicial
-        JugadorFactoryMock tipoDeJugador = new JugadorFactoryMock();
-        IFase fase = juegoBuilder.crearJuegoTEG(2, tipoDeJugador);
-        assertFalse(fase.faseCompletada());
-        // aca debo asignar los paises a los jugadores: etapa inicio.
-                    fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("Estados Unidos"));
-                    fase.asFaseInicio().ubicarEjercitosEnPais(5, new Pais("Estados Unidos"));
-        assertTrue(fase.faseCompletada());
-        fase = fase.siguienteFase();
+  /*      @Test
+        public void test00RondaDeDosJugadoresSinAtaques() throws Exception {
+            // fase inicial
+            JugadorFactoryMock tipoDeJugador = new JugadorFactoryMock();
+            IFase fase = juegoBuilder.crearJuegoTEG(2, tipoDeJugador);
+            assertFalse(fase.faseCompletada());
 
-        // fase juego : atacar (sin conquista);
-        fase = fase.siguienteFase();
+            Pais pais = new Pais("Estados Unidos");
+            fase.asFaseInicio().ubicarEjercitosEnPais(3, pais);
+            fase.asFaseInicio().ubicarEjercitosEnPais(5, pais);
+            assertTrue(fase.faseCompletada());
+            fase = fase.siguienteFase();
 
-        // fase juego : reagrupar
-        fase.asFaseReagrupar().reagrupar();
-        assertTrue(fase.faseCompletada());
-        fase = fase.siguienteFase();
+            // fase juego : atacar
+            fase.asFaseAtacar().saltearAtaque();
+            assertTrue(fase.faseCompletada());
+            fase = fase.siguienteFase();
 
-        // fase juego : colocar
-        Pais pais = new Pais("EEUU");
-        fase.asFaseColocar().ubicarEjercitosEnPais(3, pais);
-        //TODO probar la excepcion tambien
-        assertTrue(fase.faseCompletada());
-        //assertEquals(fase.asFaseColocar().turno.jugadorActual().paises.size(), 3);
-        //assertEquals(fase.asFaseColocar().turno.jugadorActual().cantidadEjercitos(), 3);
+            // fase juego : reagrupar
+            fase.asFaseReagrupar().reagrupar();
+            assertTrue(fase.faseCompletada());
+            fase = fase.siguienteFase();
 
-        assertEquals(pais.cantidadEjercitos(), 3);
-        fase = fase.siguienteFase();
+            // fase juego : colocar
+            fase.asFaseColocar().ubicarEjercitosEnPais(3, pais);
+            assertTrue(fase.faseCompletada());
+            assertEquals(pais.cantidadEjercitos(), 11);
+            fase = fase.siguienteFase();
 
-        // comienzo a atacar devuelta
-        fase.asFaseAtacar().atacar(null, 0, null);
+            // comienzo a atacar devuelta
+            fase.asFaseAtacar().saltearAtaque();
+        }*/
     }
-}
