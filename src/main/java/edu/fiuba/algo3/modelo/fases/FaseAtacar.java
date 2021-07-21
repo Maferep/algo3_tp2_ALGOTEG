@@ -12,8 +12,8 @@ public class FaseAtacar extends FaseAbstracta {
     Canje canje;
     //No usa estrtegias pues puede terminar sin hacer nada
 
-    public FaseAtacar(ITurno turno2, List<Pais> paises, Canje canje) {
-        this.turno = turno2;
+    public FaseAtacar(ITurno turno, List<Pais> paises, Canje canje) {
+        this.turno = turno;
         this.paises = paises;
         this.canje = canje;
     }
