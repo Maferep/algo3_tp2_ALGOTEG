@@ -4,15 +4,19 @@ import java.util.*;
 import java.util.stream.*;
 
 public class Canje {
-    LinkedList<Tarjeta> tarjetas = new LinkedList<Tarjeta>();
+    LinkedList<Tarjeta> mazo = new LinkedList<Tarjeta>();
     public Canje(List<Pais> paises) {
-        tarjetas.addAll(
+        mazo.addAll(
             paises.stream()
                 .map(p -> new Tarjeta(p))
                 .collect(Collectors.toList())
         );
     }
     public Tarjeta obtenerTarjeta() {
-        return tarjetas.getFirst();
+        return mazo.getFirst();
+    }
+
+    public void insertarAlFondoDelMazo(Tarjeta tarjeta) {
+        mazo.add(tarjeta);
     }
 }
