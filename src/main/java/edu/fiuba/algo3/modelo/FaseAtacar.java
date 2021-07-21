@@ -7,8 +7,9 @@ import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 
 public class FaseAtacar implements IFase {
-    // cambiar por SistemaTurnos?
-    List<Jugador> jugadores;
+    List<Pais> paises;
+    Turno turno;
+    //No usa estrtegias pues puede terminar sin hacer nada
 
     public FaseAtacar(IFase faseAnterior) {
     }
@@ -31,9 +32,8 @@ public class FaseAtacar implements IFase {
         return true;
     }
 
-    public void atacar(Pais atacante, int cantidadDeSoldados, Pais defensor) {
-        // TODO Auto-generated method stub
-
+    public void atacar(Pais atacante, int cantidadDeSoldados, Pais defensor) throws Exception {
+        atacante.atacar(defensor, cantidadDeSoldados);
     }
 
     public FaseInicio asFaseInicio() throws FaseErroneaException {
