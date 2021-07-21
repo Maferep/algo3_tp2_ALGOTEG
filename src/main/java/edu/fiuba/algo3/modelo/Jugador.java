@@ -67,8 +67,8 @@ public class Jugador {
 		return numeroDeTurno;
 	}
 
-	public void agregarTarjetaAleatoria() {
-		
+	public void agregarTarjetaAleatoria(Tarjeta tarjeta) {
+		tarjetas.add(tarjeta);
 	}
 
 }
