@@ -7,22 +7,43 @@ import java.util.*;
 
 public class MapaFachada {
     private List<String> paisesParse;
+    private Dictionary<String, List<String>> adyacenciasParse;
+    private Dictionary<String, Pais> paisesDic;
+    public List<Pais> paises;
 
     public MapaFachada() {
         LectorPaises lectorPaises = new LectorPaises();
         paisesParse = lectorPaises.obtenerPaises();
+        adyacenciasParse = lectorPaises.obtenerAdyacencias();
+        paisesDic = new Hashtable<String, Pais>();
+        paises = new ArrayList<Pais>();
+
     }
 
     public List<Pais> inicializarMapa() {
-        Dictionary<String, Pais> dicAux = new Hashtable<String, Pais>();
-        List<Pais> paises = new ArrayList<Pais>();
+        this.inicializarPaises();
+        this.agregarAdyacencias();
+        return paises;
+    }
 
+    public Pais obtenerPais(String pais) {
+        return paisesDic.get(pais);
+    }
+
+    private void inicializarPaises() {
         for (int i = 0; i < paisesParse.size(); i++) {
             Pais nuevoPais = new Pais(paisesParse.get(i));
             paises.add(nuevoPais);
-            dicAux.put(paisesParse.get(i), nuevoPais);
+            paisesDic.put(paisesParse.get(i), nuevoPais);
         }
+    }
 
-        return paises;
+    private void agregarAdyacencias() {
+        for (int j = 0; j < paises.size(); j++) {
+            int finalJ = j;
+            this.adyacenciasParse.get(paises.get(j).obtenerNombre()).forEach(
+                    pais -> paises.get(finalJ).agregarAdyacente(paisesDic.get(pais))
+            );
+        }
     }
 }

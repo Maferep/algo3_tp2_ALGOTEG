@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -17,4 +16,5 @@ public class MapaTest {
         // faltan paises en json, debería haber 55
         assertEquals(50, paises.size());
     }
+
 }

@@ -48,4 +48,6 @@ public class Pais {
 	}
 
 	public void agregarAdyacente(Pais pais) { adyacentes.add(pais); }
+
+	public List<Pais> obtenerAdyacentes() { return adyacentes; }
 }
