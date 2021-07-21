@@ -16,7 +16,6 @@ public class FaseAtacar implements IFase {
 
     @Override
     public Boolean faseCompletada() {
-        // TODO Auto-generated method stub
         return true;
     }
 
