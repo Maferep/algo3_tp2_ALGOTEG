@@ -82,7 +82,7 @@ public class FaseInicio implements IFase, IFaseInicio {
     }
 
     @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
+    public FaseReagruparConConquista asFaseReagrupar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 

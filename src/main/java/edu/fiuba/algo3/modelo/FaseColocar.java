@@ -57,7 +57,7 @@ public class FaseColocar implements IFase {
     }
 
     @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
+    public FaseReagruparConConquista asFaseReagrupar() throws FaseErroneaException {
         // TODO Auto-generated method stub
         return null;
     }

@@ -65,4 +65,7 @@ public class Jugador {
 		return numeroDeTurno;
 	}
 
+	public void agregarTarjetaAleatoria() {
+	}
+
 }

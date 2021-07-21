@@ -23,7 +23,7 @@ public class FaseAtacar implements IFase {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return new FaseReagrupar(turno, paises);
+        return new FaseReagruparConConquista(turno, paises);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class FaseAtacar implements IFase {
     }
 
     @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
+    public FaseReagruparConConquista asFaseReagrupar() throws FaseErroneaException {
         throw new FaseErroneaException("Estamos en fase atacar");
     }
 

@@ -17,5 +17,5 @@ public interface IFase {
 
 	FaseColocar asFaseColocar() throws FaseErroneaException;
 
-	FaseReagrupar asFaseReagrupar() throws FaseErroneaException;
+	FaseReagruparConConquista asFaseReagrupar() throws FaseErroneaException;
 }
