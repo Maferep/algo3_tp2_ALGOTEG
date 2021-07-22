@@ -24,7 +24,7 @@ public class PaisFactory {
     public List<IPais> inicializarMapa() {
         this.inicializarPaises();
         this.agregarAdyacencias();
-        return paises;
+        return Collections.list(paisesDic.elements());
     }
 
     @Deprecated
