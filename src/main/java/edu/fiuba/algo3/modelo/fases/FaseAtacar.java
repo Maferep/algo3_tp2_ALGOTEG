@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class FaseAtacar extends FaseAbstracta {
+    IEstrategiaFase estrategia = new EstrategiaAtaqueSinConquista();
     List<Pais> paises;
     ITurno turno;
     Canje canje;
@@ -25,7 +26,7 @@ public class FaseAtacar extends FaseAbstracta {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return new FaseReagrupar(turno, paises, canje);
+        return estrategia.siguienteFase(turno, paises, canje);
     }
 
     @Override
@@ -35,7 +36,10 @@ public class FaseAtacar extends FaseAbstracta {
 
     public void atacar(Pais atacante, int cantidadDeSoldados, Pais defensor) throws Exception {
         //TODO: validar existencia de paises y turno correcto
+        
         atacante.atacar(defensor, cantidadDeSoldados);
+        if(defensor.obtenerConquistador() == atacante.obtenerConquistador())
+            estrategia = estrategia.actualizar();
     }
 
     @Override
