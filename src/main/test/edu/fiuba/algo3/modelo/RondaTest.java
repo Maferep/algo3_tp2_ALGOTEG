@@ -67,55 +67,9 @@ public class RondaTest {
         IFase fase = new FaseInicio(unJugador);
         assertFalse(fase.faseCompletada());
 
-        IPais pais = new Pais("Francia");
-        pais.agregarEjercitos(3);
-        IPais pais2 = new Pais("Alemania");
-        pais2.agregarEjercitos(3);
-
-        fase.asFaseInicio().ubicarEjercitosEnPais(3, pais);
+        fase.asFaseInicio().ubicarEjercitosEnPais(3, paisesJugadorDos.get(0));
         assertTrue(fase.faseCompletada());
         fase = fase.siguienteFase();
-
-        fase.asFaseAtacar().atacar(pais, 1, pais2);
-        assertTrue(fase.faseCompletada());
-        fase = fase.siguienteFase();
-    }
-
-    // Juego de una ronda con 2 jugadores.
-    // En esta ronda no se deben atacar pero sí colocar nuevos ejércitos.
-    @Test
-    public void test03RondaDeDosJugadoresSinAtaques() throws Exception {
-        // fase inicial
-        IFase fase = juegoBuilder.crearJuegoTEG(2);
-        assertFalse(fase.faseCompletada());
-        // aca debo asignar los paises a los jugadores: etapa inicio.
-        fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("Estados Unidos"));
-        fase.asFaseInicio().ubicarEjercitosEnPais(5, new Pais("Estados Unidos"));
-        assertTrue(fase.faseCompletada());
-        fase = fase.siguienteFase();
-
-        // fase juego : atacar (sin conquista);
-        fase = fase.siguienteFase();
-
-        // fase juego : reagrupar
-        fase.asFaseReagrupar().reagrupar();
-        assertTrue(fase.faseCompletada());
-        fase = fase.siguienteFase();
-
-        // fase juego : colocar
-        IPais pais = new Pais("EEUU");
-        fase.asFaseColocar().ubicarEjercitosEnPais(3, pais);
-        // TODO probar la excepcion tambien
-        assertTrue(fase.faseCompletada());
-        // assertEquals(fase.asFaseColocar().turno.jugadorActual().paises.size(), 3);
-        // assertEquals(fase.asFaseColocar().turno.jugadorActual().cantidadEjercitos(),
-        // 3);
-
-        assertEquals(pais.cantidadEjercitos(), 3);
-        fase = fase.siguienteFase();
-
-        // comienzo a atacar devuelta
-        fase.asFaseAtacar().atacar(null, 0, null);
     }
 
     @Test
