@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IJugador {
 
-    Continente continente = null;
+    public Continente continente = new Continente();
 
 	void quitarPais(IPais pais);
 

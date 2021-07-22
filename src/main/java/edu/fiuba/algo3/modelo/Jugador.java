@@ -13,7 +13,7 @@ public class Jugador implements IJugador {
 	public List<IPais> paises;
 	List<Tarjeta> tarjetas;
 	int ejercitos;
-	Continente continente = new Continente();
+	public Continente continente = new Continente();
 
 	static int minimoPaises = 30;
 
@@ -46,11 +46,14 @@ public class Jugador implements IJugador {
 		return ejercitos;
 	}
 
+	@Override
 	public void agregarEjercitos(int cantidad) throws EjercitosException {
 		if(cantidad <= 0)
 			throw new EjercitosException(null);
 		ejercitos += cantidad;
 	}
+
+	@Override
 	public void agregarNuevosEjercitos(int cantidad) throws EjercitosException {
 		this.ejercitos = 0;
 		if(cantidad <= 0) throw new EjercitosException(null);
