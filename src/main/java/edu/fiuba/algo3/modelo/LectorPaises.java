@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 import org.json.simple.JSONArray;

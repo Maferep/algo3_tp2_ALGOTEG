@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Mocks;
 
-import edu.fiuba.algo3.modelo.Interfaces.IDadosUsados;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 
 public class DadosUsadosMock implements IDadosUsados {
     int cantidadVictorias;

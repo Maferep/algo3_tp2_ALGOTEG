@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.modelo;
-
 import java.util.List;
 
 public class Continente {
@@ -17,4 +16,3 @@ public class Continente {
         } return true;
     }
 
-}

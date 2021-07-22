@@ -2,8 +2,10 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.Interfaces.IPais;
+
 public class Mapa {
-    public List<Pais> paises;
+    public List<IPais> paises;
     private Continente asia;
     private Continente americaSur;
     private Continente americaNorte;
@@ -12,11 +14,11 @@ public class Mapa {
     private Continente oceania;
 
     public Mapa() {
-        MapaFachada fachada = new MapaFachada();
+        PaisFactory fachada = new PaisFactory();
         paises = fachada.inicializarMapa();
     }
 
-    public List<Pais> obtenerPaises() {
+    public List<IPais> obtenerPaises() {
         return paises;
     }
 

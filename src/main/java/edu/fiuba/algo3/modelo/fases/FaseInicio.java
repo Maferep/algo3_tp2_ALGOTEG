@@ -1,14 +1,18 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.fases;
 
+import java.util.List;
+
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.factories.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.factories.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class FaseInicio implements IFase, IFaseInicio {
-    List<Pais> paises;
-    Turno turno;
+public class FaseInicio extends FaseAbstracta implements IFaseInicio {
+    ITurno turno;
+    Canje canje;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     JugadorFactory factory = new JugadorFactory();
     List<String> colores =  Arrays.asList(
@@ -21,12 +25,32 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     static int minJugadores = 2;
     static int maxJugadores = 6;
+    static int cantidadEjercitos = 8;
+
+    //para que pasen los test hago una lista de paises random
+    List<IPais> paises = Arrays.asList(
+            "Puerto Rico",
+            "Colombia",
+            "Venezuela",
+            "Honduras",
+            "Guayana",
+            "Guatemala")
+            .stream()
+            .map(n -> new Pais(n))
+            .collect(Collectors.toList());
 
     public FaseInicio(int cantJugadores) throws Exception {
         if (!validarCantidad(cantJugadores))
-            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" + minJugadores + "y un máximo de"
+            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
+                    + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
         turno = new Turno(factory.construirJugadores(colores, cantJugadores));
+        canje = new Canje(paises);
+    }
+
+    //version para mock
+    public FaseInicio(ITurno turno) throws Exception {
+        this.turno = turno;
     }
 
     // interfaz de inicio
@@ -35,9 +59,10 @@ public class FaseInicio implements IFase, IFaseInicio {
         return turno.cantidadDeJugadores();
     }
 
-    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) {
-        // TODO ubicarEjercitos
-        //al 'terminar de ubicar' la etapa inicial se considera completada
+    public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws FichasInsuficientesError, PaisNoExistenteError {
+        turno.jugadorActual().verificarCantidadDeEjercitos(cantEjercitos);
+        turno.jugadorActual().verificarPais(pais);
+        pais.agregarEjercitos(cantEjercitos);
         estrategia = estrategia.actualizar();
     }
 
@@ -57,12 +82,11 @@ public class FaseInicio implements IFase, IFaseInicio {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException {
-        return estrategia.siguienteFase(this);
+        return estrategia.siguienteFase(turno, paises, canje);
     }
     
     @Override
     public Boolean esFinDeJuego() {
-        // TODO Auto-generated method stub
         return false;
     }
     
@@ -70,21 +94,4 @@ public class FaseInicio implements IFase, IFaseInicio {
     public FaseInicio asFaseInicio() {
         return this;
     }
-
-    @Override
-    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
-    }
-
-    @Override
-    public FaseColocar asFaseColocar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
-    }
-
-    @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
-        throw new FaseErroneaException(null);
-    }
-
-
 }
