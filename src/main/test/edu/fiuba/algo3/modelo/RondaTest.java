@@ -2,19 +2,34 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.factories.*;
-import edu.fiuba.algo3.modelo.fases.FaseAtacar;
-
+import edu.fiuba.algo3.modelo.fases.*;
 import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.Mocks.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
-public class RondaTest {
+import static org.junit.jupiter.api.Assertions.*;
 
+public class RondaTest {
+    List<IPais> paisesJugadorUno = Arrays.asList(
+            "Estados Unidos",
+            "Canadá",
+            "Brasil",
+            "Italia")
+            .stream()
+            .map(n -> new Pais(n))
+            .collect(Collectors.toList());
+    List<IPais> paisesJugadorDos = Arrays.asList(
+            "Alemania",
+            "Inglaterra",
+            "Argentina",
+            "Francia")
+            .stream()
+            .map(n -> new Pais(n))
+            .collect(Collectors.toList());
     JuegoFactory juegoBuilder = new JuegoFactory();
     JugadorFactory tipoDeJugador = new JugadorFactory();
     List<IPais> paises = Arrays
@@ -37,18 +52,19 @@ public class RondaTest {
 
     @Test
     public void test01agregarEjercitos() throws Exception {
-        // internamente, asigna paises y objetivos a 4 colores
-        IFase fase = juegoBuilder.crearJuegoTEG(4);
+        ITurno unJugador = new TurnoMockUnJugador(paisesJugadorUno);
+        FaseInicio fase = new FaseInicio(unJugador);
         assertFalse(fase.faseCompletada());
-        fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("EEUU"));
-        fase.asFaseInicio().ubicarEjercitosEnPais(5, new Pais("EEUU"));
+        fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("Estados Unidos"));
+        fase.asFaseInicio().ubicarEjercitosEnPais(5, new Pais("Estados Unidos"));
         assertTrue(fase.faseCompletada());
     }
 
     @Test
     public void test02PasarPorEtapasDistintas() throws Exception {
-        // genera una etapa de inicio en estado 'finalizado' de ejemplo
-        IFase fase = juegoBuilder.crearJuegoTEG(4);
+        //genera una etapa de inicio en estado 'finalizado' de ejemplo
+        ITurno unJugador = new TurnoMockUnJugador(paisesJugadorDos);
+        IFase fase = new FaseInicio(unJugador);
         assertFalse(fase.faseCompletada());
 
         IPais pais = new Pais("Francia");
