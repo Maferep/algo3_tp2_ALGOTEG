@@ -21,6 +21,8 @@ public interface IJugador {
 
 	void agregarTarjetaAleatoria(Tarjeta obtenerTarjeta);
 
+	int cantidadTarjetas();
+
 	void verificarCantidadDeEjercitos(int cantEjercitos) throws FichasInsuficientesError;
 
 	void verificarPais(IPais pais) throws PaisNoExistenteError;

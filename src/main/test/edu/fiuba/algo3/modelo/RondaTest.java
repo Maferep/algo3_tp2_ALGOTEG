@@ -10,10 +10,25 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class RondaTest {
 
     JuegoFactory juegoBuilder = new JuegoFactory();
     JugadorFactory tipoDeJugador = new JugadorFactory();
+    List<IPais> paises = Arrays
+            .asList(
+            "Estados Unidos",
+            "Canadá", 
+            "Brasil", 
+            "Bolivia",
+            "Colombia",
+            "Chile",
+            "Ecuador")
+            .stream()
+            .map(n -> new Pais(n))
+            .collect(Collectors.toList());
 
     @Test
     public void test00AgregarJugadores() throws Exception {
@@ -89,10 +104,15 @@ public class RondaTest {
 
     @Test
     public void test04ConquistaCausaAsignacionDeTarjeta() throws FaseErroneaException, Exception {
-        IFase fase = new FaseAtacar(new TurnoMockUnJugador(null), null, null);
-        IPais mockAtacante = new PaisMock("Rojo");
+        ITurno t = new TurnoMockUnJugador(null);
+        IFase fase = new FaseAtacar(t, paises, new Canje(paises));
+        IPais mockAtacanteSiempreGana = new PaisMock("Rojo");
         IPais mockDefensor = new PaisMock("Azul");
-        fase.asFaseAtacar().atacar(null, 3, null);
+
+        assertEquals(0, t.jugadorActual().cantidadTarjetas());
+        fase.asFaseAtacar().atacar(mockAtacanteSiempreGana, 3, mockDefensor);
         fase = fase.siguienteFase();
+        assertEquals(1, t.jugadorActual().cantidadTarjetas());
+
     }
 }

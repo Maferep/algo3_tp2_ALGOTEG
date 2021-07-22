@@ -6,11 +6,11 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 
 public class PaisMock implements IPais {
-    private String color;
+    private String nombre;
     private IJugador conquistador;
 
-    public PaisMock(String color) {
-        this.color = color;
+    public PaisMock(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override
@@ -33,8 +33,7 @@ public class PaisMock implements IPais {
 
     @Override
     public String obtenerNombre() {
-        // TODO Auto-generated method stub
-        return null;
+        return nombre;
     }
 
     @Override
@@ -73,6 +72,7 @@ public class PaisMock implements IPais {
         return null;
     }
 
+    //Este pais SIEMPRE GANA un ataque.
     @Override
     public void atacar(IPais defensor, int cantidadDeSoldados) throws Exception {
         defensor.asignarConquistador(this.conquistador);

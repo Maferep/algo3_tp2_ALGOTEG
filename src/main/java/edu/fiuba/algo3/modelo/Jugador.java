@@ -93,4 +93,9 @@ public class Jugador implements IJugador {
 		tarjetas.add(tarjeta);
 	}
 
+	@Override
+	public int cantidadTarjetas() {
+		return tarjetas.size();
+	}
+
 }
