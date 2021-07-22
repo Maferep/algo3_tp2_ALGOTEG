@@ -1,18 +1,20 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
+
+import edu.fiuba.algo3.modelo.Interfaces.IPais;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ConquistaTest {
 
     @Test
     public void test00JugadorConquistaPais() {
-        Jugador jugador = new Jugador("Valen");
-        Pais argentina = new Pais("Argentina");
-        Conquista conquista = new Conquista();
+        Jugador jugador = new Jugador("Rosa");
+        IPais argentina = new Pais("Argentina");
 
-        conquista.conquistar(jugador, argentina);
+        argentina.definirConquistador(jugador);
 
-        assertEquals(argentina.obtenerConquistador().obtenerNombre(), "Valen");
+        assertEquals(argentina.obtenerConquistador().obtenerColor(), "Rosa");
     }
 }

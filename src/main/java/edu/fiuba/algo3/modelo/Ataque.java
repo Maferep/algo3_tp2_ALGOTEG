@@ -3,36 +3,36 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
 
 public class Ataque implements IAtaque{
-        ITiroDeDados dadosAtacante;
-        ITiroDeDados dadosDefensor;
+        IDadosUsados dadosAtacante;
+        IDadosUsados dadosDefensor;
 
-        Pais atacante;
-        Pais defensor;
+        IPais atacante;
+        IPais defensor;
 
         static int maxDados = 3;
 
-        public Ataque(Pais atacante, Pais defensor, int cantEjercitos) throws Exception {
+        public Ataque(IPais atacante, IPais defensor, int cantEjercitos) throws Exception {
                 this.atacante = atacante;
                 this.defensor = defensor;
 
-                if(atacante.ejercitos <= cantEjercitos 
+                if(atacante.cantidadEjercitos() <= cantEjercitos 
                 || cantEjercitos > maxDados)
-                        throw new FichasInsuficientesError("El jugador sólo puede atacar con" + (atacante.ejercitos - 1) + "ejércitos.");
+                        throw new FichasInsuficientesError("El jugador sólo puede atacar con" + (atacante.cantidadEjercitos() - 1) + "ejércitos.");
 
                 asignarDados(
-                        new TiroDeDados(cantEjercitos),
-                        new TiroDeDados(Math.min(defensor.ejercitos, maxDados))
+                        new DadosUsados(cantEjercitos),
+                        new DadosUsados(Math.min(defensor.cantidadEjercitos(), maxDados))
                 );
         }
 
-        public Ataque(Pais atacante, Pais defensor, ITiroDeDados dado) throws Exception{
+        public Ataque(IPais atacante, IPais defensor, IDadosUsados dado) throws Exception{
                 this.atacante = atacante;
                 this.defensor = defensor;
 
                 asignarDados(dado, dado);
         }
 
-        private void asignarDados(ITiroDeDados dadosAtacante, ITiroDeDados dadosDefensor) throws Exception {
+        private void asignarDados(IDadosUsados dadosAtacante, IDadosUsados dadosDefensor) throws Exception {
                 if(dadosAtacante.cantidadDados() > maxDados || dadosAtacante.cantidadDados() > maxDados)
                         throw new Exception("no puedes tirar más de" + maxDados + "dados");
                 this.dadosAtacante = dadosAtacante;
@@ -47,9 +47,7 @@ public class Ataque implements IAtaque{
                 atacante.quitarEjercitos(cantDerrotas);
                 defensor.quitarEjercitos(cantVictorias);
                 
-                if (cantVictorias >= defensor.ejercitos) {
-                        Conquista conquista = new Conquista();
-                        conquista.conquistar(atacante.obtenerConquistador(), defensor);
-                }
+                if (cantVictorias >= defensor.cantidadEjercitos()) 
+                        atacante.conquistar(defensor);
         }
 }
