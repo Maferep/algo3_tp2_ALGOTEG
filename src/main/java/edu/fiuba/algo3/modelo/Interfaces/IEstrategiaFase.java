@@ -10,5 +10,5 @@ public interface IEstrategiaFase {
 
 	public Boolean faseCompletada();
 
-	public IFase siguienteFase(ITurno turno, List<Pais> paises, Canje canje) throws FaseIncompletaException;
+	public IFase siguienteFase(ITurno turno, List<IPais> paises, Canje canje) throws FaseIncompletaException;
 }

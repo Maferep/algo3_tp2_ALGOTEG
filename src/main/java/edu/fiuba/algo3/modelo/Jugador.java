@@ -1,14 +1,16 @@
 package edu.fiuba.algo3.modelo;
+
+import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class Jugador {
+public class Jugador implements IJugador {
 
 	String color;
 	//TODO: smell de atributo publico
-	public List<Pais> paises;
+	public List<IPais> paises;
 	List<Tarjeta> tarjetas;
 	int ejercitos;
 	Continente continente = new Continente();
@@ -17,15 +19,15 @@ public class Jugador {
 
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
-		paises = new ArrayList<Pais>();
+		paises = new ArrayList<IPais>();
 		tarjetas = new ArrayList<Tarjeta>();
 		ejercitos = 0;
 	}
 
 	//TODO programacion estructurada
-	public boolean conquistaPaises(Jugador conquistador,List<Pais> paises) {
+	public boolean conquistaPaises(IJugador conquistador,List<IPais> paises) {
 		for (int i = 0; i < paises.size(); i++) {
-			if(!paises.get(i).conquistador.color.equals(conquistador.color)) {
+			if(!paises.get(i).conquistador.obtenerColor().equals(conquistador.obtenerColor())) {
 				return false;
 			}
 		}
@@ -36,7 +38,7 @@ public class Jugador {
 		return color;
 	}
 
-	public List<Pais> obtenerPaises() {
+	public List<IPais> obtenerPaises() {
 		return this.paises;
 	}
 
@@ -61,21 +63,21 @@ public class Jugador {
 		}
 	}
 
-	public void asignarPais(Pais pais) {
+	public void asignarPais(IPais pais) {
 		paises.add(pais);
 	}
 
-	public void quitarPais(Pais pais) {
+	public void quitarPais(IPais pais) {
 		paises.remove(pais);
 	}
 
-	public boolean verificarPais(Pais pais) throws PaisNoExistenteError {
+	public void verificarPais(IPais pais) throws PaisNoExistenteError {
 		for(int i = 0 ; i < paises.size() ; i++) {
-			if(paises.get(i).nombre.equals(pais.nombre)) {
-				return true;
+			if( paises.get(i).obtenerNombre().equals(pais.obtenerNombre())) {
+				return;
 			}
 		}
-		throw new PaisNoExistenteError("El jugador no es conquistador del pais " + pais.nombre);
+		throw new PaisNoExistenteError("El jugador no es conquistador del pais " + pais.obtenerNombre());
 	}
 
 	public void verificarCantidadDeEjercitos(int cantEjercitos) throws FichasInsuficientesError{

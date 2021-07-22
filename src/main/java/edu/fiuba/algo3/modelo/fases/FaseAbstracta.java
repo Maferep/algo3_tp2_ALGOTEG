@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 public abstract class FaseAbstracta implements IFase {
-    List<Pais> paises;
+    List<IPais> paises;
     ITurno turno;
     Canje canje;
     

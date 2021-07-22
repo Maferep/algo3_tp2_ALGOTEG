@@ -13,10 +13,10 @@ public class Juego {
 
     public Juego(int cantidadDeJugadores, IJugador tipoJugador) throws Exception {
         builder = new JuegoFactory();
-        faseActual = builder.crearJuegoTEG(3, tipoJugador);
+        faseActual = builder.crearJuegoTEG(3);
     }
 
-    public void atacar(Pais atacante, int cantSoldados, Pais defensor) 
+    public void atacar(IPais atacante, int cantSoldados, IPais defensor) 
         throws Exception {
         faseActual.asFaseAtacar().atacar(atacante, cantSoldados, defensor);
     }
@@ -26,7 +26,7 @@ public class Juego {
         return faseActual.asFaseInicio().cantidadDeJugadores();
     }
 
-    public void completarEtapaInicio(int cantEjercitos, Pais pais) throws FaseErroneaException, EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
+    public void completarEtapaInicio(int cantEjercitos, IPais pais) throws FaseErroneaException, EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
         faseActual.asFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
     }
 

@@ -9,10 +9,10 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public class FaseColocar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     ITurno turno;
-    List<Pais> paises;
+    List<IPais> paises;
     Canje canje;
 
-    public FaseColocar(ITurno turno2, List<Pais> paises, Canje canje) {
+    public FaseColocar(ITurno turno2, List<IPais> paises, Canje canje) {
         this.turno = turno2;
         this.paises = paises;
         this.canje = canje;
@@ -21,13 +21,13 @@ public class FaseColocar extends FaseAbstracta {
 	public void asignarNuevosEjercitosAJugadores() throws EjercitosException {
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++ ) {
             //TODO: accede a paises del jugador directamente, puede que viole tda
-            (turno.jugadorActual()).agregarNuevosEjercitos(((turno.jugadorActual().paises.size())/2));
+            (turno.jugadorActual()).agregarNuevosEjercitos(((turno.jugadorActual().obtenerPaises().size())/2));
             turno.siguienteJugador();
         }
         turno.siguienteJugador();
     }
 
-    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
+    public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
         asignarNuevosEjercitosAJugadores();
         turno.jugadorActual().verificarCantidadDeEjercitos(cantEjercitos);
         turno.jugadorActual().verificarPais(pais);

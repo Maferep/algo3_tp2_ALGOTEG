@@ -18,7 +18,7 @@ public class EstrategiaReagruparCompletado implements IEstrategiaFase {
     }
 
     @Override
-    public IFase siguienteFase(ITurno turno, List<Pais> paises, Canje canje) throws FaseIncompletaException {
+    public IFase siguienteFase(ITurno turno, List<IPais> paises, Canje canje) throws FaseIncompletaException {
         return new FaseColocar(turno, paises, canje);
     }
 }

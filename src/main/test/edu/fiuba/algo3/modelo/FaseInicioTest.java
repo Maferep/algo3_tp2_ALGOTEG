@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Interfaces.ITurno;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.Mocks.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.factories.*;
@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class FaseInicioTest {
-    List<Pais> paises = Arrays.asList(
+    List<IPais> paises = Arrays.asList(
         "Estados Unidos",
         "Canadá", 
         "Brasil", 

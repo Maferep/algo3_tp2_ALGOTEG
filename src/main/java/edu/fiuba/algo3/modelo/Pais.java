@@ -4,17 +4,17 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pais {
+public class Pais implements IPais {
     String nombre;
     int ejercitos;
-    Jugador conquistador;
-    List<Pais> adyacentes;
+    IJugador conquistador;
+    List<IPais> adyacentes;
     Continente continente;
 
 	public Pais(String n) {
 		this.nombre = n;
 		this.ejercitos = 0;
-		adyacentes = new ArrayList<Pais>();
+		adyacentes = new ArrayList<IPais>();
 	}
 
 	public String obtenerNombre() {
@@ -33,7 +33,7 @@ public class Pais {
 		ejercitos -= cantidadEjercitos;
 	}
 
-	public void asignarConquistador(Jugador conquistador) {
+	public void asignarConquistador(IJugador conquistador) {
 		this.conquistador = conquistador;
 		conquistador.asignarPais(this);
 		conquistador.continente.agregarPais();
@@ -43,9 +43,9 @@ public class Pais {
 		continente = continenteAsignado;
 	}
 
-	public Jugador obtenerConquistador() { return this.conquistador; }
+	public IJugador obtenerConquistador() { return this.conquistador; }
 
-	public void atacar(Pais defensor, int numeroEjercitos) throws Exception {
+	public void atacar(IPais defensor, int numeroEjercitos) throws Exception {
 		IAtaque ataque = new Ataque(this, defensor, numeroEjercitos);
 		atacar(ataque);
 	}
@@ -54,7 +54,9 @@ public class Pais {
 		ataque.atacar();
 	}
 
-	public void agregarAdyacente(Pais pais) { adyacentes.add(pais); }
+	public void agregarAdyacente(IPais pais) { adyacentes.add(pais); }
 
-	public List<Pais> obtenerAdyacentes() { return adyacentes; }
+	public List<IPais> obtenerAdyacentes() {
+		return adyacentes;
+	}
 }

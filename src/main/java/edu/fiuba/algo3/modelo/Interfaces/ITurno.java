@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Jugador;
 
 public interface ITurno {
 
-    public Jugador jugadorActual() ;
+    public IJugador jugadorActual() ;
 
     public void siguienteJugador() ;
 

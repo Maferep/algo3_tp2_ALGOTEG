@@ -1,11 +1,12 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 
 public class Tarjeta {
-    Pais pais;
-    Tarjeta(Pais pais) {
+    IPais pais;
+    Tarjeta(IPais pais) {
         this.pais = pais;
     }
-	public Pais obtenerPais() {
+	public IPais obtenerPais() {
 		return pais;
 	}
 

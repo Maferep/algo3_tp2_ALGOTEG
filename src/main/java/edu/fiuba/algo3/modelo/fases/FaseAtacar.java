@@ -8,12 +8,12 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class FaseAtacar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaAtaqueSinConquista();
-    List<Pais> paises;
+    List<IPais> paises;
     ITurno turno;
     Canje canje;
     //No usa estrtegias pues puede terminar sin hacer nada
 
-    public FaseAtacar(ITurno turno, List<Pais> paises, Canje canje) {
+    public FaseAtacar(ITurno turno, List<IPais> paises, Canje canje) {
         this.turno = turno;
         this.paises = paises;
         this.canje = canje;
@@ -34,7 +34,7 @@ public class FaseAtacar extends FaseAbstracta {
         return false;
     }
 
-    public void atacar(Pais atacante, int cantidadDeSoldados, Pais defensor) throws Exception {
+    public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
         //TODO: validar existencia de paises y turno correcto
 
         atacante.atacar(defensor, cantidadDeSoldados);

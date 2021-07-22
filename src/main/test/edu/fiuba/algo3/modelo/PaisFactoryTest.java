@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -12,8 +12,8 @@ public class PaisFactoryTest {
         PaisFactory mapa = new PaisFactory();
         mapa.inicializarMapa();
 
-        Pais francia = mapa.obtenerPais("Francia");
-        Pais labrador = mapa.obtenerPais("Labrador");
+        IPais francia = mapa.obtenerPais("Francia");
+        IPais labrador = mapa.obtenerPais("Labrador");
 
         assertEquals("Francia", francia.obtenerNombre());
         assertEquals("Labrador", labrador.obtenerNombre());
@@ -24,8 +24,8 @@ public class PaisFactoryTest {
         PaisFactory mapa = new PaisFactory();
         mapa.inicializarMapa();
 
-        Pais italia = mapa.obtenerPais("Italia");
-        List<Pais> adyacentes = italia.obtenerAdyacentes();
+        IPais italia = mapa.obtenerPais("Italia");
+        List<IPais> adyacentes = italia.obtenerAdyacentes();
 
         assertTrue(adyacentes.contains(mapa.obtenerPais("Alemania")));
         assertTrue(adyacentes.contains(mapa.obtenerPais("Francia")));

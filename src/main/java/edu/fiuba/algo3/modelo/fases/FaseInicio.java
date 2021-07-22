@@ -28,7 +28,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     static int cantidadEjercitos = 8;
 
     //para que pasen los test hago una lista de paises random
-    List<Pais> paises = Arrays.asList(
+    List<IPais> paises = Arrays.asList(
             "Puerto Rico",
             "Colombia",
             "Venezuela",
@@ -59,7 +59,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         return turno.cantidadDeJugadores();
     }
 
-    public void ubicarEjercitosEnPais(int cantEjercitos, Pais pais) throws FichasInsuficientesError, PaisNoExistenteError {
+    public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws FichasInsuficientesError, PaisNoExistenteError {
         turno.jugadorActual().verificarCantidadDeEjercitos(cantEjercitos);
         turno.jugadorActual().verificarPais(pais);
         pais.agregarEjercitos(cantEjercitos);

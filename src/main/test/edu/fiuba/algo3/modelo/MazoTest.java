@@ -4,10 +4,13 @@ import java.util.*;
 import java.util.stream.*;
 
 import org.junit.Test;
+
+import edu.fiuba.algo3.modelo.Interfaces.*;
+
 import static org.junit.Assert.assertEquals;
 public class MazoTest {
 
-    List<Pais> paises = Arrays.asList(
+    List<IPais> paises = Arrays.asList(
             "Estados Unidos",
             "Canadá", 
             "Brasil", 
@@ -21,7 +24,7 @@ public class MazoTest {
     @Test
     public void test01MazoDePaises() {
         Canje mazo = new Canje(paises);
-        Pais eeuu = paises.stream()
+        IPais eeuu = paises.stream()
             .filter(p -> p.obtenerNombre() == "Estados Unidos")
             .findAny()
             .get();

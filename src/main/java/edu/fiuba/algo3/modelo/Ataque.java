@@ -6,12 +6,12 @@ public class Ataque implements IAtaque{
         IDadosUsados dadosAtacante;
         IDadosUsados dadosDefensor;
 
-        Pais atacante;
-        Pais defensor;
+        IPais atacante;
+        IPais defensor;
 
         static int maxDados = 3;
 
-        public Ataque(Pais atacante, Pais defensor, int cantEjercitos) throws Exception {
+        public Ataque(IPais atacante, IPais defensor, int cantEjercitos) throws Exception {
                 this.atacante = atacante;
                 this.defensor = defensor;
 
@@ -25,7 +25,7 @@ public class Ataque implements IAtaque{
                 );
         }
 
-        public Ataque(Pais atacante, Pais defensor, IDadosUsados dado) throws Exception{
+        public Ataque(IPais atacante, IPais defensor, IDadosUsados dado) throws Exception{
                 this.atacante = atacante;
                 this.defensor = defensor;
 

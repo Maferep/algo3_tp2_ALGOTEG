@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.Mocks.*;
 import org.junit.jupiter.api.Test;
@@ -8,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AtaqueTest {
     @Test
     public void test01AtacarPaisGanaDefensor() throws Exception {
-        Pais atacante = new Pais("Argentina");
-        Pais defensor = new Pais("Chile");
+        IPais atacante = new Pais("Argentina");
+        IPais defensor = new Pais("Chile");
 
         atacante.asignarConquistador(new Jugador("Mafer"));
         defensor.asignarConquistador(new Jugador("Cande"));
@@ -26,8 +27,8 @@ public class AtaqueTest {
 
     @Test
     public void test02AtacarPaisGanaDefensorYAtacanteSeQuedaConUnSoloSoldado() throws Exception {
-        Pais atacante = new Pais("Paraguay");
-        Pais defensor = new Pais("Uruguay");
+        IPais atacante = new Pais("Paraguay");
+        IPais defensor = new Pais("Uruguay");
 
         atacante.asignarConquistador(new Jugador("Martín"));
         defensor.asignarConquistador(new Jugador("Tobías"));
@@ -48,8 +49,8 @@ public class AtaqueTest {
 
     @Test
     public void test03AtacarPaisGanaAtacante() throws Exception {
-        Pais atacante = new Pais("España");
-        Pais defensor = new Pais("Francia");
+        IPais atacante = new Pais("España");
+        IPais defensor = new Pais("Francia");
 
         atacante.asignarConquistador(new Jugador("Pepe"));
         defensor.asignarConquistador(new Jugador("Daniel"));
@@ -66,8 +67,8 @@ public class AtaqueTest {
 
     @Test
     public void test04AtacarPaisGanaAtacanteYDefensorSeQuedaSinEjercitos() throws Exception {
-        Pais atacante = new Pais("España");
-        Pais defensor = new Pais("Francia");
+        IPais atacante = new Pais("España");
+        IPais defensor = new Pais("Francia");
 
         atacante.asignarConquistador(new Jugador("Chiara"));
         defensor.asignarConquistador(new Jugador("Pili"));
@@ -84,8 +85,8 @@ public class AtaqueTest {
 
     @Test
     public void test05AtacanteTrataDeAtacarConTodosSusEjercitos() throws Exception {
-        Pais atacante = new Pais("Argentina");
-        Pais defensor = new Pais("Chile");
+        IPais atacante = new Pais("Argentina");
+        IPais defensor = new Pais("Chile");
 
         atacante.asignarConquistador(new Jugador("Mafer"));
         defensor.asignarConquistador(new Jugador("Cande"));
@@ -101,8 +102,8 @@ public class AtaqueTest {
 
     @Test
     public void test06AtacanteUsa4EjercitosTiraError() throws Exception {
-        Pais atacante = new Pais("Argentina");
-        Pais defensor = new Pais("Chile");
+        IPais atacante = new Pais("Argentina");
+        IPais defensor = new Pais("Chile");
 
         atacante.asignarConquistador(new Jugador("Mafer"));
         defensor.asignarConquistador(new Jugador("Cande"));

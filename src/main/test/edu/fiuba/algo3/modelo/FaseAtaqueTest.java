@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Interfaces.ITurno;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.Mocks.*;
 import edu.fiuba.algo3.modelo.fases.*;
 
@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 public class FaseAtaqueTest {
     @Test
     public void test00Atacar() throws Exception {
-        Pais atacante = new Pais("España");
-        Pais defensor = new Pais("Francia");
+        IPais atacante = new Pais("España");
+        IPais defensor = new Pais("Francia");
 
         atacante.asignarConquistador(new Jugador("Rosa"));
         defensor.asignarConquistador(new Jugador("Amarillo"));
@@ -22,7 +22,7 @@ public class FaseAtaqueTest {
         defensor.agregarEjercitos(3);
 
         ITurno turno = new TurnoMock();
-        List<Pais> p = Arrays.asList(atacante, defensor);
+        List<IPais> p = Arrays.asList(atacante, defensor);
         FaseAtacar fase = new FaseAtacar(turno, p, null);
         fase.atacar(atacante, 1, defensor);
     }

@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 
 
 public class JuegoFactory {
-  public IFase crearJuegoTEG(int cantJugadores, IJugador tipoJugador) throws Exception {
+  public IFase crearJuegoTEG(int cantJugadores) throws Exception {
     return new FaseInicio(cantJugadores);
   }
 }
