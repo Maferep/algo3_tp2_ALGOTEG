@@ -67,7 +67,7 @@ public class FaseAtaqueTest {
         ITurno turno = new TurnoMock();
         List<IPais> p = Arrays.asList(atacante1, defensor1);
         FaseAtacar fase = new FaseAtacar(turno, p, null);
-        fase.ataqueFalso(ataqueFalso);
+        fase.atacarConAtaque(ataqueFalso);
 
         assertEquals(3, jugador1.paises.size());
         assertEquals(1, jugador2.paises.size());
@@ -78,7 +78,7 @@ public class FaseAtaqueTest {
         ITurno turnoNew = new TurnoMock();
         List<IPais> pNew = Arrays.asList(atacante2, defensor2);
         FaseAtacar faseNew = new FaseAtacar(turnoNew, pNew, null);
-        faseNew.ataqueFalso(ataqueFalsoNew);
+        faseNew.atacarConAtaque(ataqueFalsoNew);
 
         assertEquals(4, jugador1.paises.size());
         assertEquals(0, jugador2.paises.size());

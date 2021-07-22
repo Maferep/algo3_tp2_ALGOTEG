@@ -19,6 +19,20 @@ public class FaseAtacar extends FaseAbstracta {
         this.canje = canje;
     }
 
+    // métodos públicos
+    public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
+        //TODO: validar existencia de paises y turno correcto
+        atacante.atacar(defensor, cantidadDeSoldados);
+        //TODO: corregir if ambiguo
+        if(defensor.obtenerConquistador() == atacante.obtenerConquistador())
+            estrategia = estrategia.actualizar();
+    }
+
+    public void atacarConAtaque(Ataque tipoAtaque) throws Exception {
+        //TODO: validar existencia de paises y turno correcto
+        tipoAtaque.atacar();
+    }
+
     @Override
     public Boolean faseCompletada() {
         return true;
@@ -32,19 +46,6 @@ public class FaseAtacar extends FaseAbstracta {
     @Override
     public Boolean esFinDeJuego() {
         return false;
-    }
-
-    public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
-        //TODO: validar existencia de paises y turno correcto
-        atacante.atacar(defensor, cantidadDeSoldados);
-        //TODO: corregir if ambiguo
-        if(defensor.obtenerConquistador() == atacante.obtenerConquistador())
-            estrategia = estrategia.actualizar();
-    }
-
-    public void ataqueFalso(Ataque tipoAtaque) throws Exception {
-        //TODO: validar existencia de paises y turno correcto
-        tipoAtaque.atacar();
     }
 
     @Override
