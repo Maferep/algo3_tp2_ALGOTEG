@@ -59,10 +59,9 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         return turno.cantidadDeJugadores();
     }
 
-    public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws FichasInsuficientesError, PaisNoExistenteError {
-        turno.jugadorActual().verificarCantidadDeEjercitos(cantEjercitos);
-        turno.jugadorActual().verificarPais(pais);
-        pais.agregarEjercitos(cantEjercitos);
+    public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws FichasInsuficientesError, PaisNoExistenteError,
+            EjercitosException {
+        turno.jugadorActual().agregarEjercitosAPais(pais, cantEjercitos);
         estrategia = estrategia.actualizar();
     }
 

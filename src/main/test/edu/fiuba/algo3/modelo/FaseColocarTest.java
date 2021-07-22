@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.Mocks.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
-import edu.fiuba.algo3.modelo.factories.JuegoFactory;
 import edu.fiuba.algo3.modelo.fases.*;
 import org.junit.jupiter.api.Test;
 
@@ -19,14 +18,6 @@ public class FaseColocarTest {
             "Canadá",
             "Brasil",
             "Italia")
-            .stream()
-            .map(n -> new Pais(n))
-            .collect(Collectors.toList());
-    List<IPais> paisesJugadorDos = Arrays.asList(
-            "Bolivia",
-            "Colombia",
-            "Chile",
-            "Ecuador")
             .stream()
             .map(n -> new Pais(n))
             .collect(Collectors.toList());

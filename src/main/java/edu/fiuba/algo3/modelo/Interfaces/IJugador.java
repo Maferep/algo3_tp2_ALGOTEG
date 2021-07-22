@@ -21,9 +21,7 @@ public interface IJugador {
 
 	int cantidadTarjetas();
 
-	void verificarCantidadDeEjercitos(int cantEjercitos) throws FichasInsuficientesError;
-
-	void verificarPais(IPais pais) throws PaisNoExistenteError;
+	void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException;
 
 	List<IPais> obtenerPaises();
 
