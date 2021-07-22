@@ -8,9 +8,6 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class FaseColocar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
-    ITurno turno;
-    List<IPais> paises;
-    Canje canje;
 
     public FaseColocar(ITurno turno2, List<IPais> paises, Canje canje) throws EjercitosException {
         this.turno = turno2;

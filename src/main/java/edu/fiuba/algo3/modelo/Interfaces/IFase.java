@@ -8,7 +8,7 @@ public interface IFase {
 
 	IFase siguienteFase() throws FaseIncompletaException, EjercitosException;
 
-	void siguienteTurno();
+	public void siguienteTurno();
 
 	Boolean esFinDeJuego();
 

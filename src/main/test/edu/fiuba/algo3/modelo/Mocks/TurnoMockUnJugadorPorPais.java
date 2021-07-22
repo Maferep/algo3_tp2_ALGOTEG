@@ -32,7 +32,7 @@ public class TurnoMockUnJugadorPorPais implements ITurno {
 
     @Override
     public void siguienteJugador() {
-        indice = (indice + 1) % 2;
+        indice = (indice + 1) % s.size();
     }
 
     @Override
