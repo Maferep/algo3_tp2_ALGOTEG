@@ -30,5 +30,10 @@ public abstract class FaseAbstracta implements IFase {
     public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
+
+    @Override
+    public void siguienteTurno() {
+        turno.siguienteJugador();
+    }
     
 }

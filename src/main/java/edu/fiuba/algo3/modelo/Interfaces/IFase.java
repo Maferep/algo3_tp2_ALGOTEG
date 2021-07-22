@@ -8,6 +8,8 @@ public interface IFase {
 
 	IFase siguienteFase() throws FaseIncompletaException, EjercitosException;
 
+	void siguienteTurno();
+
 	Boolean esFinDeJuego();
 
 	FaseInicio asFaseInicio() throws FaseErroneaException;
