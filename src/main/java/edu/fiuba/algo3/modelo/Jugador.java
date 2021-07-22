@@ -12,7 +12,7 @@ public class Jugador implements IJugador {
 	//TODO: smell de atributo publico
 	public List<IPais> paises;
 	List<Tarjeta> tarjetas;
-	int ejercitos;
+	int ejercitosPorColocar;
 
 	static int minimoPaises = 30;
 
@@ -20,7 +20,7 @@ public class Jugador implements IJugador {
 		color = colorDelJugador;
 		paises = new ArrayList<IPais>();
 		tarjetas = new ArrayList<Tarjeta>();
-		ejercitos = 0;
+		ejercitosPorColocar = 0;
 	}
 
 	//TODO programacion estructurada
@@ -42,26 +42,26 @@ public class Jugador implements IJugador {
 	}
 
 	public int cantidadEjercitos() {
-		return ejercitos;
+		return ejercitosPorColocar;
 	}
 
 	@Override
 	public void inicializarEjercitos(int cantidad) throws EjercitosException {
 		if(cantidad <= 0)
 			throw new EjercitosException(null);
-		ejercitos += cantidad;
+		ejercitosPorColocar += cantidad;
 	}
 
 	@Override
 	public void agregarNuevosEjercitos(int cantidad) throws EjercitosException {
-		this.ejercitos = 0;
+		this.ejercitosPorColocar = 0;
 		if(cantidad <= 0) throw new EjercitosException("cantidadInvalida");
 		// Si el jugador controla menos de seis países de todas maneras incorpora tres ejércitos.
 		if(this.paises.size() < 6) {
-			this.ejercitos += 3;
+			this.ejercitosPorColocar += 3;
 		}
 		else {
-			this.ejercitos += cantidad;
+			this.ejercitosPorColocar += cantidad;
 		}
 	}
 
@@ -99,8 +99,8 @@ public class Jugador implements IJugador {
 
 	@Override
 	public void quitarEjercitos(int cantidadAQuitar) throws EjercitosException {
-		ejercitos -= cantidadAQuitar;
-		if(ejercitos < 0) throw new EjercitosException("quita demasiados ejercitos");
+		ejercitosPorColocar -= cantidadAQuitar;
+		if(ejercitosPorColocar < 0) throw new EjercitosException("quita demasiados ejercitos");
 	}
 
 }
