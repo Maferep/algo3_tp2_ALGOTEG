@@ -15,13 +15,13 @@ public class Ataque implements IAtaque{
                 this.atacante = atacante;
                 this.defensor = defensor;
 
-                if(atacante.ejercitos <= cantEjercitos 
+                if(atacante.cantidadEjercitos() <= cantEjercitos 
                 || cantEjercitos > maxDados)
-                        throw new FichasInsuficientesError("El jugador sólo puede atacar con" + (atacante.ejercitos - 1) + "ejércitos.");
+                        throw new FichasInsuficientesError("El jugador sólo puede atacar con" + (atacante.cantidadEjercitos() - 1) + "ejércitos.");
 
                 asignarDados(
                         new DadosUsados(cantEjercitos),
-                        new DadosUsados(Math.min(defensor.ejercitos, maxDados))
+                        new DadosUsados(Math.min(defensor.cantidadEjercitos(), maxDados))
                 );
         }
 
@@ -47,7 +47,7 @@ public class Ataque implements IAtaque{
                 atacante.quitarEjercitos(cantDerrotas);
                 defensor.quitarEjercitos(cantVictorias);
                 
-                if (cantVictorias >= defensor.ejercitos) {
+                if (cantVictorias >= defensor.cantidadEjercitos()) {
                         Conquista conquista = new Conquista();
                         conquista.conquistar(atacante.obtenerConquistador(), defensor);
                 }

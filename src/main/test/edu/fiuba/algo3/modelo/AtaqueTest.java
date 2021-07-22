@@ -39,8 +39,8 @@ public class AtaqueTest {
         Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(0, 2));
         ataqueFalso.atacar();
 
-        assertEquals(1, atacante.ejercitos);
-        assertEquals(3, defensor.ejercitos);
+        assertEquals(1, atacante.cantidadEjercitos());
+        assertEquals(3, defensor.cantidadEjercitos());
 
         assertEquals("Tobías", defensor.obtenerConquistador().obtenerColor());
         assertEquals(3, defensor.cantidadEjercitos());
@@ -111,7 +111,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(10);
         defensor.agregarEjercitos(10);
 
-        assertTrue(atacante.ejercitos > 4);
+        assertTrue(atacante.cantidadEjercitos() > 4);
         assertThrows(FichasInsuficientesError.class, () -> {
                 Ataque ataque = new Ataque(atacante, defensor, 4);
                 ataque.atacar();

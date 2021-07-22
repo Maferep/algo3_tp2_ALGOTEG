@@ -26,7 +26,7 @@ public class Jugador implements IJugador {
 	//TODO programacion estructurada
 	public boolean conquistaPaises(IJugador conquistador,List<IPais> paises) {
 		for (int i = 0; i < paises.size(); i++) {
-			if(!paises.get(i).conquistador.obtenerColor().equals(conquistador.obtenerColor())) {
+			if(!paises.get(i).obtenerConquistador().obtenerColor().equals(conquistador.obtenerColor())) {
 				return false;
 			}
 		}
@@ -45,11 +45,14 @@ public class Jugador implements IJugador {
 		return ejercitos;
 	}
 
+	@Override
 	public void agregarEjercitos(int cantidad) throws EjercitosException {
 		if(cantidad <= 0)
 			throw new EjercitosException(null);
 		ejercitos += cantidad;
 	}
+
+	@Override
 	public void agregarNuevosEjercitos(int cantidad) throws EjercitosException {
 		this.ejercitos = 0;
 		if(cantidad <= 0) throw new EjercitosException(null);
@@ -87,6 +90,11 @@ public class Jugador implements IJugador {
 
 	public void agregarTarjetaAleatoria(Tarjeta tarjeta) {
 		tarjetas.add(tarjeta);
+	}
+
+	@Override
+	public int cantidadTarjetas() {
+		return tarjetas.size();
 	}
 
 }

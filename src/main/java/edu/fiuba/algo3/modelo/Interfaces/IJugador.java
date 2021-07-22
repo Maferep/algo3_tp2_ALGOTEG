@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IJugador {
 
-    Continente continente = null;
+    public Continente continente = new Continente();
 
 	void quitarPais(IPais pais);
 
@@ -20,6 +20,8 @@ public interface IJugador {
 	void agregarEjercitos(int cantidadEjercitos) throws EjercitosException;
 
 	void agregarTarjetaAleatoria(Tarjeta obtenerTarjeta);
+
+	int cantidadTarjetas();
 
 	void verificarCantidadDeEjercitos(int cantEjercitos) throws FichasInsuficientesError;
 
