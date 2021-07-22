@@ -9,7 +9,6 @@ public class Pais implements IPais {
     int ejercitos;
     IJugador conquistador;
     List<IPais> adyacentes;
-    Continente continente;
 
 	public Pais(String n) {
 		this.nombre = n;
@@ -36,11 +35,6 @@ public class Pais implements IPais {
 	public void asignarConquistador(IJugador conquistador) {
 		this.conquistador = conquistador;
 		conquistador.asignarPais(this);
-		conquistador.continente.agregarPais();
-	}
-
-	public void asignarContinente(Continente continenteAsignado) { //IContinente
-		continente = continenteAsignado;
 	}
 
 	public IJugador obtenerConquistador() { return this.conquistador; }

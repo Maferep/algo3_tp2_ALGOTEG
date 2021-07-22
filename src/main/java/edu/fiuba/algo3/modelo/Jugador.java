@@ -13,7 +13,6 @@ public class Jugador implements IJugador {
 	public List<IPais> paises;
 	List<Tarjeta> tarjetas;
 	int ejercitos;
-	Continente continente = new Continente();
 
 	static int minimoPaises = 30;
 

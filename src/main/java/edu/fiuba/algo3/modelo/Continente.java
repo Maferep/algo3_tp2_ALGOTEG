@@ -13,6 +13,9 @@ public class Continente {
             if (this.paises.get(i).obtenerConquistador().obtenerColor() != jugador.obtenerColor()) {
                 return false;
             }
-        } return true;
+        }
+        return true;
     }
+
+}
 

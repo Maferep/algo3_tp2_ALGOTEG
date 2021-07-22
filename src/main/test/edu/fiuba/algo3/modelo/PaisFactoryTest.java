@@ -33,10 +33,10 @@ public class PaisFactoryTest {
 
     @Test
     public void test03EncontrarPais() {
-        MapaFachada mapa = new MapaFachada();
-        List<Pais> paises = mapa.inicializarMapa();
+        PaisFactory mapa = new PaisFactory();
+        List<IPais> paises = mapa.inicializarMapa();
 
-        Pais italia = paises
+        IPais italia = paises
                 .stream()
                 .filter(p -> (p.obtenerNombre() == "Italia"))
                 .findAny()

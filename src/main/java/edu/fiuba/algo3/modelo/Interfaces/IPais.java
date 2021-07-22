@@ -25,8 +25,6 @@ public interface IPais {
 
 	int cantidadEjercitos();
 
-	void asignarContinente(Continente continente);
-
 	List<IPais> obtenerAdyacentes();
 
 	void atacar(IPais defensor, int cantidadDeSoldados) throws Exception;
