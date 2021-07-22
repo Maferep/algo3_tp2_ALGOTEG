@@ -6,7 +6,7 @@ public class Conquista {
     public Conquista() {}
     public void conquistar(IJugador iJugador, IPais pais) {
         pais.obtenerConquistador().continente.quitarPais();
-        (pais.conquistador).quitarPais(pais);
+        (pais.obtenerConquistador()).quitarPais(pais);
         pais.asignarConquistador(iJugador);
     }
 }

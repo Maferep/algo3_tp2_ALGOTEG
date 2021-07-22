@@ -27,7 +27,7 @@ public class Jugador implements IJugador {
 	//TODO programacion estructurada
 	public boolean conquistaPaises(IJugador conquistador,List<IPais> paises) {
 		for (int i = 0; i < paises.size(); i++) {
-			if(!paises.get(i).conquistador.obtenerColor().equals(conquistador.obtenerColor())) {
+			if(!paises.get(i).obtenerConquistador().obtenerColor().equals(conquistador.obtenerColor())) {
 				return false;
 			}
 		}

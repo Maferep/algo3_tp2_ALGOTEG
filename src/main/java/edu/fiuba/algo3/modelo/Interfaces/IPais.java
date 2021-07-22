@@ -7,7 +7,6 @@ import edu.fiuba.algo3.modelo.Continente;
 public interface IPais {
 
 	int ejercitos = 0;
-	IJugador conquistador = null;
 
 	void agregarEjercitos(int i);
 
