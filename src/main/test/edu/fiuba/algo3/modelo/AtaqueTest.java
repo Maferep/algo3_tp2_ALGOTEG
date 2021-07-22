@@ -12,8 +12,8 @@ public class AtaqueTest {
         IPais atacante = new Pais("Argentina");
         IPais defensor = new Pais("Chile");
 
-        atacante.asignarConquistador(new Jugador("Mafer"));
-        defensor.asignarConquistador(new Jugador("Cande"));
+        atacante.definirConquistador(new Jugador("Mafer"));
+        defensor.definirConquistador(new Jugador("Cande"));
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
@@ -30,8 +30,8 @@ public class AtaqueTest {
         IPais atacante = new Pais("Paraguay");
         IPais defensor = new Pais("Uruguay");
 
-        atacante.asignarConquistador(new Jugador("Martín"));
-        defensor.asignarConquistador(new Jugador("Tobías"));
+        atacante.definirConquistador(new Jugador("Martín"));
+        defensor.definirConquistador(new Jugador("Tobías"));
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
@@ -52,8 +52,8 @@ public class AtaqueTest {
         IPais atacante = new Pais("España");
         IPais defensor = new Pais("Francia");
 
-        atacante.asignarConquistador(new Jugador("Pepe"));
-        defensor.asignarConquistador(new Jugador("Daniel"));
+        atacante.definirConquistador(new Jugador("Pepe"));
+        defensor.definirConquistador(new Jugador("Daniel"));
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
@@ -70,8 +70,8 @@ public class AtaqueTest {
         IPais atacante = new Pais("España");
         IPais defensor = new Pais("Francia");
 
-        atacante.asignarConquistador(new Jugador("Chiara"));
-        defensor.asignarConquistador(new Jugador("Pili"));
+        atacante.definirConquistador(new Jugador("Chiara"));
+        defensor.definirConquistador(new Jugador("Pili"));
 
         atacante.agregarEjercitos(4);
         defensor.agregarEjercitos(3);
@@ -88,8 +88,8 @@ public class AtaqueTest {
         IPais atacante = new Pais("Argentina");
         IPais defensor = new Pais("Chile");
 
-        atacante.asignarConquistador(new Jugador("Mafer"));
-        defensor.asignarConquistador(new Jugador("Cande"));
+        atacante.definirConquistador(new Jugador("Mafer"));
+        defensor.definirConquistador(new Jugador("Cande"));
 
         atacante.agregarEjercitos(3);
         defensor.agregarEjercitos(3);
@@ -105,8 +105,8 @@ public class AtaqueTest {
         IPais atacante = new Pais("Argentina");
         IPais defensor = new Pais("Chile");
 
-        atacante.asignarConquistador(new Jugador("Mafer"));
-        defensor.asignarConquistador(new Jugador("Cande"));
+        atacante.definirConquistador(new Jugador("Mafer"));
+        defensor.definirConquistador(new Jugador("Cande"));
 
         atacante.agregarEjercitos(10);
         defensor.agregarEjercitos(10);

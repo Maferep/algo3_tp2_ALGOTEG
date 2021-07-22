@@ -103,7 +103,7 @@ public class FaseColocarTest {
         fase.siguienteTurno();
         assertEquals(3, turno.jugadorActual().cantidadEjercitos());
 
-        paisesAsia.forEach(paisAsia -> paisAsia.asignarConquistador(turno.jugadorActual()));
+        paisesAsia.forEach(paisAsia -> paisAsia.definirConquistador(turno.jugadorActual()));
 
         fase.ubicarEjercitosEnPais(3,  paisesAsia.get(0));
         assertEquals( paisesAsia.get(0).cantidadEjercitos(), 3);

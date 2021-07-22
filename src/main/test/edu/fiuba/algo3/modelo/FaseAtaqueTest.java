@@ -19,8 +19,8 @@ public class FaseAtaqueTest {
         IPais atacante = new Pais("España");
         IPais defensor = new Pais("Francia");
 
-        atacante.asignarConquistador(new Jugador("Rosa"));
-        defensor.asignarConquistador(new Jugador("Amarillo"));
+        atacante.definirConquistador(new Jugador("Rosa"));
+        defensor.definirConquistador(new Jugador("Amarillo"));
 
         atacante.agregarEjercitos(4);
         defensor.agregarEjercitos(3);
@@ -35,42 +35,28 @@ public class FaseAtaqueTest {
     //En esta ronda el jugador 1 ataca y conquista dos países del jugador 2.
     @Test
     public void test01JugadorAtacaYConquistaDosPaisesDelOtroJugador() throws Exception {
-        Jugador jugador1 = new Jugador("Rosa");
-        Jugador jugador2 = new Jugador("Amarillo");
+        IPais atacante1 = new PaisMock("España");
+        IPais defensor1 = new PaisMock("Francia");
 
-        jugador1.inicializarEjercitos(15);
-        jugador1.inicializarEjercitos(15);
+        IPais atacante2 = new PaisMock("Argentina");
+        IPais defensor2 = new PaisMock("Chile");
 
-        Pais atacante1 = new Pais("España");
-        Pais defensor1 = new Pais("Francia");
+        IJugador jugador1 = atacante1.obtenerConquistador();
+        IJugador jugador2 = defensor1.obtenerConquistador();
+        atacante2.definirConquistador(jugador1);
+        defensor2.definirConquistador(jugador2); 
 
-        Pais atacante2 = new Pais("Argentina");
-        Pais defensor2 = new Pais("Chile");
-
-        atacante1.asignarConquistador(jugador1);
-        defensor1.asignarConquistador(jugador2);
-
-        atacante2.asignarConquistador(jugador1);
-        defensor2.asignarConquistador(jugador2);
-
-        atacante1.agregarEjercitos(4);
-        defensor1.agregarEjercitos(3);
-
-        atacante2.agregarEjercitos(4);
-        defensor2.agregarEjercitos(3);
-
-        assertEquals(2, jugador1.paises.size());
+        assertEquals(2, jugador1.obtenerPaises().size());
+        assertEquals(2, jugador2.obtenerPaises().size());
 
         //Primer ataque. El atacante gana.
-        Ataque ataqueFalso = new Ataque(atacante1, defensor1, new DadosUsadosMock(3,0));
-
         ITurno turno = new TurnoMock();
         List<IPais> p = Arrays.asList(atacante1, defensor1);
         FaseAtacar fase = new FaseAtacar(turno, p, null);
-        fase.atacarConAtaque(ataqueFalso);
+        fase.atacar(atacante1, 3, defensor1);
 
-        assertEquals(3, jugador1.paises.size());
-        assertEquals(1, jugador2.paises.size());
+        assertEquals(3, jugador1.obtenerPaises().size());
+        assertEquals(1, jugador2.obtenerPaises().size());
 
         //Segundo ataque. El atacante gana.
         Ataque ataqueFalsoNew = new Ataque(atacante2, defensor2, new DadosUsadosMock(3,0));
@@ -80,8 +66,8 @@ public class FaseAtaqueTest {
         FaseAtacar faseNew = new FaseAtacar(turnoNew, pNew, null);
         faseNew.atacarConAtaque(ataqueFalsoNew);
 
-        assertEquals(4, jugador1.paises.size());
-        assertEquals(0, jugador2.paises.size());
+        assertEquals(4, jugador1.obtenerPaises().size());
+        assertEquals(0, jugador2.obtenerPaises().size());
     }
 
 }

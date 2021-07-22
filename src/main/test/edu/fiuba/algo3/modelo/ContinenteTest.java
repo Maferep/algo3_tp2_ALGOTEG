@@ -23,7 +23,7 @@ public class ContinenteTest {
         Jugador jugador = new Jugador("Azul");
         Continente continente = new Continente(paises);
 
-        paises.forEach(pais -> pais.asignarConquistador(jugador));
+        paises.forEach(pais -> pais.definirConquistador(jugador));
 
         assertTrue(continente.fueConquistadoPor(jugador));
     }
@@ -35,7 +35,7 @@ public class ContinenteTest {
 
         Continente continente = new Continente(paises);
 
-        paises.forEach(pais -> pais.asignarConquistador(jugadorRojo));
+        paises.forEach(pais -> pais.definirConquistador(jugadorRojo));
 
         assertFalse(continente.fueConquistadoPor(jugadorAzul));
     }

@@ -19,12 +19,14 @@ public interface IPais {
 
 	void quitarEjercitos(long cantDerrotas);
 
-	void asignarConquistador(IJugador iJugador);
+	void conquistar(IPais defensor);
 
 	int cantidadEjercitos();
 
 	List<IPais> obtenerAdyacentes();
 
 	void atacar(IPais defensor, int cantidadDeSoldados) throws Exception;
+
+	void definirConquistador(IJugador jugador2);
     
 }

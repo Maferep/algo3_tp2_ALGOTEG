@@ -55,8 +55,8 @@ public class PaisMockSiemprePierde implements IPais {
     }
 
     @Override
-    public void asignarConquistador(IJugador iJugador) {
-        conquistador = iJugador;
+    public void conquistar(IPais defensor) {
+        (new Conquista()).conquistar(this.conquistador, defensor);
 
     }
 
@@ -71,6 +71,12 @@ public class PaisMockSiemprePierde implements IPais {
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public void definirConquistador(IJugador conquistador) {
+		conquistador.asignarPais(this);
+		this.conquistador = conquistador;
+	}
 
     
     

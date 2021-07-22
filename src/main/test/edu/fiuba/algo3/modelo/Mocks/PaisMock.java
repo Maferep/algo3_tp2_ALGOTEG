@@ -12,6 +12,13 @@ public class PaisMock implements IPais {
     public PaisMock(String nombre) {
         this.nombre = nombre;
         conquistador = new Jugador("Victor el Victorioso");
+        conquistador.asignarPais(this);
+    }
+
+    //Este pais SIEMPRE GANA un ataque.
+    @Override
+    public void atacar(IPais defensor, int cantidadDeSoldados) throws Exception {
+        conquistar(defensor);
     }
 
     @Override
@@ -49,8 +56,8 @@ public class PaisMock implements IPais {
     }
 
     @Override
-    public void asignarConquistador(IJugador iJugador) {
-        conquistador = iJugador;
+    public void conquistar(IPais defensor) {
+        (new Conquista()).conquistar(this.conquistador, defensor);
 
     }
 
@@ -66,10 +73,12 @@ public class PaisMock implements IPais {
         return null;
     }
 
-    //Este pais SIEMPRE GANA un ataque.
     @Override
-    public void atacar(IPais defensor, int cantidadDeSoldados) throws Exception {
-        defensor.asignarConquistador(this.conquistador);
-    }
+    public void definirConquistador(IJugador conquistador) {
+		conquistador.asignarPais(this);
+		this.conquistador = conquistador;
+	}
+
+    
     
 }

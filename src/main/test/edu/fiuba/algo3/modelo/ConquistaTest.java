@@ -13,7 +13,7 @@ public class ConquistaTest {
         Jugador jugador = new Jugador("Rosa");
         IPais argentina = new Pais("Argentina");
 
-        argentina.asignarConquistador(jugador);
+        argentina.definirConquistador(jugador);
 
         assertEquals(argentina.obtenerConquistador().obtenerColor(), "Rosa");
     }

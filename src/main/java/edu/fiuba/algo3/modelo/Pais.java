@@ -32,9 +32,13 @@ public class Pais implements IPais {
 		ejercitos -= cantidadEjercitos;
 	}
 
-	public void asignarConquistador(IJugador conquistador) {
-		this.conquistador = conquistador;
+	public void definirConquistador(IJugador conquistador) {
 		conquistador.asignarPais(this);
+		this.conquistador = conquistador;
+	}
+
+	public void conquistar(IPais defensor) {
+		(new Conquista()).conquistar(this.conquistador, defensor);
 	}
 
 	public IJugador obtenerConquistador() { return this.conquistador; }
