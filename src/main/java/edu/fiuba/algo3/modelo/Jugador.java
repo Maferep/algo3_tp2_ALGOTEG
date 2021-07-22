@@ -46,7 +46,7 @@ public class Jugador implements IJugador {
 	}
 
 	@Override
-	public void agregarEjercitos(int cantidad) throws EjercitosException {
+	public void inicializarEjercitos(int cantidad) throws EjercitosException {
 		if(cantidad <= 0)
 			throw new EjercitosException(null);
 		ejercitos += cantidad;
@@ -95,6 +95,12 @@ public class Jugador implements IJugador {
 	@Override
 	public int cantidadTarjetas() {
 		return tarjetas.size();
+	}
+
+	@Override
+	public void quitarEjercitos(int cantidadAQuitar) throws EjercitosException {
+		ejercitos -= cantidadAQuitar;
+		if(ejercitos < 0) throw new EjercitosException("quita demasiados ejercitos");
 	}
 
 }

@@ -53,7 +53,9 @@ public class FaseColocarTest {
         ITurno unSegundoJugador = new TurnoMockUnJugador(paisesJugadorDos);
         FaseColocar faseNueva = new FaseColocar(unSegundoJugador,paisesJugadorDos, null);
         IPais paisNuevo = new Pais("Bolivia");
+        IPais otro = new Pais("Colombia");
         faseNueva.ubicarEjercitosEnPais(2, paisNuevo);
+        faseNueva.ubicarEjercitosEnPais(1, otro);
         assertTrue(faseNueva.faseCompletada());
         assertEquals(paisNuevo.cantidadEjercitos(), 2);
     }
@@ -108,9 +110,9 @@ public class FaseColocarTest {
 
         paisesAsia.forEach(paisAsia -> paisAsia.asignarConquistador(unJugador.jugadorActual()));
 
-        faseNueva.ubicarEjercitosEnPais(2,  paisesAsia.get(0));
+        faseNueva.ubicarEjercitosEnPais(3,  paisesAsia.get(0));
         assertTrue(faseNueva.faseCompletada());
-        assertEquals( paisesAsia.get(0).cantidadEjercitos(), 2);
+        assertEquals( paisesAsia.get(0).cantidadEjercitos(), 3);
         assertTrue(asia.fueConquistadoPor(unSegundoJugador.jugadorActual()));
 
         ITurno unTercerJugador = new TurnoMockUnJugador(paisesJugadorDos);
@@ -125,24 +127,34 @@ public class FaseColocarTest {
     @Test
     public void colocarEjercitosEnPaisNoAfectaOtrosJugadores() throws EjercitosException, FichasInsuficientesError,
             PaisNoExistenteError {
+
+        // setup paises y turno
         List<IPais> paises = Arrays.asList(
             "Bolivia",
-            "Colombia",
-            "Chile",
-            "Ecuador")
+            "Colombia")
             .stream()
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
             
-        IPais bolivia = paises.get(0);
+        IPais colombia = paises.get(1);
         ITurno turno = new TurnoMockUnJugadorPorPais(paises);
-        FaseColocar fase = new FaseColocar(turno,paisesJugadorUno, null);
-        fase.ubicarEjercitosEnPais(3, bolivia);
-        assertTrue(fase.faseCompletada());
-        assertEquals(bolivia.cantidadEjercitos(), 3);
-        assertEquals( 0, turno.jugadorActual().cantidadEjercitos());
+        assertEquals(2, turno.cantidadDeJugadores());
 
+        //inicializa fase, lo que da ejercitos a todos los jugadores
+        FaseColocar fase = new FaseColocar(turno,paisesJugadorUno, null);
+
+        //verificar cantidad de ejercitos de jugador 1 es 3
+        IJugador j1 = turno.jugadorActual();
+        assertEquals(j1.cantidadEjercitos(), 3);
+
+        //jugador 2 ubica sus paises
         turno.siguienteJugador();
+        fase.ubicarEjercitosEnPais(3, colombia);
+        assertEquals(colombia.cantidadEjercitos(), 3);
+
+        //la cantidad de ejercitos de jugador 1 es 3
+        turno.siguienteJugador();
+        assertEquals(j1, turno.jugadorActual());
         assertEquals(turno.jugadorActual().cantidadEjercitos(), 3);
     }
 }

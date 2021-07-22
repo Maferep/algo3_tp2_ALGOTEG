@@ -27,12 +27,12 @@ public class TurnoMockUnJugadorPorPais implements ITurno {
     }
 
     public IJugador jugadorActual() {
-        return s.get(0);
+        return s.get(indice);
     }
 
     @Override
     public void siguienteJugador() {
-        indice++;
+        indice = (indice + 1) % 2;
     }
 
     @Override

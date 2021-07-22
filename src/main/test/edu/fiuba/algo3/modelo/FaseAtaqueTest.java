@@ -38,8 +38,8 @@ public class FaseAtaqueTest {
         Jugador jugador1 = new Jugador("Rosa");
         Jugador jugador2 = new Jugador("Amarillo");
 
-        jugador1.agregarEjercitos(15);
-        jugador1.agregarEjercitos(15);
+        jugador1.inicializarEjercitos(15);
+        jugador1.inicializarEjercitos(15);
 
         Pais atacante1 = new Pais("España");
         Pais defensor1 = new Pais("Francia");

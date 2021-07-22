@@ -44,7 +44,7 @@ public class JugadorFactory {
 
     public void asignarEjercitosAJugadores(List<IJugador> jugadores) throws EjercitosException {
         for (IJugador j : jugadores) {
-            j.agregarEjercitos(cantidadEjercitos);
+            j.inicializarEjercitos(cantidadEjercitos);
         }
     }
 

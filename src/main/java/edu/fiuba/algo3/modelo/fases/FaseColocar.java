@@ -29,14 +29,16 @@ public class FaseColocar extends FaseAbstracta {
                 .agregarNuevosEjercitos(cantidadDeSoldados);
             turno.siguienteJugador();
         }
-        turno.siguienteJugador();
     }
 
     public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
         turno.jugadorActual().verificarCantidadDeEjercitos(cantEjercitos);
         turno.jugadorActual().verificarPais(pais);
         pais.agregarEjercitos(cantEjercitos);
-        estrategia = estrategia.actualizar();
+        turno.jugadorActual().quitarEjercitos(cantEjercitos);
+
+        if(turno.jugadorActual().cantidadEjercitos() == 0)
+             estrategia = estrategia.actualizar();
     }
 
     // métodos de fase

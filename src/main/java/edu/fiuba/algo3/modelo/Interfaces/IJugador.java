@@ -15,7 +15,7 @@ public interface IJugador {
 
 	void asignarPais(IPais pais);
 
-	void agregarEjercitos(int cantidadEjercitos) throws EjercitosException;
+	void inicializarEjercitos(int cantidadEjercitos) throws EjercitosException;
 
 	void agregarTarjetaAleatoria(Tarjeta obtenerTarjeta);
 
@@ -28,6 +28,8 @@ public interface IJugador {
 	List<IPais> obtenerPaises();
 
 	void agregarNuevosEjercitos(int i) throws EjercitosException;
+
+	void quitarEjercitos(int cantidadAQuitar) throws EjercitosException;
 
 	int cantidadEjercitos();
 }
