@@ -56,8 +56,8 @@ public class PaisMockSiemprePierde implements IPais {
 
     @Override
     public void conquistar(IPais defensor) {
-        (new Conquista()).conquistar(this.conquistador, defensor);
-
+        (defensor.obtenerConquistador()).quitarPais(defensor);
+        defensor.definirConquistador(conquistador);
     }
 
     @Override

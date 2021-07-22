@@ -38,7 +38,8 @@ public class Pais implements IPais {
 	}
 
 	public void conquistar(IPais defensor) {
-		(new Conquista()).conquistar(this.conquistador, defensor);
+		(defensor.obtenerConquistador()).quitarPais(defensor);
+        defensor.definirConquistador(conquistador);
 	}
 
 	public IJugador obtenerConquistador() { return this.conquistador; }
