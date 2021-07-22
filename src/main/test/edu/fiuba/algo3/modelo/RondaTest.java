@@ -90,6 +90,8 @@ public class RondaTest {
     @Test
     public void test04ConquistaCausaAsignacionDeTarjeta() throws FaseErroneaException, Exception {
         IFase fase = new FaseAtacar(new TurnoMockUnJugador(null), null, null);
+        IPais mockAtacante = new PaisMock("Rojo");
+        IPais mockDefensor = new PaisMock("Azul");
         fase.asFaseAtacar().atacar(null, 3, null);
         fase = fase.siguienteFase();
     }
