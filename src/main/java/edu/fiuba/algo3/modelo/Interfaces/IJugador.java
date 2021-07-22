@@ -9,8 +9,6 @@ import java.util.List;
 
 public interface IJugador {
 
-    public Continente continente = new Continente();
-
 	void quitarPais(IPais pais);
 
 	String obtenerColor();

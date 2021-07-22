@@ -61,12 +61,6 @@ public class PaisMock implements IPais {
     }
 
     @Override
-    public void asignarContinente(Continente continente) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
     public List<IPais> obtenerAdyacentes() {
         // TODO Auto-generated method stub
         return null;

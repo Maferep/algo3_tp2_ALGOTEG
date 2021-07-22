@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import org.junit.jupiter.api.Test;
 import static org.junit.Assert.*;
 
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ContinenteTest {
-    public List<Pais> paises = Arrays.asList(
+    public List<IPais> paises = Arrays.asList(
             "Estados Unidos",
             "Canadá",
             "México",

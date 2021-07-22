@@ -31,6 +31,14 @@ public class FaseColocarTest {
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
 
+    List<IPais> paisesAsia = Arrays.asList(
+            "China",
+            "Japón",
+            "Tailandia")
+            .stream()
+            .map(n -> new Pais(n))
+            .collect(Collectors.toList());
+
     //Juego de una ronda con 2 jugadores.
     //En esta ronda no se deben atacar pero sí colocar nuevos ejércitos.
     @Test
@@ -82,5 +90,35 @@ public class FaseColocarTest {
         assertThrows(PaisNoExistenteError.class, () -> {
             faseNueva.ubicarEjercitosEnPais(1, paisNuevo);
         } );
+    }
+
+    @Test
+    public void test04RondaDeTresJugadoresJugadorControlaAsia() throws Exception {
+        Continente asia = new Continente(paisesAsia);
+
+        ITurno unJugador = new TurnoMockUnJugador(paisesJugadorUno);
+        FaseColocar fase = new FaseColocar(unJugador, paisesJugadorUno, null);
+        IPais pais = new Pais("Estados Unidos");
+        fase.ubicarEjercitosEnPais(3, pais);
+        assertTrue(fase.faseCompletada());
+        assertEquals(pais.cantidadEjercitos(), 3);
+
+        ITurno unSegundoJugador = new TurnoMockUnJugador(paisesAsia);
+        FaseColocar faseNueva = new FaseColocar(unSegundoJugador, paisesAsia, null);
+
+        paisesAsia.forEach(paisAsia -> paisAsia.asignarConquistador(unJugador.jugadorActual()));
+
+        faseNueva.ubicarEjercitosEnPais(2,  paisesAsia.get(0));
+        assertTrue(faseNueva.faseCompletada());
+        assertEquals( paisesAsia.get(0).cantidadEjercitos(), 2);
+        assertTrue(asia.fueConquistadoPor(unSegundoJugador.jugadorActual()));
+
+        ITurno unTercerJugador = new TurnoMockUnJugador(paisesJugadorDos);
+        FaseColocar faseTercer = new FaseColocar(unTercerJugador, paisesJugadorDos, null);
+        IPais paisTercer = new Pais("Chile");
+        faseTercer.ubicarEjercitosEnPais(3, paisTercer);
+        assertTrue(faseTercer.faseCompletada());
+        assertEquals(paisTercer.cantidadEjercitos(), 3);
+
     }
 }
