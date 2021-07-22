@@ -34,14 +34,6 @@ public class FaseColocarTest {
             .stream()
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
-    List<Pais> paisesJugadorTres = Arrays.asList(
-            "Mexico",
-            "Inglaterra",
-            "Argentina",
-            "Rusia")
-            .stream()
-            .map(n -> new Pais(n))
-            .collect(Collectors.toList());
 
     //Juego de una ronda con 2 jugadores.
     //En esta ronda no se deben atacar pero sí colocar nuevos ejércitos.

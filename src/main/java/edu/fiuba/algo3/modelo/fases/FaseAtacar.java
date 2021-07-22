@@ -36,6 +36,11 @@ public class FaseAtacar extends FaseAbstracta {
         atacante.atacar(defensor, cantidadDeSoldados);
     }
 
+    public void ataqueFalso(Ataque tipoAtaque) throws Exception {
+        //TODO: validar existencia de paises y turno correcto
+        tipoAtaque.atacar();
+    }
+
     @Override
     public FaseAtacar asFaseAtacar() throws FaseErroneaException {
         return this;

@@ -12,7 +12,7 @@ public class TurnoMockUnJugador implements ITurno {
 
     public TurnoMockUnJugador(List<Pais> paises) throws EjercitosException {
         miJugador = new Jugador("Color");
-        miJugador.agregarEjercitos(3);
+        miJugador.agregarEjercitos(8);
         miJugador.paises = paises;
     }
 
