@@ -5,7 +5,6 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
-import edu.fiuba.algo3.modelo.factories.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -14,7 +13,6 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     ITurno turno;
     Canje canje;
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
-    JugadorFactory factory = new JugadorFactory();
     List<String> colores =  Arrays.asList(
         "Azul", 
         "Rojo", 
@@ -44,7 +42,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
                     + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
-        turno = new Turno(factory.construirJugadores(colores, cantJugadores));
+        turno = new Turno(colores, cantJugadores);
         canje = new Canje(paises);
     }
 

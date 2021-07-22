@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.factories.*;
 import edu.fiuba.algo3.modelo.fases.*;
 import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.Mocks.*;
@@ -30,7 +29,6 @@ public class RondaTest {
             .stream()
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
-    JugadorFactory tipoDeJugador = new JugadorFactory();
     List<IPais> paises = Arrays
             .asList(
             "Estados Unidos",

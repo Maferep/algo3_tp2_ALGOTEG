@@ -12,13 +12,8 @@ import java.util.List;
 public class TurnoTest {
     @Test
     public void test00JugadorConTurnoCorrecto() throws Exception {
-        List<IJugador> jugadores = Arrays.asList(
-                new Jugador("Azul"), 
-                new Jugador("Rojo"), 
-                new Jugador("Amarillo"),
-                new Jugador("Verde"));
-                
-        ITurno turno = new Turno(jugadores);
+        List <String> colores = Arrays.asList("Azul","Rojo","Amarillo","Verde");
+        ITurno turno = new Turno(colores, 4);
         assertEquals(turno.cantidadDeJugadores(), 4);
         assertEquals(turno.jugadorActual().obtenerColor(), "Azul");
         

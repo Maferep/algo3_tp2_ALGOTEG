@@ -2,12 +2,10 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.Mocks.*;
-import edu.fiuba.algo3.modelo.factories.JugadorFactory;
 import edu.fiuba.algo3.modelo.fases.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 

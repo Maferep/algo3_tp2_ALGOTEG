@@ -20,7 +20,7 @@ public class Juego {
 
     public static IFase crearJuegoTEG(int cantJugadores) throws Exception {
         return new FaseInicio(cantJugadores);
-      }
+    }
 
     
 
