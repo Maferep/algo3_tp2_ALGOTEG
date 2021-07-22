@@ -83,6 +83,27 @@ public class RondaTest {
         fase.asFaseAtacar().atacar(mockAtacanteSiempreGana, 3, mockDefensor);
         fase = fase.siguienteFase();
         assertEquals(1, t.jugadorActual().cantidadTarjetas());
+    }
+    @Test
+    public void test05NoAtaqueImplicaNoTarjetas() throws FaseErroneaException, Exception {
+        ITurno t = new TurnoMockUnJugador(null);
+        IFase fase = new FaseAtacar(t, paises, new Canje(paises));
 
+        assertEquals(0, t.jugadorActual().cantidadTarjetas());
+        fase = fase.siguienteFase();
+        assertEquals(0, t.jugadorActual().cantidadTarjetas());
+    }
+
+    @Test
+    public void test06NoConquistaImplicaNoTarjetas() throws FaseErroneaException, Exception {
+        ITurno t = new TurnoMockUnJugador(null);
+        IFase fase = new FaseAtacar(t, paises, new Canje(paises));
+        IPais mockAtacanteSiemprePierde = new PaisMockSiemprePierde("Rojo");
+        IPais mockDefensor = new PaisMock("Azul");
+
+        assertEquals(0, t.jugadorActual().cantidadTarjetas());
+        fase.asFaseAtacar().atacar(mockAtacanteSiemprePierde, 3, mockDefensor);
+        fase = fase.siguienteFase();
+        assertEquals(0, t.jugadorActual().cantidadTarjetas());
     }
 }

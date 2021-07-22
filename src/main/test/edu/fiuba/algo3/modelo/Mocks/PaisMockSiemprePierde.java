@@ -5,13 +5,19 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 
-public class PaisMock implements IPais {
+public class PaisMockSiemprePierde implements IPais {
     private String nombre;
     private IJugador conquistador;
 
-    public PaisMock(String nombre) {
+    public PaisMockSiemprePierde(String nombre) {
+        conquistador = new Jugador("Pedro el Perdedor");
         this.nombre = nombre;
-        conquistador = new Jugador("Victor el Victorioso");
+    }
+
+    //Este pais SIEMPRE PIERDE un ataque.
+    @Override
+    public void atacar(IPais defensor, int cantidadDeSoldados) throws Exception {
+        // pierde al no imponer su conquistador al defensor
     }
 
     @Override
@@ -66,10 +72,6 @@ public class PaisMock implements IPais {
         return null;
     }
 
-    //Este pais SIEMPRE GANA un ataque.
-    @Override
-    public void atacar(IPais defensor, int cantidadDeSoldados) throws Exception {
-        defensor.asignarConquistador(this.conquistador);
-    }
+    
     
 }
