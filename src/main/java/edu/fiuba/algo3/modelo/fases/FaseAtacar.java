@@ -25,7 +25,7 @@ public class FaseAtacar extends FaseAbstracta {
     }
 
     @Override
-    public IFase siguienteFase() throws FaseIncompletaException {
+    public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
         return estrategia.siguienteFase(turno, paises, canje);
     }
 

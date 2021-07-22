@@ -12,23 +12,27 @@ public class FaseColocar extends FaseAbstracta {
     List<IPais> paises;
     Canje canje;
 
-    public FaseColocar(ITurno turno2, List<IPais> paises, Canje canje) {
+    public FaseColocar(ITurno turno2, List<IPais> paises, Canje canje) throws EjercitosException {
         this.turno = turno2;
         this.paises = paises;
         this.canje = canje;
+        asignarNuevosEjercitosAJugadores();
 	}
 
 	public void asignarNuevosEjercitosAJugadores() throws EjercitosException {
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++ ) {
+            int cantidadDeSoldados = 
+                Math.max(turno.jugadorActual().obtenerPaises().size()/2, 3);
             //TODO: accede a paises del jugador directamente, puede que viole tda
-            (turno.jugadorActual()).agregarNuevosEjercitos(((turno.jugadorActual().obtenerPaises().size())/2));
+            turno
+                .jugadorActual()
+                .agregarNuevosEjercitos(cantidadDeSoldados);
             turno.siguienteJugador();
         }
         turno.siguienteJugador();
     }
 
     public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
-        asignarNuevosEjercitosAJugadores();
         turno.jugadorActual().verificarCantidadDeEjercitos(cantEjercitos);
         turno.jugadorActual().verificarPais(pais);
         pais.agregarEjercitos(cantEjercitos);
@@ -42,7 +46,7 @@ public class FaseColocar extends FaseAbstracta {
     }
 
     @Override
-    public IFase siguienteFase() throws FaseIncompletaException {
+    public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
         return estrategia.siguienteFase(turno, paises, canje);
     }
 

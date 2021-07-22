@@ -55,7 +55,7 @@ public class Jugador implements IJugador {
 	@Override
 	public void agregarNuevosEjercitos(int cantidad) throws EjercitosException {
 		this.ejercitos = 0;
-		if(cantidad <= 0) throw new EjercitosException(null);
+		if(cantidad <= 0) throw new EjercitosException("cantidadInvalida");
 		// Si el jugador controla menos de seis países de todas maneras incorpora tres ejércitos.
 		if(this.paises.size() < 6) {
 			this.ejercitos += 3;

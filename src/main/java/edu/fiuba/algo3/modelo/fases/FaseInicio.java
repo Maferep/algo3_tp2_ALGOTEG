@@ -81,7 +81,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     @Override
-    public IFase siguienteFase() throws FaseIncompletaException {
+    public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
         return estrategia.siguienteFase(turno, paises, canje);
     }
     

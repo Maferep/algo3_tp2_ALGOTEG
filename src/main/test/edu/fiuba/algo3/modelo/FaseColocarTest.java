@@ -121,4 +121,24 @@ public class FaseColocarTest {
         assertEquals(paisTercer.cantidadEjercitos(), 3);
 
     }
+
+    @Test
+    public void colocarEjercitosEnPaisNoAfectaOtrosJugadores() throws EjercitosException, FichasInsuficientesError,
+            PaisNoExistenteError {
+        List<IPais> paises = Arrays.asList(
+            "Bolivia",
+            "Colombia",
+            "Chile",
+            "Ecuador")
+            .stream()
+            .map(n -> new Pais(n))
+            .collect(Collectors.toList());
+            
+        IPais bolivia = paises.get(0);
+        ITurno turno = new TurnoMockUnJugadorPorPais(paises);
+        FaseColocar fase = new FaseColocar(turno,paisesJugadorUno, null);
+        fase.ubicarEjercitosEnPais(3, bolivia);
+        assertTrue(fase.faseCompletada());
+        assertEquals(bolivia.cantidadEjercitos(), 3);
+    }
 }

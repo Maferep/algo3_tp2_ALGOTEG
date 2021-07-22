@@ -6,7 +6,7 @@ public interface IFase {
 
 	Boolean faseCompletada();
 
-	IFase siguienteFase() throws FaseIncompletaException;
+	IFase siguienteFase() throws FaseIncompletaException, EjercitosException;
 
 	Boolean esFinDeJuego();
 
