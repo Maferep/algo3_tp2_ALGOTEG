@@ -140,5 +140,9 @@ public class FaseColocarTest {
         fase.ubicarEjercitosEnPais(3, bolivia);
         assertTrue(fase.faseCompletada());
         assertEquals(bolivia.cantidadEjercitos(), 3);
+        assertEquals( 0, turno.jugadorActual().cantidadEjercitos());
+
+        turno.siguienteJugador();
+        assertEquals(turno.jugadorActual().cantidadEjercitos(), 3);
     }
 }
