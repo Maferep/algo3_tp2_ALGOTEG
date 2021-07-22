@@ -14,6 +14,7 @@ import org.json.simple.parser.ParseException;
 public class LectorPaises {
     public Dictionary<String, List<String>> adyacencias;
     public List<String> paises;
+    public Dictionary<String, List<String>> continentes;
 
     public LectorPaises() {
         JSONParser jsonParser = new JSONParser();
@@ -58,4 +59,8 @@ public class LectorPaises {
                                     ((String) ((JSONObject) paises.get(i)).get("Limita con")).split(","))));
         }
     }
+
+    //TODO
+    //private void parsearContinentes(JSONArray paises) { }
+
 }
