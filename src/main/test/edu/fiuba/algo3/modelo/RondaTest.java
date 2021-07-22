@@ -30,7 +30,6 @@ public class RondaTest {
             .stream()
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
-    JuegoFactory juegoBuilder = new JuegoFactory();
     JugadorFactory tipoDeJugador = new JugadorFactory();
     List<IPais> paises = Arrays
             .asList(
@@ -47,7 +46,8 @@ public class RondaTest {
 
     @Test
     public void test00AgregarJugadores() throws Exception {
-        juegoBuilder.crearJuegoTEG(3);
+        IFase fase = Juego.crearJuegoTEG(3);
+        assertEquals(3, fase.asFaseInicio().cantidadDeJugadores());
     }
 
     @Test
