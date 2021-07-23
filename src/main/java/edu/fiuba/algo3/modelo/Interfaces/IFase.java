@@ -12,11 +12,11 @@ public interface IFase {
 
 	Boolean esFinDeJuego();
 
-	FaseInicio asFaseInicio() throws FaseErroneaException;
+	FaseInicio obtenerFaseInicio() throws FaseErroneaException;
 
-	FaseAtacar asFaseAtacar() throws FaseErroneaException;
+	FaseAtacar obtenerFaseAtacar() throws FaseErroneaException;
 
-	FaseColocar asFaseColocar() throws FaseErroneaException;
+	FaseColocar obtenerFaseColocar() throws FaseErroneaException;
 
-	FaseReagrupar asFaseReagrupar() throws FaseErroneaException;
+	FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException;
 }

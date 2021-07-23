@@ -45,7 +45,7 @@ public class RondaTest {
     @Test
     public void test00AgregarJugadores() throws Exception {
         IFase fase = Juego.crearJuegoTEG(3);
-        assertEquals(3, fase.asFaseInicio().cantidadDeJugadores());
+        assertEquals(3, fase.obtenerFaseInicio().cantidadDeJugadores());
     }
 
     @Test
@@ -53,8 +53,8 @@ public class RondaTest {
         ITurno unJugador = new TurnoMockUnJugador(paisesJugadorUno);
         FaseInicio fase = new FaseInicio(unJugador);
         assertFalse(fase.faseCompletada());
-        fase.asFaseInicio().ubicarEjercitosEnPais(3, new Pais("Estados Unidos"));
-        fase.asFaseInicio().ubicarEjercitosEnPais(5, new Pais("Estados Unidos"));
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(3, new Pais("Estados Unidos"));
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(5, new Pais("Estados Unidos"));
         assertTrue(fase.faseCompletada());
     }
 
@@ -65,7 +65,7 @@ public class RondaTest {
         IFase fase = new FaseInicio(unJugador);
         assertFalse(fase.faseCompletada());
 
-        fase.asFaseInicio().ubicarEjercitosEnPais(3, paisesJugadorDos.get(0));
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(3, paisesJugadorDos.get(0));
         assertTrue(fase.faseCompletada());
         fase = fase.siguienteFase();
     }
@@ -78,7 +78,7 @@ public class RondaTest {
         IPais mockDefensor = new PaisMock("Azul");
 
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
-        fase.asFaseAtacar().atacar(mockAtacanteSiempreGana, 3, mockDefensor);
+        fase.obtenerFaseAtacar().atacar(mockAtacanteSiempreGana, 3, mockDefensor);
         fase = fase.siguienteFase();
         assertEquals(1, t.jugadorActual().cantidadTarjetas());
     }
@@ -100,7 +100,7 @@ public class RondaTest {
         IPais mockDefensor = new PaisMock("Azul");
 
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
-        fase.asFaseAtacar().atacar(mockAtacanteSiemprePierde, 3, mockDefensor);
+        fase.obtenerFaseAtacar().atacar(mockAtacanteSiemprePierde, 3, mockDefensor);
         fase = fase.siguienteFase();
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
     }

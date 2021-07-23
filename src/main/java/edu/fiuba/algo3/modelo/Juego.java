@@ -14,7 +14,7 @@ public class Juego {
         faseActual = crearJuegoTEG(3);
     }
     public void completarEtapaInicio(int cantEjercitos, IPais pais) throws FaseErroneaException, EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
-        faseActual.asFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
+        faseActual.obtenerFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
     }
 
     public static IFase crearJuegoTEG(int cantJugadores) throws Exception {

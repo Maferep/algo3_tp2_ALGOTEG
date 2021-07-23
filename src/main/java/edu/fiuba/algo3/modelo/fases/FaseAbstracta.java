@@ -12,22 +12,22 @@ public abstract class FaseAbstracta implements IFase {
     Canje canje;
     
     @Override
-    public FaseInicio asFaseInicio() throws FaseErroneaException {
+    public FaseInicio obtenerFaseInicio() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 
     @Override
-    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
+    public FaseAtacar obtenerFaseAtacar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 
     @Override
-    public FaseColocar asFaseColocar() throws FaseErroneaException {
+    public FaseColocar obtenerFaseColocar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 
     @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
+    public FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 

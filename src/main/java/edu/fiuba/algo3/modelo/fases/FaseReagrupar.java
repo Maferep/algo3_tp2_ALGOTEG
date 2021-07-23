@@ -40,7 +40,7 @@ public abstract class FaseReagrupar extends FaseAbstracta {
     }
 
     @Override
-    public FaseReagrupar asFaseReagrupar() {
+    public FaseReagrupar obtenerFaseReagrupar() {
         return this;
     }
 

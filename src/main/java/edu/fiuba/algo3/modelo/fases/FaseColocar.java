@@ -51,7 +51,7 @@ public class FaseColocar extends FaseAbstracta {
     }
 
     @Override
-    public FaseColocar asFaseColocar() {
+    public FaseColocar obtenerFaseColocar() {
         return this;
     }
 }

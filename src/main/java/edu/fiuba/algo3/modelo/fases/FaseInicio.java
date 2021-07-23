@@ -88,7 +88,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
     
     @Override
-    public FaseInicio asFaseInicio() {
+    public FaseInicio obtenerFaseInicio() {
         return this;
     }
 }

@@ -49,7 +49,7 @@ public class FaseAtacar extends FaseAbstracta {
     }
 
     @Override
-    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
+    public FaseAtacar obtenerFaseAtacar() throws FaseErroneaException {
         return this;
     }
 
