@@ -36,6 +36,8 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             .stream()
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
+    //TODO NULO
+    IMapa mapa;
 
     public FaseInicio(int cantJugadores) throws Exception {
         if (!validarCantidad(cantJugadores))
@@ -79,7 +81,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(turno, paises, canje);
+        return estrategia.siguienteFase(turno, mapa, canje);
     }
     
     @Override

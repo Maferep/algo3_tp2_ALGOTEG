@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 
 public class FaseReagruparSinConquista extends FaseReagrupar {
 
-    public FaseReagruparSinConquista(ITurno turno, List<IPais> paises, Canje canje) {
+    public FaseReagruparSinConquista(ITurno turno, IMapa paises, Canje canje) {
         super(turno, paises, canje);
     }
 }

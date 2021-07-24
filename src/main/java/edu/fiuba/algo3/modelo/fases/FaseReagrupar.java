@@ -10,10 +10,10 @@ public abstract class FaseReagrupar extends FaseAbstracta {
 
     IEstrategiaFase estrategia = new EstrategiaReagruparSinCompletar();
     ITurno turno;
-    List<IPais> paises;
+    IMapa paises;
     private Canje canje;
 
-    public FaseReagrupar(ITurno turno, List<IPais> paises, Canje canje) {
+    public FaseReagrupar(ITurno turno, IMapa paises, Canje canje) {
         this.turno = turno;
         this.paises = paises;
         this.canje = canje;

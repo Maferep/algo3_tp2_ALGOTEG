@@ -8,15 +8,13 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class FaseAtacar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaAtaqueSinConquista();
-    List<IPais> paises;
+    IMapa mapa;
     ITurno turno;
-    Canje canje;
     //No usa estrtegias pues puede terminar sin hacer nada
 
-    public FaseAtacar(ITurno turno, List<IPais> paises, Canje canje) {
+    public FaseAtacar(ITurno turno, IMapa mapa) {
         this.turno = turno;
-        this.paises = paises;
-        this.canje = canje;
+        this.mapa = mapa;
     }
 
     // métodos públicos
@@ -40,7 +38,7 @@ public class FaseAtacar extends FaseAbstracta {
 
     @Override
     public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(turno, paises, canje);
+        return estrategia.siguienteFase(turno, mapa, canje);
     }
 
     @Override
