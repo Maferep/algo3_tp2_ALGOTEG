@@ -107,4 +107,9 @@ public class Jugador implements IJugador {
 		if(ejercitosPorColocar < 0) throw new EjercitosException("quita demasiados ejercitos");
 	}
 
+	@Override
+	public int cantidadPaises() {
+		return paises.size();
+	}
+
 }
