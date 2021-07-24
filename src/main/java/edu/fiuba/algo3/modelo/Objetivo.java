@@ -33,5 +33,9 @@ public class Objetivo {
         return jugadorActual.conquistaContinentes(jugadorActual,continentes);
     }
 
+    //objetivo conquistar paises
+    public boolean objetivoConquistarPaisesCumplido(Jugador jugadorActual, List<IPais> paises) {
+        return jugadorActual.conquistaPaises(jugadorActual,paises);
+    }
 
 }
