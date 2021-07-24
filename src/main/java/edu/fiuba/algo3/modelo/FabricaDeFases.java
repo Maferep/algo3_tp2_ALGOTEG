@@ -14,7 +14,7 @@ public class FabricaDeFases {
         this.turno = turno;
     }
 
-    private void definirMapa(IMapa mapa) {
+    void definirMapa(IMapa mapa) {
         this.mapa = mapa;
     }
 

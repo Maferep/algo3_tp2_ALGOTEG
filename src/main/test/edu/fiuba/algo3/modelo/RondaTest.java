@@ -73,21 +73,22 @@ public class RondaTest {
 
     @Test
     public void test04ConquistaCausaAsignacionDeTarjeta() throws FaseErroneaException, Exception {
-        ITurno t = new TurnoMockUnJugador(null);
+        ITurno turnoMock = new TurnoMockUnJugador(paises);
         IMapa mapa = new Mapa();
         mapa.definirPaises(paises);
-        IFase fase = new FaseAtacar(t, mapa);
+        IFase fase = new FaseAtacar(turnoMock, mapa);
         IPais mockAtacanteSiempreGana = new PaisMock("Rojo");
         IPais mockDefensor = new PaisMock("Azul");
 
-        assertEquals(0, t.jugadorActual().cantidadTarjetas());
+        assertEquals(0, turnoMock.jugadorActual().cantidadTarjetas());
         fase.obtenerFaseAtacar().atacar(mockAtacanteSiempreGana, 3, mockDefensor);
 
         FabricaDeFases fabrica = new FabricaDeFases();
-        fabrica.definirTurno(new TurnoMock());
+        fabrica.definirTurno(turnoMock);
         fabrica.definirCanje(new Canje(paises));
-        fase = fase.siguienteFase(new FabricaDeFases());
-        assertEquals(1, t.jugadorActual().cantidadTarjetas());
+        fabrica.definirMapa(mapa);
+        fase = fase.siguienteFase(fabrica);
+        assertEquals(1, turnoMock.jugadorActual().cantidadTarjetas());
     }
     @Test
     public void test05NoAtaqueImplicaNoTarjetas() throws FaseErroneaException, Exception {
