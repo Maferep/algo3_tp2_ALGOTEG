@@ -111,6 +111,8 @@ public class Jugador implements IJugador {
 		if(ejercitosPorColocar < 0) throw new EjercitosException("quita demasiados ejercitos");
 	}
 
+	//para objetivos
+
 	public void asignarObjetivo() {
 
 	}
@@ -134,6 +136,12 @@ public class Jugador implements IJugador {
 				return false;
 			}
 		}
+		return true;
+	}
+
+	//conquista de continentes.
+	public boolean verificarConquista(Continente continente) {
+		//return this.continente.verificarConquista(continente);
 		return true;
 	}
 
