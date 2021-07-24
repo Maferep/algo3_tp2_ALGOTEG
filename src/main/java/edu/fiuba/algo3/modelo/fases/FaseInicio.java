@@ -36,7 +36,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
 
-    public FaseInicio(int cantJugadores) throws Exception {
+    public FaseInicio(int cantJugadores) throws CantidadDeJugadoresError, EjercitosException {
         if (!validarCantidad(cantJugadores))
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
                     + minJugadores + "y un máximo de"
@@ -46,8 +46,10 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     //version para mock
-    public FaseInicio(ITurno turno) throws Exception {
+    public FaseInicio(IMapa mapa, ITurno turno, Canje canje)  {
         this.turno = turno;
+        this.mapa = mapa;
+        this.canje = canje;
     }
 
     // interfaz de inicio
