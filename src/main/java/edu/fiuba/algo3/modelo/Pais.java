@@ -59,10 +59,10 @@ public class Pais implements IPais {
 		if(!adyacentes.stream().anyMatch(a -> a == otroPais)) 
 			throw new TransferirEjercitosException("No es adyacente");
 
-		if(cantidad > ejercitos)
+		if(cantidad >= ejercitos)
 			throw new TransferirEjercitosException("No hay tantos ejercitos para transferir");
 	
-		ejercitos -= cantidad;
+		quitarEjercitos(cantidad);
 		otroPais.agregarEjercitos(cantidad);
 	}
 }

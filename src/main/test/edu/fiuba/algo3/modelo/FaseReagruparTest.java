@@ -32,12 +32,52 @@ public class FaseReagruparTest {
 
     @Test
     public void test00Reagrupar() throws EjercitosException, TransferirEjercitosException {
+        
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
             new Mapa(), 
             new Canje(paises));
-        
-        reagrupar.transferirEjercitos(3, new Pais("Rojo"), new Pais("Azul"));
+        IPais paisRojo = new Pais("Rojo");
+        IPais paisAzul = new Pais("Azul");
+        paisRojo.agregarAdyacente(paisAzul);
+        paisAzul.agregarAdyacente(paisRojo);
+
+        paisRojo.agregarEjercitos(3);
+        reagrupar.transferirEjercitos(2, paisRojo, paisAzul);
+    }
+
+    @Test
+    public void test01SiNoSonAdyacentesNoTransfiere() 
+            throws EjercitosException, TransferirEjercitosException {
+        FaseReagrupar reagrupar = new FaseReagruparSinConquista(
+            new TurnoMockUnJugador(paises), 
+            new Mapa(), 
+            new Canje(paises));
+
+        IPais paisRojo = new Pais("Rojo");
+        IPais paisAzul = new Pais("Azul");
+ 
+        paisRojo.agregarEjercitos(4);
+
+        assertThrows(TransferirEjercitosException.class, 
+            () -> reagrupar.transferirEjercitos(3, paisRojo, paisAzul));
+    }
+
+    @Test
+    public void test02SiNoTieneEjercitosParaTransferirNoTransfiere() 
+            throws EjercitosException, TransferirEjercitosException {
+        FaseReagrupar reagrupar = new FaseReagruparSinConquista(
+            new TurnoMockUnJugador(paises), 
+            new Mapa(), 
+            new Canje(paises));
+
+        IPais paisRojo = new Pais("Rojo");
+        IPais paisAzul = new Pais("Azul");
+ 
+        paisRojo.agregarEjercitos(3);
+
+        assertThrows(TransferirEjercitosException.class, 
+            () -> reagrupar.transferirEjercitos(3, paisRojo, paisAzul));
     }
 }
 
