@@ -7,14 +7,22 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     IFase faseActual;
     FabricaDeFases fabrica;
 
-    public Juego(int cantidadDeJugadores) throws Exception {
+    IMapa mapa;
+    ITurno turno;
+    Canje canje;
+
+    public Juego(final int cantidadDeJugadores) throws Exception {
         faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
+
+        mapa = faseActual.obtenerFaseInicio().obtenerMapa();
+        turno = faseActual.obtenerFaseInicio().obtenerTurno();
+        canje = faseActual.obtenerFaseInicio().obtenerCanje();
     }
 
     // inicio
 
     @Override
-    public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais)
+    public void ubicarEjercitosEnPais(final int cantEjercitos, final IPais pais)
             throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException, FaseErroneaException {
         faseActual.obtenerFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
     }
@@ -29,7 +37,7 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     // atacar
 
     @Override
-    public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
+    public void atacar(final IPais atacante, final int cantidadDeSoldados, final IPais defensor) throws Exception {
         faseActual.obtenerFaseAtacar().atacar(atacante, cantidadDeSoldados, defensor);
     }
 
@@ -41,7 +49,7 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     }
 
     @Override
-    public void colocarEjercitosEnPais(int cantEjercitos, IPais pais)
+    public void colocarEjercitosEnPais(final int cantEjercitos, final IPais pais)
             throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError, FaseErroneaException {
         faseActual.obtenerFaseColocar().colocarEjercitosEnPais(cantEjercitos, pais);
     }
@@ -56,4 +64,30 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     public void siguienteFase() throws FaseIncompletaException, EjercitosException {
         faseActual = faseActual.siguienteFase(fabrica);
     }
+
+    @Override
+    public Canje obtenerCanje() {
+        return canje;
+    }
+
+    @Override
+    public IMapa obtenerMapa() {
+        // TODO Auto-generated method stub
+        return mapa;
+    }
+
+    @Override
+    public ITurno obtenerTurno() {
+        // TODO Auto-generated method stub
+        return turno;
+    }
+
+	public IJugador jugadorActual() {
+		return turno.jugadorActual();
+	}
+
+	public void siguienteTurno() {
+		faseActual.siguienteTurno();
+		
+	}
 }
