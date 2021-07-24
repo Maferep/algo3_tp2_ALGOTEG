@@ -13,6 +13,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     ITurno turno;
     IMapa mapa;
     Canje canje;
+    Objetivo objetivo;
 
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     List<String> colores =  Arrays.asList(
@@ -44,7 +45,8 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
                     + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
-        turno = new Turno(colores, cantJugadores);
+        turno = new Turno(colores, cantJugadores); //turno tiene al jugador actual y a toda la cantidad de jugadores.
+        objetivo = new Objetivo(turno);
         canje = new Canje(paises);
     }
 
@@ -108,4 +110,8 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
 	public ITurno obtenerTurno() {
 		return turno;
 	}
+
+    @Override
+    public Objetivo obtenerObjetivo() { return objetivo; }
+    //turno tiene al jugador actual y a toda la cantidad de jugadores.
 }

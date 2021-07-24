@@ -4,11 +4,14 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.fases.*;
 
+import java.util.List;
+
 public class FabricaDeFases {
 
     ITurno turno;
     IMapa mapa;
     Canje canje;
+    Objetivo objetivo;
 
     void definirTurno(ITurno turno) {
         this.turno = turno;
@@ -22,6 +25,8 @@ public class FabricaDeFases {
         this.canje = canje;
     }
 
+    void definirObjetivo(Objetivo objetivo) { this.objetivo = objetivo;}
+
     public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception {
         IFase fase = new FaseInicio(cantidadDeJugadores);
 
@@ -29,6 +34,7 @@ public class FabricaDeFases {
         definirCanje(fase.obtenerFaseInicio().obtenerCanje());
         definirMapa(fase.obtenerFaseInicio().obtenerMapa());
         definirTurno(fase.obtenerFaseInicio().obtenerTurno());
+        definirObjetivo(fase.obtenerFaseInicio().obtenerObjetivo());
 
         return fase;
     }

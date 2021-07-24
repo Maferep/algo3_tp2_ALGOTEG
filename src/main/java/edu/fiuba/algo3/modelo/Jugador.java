@@ -111,4 +111,39 @@ public class Jugador implements IJugador {
 		if(ejercitosPorColocar < 0) throw new EjercitosException("quita demasiados ejercitos");
 	}
 
+	public void asignarObjetivo() {
+
+	}
+
+	public boolean esDestruido(List<IPais> paises) {
+		for(int i = 0 ; i < paises.size() ; i++) {
+			if((paises.get(i)).obtenerConquistador().obtenerColor().equals(this.color)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean tieneMinimoPaises() {
+		return (this.paises.size() >= minimoPaises);
+	}
+
+	public boolean conquistaContinentes(Jugador conquistador,List<Continente> continentes) {
+		for (int i = 0; i < continentes.size(); i++) {
+			if(!(conquistador.verificarConquista(continentes.get(i)))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean conquistaPaises(Jugador conquistador,List<IPais> paises) {
+		for (int i = 0; i < paises.size(); i++) {
+			if(!paises.get(i).obtenerConquistador().obtenerColor().equals(conquistador.color)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 }
