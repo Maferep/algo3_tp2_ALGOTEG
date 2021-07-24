@@ -15,10 +15,6 @@ public abstract class FaseReagrupar extends FaseAbstracta {
         this.mapa = paises;
         this.canje = canje;
     }
-    public void reagrupar() {
-        // TODO reagrupar
-        estrategia = estrategia.actualizar();
-    }
 
     // métodos de fase
     @Override

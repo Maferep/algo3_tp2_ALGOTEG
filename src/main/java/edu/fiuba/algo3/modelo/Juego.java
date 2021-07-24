@@ -27,13 +27,6 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
         faseActual.obtenerFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
     }
 
-    // reagrupar
-
-    @Override
-    public void reagrupar() throws Exception {
-        faseActual.obtenerFaseReagrupar().reagrupar();
-    }
-
     // atacar
 
     @Override
@@ -89,5 +82,9 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 	public void siguienteTurno() {
 		faseActual.siguienteTurno();
 		
+	}
+
+	public int cantidadDePaises() {
+		return mapa.obtenerPaises().size();
 	}
 }

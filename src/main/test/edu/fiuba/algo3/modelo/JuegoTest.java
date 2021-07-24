@@ -35,7 +35,7 @@ public class JuegoTest {
 
         List<IPais> paisesDeUltimo = null;
 
-        for(int i = 0; i < juego.cantidadDeJugadores(); i++) {
+        for(int i = 0; i < juego.cantidadDePaises(); i++) {
             paisesDeUltimo = juego.jugadorActual().obtenerPaises();
             assertNotEquals(0, paisesDeUltimo);
             juego.ubicarEjercitosEnPais(3, paisesDeUltimo.get(0));
@@ -43,11 +43,16 @@ public class JuegoTest {
         }
 
         List<IPais> paisesDeJugadorActual = juego.jugadorActual().obtenerPaises();
+        assertNotEquals(true, paisesDeJugadorActual.isEmpty());
         IPais defensor = paisesDeUltimo.get(0);
+        IPais atacante = paisesDeJugadorActual.get(0);
+
         assertNotEquals(null, defensor);
+        assertNotEquals(null, atacante);
+        assertNotEquals(null, juego.jugadorActual());
         
         juego.siguienteFase();
-        juego.atacar(paisesDeJugadorActual.get(0), 3, defensor);
+        juego.atacar(atacante, 3, defensor);
 
         juego.siguienteFase();
         assertEquals(1, juego.jugadorActual().cantidadTarjetas());

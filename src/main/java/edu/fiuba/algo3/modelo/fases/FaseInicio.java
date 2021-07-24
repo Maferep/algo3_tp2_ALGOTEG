@@ -43,6 +43,8 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
                     + maxJugadores + "jugadores.");
         turno = new Turno(colores, cantJugadores);
         canje = new Canje(paises);
+        mapa = new Mapa();
+        mapa.definirPaises(paises);
     }
 
     //version para mock
@@ -105,5 +107,5 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     @Override
 	public ITurno obtenerTurno() {
 		return turno;
-	}
+    }
 }
