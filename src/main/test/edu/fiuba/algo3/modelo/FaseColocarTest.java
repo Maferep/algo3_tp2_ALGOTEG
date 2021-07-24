@@ -168,4 +168,12 @@ public class FaseColocarTest {
         FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);
         assertEquals(3, turno.jugadorActual().cantidadEjercitos());
     }
+
+    @Test
+    public void test06VerificarFaseCompletada() throws EjercitosException {
+        ITurno turno = new TurnoMockUnJugadorPorPais(listaDePaises);
+
+        FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);
+        assertFalse(fase.faseCompletada());
+    }
 }

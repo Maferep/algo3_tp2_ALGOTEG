@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class FaseColocar extends FaseAbstracta implements IFaseColocar {
+public class FaseColocar extends FaseAbstracta implements IFaseColocar, ITurno {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     IMapa mapa;
 
@@ -49,5 +49,22 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     @Override
     public FaseColocar obtenerFaseColocar() {
         return this;
+    }
+
+    @Override
+    public IJugador jugadorActual() {
+        return turno.jugadorActual();
+    }
+
+    @Override
+    public void siguienteJugador() {
+        estrategia.siguienteJugador();
+        estrategia = estrategia.actualizar();
+    }
+
+    @Override
+    public int cantidadDeJugadores() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }
