@@ -19,6 +19,21 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
         faseActual.obtenerFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
     }
 
+    @Override
+    public Canje obtenerCanje() {
+        return null;
+    }
+
+    @Override
+    public IMapa obtenerMapa() {
+        return null;
+    }
+
+    @Override
+    public ITurno obtenerTurno() {
+        return null;
+    }
+
     // reagrupar
 
     @Override
