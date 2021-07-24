@@ -13,7 +13,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     ITurno turno;
     IMapa mapa;
     Canje canje;
-    
+
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     List<String> colores =  Arrays.asList(
         "Azul", 
@@ -94,15 +94,17 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         return this;
     }
 
-    //getters para la fábrica concreta
+    @Override
 	public Canje obtenerCanje() {
 		return canje;
 	}
 
+    @Override
 	public IMapa obtenerMapa() {
 		return mapa;
 	}
 
+    @Override
 	public ITurno obtenerTurno() {
 		return turno;
 	}
