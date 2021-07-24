@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagrupar {
     IFase faseActual;
-    FabricaDeFases fabrica;
+    FabricaDeFases fabrica = new FabricaDeFases();
 
     IMapa mapa;
     ITurno turno;

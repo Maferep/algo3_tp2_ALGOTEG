@@ -10,9 +10,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class FaseInicio extends FaseAbstracta implements IFaseInicio {
-    ITurno turno;
-    IMapa mapa;
-    Canje canje;
 
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     List<String> colores =  Arrays.asList(

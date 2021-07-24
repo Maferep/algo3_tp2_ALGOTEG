@@ -30,26 +30,26 @@ public class JuegoTest {
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
     @Test
-    public void test04ConquistaCausaAsignacionDeTarjeta() throws FaseErroneaException, Exception {
+    public void test01avanzarFasesDeJuego() throws FaseErroneaException, Exception {
         Juego juego = new Juego(3);
 
-        List<IPais> paises = juego.obtenerMapa().obtenerPaises();
-        List<IPais> paisesDeJugador;
+        List<IPais> paisesDeUltimo = null;
 
         for(int i = 0; i < juego.cantidadDeJugadores(); i++) {
-            paisesDeJugador = juego.jugadorActual().obtenerPaises();
-            assertNotEquals(0, paisesDeJugador);
-            juego.ubicarEjercitosEnPais(3, paisesDeJugador.get(0));
+            paisesDeUltimo = juego.jugadorActual().obtenerPaises();
+            assertNotEquals(0, paisesDeUltimo);
+            juego.ubicarEjercitosEnPais(3, paisesDeUltimo.get(0));
             juego.siguienteTurno();
         }
-        
-        juego.atacar(mockAtacanteSiempreGana, 3, mockDefensor);
 
-        FabricaDeFases fabrica = new FabricaDeFases();
-        fabrica.definirTurno(turnoMock);
-        fabrica.definirCanje(new Canje(paises));
-        fabrica.definirMapa(mapa);
-        fase = fase.siguienteFase(fabrica);
-        assertEquals(1, turnoMock.jugadorActual().cantidadTarjetas());
+        List<IPais> paisesDeJugadorActual = juego.jugadorActual().obtenerPaises();
+        IPais defensor = paisesDeUltimo.get(0);
+        assertNotEquals(null, defensor);
+        
+        juego.siguienteFase();
+        juego.atacar(paisesDeJugadorActual.get(0), 3, defensor);
+
+        juego.siguienteFase();
+        assertEquals(1, juego.jugadorActual().cantidadTarjetas());
     }
 }

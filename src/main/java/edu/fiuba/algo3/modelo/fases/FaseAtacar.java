@@ -6,8 +6,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class FaseAtacar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaAtaqueSinConquista();
-    IMapa mapa;
-    ITurno turno;
+    
     //No usa estrtegias pues puede terminar sin hacer nada
 
     public FaseAtacar(ITurno turno, IMapa mapa) {
