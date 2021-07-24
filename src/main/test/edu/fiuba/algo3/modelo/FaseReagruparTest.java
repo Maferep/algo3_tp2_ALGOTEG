@@ -31,7 +31,7 @@ public class FaseReagruparTest {
             .collect(Collectors.toList());
 
     @Test
-    public void test00Reagrupar() throws EjercitosException {
+    public void test00Reagrupar() throws EjercitosException, TransferirEjercitosException {
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
             new Mapa(), 

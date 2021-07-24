@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
+import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 
 public class PaisMockSiemprePierde implements IPais {
     private String nombre;
@@ -14,7 +15,7 @@ public class PaisMockSiemprePierde implements IPais {
         this.nombre = nombre;
     }
 
-    //Este pais SIEMPRE PIERDE un ataque.
+    // Este pais SIEMPRE PIERDE un ataque.
     @Override
     public void atacar(IPais defensor, int cantidadDeSoldados) throws Exception {
         // pierde al no imponer su conquistador al defensor
@@ -68,9 +69,15 @@ public class PaisMockSiemprePierde implements IPais {
 
     @Override
     public void definirConquistador(IJugador conquistador) {
-		conquistador.asignarPais(this);
-		this.conquistador = conquistador;
-	}
+        conquistador.asignarPais(this);
+        this.conquistador = conquistador;
+    }
+
+    @Override
+    public void transferirEjercitosA(int cantidad, IPais otroPais) throws TransferirEjercitosException {
+        // TODO Auto-generated method stub
+
+    }
 
     
     

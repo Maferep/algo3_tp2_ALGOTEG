@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 
-import java.util.List;
+import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 
 public interface IPais {
 
@@ -23,5 +23,6 @@ public interface IPais {
 	void atacar(IPais defensor, int cantidadDeSoldados) throws Exception;
 
 	void definirConquistador(IJugador jugador2);
-    
+	
+	public void transferirEjercitosA(int cantidad, IPais otroPais) throws TransferirEjercitosException;
 }

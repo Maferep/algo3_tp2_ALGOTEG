@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public abstract class FaseReagrupar extends FaseAbstracta {
+public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagrupar {
 
     IEstrategiaFase estrategia = new EstrategiaReagruparSinCompletar();
 
@@ -15,8 +15,8 @@ public abstract class FaseReagrupar extends FaseAbstracta {
         this.mapa = paises;
         this.canje = canje;
     }
-    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) {
-        //unPais.moverEjercitosA(otroPais); //TODO FALTA IMPLEMENTAR ADYACENCIA
+    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws TransferirEjercitosException {
+        unPais.transferirEjercitosA(cantidad, otroPais);
         estrategia = estrategia.actualizar();
     }
 

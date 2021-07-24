@@ -30,7 +30,9 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     // reagrupar
 
     @Override
-    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws FaseErroneaException{
+    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws 
+            FaseErroneaException,
+            TransferirEjercitosException {
         faseActual.obtenerFaseReagrupar().transferirEjercitos(cantidad, unPais, otroPais);
     }
 
