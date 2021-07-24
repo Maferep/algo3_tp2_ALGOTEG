@@ -80,8 +80,8 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     @Override
-    public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(turno, mapa, canje);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
+        return estrategia.siguienteFase(fabrica);
     }
     
     @Override
@@ -93,4 +93,17 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     public FaseInicio obtenerFaseInicio() {
         return this;
     }
+
+    //getters para la fábrica concreta
+	public Canje obtenerCanje() {
+		return canje;
+	}
+
+	public IMapa obtenerMapa() {
+		return mapa;
+	}
+
+	public ITurno obtenerTurno() {
+		return turno;
+	}
 }

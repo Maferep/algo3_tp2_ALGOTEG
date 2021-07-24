@@ -44,8 +44,8 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     }
 
     @Override
-    public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(turno, mapa, canje);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
+        return estrategia.siguienteFase(fabrica);
     }
 
     @Override

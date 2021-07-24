@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.Interfaces;
+import edu.fiuba.algo3.modelo.FabricaDeFases;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.fases.*;
 
@@ -6,7 +7,7 @@ public interface IFase {
 
 	Boolean faseCompletada();
 
-	IFase siguienteFase() throws FaseIncompletaException, EjercitosException;
+	IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException;
 
 	public void siguienteTurno();
 

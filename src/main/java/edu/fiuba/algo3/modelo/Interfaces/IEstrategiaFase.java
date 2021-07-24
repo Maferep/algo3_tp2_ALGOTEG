@@ -11,5 +11,5 @@ public interface IEstrategiaFase {
 
 	public Boolean faseCompletada();
 
-	public IFase siguienteFase(ITurno turno, IMapa paises, Canje canje) throws FaseIncompletaException, EjercitosException;
+	public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException;
 }

@@ -6,9 +6,6 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagrupar {
     IFase faseActual;
     FabricaDeFases fabrica;
-    Canje canje;
-    ITurno turno; 
-    IMapa mapa;
 
     public Juego(int cantidadDeJugadores, IJugador tipoJugador) throws Exception {
         faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
@@ -51,13 +48,12 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 
     //datos persistentes del juego
 
-    @Override
-    public int cantidadDeJugadores() {
-        return turno.cantidadDeJugadores();
+    public int cantidadDeJugadores() throws FaseErroneaException {
+        return faseActual.obtenerFaseInicio().cantidadDeJugadores();
     }
 
     //avanzar fase
     public void siguienteFase() throws FaseIncompletaException, EjercitosException {
-        faseActual = faseActual.siguienteFase();
+        faseActual = faseActual.siguienteFase(fabrica);
     }
 }

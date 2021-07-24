@@ -19,7 +19,7 @@ public class EstrategiaInicioSinCompletar implements IEstrategiaFase {
     }
 
     @Override
-    public IFase siguienteFase(ITurno turno, IMapa mapa, Canje canje) throws FaseIncompletaException{
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException{
         throw new FaseIncompletaException(null);
     }
 }

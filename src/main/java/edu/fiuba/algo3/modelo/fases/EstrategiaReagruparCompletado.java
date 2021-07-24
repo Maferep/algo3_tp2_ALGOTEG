@@ -18,8 +18,8 @@ public class EstrategiaReagruparCompletado implements IEstrategiaFase {
     }
 
     @Override
-    public IFase siguienteFase(ITurno turno, IMapa paises, Canje canje) throws FaseIncompletaException,
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException,
             EjercitosException {
-        return new FaseColocar(turno, paises, canje);
+        return fabrica.crearFaseColocar();
     }
 }

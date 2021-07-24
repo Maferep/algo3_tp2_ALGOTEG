@@ -18,7 +18,7 @@ public class EstrategiaAtaqueSinConquista implements IEstrategiaFase {
     }
 
     @Override
-    public IFase siguienteFase(ITurno turno, IMapa mapa, Canje canje) throws FaseIncompletaException {
-        return new FaseReagruparSinConquista(turno, mapa, canje);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException {
+        return fabrica.crearFaseReagruparSinConquista();
     }
 }

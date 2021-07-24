@@ -44,7 +44,8 @@ public class RondaTest {
 
     @Test
     public void test00AgregarJugadores() throws Exception {
-        IFase fase = Juego.crearJuegoTEG(3);
+        FabricaDeFases fabrica = new FabricaDeFases();
+        IFase fase = fabrica.crearFaseInicio(3);
         assertEquals(3, fase.obtenerFaseInicio().cantidadDeJugadores());
     }
 
@@ -67,41 +68,51 @@ public class RondaTest {
 
         fase.obtenerFaseInicio().ubicarEjercitosEnPais(3, paisesJugadorDos.get(0));
         assertTrue(fase.faseCompletada());
-        fase = fase.siguienteFase();
+        fase = fase.siguienteFase(new FabricaDeFases());
     }
 
     @Test
     public void test04ConquistaCausaAsignacionDeTarjeta() throws FaseErroneaException, Exception {
         ITurno t = new TurnoMockUnJugador(null);
-        IFase fase = new FaseAtacar(t, paises, new Canje(paises));
+        IMapa mapa = new Mapa();
+        mapa.definirPaises(paises);
+        IFase fase = new FaseAtacar(t, mapa);
         IPais mockAtacanteSiempreGana = new PaisMock("Rojo");
         IPais mockDefensor = new PaisMock("Azul");
 
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
         fase.obtenerFaseAtacar().atacar(mockAtacanteSiempreGana, 3, mockDefensor);
-        fase = fase.siguienteFase();
+
+        FabricaDeFases fabrica = new FabricaDeFases();
+        fabrica.definirTurno(new TurnoMock());
+        fabrica.definirCanje(new Canje(paises));
+        fase = fase.siguienteFase(new FabricaDeFases());
         assertEquals(1, t.jugadorActual().cantidadTarjetas());
     }
     @Test
     public void test05NoAtaqueImplicaNoTarjetas() throws FaseErroneaException, Exception {
         ITurno t = new TurnoMockUnJugador(null);
-        IFase fase = new FaseAtacar(t, paises, new Canje(paises));
+        IMapa mapa = new Mapa();
+        mapa.definirPaises(paises);
+        IFase fase = new FaseAtacar(t, mapa);
 
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
-        fase = fase.siguienteFase();
+        fase = fase.siguienteFase(new FabricaDeFases());
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
     }
 
     @Test
     public void test06NoConquistaImplicaNoTarjetas() throws FaseErroneaException, Exception {
         ITurno t = new TurnoMockUnJugador(null);
-        IFase fase = new FaseAtacar(t, paises, new Canje(paises));
+        IMapa mapa = new Mapa();
+        mapa.definirPaises(paises);
+        IFase fase = new FaseAtacar(t, mapa);
         IPais mockAtacanteSiemprePierde = new PaisMockSiemprePierde("Rojo");
         IPais mockDefensor = new PaisMock("Azul");
 
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
         fase.obtenerFaseAtacar().atacar(mockAtacanteSiemprePierde, 3, mockDefensor);
-        fase = fase.siguienteFase();
+        fase = fase.siguienteFase(new FabricaDeFases());
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
     }
 }

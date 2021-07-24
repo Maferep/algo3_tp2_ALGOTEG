@@ -30,8 +30,8 @@ public abstract class FaseReagrupar extends FaseAbstracta {
     }
 
     @Override
-    public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(turno, paises, canje);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
+        return estrategia.siguienteFase(fabrica);
     }
 
     @Override

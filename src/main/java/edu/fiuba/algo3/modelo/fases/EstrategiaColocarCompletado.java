@@ -18,8 +18,7 @@ public class EstrategiaColocarCompletado implements IEstrategiaFase {
     }
 
     @Override
-    public IFase siguienteFase(ITurno turno, IMapa mapa, Canje canje) throws FaseIncompletaException {
-        //todo stub.
-        return null;
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException {
+        return fabrica.crearFaseAtacar();
     }
 }
