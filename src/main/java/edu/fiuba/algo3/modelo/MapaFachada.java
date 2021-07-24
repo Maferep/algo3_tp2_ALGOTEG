@@ -43,7 +43,16 @@ public class MapaFachada {
     }
 
     private void parsearAdyacencias(JSONArray paises) {
+        for (int i = 0; i < paises.size(); i++) {
+            List<String> adyacentes = new ArrayList<String>(
+                    Arrays.asList
+                            (((String) ((JSONObject) paises.get(i)).get("Limita con")).split(",")));
 
+            int finalI = i;
+            adyacentes.forEach(pais -> paisesDict.get(
+                    (String) ((JSONObject) paises.get(finalI)).get("Pais")).agregarAdyacente(
+                            paisesDict.get(pais)));
+        }
     }
 
     public List<IPais> obtenerPaises(){

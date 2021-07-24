@@ -31,4 +31,34 @@ public class MapaFachadaTest {
 
         Assert.assertEquals("Italia", italia.obtenerNombre());
     }
+
+    @Test
+    public void test02PaisItaliaTieneAdyacentes() {
+        MapaFachada mapa = new MapaFachada();
+        List<IPais> paises = mapa.obtenerPaises();
+
+        IPais italia = paises
+                .stream()
+                .filter(p -> (p.obtenerNombre().equals("Italia")))
+                .findAny()
+                .get();
+
+        List<IPais> adyacentesItalia = italia.obtenerAdyacentes();
+
+        IPais alemania = paises
+                .stream()
+                .filter(p -> (p.obtenerNombre().equals("Alemania")))
+                .findAny()
+                .get();
+
+        IPais francia = paises
+                .stream()
+                .filter(p -> (p.obtenerNombre().equals("Francia")))
+                .findAny()
+                .get();
+
+        Assert.assertTrue(adyacentesItalia.contains(alemania));
+        Assert.assertTrue(adyacentesItalia.contains(francia));
+        Assert.assertEquals(2, adyacentesItalia.size());
+    }
 }
