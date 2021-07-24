@@ -30,4 +30,6 @@ public interface IJugador {
 	void quitarEjercitos(int cantidadAQuitar) throws EjercitosException;
 
 	int cantidadEjercitos();
+
+	void inicializarPais(IPais actual);
 }

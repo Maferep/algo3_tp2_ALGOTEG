@@ -72,7 +72,6 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     // métodos de fase
-    //TODO: heredar de Fase abstracta en lugar de interfaz
 
     @Override
     public Boolean faseCompletada() {

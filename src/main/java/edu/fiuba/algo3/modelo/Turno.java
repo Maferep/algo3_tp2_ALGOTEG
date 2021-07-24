@@ -72,7 +72,7 @@ public class Turno implements ITurno {
         Collections.shuffle(paises);
         for (int i = 0; i < paises.size(); i++) {
             IPais actual = paises.get(i);
-            jugadores.get(i % jugadores.size()).asignarPais(actual);
+            jugadores.get(i % jugadores.size()).inicializarPais(actual);
         }
     }
 
