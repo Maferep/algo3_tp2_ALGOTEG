@@ -8,11 +8,10 @@ import java.util.ArrayList;
 
 public class Jugador implements IJugador {
 
-	String color;
-	//TODO: smell de atributo publico
-	public List<IPais> paises;
-	List<Tarjeta> tarjetas;
-	int ejercitosPorColocar;
+	private String color;
+	private List<IPais> paises;
+	private List<Tarjeta> tarjetas;
+	private int ejercitosPorColocar;
 
 	static int minimoPaises = 30;
 
