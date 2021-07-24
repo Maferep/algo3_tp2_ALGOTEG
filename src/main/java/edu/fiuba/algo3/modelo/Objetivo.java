@@ -1,11 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Interfaces.IObjetivo;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Interfaces.ITurno;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Objetivo {
+
+    List <IObjetivo> objetivos;
 
     public Objetivo(ITurno turno) {
         this.asignarObjetivos(turno);
@@ -13,7 +17,7 @@ public class Objetivo {
 
     public void asignarObjetivos(ITurno turno) {
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++) {
-            turno.jugadorActual().asignarObjetivo();
+            turno.jugadorActual().asignarObjetivo(objetivos.get(i));
             turno.siguienteJugador();
         }
     }

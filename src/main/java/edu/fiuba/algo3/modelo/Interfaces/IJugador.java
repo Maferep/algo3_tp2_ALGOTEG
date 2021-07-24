@@ -31,5 +31,5 @@ public interface IJugador {
 
 	int cantidadEjercitos();
 
-    void asignarObjetivo();
+    void asignarObjetivo(IObjetivo iObjetivo);
 }
