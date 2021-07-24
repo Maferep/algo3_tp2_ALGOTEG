@@ -118,21 +118,16 @@ public class Jugador implements IJugador {
 	}
 
 	public boolean esDestruido(List<IPais> paises) {
-		for(int i = 0 ; i < paises.size() ; i++) {
-			if((paises.get(i)).obtenerConquistador().obtenerColor().equals(this.color)) {
-				return false;
-			}
-		}
-		return true;
+		return (paises.size() == 0);
 	}
 
 	public boolean tieneMinimoPaises() {
 		return (this.paises.size() >= minimoPaises);
 	}
 
-	public boolean conquistaContinentes(Jugador conquistador,List<Continente> continentes) {
+	public boolean conquistaContinentes(List<Continente> continentes) {
 		for (int i = 0; i < continentes.size(); i++) {
-			if(!(conquistador.verificarConquista(continentes.get(i)))) {
+			if(!(this.verificarConquista(continentes.get(i)))) {
 				return false;
 			}
 		}

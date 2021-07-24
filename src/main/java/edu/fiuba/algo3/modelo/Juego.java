@@ -34,6 +34,11 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
         return null;
     }
 
+    @Override
+    public Objetivo obtenerObjetivo() {
+        return null;
+    }
+
     // reagrupar
 
     @Override
