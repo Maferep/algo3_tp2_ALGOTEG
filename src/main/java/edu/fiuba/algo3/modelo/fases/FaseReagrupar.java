@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
@@ -11,7 +9,7 @@ public abstract class FaseReagrupar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaReagruparSinCompletar();
     ITurno turno;
     IMapa paises;
-    private Canje canje;
+    //private Canje canje;
 
     public FaseReagrupar(ITurno turno, IMapa paises, Canje canje) {
         this.turno = turno;

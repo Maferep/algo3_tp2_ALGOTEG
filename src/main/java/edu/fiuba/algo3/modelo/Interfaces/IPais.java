@@ -2,9 +2,6 @@ package edu.fiuba.algo3.modelo.Interfaces;
 
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.Continente;
-import edu.fiuba.algo3.modelo.Jugador;
-
 public interface IPais {
 
 	void agregarEjercitos(int i);
