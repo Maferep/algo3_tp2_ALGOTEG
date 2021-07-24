@@ -11,7 +11,9 @@ import java.util.stream.Collectors;
 
 public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     ITurno turno;
+    IMapa mapa;
     Canje canje;
+    
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     List<String> colores =  Arrays.asList(
         "Azul", 
@@ -36,8 +38,6 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             .stream()
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
-    //TODO NULO
-    IMapa mapa;
 
     public FaseInicio(int cantJugadores) throws Exception {
         if (!validarCantidad(cantJugadores))
