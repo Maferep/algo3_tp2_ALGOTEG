@@ -15,6 +15,10 @@ public abstract class FaseReagrupar extends FaseAbstracta {
         this.mapa = paises;
         this.canje = canje;
     }
+    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) {
+        //unPais.moverEjercitosA(otroPais); //TODO FALTA IMPLEMENTAR ADYACENCIA
+        estrategia = estrategia.actualizar();
+    }
 
     // métodos de fase
     @Override

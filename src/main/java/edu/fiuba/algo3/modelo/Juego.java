@@ -27,6 +27,13 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
         faseActual.obtenerFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
     }
 
+    // reagrupar
+
+    @Override
+    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws FaseErroneaException{
+        faseActual.obtenerFaseReagrupar().transferirEjercitos(cantidad, unPais, otroPais);
+    }
+
     // atacar
 
     @Override

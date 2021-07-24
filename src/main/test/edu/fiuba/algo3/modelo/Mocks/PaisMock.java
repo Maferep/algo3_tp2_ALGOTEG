@@ -69,12 +69,6 @@ public class PaisMock implements IPais {
     }
 
     @Override
-    public List<IPais> obtenerAdyacentes() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public void definirConquistador(IJugador conquistador) {
 		conquistador.asignarPais(this);
 		this.conquistador = conquistador;

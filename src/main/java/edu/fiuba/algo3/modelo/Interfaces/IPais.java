@@ -20,8 +20,6 @@ public interface IPais {
 
 	int cantidadEjercitos();
 
-	List<IPais> obtenerAdyacentes();
-
 	void atacar(IPais defensor, int cantidadDeSoldados) throws Exception;
 
 	void definirConquistador(IJugador jugador2);
