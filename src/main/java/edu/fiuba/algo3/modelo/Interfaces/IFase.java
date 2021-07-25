@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 import edu.fiuba.algo3.modelo.FabricaDeFases;
+import edu.fiuba.algo3.modelo.Objetivo;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.fases.*;
 
@@ -20,4 +21,6 @@ public interface IFase {
 	FaseColocar obtenerFaseColocar() throws FaseErroneaException;
 
 	FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException;
+
+	Objetivo obtenerObjetivo();
 }

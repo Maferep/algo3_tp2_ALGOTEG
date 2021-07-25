@@ -26,15 +26,15 @@ public class FaseInicioTest {
     
     @Test
     public void test00AgregarJugadores() throws Exception {
-        FaseInicio primeraEtapa = new FaseInicio(3);
+        FaseInicio primeraEtapa = new FaseInicio(3, null);
         assertEquals(primeraEtapa.cantidadDeJugadores(), 3);
     }
 
     @Test
     public void test01NoSePuedeComenzarElJuegoConMenosDeDosJugadores() throws Exception {
         assertThrows(CantidadDeJugadoresError.class, () ->  {
-            new FaseInicio(0);
-            new FaseInicio(1);
+            new FaseInicio(0, null);
+            new FaseInicio(1, null);
         }
         );
     }
@@ -42,7 +42,7 @@ public class FaseInicioTest {
     @Test
     public void test02NoSePuedeComenzarElJuegoConMasDeSeisJugadores() throws Exception {
         assertThrows(CantidadDeJugadoresError.class, () ->  {
-                    new FaseInicio(7);
+                    new FaseInicio(7, null);
                 }
         );
     }

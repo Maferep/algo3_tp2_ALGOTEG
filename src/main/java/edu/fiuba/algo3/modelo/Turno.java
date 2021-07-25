@@ -51,7 +51,7 @@ public class Turno implements ITurno {
     }
 
     public static IFase crear(int cantJugadores) throws Exception {
-        return new FaseInicio(cantJugadores);
+        return new FaseInicio(cantJugadores, null);
     }
 
     public List<IJugador> construirJugadores(List<String> colores, int cantidad) throws EjercitosException {

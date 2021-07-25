@@ -3,17 +3,25 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.ObjetivosInsuficientesException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Objetivo {
-    List<IObjetivo> objetivos;
+    List<IObjetivo> objetivos = new ArrayList<>();
 
-    public Objetivo(ITurno turno) throws ObjetivosInsuficientesException {
+    public Objetivo(ITurno turno, List<IObjetivo> objetivosCreados) throws ObjetivosInsuficientesException {
+        this.objetivos.addAll(objetivosCreados);
         this.asignarObjetivos(turno);
     }
 
+    public Objetivo() {}
+
     public void agregarObjetivo(IObjetivo objetivo) {
         objetivos.add(objetivo);
+    }
+
+    public List<IObjetivo> objetivos() {
+        return objetivos;
     }
 
     public void asignarObjetivos(ITurno turno) throws ObjetivosInsuficientesException {

@@ -118,6 +118,10 @@ public class Jugador implements IJugador {
 		objetivo = objetivoAsignado;
 	}
 
+	public boolean cumplioObjetivo() {
+		return objetivo.seCumpleObjetivo(this);
+	}
+
 	public boolean esDestruido(List<IPais> paises) {
 		return (paises.size() == 0);
 	}

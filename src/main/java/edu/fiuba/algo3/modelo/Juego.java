@@ -3,12 +3,14 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
+import java.util.List;
+
 public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagrupar {
     IFase faseActual;
-    FabricaDeFases fabrica;
+    FabricaDeFases fabrica = new FabricaDeFases();
 
-    public Juego(int cantidadDeJugadores) throws Exception {
-        faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
+    public Juego(int cantidadDeJugadores, List<IObjetivo> objetivos) throws Exception {
+        faseActual = fabrica.crearFaseInicio(cantidadDeJugadores, objetivos);
     }
 
     // inicio

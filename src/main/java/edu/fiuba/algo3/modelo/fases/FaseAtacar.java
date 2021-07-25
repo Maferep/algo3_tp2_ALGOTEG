@@ -51,4 +51,9 @@ public class FaseAtacar extends FaseAbstracta {
         return this;
     }
 
+    @Override
+    public Objetivo obtenerObjetivo() {
+        return null;
+    }
+
 }

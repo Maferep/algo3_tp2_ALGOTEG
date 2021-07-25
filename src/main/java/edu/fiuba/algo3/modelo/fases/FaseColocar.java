@@ -57,4 +57,9 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     public FaseColocar obtenerFaseColocar() {
         return this;
     }
+
+    @Override
+    public Objetivo obtenerObjetivo() {
+        return null;
+    }
 }

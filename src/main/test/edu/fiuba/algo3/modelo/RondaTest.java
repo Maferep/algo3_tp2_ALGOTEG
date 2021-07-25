@@ -45,7 +45,7 @@ public class RondaTest {
     @Test
     public void test00AgregarJugadores() throws Exception {
         FabricaDeFases fabrica = new FabricaDeFases();
-        IFase fase = fabrica.crearFaseInicio(3);
+        IFase fase = fabrica.crearFaseInicio(3, null);
         assertEquals(3, fase.obtenerFaseInicio().cantidadDeJugadores());
     }
 
