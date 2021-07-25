@@ -27,8 +27,8 @@ public class FabricaDeFases {
 
     void definirObjetivo(Objetivo objetivo) { this.objetivo = objetivo;}
 
-    public IFase crearFaseInicio(int cantidadDeJugadores, FabricaDeObjetivos objetivo) throws Exception {
-        IFase fase = new FaseInicio(cantidadDeJugadores,objetivo);
+    public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception {
+        IFase fase = new FaseInicio(cantidadDeJugadores);
 
         //TODO forma rara de transferir datos. repensar.
         definirCanje(fase.obtenerFaseInicio().obtenerCanje());

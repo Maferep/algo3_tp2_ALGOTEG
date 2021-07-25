@@ -14,6 +14,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     IMapa mapa;
     Canje canje;
     Objetivo objetivo;
+    FabricaDeObjetivos fabricaObjetivos;
 
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     List<String> colores =  Arrays.asList(
@@ -40,13 +41,14 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
 
-    public FaseInicio(int cantJugadores, FabricaDeObjetivos objetivoNuevo) throws Exception {
+    public FaseInicio(int cantJugadores) throws Exception {
         if (!validarCantidad(cantJugadores))
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de "
                     + minJugadores + " y un máximo de "
                     + maxJugadores + " jugadores.");
-        turno = new Turno(colores, cantJugadores); //turno tiene al jugador actual y a toda la cantidad de jugadores.
-        objetivo = new Objetivo(turno, objetivoNuevo.objetivos());
+        turno = new Turno(colores, cantJugadores);
+        fabricaObjetivos = new FabricaDeObjetivos(turno);
+        objetivo = new Objetivo(turno, fabricaObjetivos.objetivos());
         canje = new Canje(paises);
     }
 

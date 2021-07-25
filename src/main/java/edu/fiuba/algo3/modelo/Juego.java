@@ -9,8 +9,8 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     IFase faseActual;
     FabricaDeFases fabrica = new FabricaDeFases();
 
-    public Juego(int cantidadDeJugadores, FabricaDeObjetivos objetivo) throws Exception {
-        faseActual = fabrica.crearFaseInicio(cantidadDeJugadores, objetivo);
+    public Juego(int cantidadDeJugadores) throws Exception {
+        faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
     }
 
     // inicio

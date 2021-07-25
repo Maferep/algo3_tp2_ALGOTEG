@@ -139,6 +139,10 @@ public class Jugador implements IJugador {
 		return true;
 	}
 
+	public String colorDeJugador() {
+		return this.color;
+	}
+
 	//conquista de continentes.
 	public boolean verificarConquista(Continente continente) {
 		//return this.continente.verificarConquista(continente);

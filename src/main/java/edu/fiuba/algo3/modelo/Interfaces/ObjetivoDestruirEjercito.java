@@ -4,14 +4,25 @@ import edu.fiuba.algo3.modelo.Jugador;
 
 public class ObjetivoDestruirEjercito implements IObjetivo{
 
-    //IJugador jugadorADestruir;
     String colorDelJugadorADestruir;
+    ITurno turnoActual;
+    IJugador jugadorADestruir;
+
     public ObjetivoDestruirEjercito(String color, ITurno turno) {
         colorDelJugadorADestruir = color;
+        turnoActual = turno;
     }
 
     public boolean seCumpleObjetivo(Jugador jugador) {
+        for(int i = 0 ; i < turnoActual.cantidadDeJugadores() ; i++) {
+            if(turnoActual.jugadorActual().colorDeJugador().equals(colorDelJugadorADestruir)) {
+                jugadorADestruir = turnoActual.jugadorActual();
+            }
+            turnoActual.siguienteJugador();
+        }
+        if(jugadorADestruir == null) {
+            jugadorADestruir = turnoActual.jugadorActual();
+        }
         return jugadorADestruir.esDestruido();
     }
-
 }

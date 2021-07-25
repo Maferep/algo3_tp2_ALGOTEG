@@ -34,4 +34,6 @@ public interface IJugador {
     void asignarObjetivo(IObjetivo iObjetivo);
 
 	boolean esDestruido();
+
+	String colorDeJugador();
 }
