@@ -13,11 +13,12 @@ import org.json.simple.parser.ParseException;
 
 public class MapaFachada {
     Hashtable<String, IPais> paisesDict;
-    Hashtable<String, Continente> continentesDict;
+    Hashtable<String, List<IPais>> continentesDict;
 
     public MapaFachada() {
         JSONParser jsonParser = new JSONParser();
         paisesDict = new Hashtable<String, IPais>();
+        continentesDict = new Hashtable<String, List<IPais>>();
 
         try (FileReader reader = new FileReader("src/main/resources/fronteras.json")) {
             Object obj = jsonParser.parse(reader);
@@ -36,7 +37,8 @@ public class MapaFachada {
     }
 
     private void parsearPaises(JSONArray paises) {
-        paises.forEach(pais -> paisesDict.put(
+        paises.forEach(pais ->
+                paisesDict.put(
                 (String) ((JSONObject) pais).get("Pais"),
                 new Pais((String) ((JSONObject) pais).get("Pais"))
         ));
@@ -49,10 +51,15 @@ public class MapaFachada {
                             (((String) ((JSONObject) paises.get(i)).get("Limita con")).split(",")));
 
             int finalI = i;
-            adyacentes.forEach(pais -> paisesDict.get(
+            adyacentes.forEach(pais ->
+                    paisesDict.get(
                     (String) ((JSONObject) paises.get(finalI)).get("Pais")).agregarAdyacente(
                             paisesDict.get(pais)));
         }
+    }
+
+    private void parsearContinentes(JSONArray paises) {
+
     }
 
     public List<IPais> obtenerPaises(){
