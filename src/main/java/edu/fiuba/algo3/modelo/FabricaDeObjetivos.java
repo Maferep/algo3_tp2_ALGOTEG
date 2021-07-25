@@ -18,6 +18,7 @@ public class FabricaDeObjetivos {
     List<Continente> continentesDos = Arrays.asList(new Continente(paisesEnAmerica));
     List<Continente> continentesTres = Arrays.asList(new Continente(paisesEnAsia));
 
+    //raro como se agregan los objetivos. repensar
     public FabricaDeObjetivos(ITurno turno) {
         agregarObjetivo(new ObjetivoGeneral());
         agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesUno,paisesEnAmerica));

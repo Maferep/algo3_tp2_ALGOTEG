@@ -18,6 +18,7 @@ public class ObjetivoDestruirEjercito implements IObjetivo{
         turnoActual = turno;
     }
 
+    //Muchos ifs, refactorizar
     public boolean seCumpleObjetivo(Jugador jugador) {
         for(int i = 0 ; i < turnoActual.cantidadDeJugadores() ; i++) {
             if(turnoActual.jugadorActual().colorDeJugador().equals(colorDelJugadorADestruir)) {
