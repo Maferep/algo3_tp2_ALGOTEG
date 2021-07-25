@@ -1,33 +1,31 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 public abstract class FaseAbstracta implements IFase {
-    List<IPais> paises;
     ITurno turno;
     Canje canje;
+    IMapa mapa;
     
     @Override
-    public FaseInicio asFaseInicio() throws FaseErroneaException {
+    public FaseInicio obtenerFaseInicio() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 
     @Override
-    public FaseAtacar asFaseAtacar() throws FaseErroneaException {
+    public FaseAtacar obtenerFaseAtacar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 
     @Override
-    public FaseColocar asFaseColocar() throws FaseErroneaException {
+    public FaseColocar obtenerFaseColocar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 
     @Override
-    public FaseReagrupar asFaseReagrupar() throws FaseErroneaException {
+    public FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 

@@ -1,25 +1,22 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public abstract class FaseReagrupar extends FaseAbstracta {
+public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagrupar {
 
     IEstrategiaFase estrategia = new EstrategiaReagruparSinCompletar();
-    ITurno turno;
-    List<IPais> paises;
-    private Canje canje;
 
-    public FaseReagrupar(ITurno turno, List<IPais> paises, Canje canje) {
+    //private Canje canje;
+
+    public FaseReagrupar(ITurno turno, IMapa paises, Canje canje) {
         this.turno = turno;
-        this.paises = paises;
+        this.mapa = paises;
         this.canje = canje;
     }
-    public void reagrupar() {
-        // TODO reagrupar
+    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws TransferirEjercitosException {
+        unPais.transferirEjercitosA(cantidad, otroPais);
         estrategia = estrategia.actualizar();
     }
 
@@ -30,8 +27,8 @@ public abstract class FaseReagrupar extends FaseAbstracta {
     }
 
     @Override
-    public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(turno, paises, canje);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
+        return estrategia.siguienteFase(fabrica);
     }
 
     @Override
@@ -40,7 +37,7 @@ public abstract class FaseReagrupar extends FaseAbstracta {
     }
 
     @Override
-    public FaseReagrupar asFaseReagrupar() {
+    public FaseReagrupar obtenerFaseReagrupar() {
         return this;
     }
 

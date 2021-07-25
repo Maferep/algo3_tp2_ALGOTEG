@@ -8,11 +8,10 @@ import java.util.ArrayList;
 
 public class Jugador implements IJugador {
 
-	String color;
-	//TODO: smell de atributo publico
-	public List<IPais> paises;
-	List<Tarjeta> tarjetas;
-	int ejercitosPorColocar;
+	private String color;
+	private List<IPais> paises;
+	private List<Tarjeta> tarjetas;
+	private int ejercitosPorColocar;
 
 	static int minimoPaises = 30;
 
@@ -21,16 +20,6 @@ public class Jugador implements IJugador {
 		paises = new ArrayList<IPais>();
 		tarjetas = new ArrayList<Tarjeta>();
 		ejercitosPorColocar = 0;
-	}
-
-	//TODO programacion estructurada
-	public boolean conquistaPaises(IJugador conquistador,List<IPais> paises) {
-		for (int i = 0; i < paises.size(); i++) {
-			if(!paises.get(i).obtenerConquistador().obtenerColor().equals(conquistador.obtenerColor())) {
-				return false;
-			}
-		}
-		return true;
 	}
 
 	public String obtenerColor() {
@@ -63,6 +52,13 @@ public class Jugador implements IJugador {
 		else {
 			this.ejercitosPorColocar += cantidad;
 		}
+	}
+
+	//agrega un pais con un ejército nuevo. 
+	//No afecta la cantidad de ejércitos por colocar del jugador.
+	public void inicializarPais(IPais pais) {
+		asignarPais(pais);
+		pais.agregarEjercitos(1);
 	}
 
 	public void asignarPais(IPais pais) {
@@ -109,6 +105,11 @@ public class Jugador implements IJugador {
 	public void quitarEjercitos(int cantidadAQuitar) throws EjercitosException {
 		ejercitosPorColocar -= cantidadAQuitar;
 		if(ejercitosPorColocar < 0) throw new EjercitosException("quita demasiados ejercitos");
+	}
+
+	@Override
+	public int cantidadPaises() {
+		return paises.size();
 	}
 
 }

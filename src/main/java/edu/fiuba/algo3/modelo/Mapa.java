@@ -1,24 +1,19 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Interfaces.IPais;
-
-import java.util.Collections;
-import java.util.LinkedList;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 import java.util.List;
-import java.util.Queue;
 
-public class Mapa {
-    List<Continente> continentes;
-    List<IPais> paises;
+public class Mapa implements IMapa {
+    private List<IPais> paises;
 
-    public Mapa() {
-        MapaFachada mapaFachada = new MapaFachada();
-        paises = mapaFachada.obtenerPaises();;
-    }
-
-    public void asignarPaises(List<Jugador> jugadores) {
+    @Override
+    public void definirPaises(List<IPais> paises) {
+        this.paises = paises;
 
     }
 
-    //public List<Continente> continentesConquistadosPor(Jugador jugador) { }
+    @Override
+    public List<IPais> obtenerPaises() {
+        return paises;
+    }
 }

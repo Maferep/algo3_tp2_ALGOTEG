@@ -1,27 +1,99 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
-import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
-import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
-import edu.fiuba.algo3.modelo.factories.*;
-import edu.fiuba.algo3.modelo.fases.FaseInicio;
-import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
+import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class Juego {
+public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagrupar {
     IFase faseActual;
+    FabricaDeFases fabrica = new FabricaDeFases();
 
-    public Juego(int cantidadDeJugadores, IJugador tipoJugador) throws Exception {
-        faseActual = crearJuegoTEG(3);
+    IMapa mapa;
+    ITurno turno;
+    Canje canje;
+
+    public Juego(final int cantidadDeJugadores) throws Exception {
+        faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
+
+        mapa = faseActual.obtenerFaseInicio().obtenerMapa();
+        turno = faseActual.obtenerFaseInicio().obtenerTurno();
+        canje = faseActual.obtenerFaseInicio().obtenerCanje();
     }
-    public void completarEtapaInicio(int cantEjercitos, IPais pais) throws FaseErroneaException, EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
-        faseActual.asFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
+
+    // inicio
+
+    @Override
+    public void ubicarEjercitosEnPais(final int cantEjercitos, final IPais pais)
+            throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException, FaseErroneaException {
+        faseActual.obtenerFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
     }
 
-    public static IFase crearJuegoTEG(int cantJugadores) throws Exception {
-        return new FaseInicio(cantJugadores);
-      }
+    // reagrupar
 
-    
+    @Override
+    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws 
+            FaseErroneaException,
+            TransferirEjercitosException {
+        faseActual.obtenerFaseReagrupar().transferirEjercitos(cantidad, unPais, otroPais);
+    }
 
+    // atacar
+
+    @Override
+    public void atacar(final IPais atacante, final int cantidadDeSoldados, final IPais defensor) throws Exception {
+        faseActual.obtenerFaseAtacar().atacar(atacante, cantidadDeSoldados, defensor);
+    }
+
+    //colocar
+
+    @Override
+    public void asignarNuevosEjercitosAJugadores() throws EjercitosException, FaseErroneaException {
+        faseActual.obtenerFaseColocar().asignarNuevosEjercitosAJugadores();
+    }
+
+    @Override
+    public void colocarEjercitosEnPais(final int cantEjercitos, final IPais pais)
+            throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError, FaseErroneaException {
+        faseActual.obtenerFaseColocar().colocarEjercitosEnPais(cantEjercitos, pais);
+    }
+
+    //datos persistentes del juego
+
+    public int cantidadDeJugadores() throws FaseErroneaException {
+        return faseActual.obtenerFaseInicio().cantidadDeJugadores();
+    }
+
+    //avanzar fase
+    public void siguienteFase() throws FaseIncompletaException, EjercitosException {
+        faseActual = faseActual.siguienteFase(fabrica);
+    }
+
+    @Override
+    public Canje obtenerCanje() {
+        return canje;
+    }
+
+    @Override
+    public IMapa obtenerMapa() {
+        // TODO Auto-generated method stub
+        return mapa;
+    }
+
+    @Override
+    public ITurno obtenerTurno() {
+        // TODO Auto-generated method stub
+        return turno;
+    }
+
+	public IJugador jugadorActual() {
+		return turno.jugadorActual();
+	}
+
+	public void siguienteTurno() {
+		faseActual.siguienteTurno();
+		
+	}
+
+	public int cantidadDePaises() {
+		return mapa.obtenerPaises().size();
+	}
 }

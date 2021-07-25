@@ -2,12 +2,10 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.Mocks.*;
-import edu.fiuba.algo3.modelo.factories.JugadorFactory;
 import edu.fiuba.algo3.modelo.fases.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +25,7 @@ public class FaseAtaqueTest {
 
         ITurno turno = new TurnoMock();
         List<IPais> p = Arrays.asList(atacante, defensor);
-        FaseAtacar fase = new FaseAtacar(turno, p, null);
+        FaseAtacar fase = new FaseAtacar(turno, null);
         fase.atacar(atacante, 1, defensor);
     }
 
@@ -52,7 +50,7 @@ public class FaseAtaqueTest {
         //Primer ataque. El atacante gana.
         ITurno turno = new TurnoMock();
         List<IPais> p = Arrays.asList(atacante1, defensor1);
-        FaseAtacar fase = new FaseAtacar(turno, p, null);
+        FaseAtacar fase = new FaseAtacar(turno, null);
         fase.atacar(atacante1, 3, defensor1);
 
         assertEquals(3, jugador1.obtenerPaises().size());
@@ -63,7 +61,7 @@ public class FaseAtaqueTest {
 
         ITurno turnoNew = new TurnoMock();
         List<IPais> pNew = Arrays.asList(atacante2, defensor2);
-        FaseAtacar faseNew = new FaseAtacar(turnoNew, pNew, null);
+        FaseAtacar faseNew = new FaseAtacar(turnoNew, null);
         faseNew.atacarConAtaque(ataqueFalsoNew);
 
         assertEquals(4, jugador1.obtenerPaises().size());

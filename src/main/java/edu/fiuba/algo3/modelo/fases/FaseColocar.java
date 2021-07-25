@@ -1,34 +1,30 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class FaseColocar extends FaseAbstracta {
+public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
+    IMapa mapa;
 
-    public FaseColocar(ITurno turno2, List<IPais> paises, Canje canje) throws EjercitosException {
-        this.turno = turno2;
-        this.paises = paises;
+    public FaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException {
+        this.turno = turno;
+        this.mapa = mapa;
         this.canje = canje;
         asignarNuevosEjercitosAJugadores();
-	}
-
+    }
+    
 	public void asignarNuevosEjercitosAJugadores() throws EjercitosException {
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++ ) {
             int cantidadDeSoldados = 
-                Math.max(turno.jugadorActual().obtenerPaises().size()/2, 3);
-            //TODO: accede a paises del jugador directamente, puede que viole tda
-            turno
-                .jugadorActual()
-                .agregarNuevosEjercitos(cantidadDeSoldados);
+                Math.max( turno.jugadorActual().cantidadPaises()/2, 3);
+            turno.jugadorActual().agregarNuevosEjercitos(cantidadDeSoldados);
             turno.siguienteJugador();
         }
     }
 
-    public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
+    public void colocarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
         turno.jugadorActual().agregarEjercitosAPais(pais, cantEjercitos);
         if(turno.jugadorActual().cantidadEjercitos() == 0)
              estrategia = estrategia.actualizar();
@@ -41,8 +37,8 @@ public class FaseColocar extends FaseAbstracta {
     }
 
     @Override
-    public IFase siguienteFase() throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(turno, paises, canje);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
+        return estrategia.siguienteFase(fabrica);
     }
 
     @Override
@@ -51,7 +47,7 @@ public class FaseColocar extends FaseAbstracta {
     }
 
     @Override
-    public FaseColocar asFaseColocar() {
+    public FaseColocar obtenerFaseColocar() {
         return this;
     }
 }

@@ -23,6 +23,8 @@ public interface IJugador {
 
 	void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException;
 
+	int cantidadPaises();
+	
 	List<IPais> obtenerPaises();
 
 	void agregarNuevosEjercitos(int i) throws EjercitosException;
@@ -30,4 +32,6 @@ public interface IJugador {
 	void quitarEjercitos(int cantidadAQuitar) throws EjercitosException;
 
 	int cantidadEjercitos();
+
+	void inicializarPais(IPais actual);
 }
