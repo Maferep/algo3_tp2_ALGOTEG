@@ -12,6 +12,6 @@ public class ObjetivoTest {
     @Test
     public void test00SeAsignanObjetivosAJugadores() throws Exception {
         Juego juegoNuevo = new Juego(2);
-        assertEquals(juegoNuevo.faseActual.obtenerObjetivo().objetivos.size(), 3);
+        assertEquals(juegoNuevo.faseActual.obtenerObjetivo().objetivos.size(), 6);
     }
 }

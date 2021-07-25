@@ -1,4 +1,9 @@
-package edu.fiuba.algo3.modelo.Interfaces;
+package edu.fiuba.algo3.modelo;
+
+
+import edu.fiuba.algo3.modelo.Interfaces.IObjetivo;
+import edu.fiuba.algo3.modelo.Interfaces.ITurno;
+import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 
 import edu.fiuba.algo3.modelo.Jugador;
 

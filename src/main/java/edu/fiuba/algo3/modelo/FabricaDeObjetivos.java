@@ -9,14 +9,22 @@ import java.util.List;
 public class FabricaDeObjetivos {
 
     List<IObjetivo> objetivos = new ArrayList<>();
-    List <IPais> paises = Arrays.asList(new Pais("EEUU"));
-    List <IPais> paisesEnEuropa = Arrays.asList(new Pais("Inglaterra"),new Pais("Francia"));
-    List<Continente> continentes = Arrays.asList(new Continente(paisesEnEuropa));
+
+    List <IPais> paisesEnAmerica = Arrays.asList(new Pais("Nueva York"),new Pais("Oregon"),new Pais("Mexico"));
+    List <IPais> paisesEnEuropa = Arrays.asList(new Pais("Rusia"),new Pais("Francia"));
+    List <IPais> paisesEnAsia = Arrays.asList(new Pais("China"),new Pais("India"));
+
+    List<Continente> continentesUno = Arrays.asList(new Continente(paisesEnEuropa));
+    List<Continente> continentesDos = Arrays.asList(new Continente(paisesEnAmerica));
+    List<Continente> continentesTres = Arrays.asList(new Continente(paisesEnAsia));
 
     public FabricaDeObjetivos(ITurno turno) {
         agregarObjetivo(new ObjetivoGeneral());
-        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentes,paises));
+        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesUno,paisesEnAmerica));
         agregarObjetivo(new ObjetivoDestruirEjercito("Verde", turno));
+        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesDos,paisesEnEuropa));
+        agregarObjetivo(new ObjetivoDestruirEjercito("Azul", turno));
+        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesTres,paisesEnAsia));
     }
 
     public void agregarObjetivo(IObjetivo objetivo) {

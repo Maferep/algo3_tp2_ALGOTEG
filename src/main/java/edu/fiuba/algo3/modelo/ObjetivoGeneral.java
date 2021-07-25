@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.modelo.Interfaces;
+package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Interfaces.IObjetivo;
 import edu.fiuba.algo3.modelo.Jugador;
 
-public class ObjetivoGeneral implements IObjetivo{
+public class ObjetivoGeneral implements IObjetivo {
 
     //objetivo general
     public boolean seCumpleObjetivo(Jugador jugadorActual) {
