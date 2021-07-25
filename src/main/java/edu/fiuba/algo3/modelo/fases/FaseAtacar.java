@@ -17,6 +17,10 @@ public class FaseAtacar extends FaseAbstracta {
         this.mapa = mapa;
     }
 
+    public ITurno turno() {
+        return turno;
+    }
+
     // métodos públicos
     public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
         //TODO: validar existencia de paises y turno correcto

@@ -23,4 +23,6 @@ public interface IFase {
 	FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException;
 
 	Objetivo obtenerObjetivo();
+
+	ITurno turno();
 }

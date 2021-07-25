@@ -36,4 +36,6 @@ public interface IJugador {
 	boolean esDestruido();
 
 	String colorDeJugador();
+
+	boolean cumplioObjetivo();
 }

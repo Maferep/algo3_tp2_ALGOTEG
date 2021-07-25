@@ -52,6 +52,9 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         canje = new Canje(paises);
     }
 
+    public ITurno turno() {
+        return turno;
+    }
     //version para mock
     public FaseInicio(ITurno turno) throws Exception {
         this.turno = turno;

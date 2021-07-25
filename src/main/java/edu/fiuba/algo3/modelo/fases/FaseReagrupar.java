@@ -18,6 +18,11 @@ public abstract class FaseReagrupar extends FaseAbstracta {
         this.paises = paises;
         this.canje = canje;
     }
+
+    public ITurno turno() {
+        return turno;
+    }
+
     public void reagrupar() {
         // TODO reagrupar
         estrategia = estrategia.actualizar();

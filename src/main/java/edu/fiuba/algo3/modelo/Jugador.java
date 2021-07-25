@@ -149,10 +149,12 @@ public class Jugador implements IJugador {
 		return true;
 	}
 
-	public boolean conquistaPaises(Jugador conquistador,List<IPais> paises) {
-		for (int i = 0; i < paises.size(); i++) {
-			if(!paises.get(i).obtenerConquistador().obtenerColor().equals(conquistador.color)) {
-				return false;
+	public boolean conquistaPaises(Jugador conquistador,List<IPais> paisesParaConquistar) {
+		for (int i = 0; i < paisesParaConquistar.size(); i++) {
+			for (int j = 0 ; j < paises.size() ; j++) {
+				if(!(paises.get(j).obtenerNombre().equals(paisesParaConquistar.get(i).obtenerNombre()))) {
+					return false;
+				}
 			}
 		}
 		return true;

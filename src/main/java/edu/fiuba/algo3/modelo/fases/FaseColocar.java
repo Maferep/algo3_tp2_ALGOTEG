@@ -16,6 +16,10 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
         this.canje = canje;
         asignarNuevosEjercitosAJugadores();
     }
+
+    public ITurno turno() {
+        return turno;
+    }
     
     //funcionalidad colocar (usa el canje)
 

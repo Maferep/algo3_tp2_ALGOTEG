@@ -9,7 +9,7 @@ import java.util.List;
 public class FabricaDeObjetivos {
 
     List<IObjetivo> objetivos = new ArrayList<>();
-
+    //hacer mock de esto
     List <IPais> paisesEnAmerica = Arrays.asList(new Pais("Nueva York"),new Pais("Oregon"),new Pais("Mexico"));
     List <IPais> paisesEnEuropa = Arrays.asList(new Pais("Rusia"),new Pais("Francia"));
     List <IPais> paisesEnAsia = Arrays.asList(new Pais("China"),new Pais("India"));
@@ -22,9 +22,9 @@ public class FabricaDeObjetivos {
     public FabricaDeObjetivos(ITurno turno) {
         agregarObjetivo(new ObjetivoGeneral());
         agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesUno,paisesEnAmerica));
-        agregarObjetivo(new ObjetivoDestruirEjercito("Verde", turno));
-        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesDos,paisesEnEuropa));
         agregarObjetivo(new ObjetivoDestruirEjercito("Azul", turno));
+        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesDos,paisesEnEuropa));
+        agregarObjetivo(new ObjetivoDestruirEjercito("Rojo", turno));
         agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesTres,paisesEnAsia));
     }
 
