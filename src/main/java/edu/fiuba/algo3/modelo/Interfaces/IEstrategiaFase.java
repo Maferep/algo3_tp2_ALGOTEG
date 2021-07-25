@@ -9,5 +9,7 @@ public interface IEstrategiaFase {
 
 	public Boolean faseCompletada();
 
+	public void siguienteJugador(ITurno turno);
+
 	public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException;
 }

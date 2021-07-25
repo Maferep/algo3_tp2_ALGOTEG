@@ -58,7 +58,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar, ITurno {
 
     @Override
     public void siguienteJugador() {
-        estrategia.siguienteJugador();
+        //TODO turno
         estrategia = estrategia.actualizar();
     }
 

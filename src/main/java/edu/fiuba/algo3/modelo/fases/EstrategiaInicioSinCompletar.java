@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class EstrategiaInicioSinCompletar implements IEstrategiaFase {
+public class EstrategiaInicioSinCompletar extends EstrategiaFase {
 
     @Override
     public IEstrategiaFase actualizar() {

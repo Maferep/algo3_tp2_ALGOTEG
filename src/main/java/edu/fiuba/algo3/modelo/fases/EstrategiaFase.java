@@ -15,6 +15,12 @@ public abstract class EstrategiaFase implements IEstrategiaFase {
         return true;
     }
 
+    //comportamiento default asume un turno completado
+    @Override
+    public void siguienteJugador(ITurno turno) {
+        turno.siguienteJugador();
+    }
+
     @Override
     public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
         throw new FaseIncompletaException("No se puede seguir aun a la siguiente fase.");
