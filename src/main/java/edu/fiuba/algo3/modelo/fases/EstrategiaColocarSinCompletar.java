@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class EstrategiaColocarSinCompletar implements IEstrategiaFase {
+public class EstrategiaColocarSinCompletar extends EstrategiaFase {
     @Override
     public IEstrategiaFase actualizar() {
         return new EstrategiaColocarCompletado();
@@ -13,10 +13,5 @@ public class EstrategiaColocarSinCompletar implements IEstrategiaFase {
     @Override
     public Boolean faseCompletada() {
         return false;
-    }
-
-    @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException {
-        throw new FaseIncompletaException(null);
     }
 }
