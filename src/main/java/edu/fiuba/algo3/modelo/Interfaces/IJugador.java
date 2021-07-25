@@ -32,4 +32,6 @@ public interface IJugador {
 	int cantidadEjercitos();
 
     void asignarObjetivo(IObjetivo iObjetivo);
+
+	boolean esDestruido(List<IPais> paises);
 }

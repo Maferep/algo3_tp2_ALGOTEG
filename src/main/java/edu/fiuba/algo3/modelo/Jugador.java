@@ -13,6 +13,7 @@ public class Jugador implements IJugador {
 	public List<IPais> paises;
 	List<Tarjeta> tarjetas;
 	int ejercitosPorColocar;
+	IObjetivo objetivo;
 
 	static int minimoPaises = 30;
 
@@ -114,7 +115,7 @@ public class Jugador implements IJugador {
 	//para objetivos
 
 	public void asignarObjetivo(IObjetivo objetivoAsignado) {
-		//inicializo el objetivo con todo lo necesario para el mismo. esto se hace en la interfaz
+		objetivo = objetivoAsignado;
 	}
 
 	public boolean esDestruido(List<IPais> paises) {
