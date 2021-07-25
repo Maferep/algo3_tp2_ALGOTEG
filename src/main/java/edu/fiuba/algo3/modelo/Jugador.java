@@ -122,8 +122,8 @@ public class Jugador implements IJugador {
 		return objetivo.seCumpleObjetivo(this);
 	}
 
-	public boolean esDestruido(List<IPais> paises) {
-		return (paises.size() == 0);
+	public boolean esDestruido() {
+		return (this.paises.size() == 0);
 	}
 
 	public boolean tieneMinimoPaises() {

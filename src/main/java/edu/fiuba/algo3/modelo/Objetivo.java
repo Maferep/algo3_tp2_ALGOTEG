@@ -14,16 +14,6 @@ public class Objetivo {
         this.asignarObjetivos(turno);
     }
 
-    public Objetivo() {}
-
-    public void agregarObjetivo(IObjetivo objetivo) {
-        objetivos.add(objetivo);
-    }
-
-    public List<IObjetivo> objetivos() {
-        return objetivos;
-    }
-
     public void asignarObjetivos(ITurno turno) throws ObjetivosInsuficientesException {
         if(objetivos.size() < turno.cantidadDeJugadores()) {
             throw new ObjetivosInsuficientesException("No hay suficientes objetivos para iniciar el juego");

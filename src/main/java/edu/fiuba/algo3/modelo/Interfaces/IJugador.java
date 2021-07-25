@@ -33,5 +33,5 @@ public interface IJugador {
 
     void asignarObjetivo(IObjetivo iObjetivo);
 
-	boolean esDestruido(List<IPais> paises);
+	boolean esDestruido();
 }
