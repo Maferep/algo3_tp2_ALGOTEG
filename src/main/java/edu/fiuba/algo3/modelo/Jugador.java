@@ -24,16 +24,6 @@ public class Jugador implements IJugador {
 		ejercitosPorColocar = 0;
 	}
 
-	//TODO programacion estructurada
-	public boolean conquistaPaises(IJugador conquistador,List<IPais> paises) {
-		for (int i = 0; i < paises.size(); i++) {
-			if(!paises.get(i).obtenerConquistador().obtenerColor().equals(conquistador.obtenerColor())) {
-				return false;
-			}
-		}
-		return true;
-	}
-
 	public String obtenerColor() {
 		return color;
 	}
@@ -57,7 +47,6 @@ public class Jugador implements IJugador {
 	public void agregarNuevosEjercitos(int cantidad) throws EjercitosException {
 		this.ejercitosPorColocar = 0;
 		if(cantidad <= 0) throw new EjercitosException("cantidadInvalida");
-		// Si el jugador controla menos de seis países de todas maneras incorpora tres ejércitos.
 		if(this.paises.size() < 6) {
 			this.ejercitosPorColocar += 3;
 		}
@@ -143,13 +132,11 @@ public class Jugador implements IJugador {
 		return this.color;
 	}
 
-	//conquista de continentes.
 	public boolean verificarConquista(Continente continente) {
-		//return this.continente.verificarConquista(continente);
-		return true;
+		return conquistaPaises(continente.paises());
 	}
 
-	public boolean conquistaPaises(Jugador conquistador,List<IPais> paisesParaConquistar) {
+	public boolean conquistaPaises(List<IPais> paisesParaConquistar) {
 		for (int i = 0; i < paisesParaConquistar.size(); i++) {
 			for (int j = 0 ; j < paises.size() ; j++) {
 				if(!(paises.get(j).obtenerNombre().equals(paisesParaConquistar.get(i).obtenerNombre()))) {

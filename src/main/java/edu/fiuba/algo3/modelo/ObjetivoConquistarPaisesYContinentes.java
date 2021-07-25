@@ -14,9 +14,8 @@ public class ObjetivoConquistarPaisesYContinentes implements IObjetivo {
         continentesAConquistar = continentes;
         paisesAConquistar = paises;
     }
-    public ObjetivoConquistarPaisesYContinentes(){}
 
     public boolean seCumpleObjetivo(Jugador jugadorActual) {
-        return (jugadorActual.conquistaContinentes(continentesAConquistar) && (jugadorActual.conquistaPaises(jugadorActual,paisesAConquistar)));
+        return (jugadorActual.conquistaContinentes(continentesAConquistar) && (jugadorActual.conquistaPaises(paisesAConquistar)));
     }
 }

@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//hacer mock?
 public class FabricaDeObjetivos {
 
     List<IObjetivo> objetivos = new ArrayList<>();
-    //hacer mock de esto
+
     List <IPais> paisesEnAmerica = Arrays.asList(new Pais("Nueva York"),new Pais("Oregon"),new Pais("Mexico"));
     List <IPais> paisesEnEuropa = Arrays.asList(new Pais("Rusia"),new Pais("Francia"));
     List <IPais> paisesEnAsia = Arrays.asList(new Pais("China"),new Pais("India"));

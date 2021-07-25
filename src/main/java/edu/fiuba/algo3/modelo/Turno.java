@@ -66,7 +66,6 @@ public class Turno implements ITurno {
                 .map(c -> new Jugador(c))
                 .collect(Collectors.toList());
     }
-    //se va a tener que leer el archivo de paises e ir cargandose en la lista.
 
     public void asignarPaisesAJugadores(List<IPais> paises, List<IJugador> jugadores) {
         Collections.shuffle(paises);

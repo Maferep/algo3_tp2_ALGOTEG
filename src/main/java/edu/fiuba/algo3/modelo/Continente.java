@@ -20,5 +20,9 @@ public class Continente {
         return true;
     }
 
+    public List<IPais> paises() {
+        return paises;
+    }
+
 }
 
