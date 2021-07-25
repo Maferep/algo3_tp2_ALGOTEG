@@ -13,17 +13,7 @@ import edu.fiuba.algo3.modelo.fases.FaseInicio;
 public class Turno implements ITurno {
     private LinkedList<IJugador> jugadores = new LinkedList<IJugador>();
     public List<IJugador> listaJugadores = new LinkedList<IJugador>();
-    List<IPais> paises = Arrays.asList(
-            "Estados Unidos",
-            "Canadá",
-            "Brasil",
-            "Bolivia",
-            "Colombia",
-            "Chile",
-            "Ecuador")
-            .stream()
-            .map(n -> new Pais(n))
-            .collect(Collectors.toList());
+    Mapa mapa = new Mapa();
     int cantidadEjercitos = 8;
 
     public Turno(List<String> colores, int cantidad) throws EjercitosException {
@@ -56,7 +46,7 @@ public class Turno implements ITurno {
 
     public List<IJugador> construirJugadores(List<String> colores, int cantidad) throws EjercitosException {
         List<IJugador> jugadores = jugadoresDeColores(colores.subList(0, cantidad));
-        asignarPaisesAleatoriamente(paises, jugadores);
+        mapa.asignarPaises(jugadores);
         asignarEjercitosAJugadores(jugadores);
         return jugadores;
     }
@@ -73,11 +63,8 @@ public class Turno implements ITurno {
     Preserva el orden de la lista de jugadores, no de la de paises.
     */ 
     public void asignarPaisesAleatoriamente(List<IPais> paises, List<IJugador> jugadores) {
-        Collections.shuffle(paises);
-        for (int i = 0; i < paises.size(); i++) {
-            IPais actual = paises.get(i);
-            jugadores.get(i % jugadores.size()).inicializarPais(actual);
-        }
+
+
     }
 
     public void asignarEjercitosAJugadores(List<IJugador> jugadores) throws EjercitosException {

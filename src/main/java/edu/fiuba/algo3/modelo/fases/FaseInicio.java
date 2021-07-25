@@ -25,16 +25,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     static int cantidadEjercitos = 8;
 
     //para que pasen los test hago una lista de paises random
-    List<IPais> paises = Arrays.asList(
-            "Puerto Rico",
-            "Colombia",
-            "Venezuela",
-            "Honduras",
-            "Guayana",
-            "Guatemala")
-            .stream()
-            .map(n -> new Pais(n))
-            .collect(Collectors.toList());
+    List<IPais> paises;
 
     public FaseInicio(int cantJugadores) throws CantidadDeJugadoresError, EjercitosException {
         if (!validarCantidad(cantJugadores))
@@ -42,9 +33,9 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
                     + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
         turno = new Turno(colores, cantJugadores);
-        canje = new Canje(paises);
         mapa = new Mapa();
-        mapa.definirPaises(paises);
+        paises = mapa.obtenerPaises();
+        canje = new Canje(paises);
     }
 
     //version para mock
