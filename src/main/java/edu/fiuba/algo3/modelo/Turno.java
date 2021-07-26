@@ -55,7 +55,7 @@ public class Turno implements ITurno {
 
     public List<IJugador> construirJugadores(List<String> colores, int cantidad) throws EjercitosException {
         List<IJugador> jugadores = jugadoresDeColores(colores.subList(0, cantidad));
-        asignarPaisesAJugadores(paises, jugadores);
+        asignarPaisesAleatoriamente(paises, jugadores);
         asignarEjercitosAJugadores(jugadores);
         return jugadores;
     }
@@ -66,11 +66,16 @@ public class Turno implements ITurno {
                 .collect(Collectors.toList());
     }
 
-    public void asignarPaisesAJugadores(List<IPais> paises, List<IJugador> jugadores) {
+    /*
+    Asigna aleatoriamente paises de la lista recibida a los jugadores.
+    No verifica que las listas estén vacías.
+    Preserva el orden de la lista de jugadores, no de la de paises.
+    */ 
+    public void asignarPaisesAleatoriamente(List<IPais> paises, List<IJugador> jugadores) {
         Collections.shuffle(paises);
         for (int i = 0; i < paises.size(); i++) {
             IPais actual = paises.get(i);
-            jugadores.get(i % jugadores.size()).asignarPais(actual);
+            jugadores.get(i % jugadores.size()).inicializarPais(actual);
         }
     }
 

@@ -1,21 +1,20 @@
 package edu.fiuba.algo3.modelo.Mocks;
 
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
+import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 
 public class PaisMock implements IPais {
     private String nombre;
     private IJugador conquistador;
-
+    
     public PaisMock(String nombre) {
         this.nombre = nombre;
         conquistador = new Jugador("Victor el Victorioso");
         conquistador.asignarPais(this);
     }
 
-    //Este pais SIEMPRE GANA un ataque.
+    // Este pais SIEMPRE GANA un ataque.
     @Override
     public void atacar(IPais defensor, int cantidadDeSoldados) throws Exception {
         conquistar(defensor);
@@ -23,7 +22,6 @@ public class PaisMock implements IPais {
 
     @Override
     public void agregarEjercitos(int i) {
-        // TODO Auto-generated method stub
 
     }
 
@@ -34,7 +32,6 @@ public class PaisMock implements IPais {
 
     @Override
     public void atacar(IAtaque ataqueFalso) {
-        // TODO Auto-generated method stub
 
     }
 
@@ -45,13 +42,11 @@ public class PaisMock implements IPais {
 
     @Override
     public void agregarAdyacente(IPais iPais) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void quitarEjercitos(long cantDerrotas) {
-        // TODO Auto-generated method stub
 
     }
 
@@ -64,21 +59,18 @@ public class PaisMock implements IPais {
 
     @Override
     public int cantidadEjercitos() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public List<IPais> obtenerAdyacentes() {
-        // TODO Auto-generated method stub
-        return null;
+    public void definirConquistador(IJugador conquistador) {
+        conquistador.asignarPais(this);
+        this.conquistador = conquistador;
     }
 
     @Override
-    public void definirConquistador(IJugador conquistador) {
-		conquistador.asignarPais(this);
-		this.conquistador = conquistador;
-	}
+    public void transferirEjercitosA(int cantidad, IPais otroPais) throws TransferirEjercitosException {
+    }
 
     
     

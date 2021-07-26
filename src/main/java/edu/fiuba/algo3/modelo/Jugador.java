@@ -11,12 +11,14 @@ import java.util.ArrayList;
 
 public class Jugador implements IJugador {
 	public static final String CANTIDAD_PAISES = "cantidadPaises";
-	String color;
-	//TODO: smell de atributo publico
-	private List<IPais> paises;
-	List<Tarjeta> tarjetas;
-	int ejercitosPorColocar;
 	IObjetivo objetivo;
+
+	private String color;
+	private List<IPais> paises;
+	private List<Tarjeta> tarjetas;
+	private int ejercitosPorColocar;
+
+	static int minimoPaises = 30;
 
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
@@ -59,6 +61,13 @@ public class Jugador implements IJugador {
 		else {
 			this.ejercitosPorColocar += cantidad;
 		}
+	}
+
+	//agrega un pais con un ejército nuevo. 
+	//No afecta la cantidad de ejércitos por colocar del jugador.
+	public void inicializarPais(IPais pais) {
+		asignarPais(pais);
+		pais.agregarEjercitos(1);
 	}
 
 	public void asignarPais(IPais pais) {
@@ -129,6 +138,11 @@ public class Jugador implements IJugador {
 
 	private void addChangeListener(PropertyChangeListener suscriptor) {
 		suscriptores.add(suscriptor);
+	}
+
+	@Override
+	public int cantidadPaises() {
+		return paises.size();
 	}
 
 }

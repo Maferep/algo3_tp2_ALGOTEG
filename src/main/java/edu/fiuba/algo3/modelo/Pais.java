@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
-
+import edu.fiuba.algo3.modelo.excepciones.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +45,9 @@ public class Pais implements IPais {
 	public IJugador obtenerConquistador() { return this.conquistador; }
 
 	public void atacar(IPais defensor, int numeroEjercitos) throws Exception {
+		if(!adyacentes.stream().anyMatch(a -> a == defensor)) 
+			//TODO crear excepción de adyacencia
+			throw new Exception("No es adyacente");
 		IAtaque ataque = new Ataque(this, defensor, numeroEjercitos);
 		atacar(ataque);
 	}
@@ -55,7 +58,14 @@ public class Pais implements IPais {
 
 	public void agregarAdyacente(IPais pais) { adyacentes.add(pais); }
 
-	public List<IPais> obtenerAdyacentes() {
-		return adyacentes;
+	public void transferirEjercitosA(int cantidad, IPais otroPais) throws TransferirEjercitosException {
+		if(!adyacentes.stream().anyMatch(a -> a == otroPais)) 
+			throw new TransferirEjercitosException("No es adyacente");
+
+		if(cantidad >= ejercitos)
+			throw new TransferirEjercitosException("No hay tantos ejercitos para transferir");
+	
+		quitarEjercitos(cantidad);
+		otroPais.agregarEjercitos(cantidad);
 	}
 }

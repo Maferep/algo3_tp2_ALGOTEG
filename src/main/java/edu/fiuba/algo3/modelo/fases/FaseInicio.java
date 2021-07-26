@@ -43,7 +43,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
 
-    public FaseInicio(int cantJugadores) throws Exception {
+    public FaseInicio(int cantJugadores) throws CantidadDeJugadoresError, EjercitosException, ObjetivoException {
         if (!validarCantidad(cantJugadores))
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de "
                     + minJugadores + " y un máximo de "
@@ -52,14 +52,18 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
         objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
         canje = new Canje(paises);
+        mapa = new Mapa();
+        mapa.definirPaises(paises);
     }
 
     public ITurno turno() {
         return turno;
     }
     //version para mock
-    public FaseInicio(ITurno turno) throws Exception {
+    public FaseInicio(IMapa mapa, ITurno turno, Canje canje)  {
         this.turno = turno;
+        this.mapa = mapa;
+        this.canje = canje;
     }
 
     // interfaz de inicio
@@ -81,7 +85,6 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     // métodos de fase
-    //TODO: heredar de Fase abstracta en lugar de interfaz
 
     @Override
     public Boolean faseCompletada() {

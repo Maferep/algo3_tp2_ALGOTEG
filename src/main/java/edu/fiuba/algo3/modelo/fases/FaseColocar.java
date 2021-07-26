@@ -23,16 +23,11 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
         return turno;
     }
     
-    //funcionalidad colocar (usa el canje)
-
 	public void asignarNuevosEjercitosAJugadores() throws EjercitosException {
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++ ) {
             int cantidadDeSoldados = 
-                Math.max(turno.jugadorActual().obtenerPaises().size()/2, 3);
-            //TODO: accede a paises del jugador directamente, puede que viole tda
-            turno
-                .jugadorActual()
-                .agregarNuevosEjercitos(cantidadDeSoldados);
+                Math.max( turno.jugadorActual().cantidadPaises()/2, 3);
+            turno.jugadorActual().agregarNuevosEjercitos(cantidadDeSoldados);
             turno.siguienteJugador();
         }
     }

@@ -35,9 +35,10 @@ public class FaseColocarTest {
     @Test
     public void test00RondaDeDosJugadoresSinAtaques() throws Exception {
         ITurno unJugador = new TurnoMockUnJugadorPorPais(listaDePaises);
-        IMapa mapa = new Mapa();
-        mapa.definirPaises(listaDePaises);
-        FaseColocar fase = new FaseColocar(unJugador,mapa, null);
+        FaseColocar fase = new FaseColocar(
+            unJugador,
+            new MapaMock(listaDePaises), 
+            new Canje(listaDePaises));
         IPais pais = listaDePaises.get(0);
         fase.colocarEjercitosEnPais(3, pais);
         assertTrue(fase.faseCompletada());
@@ -54,9 +55,10 @@ public class FaseColocarTest {
     @Test
     public void test01RondaDeDosJugadoresNoHaySuficientesFichasParaAgregarAUnPais() throws Exception {
         ITurno unJugador = new TurnoMockUnJugadorPorPais(listaDePaises);
-        IMapa mapa = new Mapa();
-        mapa.definirPaises(listaDePaises);
-        FaseColocar fase = new FaseColocar(unJugador, mapa, null);
+        FaseColocar fase = new FaseColocar(
+            unJugador,
+            new MapaMock(listaDePaises), 
+            new Canje(listaDePaises));
         IPais pais = listaDePaises.get(0);
         fase.colocarEjercitosEnPais(3, pais);
         assertTrue(fase.faseCompletada());
@@ -73,9 +75,10 @@ public class FaseColocarTest {
     @Test
     public void test03NoExistePaisError() throws Exception {
         ITurno unJugador = new TurnoMockUnJugadorPorPais(listaDePaises);
-        IMapa mapa = new Mapa();
-        mapa.definirPaises(listaDePaises);
-        FaseColocar fase = new FaseColocar(unJugador, mapa, null);
+        FaseColocar fase = new FaseColocar(
+            unJugador,
+            new MapaMock(listaDePaises), 
+            new Canje(listaDePaises));
         Pais pais = new Pais("Estados Unidos");
         fase.colocarEjercitosEnPais(3, pais);
         assertTrue(fase.faseCompletada());
@@ -94,13 +97,7 @@ public class FaseColocarTest {
         Continente asia = new Continente(paisesAsia);
 
         ITurno turno = new TurnoMockUnJugadorPorPais(listaDePaises);
-        assertEquals(turno.cantidadDeJugadores(), 4);
-        assertEquals(0, turno.jugadorActual().cantidadEjercitos());
-
-        IMapa mapa = new Mapa();
-        mapa.definirPaises(listaDePaises);
-        FaseColocar fase = new FaseColocar(turno, mapa, null);
-        assertEquals(3, turno.jugadorActual().cantidadEjercitos());
+        FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);
 
         IPais pais = listaDePaises.get(0);
         fase.colocarEjercitosEnPais(3, pais);
@@ -109,14 +106,14 @@ public class FaseColocarTest {
 
         // seguir al jugador 2
         fase.siguienteTurno();
-        assertEquals(3, turno.jugadorActual().cantidadEjercitos());
 
+        assertEquals(3, turno.jugadorActual().cantidadEjercitos());
         paisesAsia.forEach(paisAsia -> paisAsia.definirConquistador(turno.jugadorActual()));
 
         fase.colocarEjercitosEnPais(3, paisesAsia.get(0));
         assertEquals(paisesAsia.get(0).cantidadEjercitos(), 3);
+        
         assertTrue(fase.faseCompletada());
-
         assertTrue(asia.fueConquistadoPor(turno.jugadorActual()));
 
         // seguir al jugador 3
@@ -160,5 +157,15 @@ public class FaseColocarTest {
         turno.siguienteJugador();
         assertEquals(j1, turno.jugadorActual());
         assertEquals(turno.jugadorActual().cantidadEjercitos(), 3);
+    }
+
+    @Test
+    public void test06VerificarCantidadEjercitos() throws EjercitosException {
+        ITurno turno = new TurnoMockUnJugadorPorPais(listaDePaises);
+        assertEquals(turno.cantidadDeJugadores(), 4);
+        assertEquals(0, turno.jugadorActual().cantidadEjercitos());
+
+        FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);
+        assertEquals(3, turno.jugadorActual().cantidadEjercitos());
     }
 }

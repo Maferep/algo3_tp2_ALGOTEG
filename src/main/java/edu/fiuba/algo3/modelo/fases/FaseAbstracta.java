@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
@@ -9,6 +7,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public abstract class FaseAbstracta implements IFase {
     ITurno turno;
     Canje canje;
+    IMapa mapa;
     
     @Override
     public FaseInicio obtenerFaseInicio() throws FaseErroneaException {
