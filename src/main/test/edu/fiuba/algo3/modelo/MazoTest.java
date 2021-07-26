@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.*;
 import java.util.stream.*;
 
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaException;
 import edu.fiuba.algo3.modelo.excepciones.NoSePuedeProducirCanjeException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
@@ -38,7 +39,7 @@ public class MazoTest {
 
     //Pruebas para 1er tipo de activacion
     @Test
-    public void test02SeActivanTarjetas() throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException {
+    public void test02SeActivanTarjetas() throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
         Jugador jugador = new Jugador("Rosa");
         jugador.asignarCanje(new Mazo(paises));
         Pais pais = new Pais("Estados Unidos");
@@ -91,7 +92,7 @@ public class MazoTest {
     }
 
     @Test
-    public void test05NoSePuedeActivarUnaTarjetaDosVeces() throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException {
+    public void test05NoSePuedeActivarUnaTarjetaDosVeces() throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
         Jugador jugador = new Jugador("Rosa");
         jugador.asignarCanje(new Mazo(paises));
         Pais pais = new Pais("Estados Unidos");

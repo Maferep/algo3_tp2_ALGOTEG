@@ -104,7 +104,7 @@ public class Jugador implements IJugador {
 		tarjetas.add(tarjeta);
 	}
 
-	public void activarTarjeta(Tarjeta tarjeta, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException {
+	public void activarTarjeta(Tarjeta tarjeta, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
 		this.realizarVerificaciones(tarjeta);
 		tarjeta.activarTarjeta(this, tipoDeCanje);
 		this.mazo.insertarAlFondoDelMazo(tarjeta);
