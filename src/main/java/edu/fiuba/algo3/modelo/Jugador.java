@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Jugador implements IJugador {
-	public static final String ATRIBUTO_PAISES_CONQUISTADOS = "paises";
+	public static final String CANTIDAD_PAISES = "cantidadPaises";
 	String color;
 	//TODO: smell de atributo publico
 	private List<IPais> paises;
@@ -68,7 +68,7 @@ public class Jugador implements IJugador {
 	public void quitarPais(IPais pais) {
 		int paisesQueTenia = paises.size();
 		paises.remove(pais);
-		notifyListeners(this, ATRIBUTO_PAISES_CONQUISTADOS, paisesQueTenia, paises.size());
+		notifyListeners(this, CANTIDAD_PAISES, paisesQueTenia, paises.size());
 	}
 
 	public void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesError,
@@ -110,8 +110,8 @@ public class Jugador implements IJugador {
 	}
 
 	//para objetivos
-
 	public void asignarObjetivo(IObjetivo objetivoAsignado) {
+		objetivoAsignado.inicializar(this);
 		objetivo = objetivoAsignado;
 	}
 

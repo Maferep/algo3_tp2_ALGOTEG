@@ -12,7 +12,6 @@ import edu.fiuba.algo3.modelo.fases.FaseInicio;
 
 public class Turno implements ITurno {
     private LinkedList<IJugador> jugadores = new LinkedList<IJugador>();
-    public List<IJugador> listaJugadores = new LinkedList<IJugador>();
     List<IPais> paises = Arrays.asList(
             "Estados Unidos",
             "Canadá",
@@ -27,7 +26,7 @@ public class Turno implements ITurno {
     int cantidadEjercitos = 8;
 
     public Turno(List<String> colores, int cantidad) throws EjercitosException {
-        listaJugadores = construirJugadores(colores, cantidad);
+        List<IJugador> listaJugadores = construirJugadores(colores, cantidad);
         this.jugadores.addAll(listaJugadores);
         definirPrimerJugador(listaJugadores.get((int) (Math.random() % listaJugadores.size())));
     }
