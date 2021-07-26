@@ -23,4 +23,10 @@ public class ObjetivoGeneral implements IObjetivo {
 
     }
 
+    @Override
+    public Boolean fueCompletado() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

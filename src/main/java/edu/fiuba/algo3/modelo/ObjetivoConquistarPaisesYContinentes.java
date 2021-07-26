@@ -12,7 +12,7 @@ public class ObjetivoConquistarPaisesYContinentes implements IObjetivo {
     List<Continente> continentesAConquistar;
     List<IPais> paisesAConquistar;
     //TODO TEMP PARA TEST
-    public Boolean completado = false;
+    private Boolean completado = false;
 
     public ObjetivoConquistarPaisesYContinentes(List<Continente> continentes, List<IPais> paises) {
         continentesAConquistar = continentes;
@@ -36,5 +36,10 @@ public class ObjetivoConquistarPaisesYContinentes implements IObjetivo {
     public void inicializar(IJugador duenio) {
         this.duenio = duenio;
         duenio.agregarObjetivoSuscriptor(this);
+    }
+
+    @Override
+    public Boolean fueCompletado() {
+        return completado;
     }
 }

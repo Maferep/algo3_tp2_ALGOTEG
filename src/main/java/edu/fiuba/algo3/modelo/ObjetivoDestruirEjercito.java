@@ -13,7 +13,7 @@ public class ObjetivoDestruirEjercito implements IObjetivo{
 	IJugador jugadorDuenio;
 	IJugador jugadorADestruir;
 	//SOLO PARA TEST reemplazar con mensaje al duenio
-	public Boolean completado = false;
+	private Boolean completado = false;
 	
 	//Usa el turno para averiguar si el jugador existe
 	public ObjetivoDestruirEjercito(ITurno turnoActual, String color) 
@@ -38,5 +38,11 @@ public class ObjetivoDestruirEjercito implements IObjetivo{
 			&& evento.getNewValue().equals(cero)) {
             completado = true;
         }
+	}
+
+	@Override
+	public Boolean fueCompletado() {
+		// TODO Auto-generated method stub
+		return completado;
 	}
 }

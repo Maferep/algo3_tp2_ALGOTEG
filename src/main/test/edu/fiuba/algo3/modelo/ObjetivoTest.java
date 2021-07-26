@@ -66,7 +66,7 @@ public class ObjetivoTest {
         for(IPais pais : paisesDePerdedor)
             turno.jugadorActual().quitarPais(pais);
 
-        assertEquals(true, objetivo.completado);
+        assertEquals(true, objetivo.fueCompletado());
     }
     @Test
     public void test03CantarVictoriaConContinentes() 
@@ -87,6 +87,6 @@ public class ObjetivoTest {
         for(IPais pais : paisesAConquistar)
             turno.jugadorActual().asignarPais(pais);
 
-        assertEquals(true, objetivo.completado);
+        assertEquals(true, objetivo.fueCompletado());
     }
 }
