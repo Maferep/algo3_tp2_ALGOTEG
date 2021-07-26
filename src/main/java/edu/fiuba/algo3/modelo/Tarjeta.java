@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Interfaces.ICanje;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaException;
+import edu.fiuba.algo3.modelo.excepciones.NoSePuedeProducirCanjeException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
 
 public class Tarjeta {
@@ -15,16 +16,15 @@ public class Tarjeta {
         this.simbolo = simboloDeTarjeta;
     }
 
-    public void activarTarjeta(IJugador jugador, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError {
+    public void activarTarjeta(IJugador jugador, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException {
         tipoDeCanje.activarTarjeta(jugador, this);
     }
 
     public IPais obtenerPais() {
         return pais;
     }
-
-    public IPais obtenerSimbolo() {
-        return pais;
+    public Simbolo obtenerSimbolo() {
+        return simbolo;
     }
 
 }
