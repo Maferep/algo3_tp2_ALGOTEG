@@ -80,4 +80,10 @@ public class Turno implements ITurno {
             j.inicializarEjercitos(cantidadEjercitos);
         }
     }
+
+    @Override
+    //Devuelve el jugador de ese color o tira una excepción NoSuchElementException.
+    public IJugador jugadorDeColor(String color) throws NoSuchElementException{
+        return jugadores.stream().filter(j -> j.obtenerColor() == color).findAny().get();
+    }
 }

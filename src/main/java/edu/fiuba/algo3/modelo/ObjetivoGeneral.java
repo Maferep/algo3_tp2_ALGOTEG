@@ -1,13 +1,19 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Interfaces.IMapa;
 import edu.fiuba.algo3.modelo.Interfaces.IObjetivo;
-import edu.fiuba.algo3.modelo.Jugador;
+
+import java.beans.PropertyChangeEvent;
 
 public class ObjetivoGeneral implements IObjetivo {
 
-    //objetivo general
-    public boolean seCumpleObjetivo(Jugador jugadorActual) {
-        return jugadorActual.tieneMinimoPaises();
+    public ObjetivoGeneral(IMapa mapa) {
+	}
+
+	@Override
+    public void propertyChange(PropertyChangeEvent arg0) {
+        // TODO Auto-generated method stub
+
     }
 
 }

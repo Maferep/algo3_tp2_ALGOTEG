@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import java.util.NoSuchElementException;
 
 public interface ITurno {
 
@@ -9,4 +9,6 @@ public interface ITurno {
     public void siguienteJugador() ;
 
     public int cantidadDeJugadores() ;
+
+    public IJugador jugadorDeColor(String color) throws NoSuchElementException;
 }
