@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class Jugador implements IJugador {
 	public static final String CANTIDAD_PAISES = "cantidadPaises";
+	public static final String PAISES = "paises";
 	IObjetivo objetivo;
 
 	private String color;
@@ -71,13 +72,25 @@ public class Jugador implements IJugador {
 	}
 
 	public void asignarPais(IPais pais) {
+		int paisesQueTenia = paises.size();
+		List<IPais> listaAnterior = new ArrayList<IPais>();
+		listaAnterior.addAll(paises);
+
 		paises.add(pais);
+
+		notifyListeners(this, CANTIDAD_PAISES, paisesQueTenia, paises.size());
+		notifyListeners(this, PAISES, listaAnterior, paises);
 	}
 
 	public void quitarPais(IPais pais) {
 		int paisesQueTenia = paises.size();
+		List<IPais> listaAnterior = new ArrayList<IPais>();
+		listaAnterior.addAll(paises);
+
 		paises.remove(pais);
+		
 		notifyListeners(this, CANTIDAD_PAISES, paisesQueTenia, paises.size());
+		notifyListeners(this, PAISES, listaAnterior, paises);
 	}
 
 	public void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesError,
@@ -124,8 +137,8 @@ public class Jugador implements IJugador {
 		objetivo = objetivoAsignado;
 	}
 
-	//metodo para notificar a los listeners de un evento
-	private void notifyListeners(Object object, String property, Integer oldValue, Integer newValue) {
+	//metodo para notificar a los listeners de todo evento
+	private void notifyListeners(Object source, String property, Object oldValue, Object newValue) {
 		for (PropertyChangeListener suscriptor : suscriptores) {
 			PropertyChangeEvent event = new PropertyChangeEvent(this, property, oldValue, newValue);
 			suscriptor.propertyChange(event);
