@@ -3,13 +3,16 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaException;
 import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 
-public class Tarjeta {
+public class Tarjeta implements ITarjeta{
     static int ejercitosParaAgregarPorCanje = 2;
     IPais pais;
     Boolean encontroTarjeta = false;
     Tarjeta(IPais pais) {
         this.pais = pais;
     }
+    /*Tarjeta(IPais pais, Simbolo simbolo) {
+        this.pais = pais;
+    }*/
 	public IPais obtenerPais() {
 		return pais;
 	}
@@ -25,4 +28,7 @@ public class Tarjeta {
             throw new NoExisteTarjetaException("No tienes ese pais para agregar fichas");
         }
     }
+
+    //Asimismo, si un jugador posee tres tarjetas de país con el mismo símbolo o
+    //tres símbolos distintos puede solicitar un canje según la siguiente tabla:
 }

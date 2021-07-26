@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.*;
 
 public class Canje {
-    LinkedList<Tarjeta> mazo = new LinkedList<Tarjeta>();
+    LinkedList<ITarjeta> mazo = new LinkedList<ITarjeta>();
     public Canje(List<IPais> paises) {
         mazo.addAll(
             paises.stream()
@@ -13,11 +13,11 @@ public class Canje {
                 .collect(Collectors.toList())
         );
     }
-    public Tarjeta obtenerTarjeta() {
+    public ITarjeta obtenerTarjeta() {
         return mazo.getFirst();
     }
 
-    public void insertarAlFondoDelMazo(Tarjeta tarjeta) {
+    public void insertarAlFondoDelMazo(ITarjeta tarjeta) {
         mazo.add(tarjeta);
     }
 

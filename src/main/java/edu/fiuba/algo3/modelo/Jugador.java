@@ -10,7 +10,7 @@ public class Jugador implements IJugador {
 
 	private String color;
 	private List<IPais> paises;
-	private List<Tarjeta> tarjetas;
+	private List<ITarjeta> tarjetas;
 	private int ejercitosPorColocar;
 	public Canje canje;
 
@@ -19,7 +19,7 @@ public class Jugador implements IJugador {
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
 		paises = new ArrayList<IPais>();
-		tarjetas = new ArrayList<Tarjeta>();
+		tarjetas = new ArrayList<ITarjeta>();
 		ejercitosPorColocar = 0;
 	}
 
@@ -99,20 +99,20 @@ public class Jugador implements IJugador {
 		canje = canjeNuevo;
 	}
 
-	public void agregarTarjetaAleatoria(Tarjeta tarjeta) {
+	public void agregarTarjetaAleatoria(ITarjeta tarjeta) {
 		tarjetas.add(tarjeta);
 	}
 
-	public void activarTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
+	public void activarTarjeta(ITarjeta tarjeta) throws NoExisteTarjetaException {
 		this.verificarQueExistaTarjeta(tarjeta);
 		tarjeta.activarTarjeta(this);
 		canje.insertarAlFondoDelMazo(tarjeta);
 		tarjetas.remove(tarjeta);
 	}
 
-	public boolean verificarQueExistaTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
+	public boolean verificarQueExistaTarjeta(ITarjeta tarjeta) throws NoExisteTarjetaException {
 		for(int i = 0 ; i < tarjetas.size() ; i++) {
-			if(tarjetas.get(i).pais == tarjeta.pais) {
+			if(tarjetas.get(i).obtenerPais() == tarjeta.obtenerPais()) {
 				return true;
 			}
 		}
