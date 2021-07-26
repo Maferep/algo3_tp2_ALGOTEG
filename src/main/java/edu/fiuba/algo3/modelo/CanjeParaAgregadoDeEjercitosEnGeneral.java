@@ -14,25 +14,11 @@ public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
     //Asimismo, si un jugador posee tres tarjetas de país con el mismo símbolo o
     //tres símbolos distintos puede solicitar un canje según la siguiente tabla:
 
-    List<IPais> paises = new ArrayList <IPais>();
-    Simbolo simbolo;
     Boolean encontroTarjeta = false;
 
-    CanjeParaAgregadoDeEjercitosEnGeneral(List <IPais> paises, Simbolo simbolo) {
-        this.paises = paises;
-        this.simbolo = simbolo;
-    }
-
-    public Simbolo obtenerSimbolo() {
-        return simbolo;
-    }
-    public IPais obtenerPais() {
-        return paises.get(0);
-    }
-
-    public void activarTarjeta(IJugador jugador) throws NoExisteTarjetaException, PaisNoExistenteError {
+    public void activarTarjeta(IJugador jugador, Tarjeta tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError {
         for(int i = 0 ; i < jugador.obtenerPaises().size() ; i++) {
-            if(!jugador.verificarQueExistaPais(paises.get(i))) {
+            if(!jugador.verificarQueExistaPais(tarjeta.obtenerPais())) {
                 throw new PaisNoExistenteError("No tienes ese pais para agregar fichas");
             }
         }

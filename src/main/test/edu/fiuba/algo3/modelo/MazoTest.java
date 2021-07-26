@@ -44,7 +44,7 @@ public class MazoTest {
         Simbolo simbolo = new Simbolo("Barco");
         jugador.asignarPais(pais);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais();
 
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
@@ -62,7 +62,7 @@ public class MazoTest {
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais();
 
         assertThrows(NoExisteTarjetaException.class, () -> {
             jugador.activarTarjeta(tarjeta, tipoDeCanje);
@@ -82,7 +82,7 @@ public class MazoTest {
 
         Tarjeta tarjeta = new Tarjeta(otroPais, simbolo);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais();
 
         assertThrows(NoExisteTarjetaException.class, () -> {
             jugador.activarTarjeta(tarjeta, tipoDeCanje);
@@ -101,7 +101,7 @@ public class MazoTest {
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais();
 
         jugador.activarTarjeta(tarjeta, tipoDeCanje);
 

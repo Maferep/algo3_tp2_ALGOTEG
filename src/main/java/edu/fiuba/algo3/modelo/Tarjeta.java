@@ -16,7 +16,7 @@ public class Tarjeta {
     }
 
     public void activarTarjeta(IJugador jugador, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError {
-        tipoDeCanje.activarTarjeta(jugador);
+        tipoDeCanje.activarTarjeta(jugador, this);
     }
 
     public IPais obtenerPais() {
