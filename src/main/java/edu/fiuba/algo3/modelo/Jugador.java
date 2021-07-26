@@ -32,9 +32,9 @@ public class Jugador implements IJugador {
 
 	//metodo para notificar a los listeners de un evento
 	private void notifyListeners(Object object, String property, Boolean oldValue, Boolean newValue) {
-		for (PropertyChangeListener name : suscriptores) {
+		for (PropertyChangeListener suscriptor : suscriptores) {
 			PropertyChangeEvent event = new PropertyChangeEvent(this, property, oldValue, newValue);
-			name.propertyChange(event);
+			suscriptor.propertyChange(event);
 		}
 	}
 
@@ -129,40 +129,12 @@ public class Jugador implements IJugador {
 		objetivo = objetivoAsignado;
 	}
 
-	private boolean esDestruido() {
-		return (this.paises.size() == 0);
-	}
-
 	public boolean tieneMinimoPaises() {
 		return (this.paises.size() >= minimoPaises);
 	}
 
-	public boolean conquistaContinentes(List<Continente> continentes) {
-		for (int i = 0; i < continentes.size(); i++) {
-			if(!(this.verificarConquista(continentes.get(i)))) {
-				return false;
-			}
-		}
-		return true;
-	}
-
 	public String colorDeJugador() {
 		return this.color;
-	}
-
-	public boolean verificarConquista(Continente continente) {
-		return conquistaPaises(continente.paises());
-	}
-
-	public boolean conquistaPaises(List<IPais> paisesParaConquistar) {
-		for (int i = 0; i < paisesParaConquistar.size(); i++) {
-			for (int j = 0 ; j < paises.size() ; j++) {
-				if(!(paises.get(j).obtenerNombre().equals(paisesParaConquistar.get(i).obtenerNombre()))) {
-					return false;
-				}
-			}
-		}
-		return true;
 	}
 
 }
