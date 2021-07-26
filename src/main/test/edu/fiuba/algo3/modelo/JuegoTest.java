@@ -27,7 +27,7 @@ public class JuegoTest {
             "Chile",
             "Ecuador")
             .stream()
-            .map(n -> new Pais(n))
+            .map(pais -> new Pais(pais))
             .collect(Collectors.toList());
     @Test
     public void test01avanzarFasesDeJuego() throws FaseErroneaException, Exception {

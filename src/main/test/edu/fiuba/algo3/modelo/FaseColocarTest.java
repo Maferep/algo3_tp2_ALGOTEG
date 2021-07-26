@@ -19,7 +19,7 @@ public class FaseColocarTest {
             "Brasil",
             "Italia")
             .stream()
-            .map(n -> new Pais(n))
+            .map(pais -> new Pais(pais))
             .collect(Collectors.toList());
 
     List<IPais> paisesAsia = Arrays.asList(
@@ -27,7 +27,7 @@ public class FaseColocarTest {
             "Japón",
             "Tailandia")
             .stream()
-            .map(n -> new Pais(n))
+            .map(pais -> new Pais(pais))
             .collect(Collectors.toList());
 
     //Juego de una ronda con 2 jugadores.
@@ -40,14 +40,16 @@ public class FaseColocarTest {
             new MapaMock(listaDePaises), 
             new Canje(listaDePaises));
         IPais pais = listaDePaises.get(0);
-        fase.colocarEjercitosEnPais(3, pais);
+        int cantidadEjercitos = 3;
+
+        fase.colocarEjercitosEnPais(cantidadEjercitos, pais);
         assertTrue(fase.faseCompletada());
         assertEquals(pais.cantidadEjercitos(), 3);
 
         fase.siguienteTurno();
 
         IPais paisNuevo = listaDePaises.get(1);
-        fase.colocarEjercitosEnPais(3, paisNuevo);
+        fase.colocarEjercitosEnPais(cantidadEjercitos, paisNuevo);
         assertTrue(fase.faseCompletada());
         assertEquals(paisNuevo.cantidadEjercitos(), 3);
     }
@@ -60,15 +62,19 @@ public class FaseColocarTest {
             new MapaMock(listaDePaises), 
             new Canje(listaDePaises));
         IPais pais = listaDePaises.get(0);
-        fase.colocarEjercitosEnPais(3, pais);
+        int cantidadEjercitos = 3;
+
+        fase.colocarEjercitosEnPais(cantidadEjercitos, pais);
         assertTrue(fase.faseCompletada());
         assertEquals(pais.cantidadEjercitos(), 3);
 
         fase.siguienteTurno();
 
         IPais paisNuevo = listaDePaises.get(1);
+        int cantidadEjercitosInvalida = 1000;
+
         assertThrows(FichasInsuficientesError.class, () -> {
-            fase.colocarEjercitosEnPais(1000, paisNuevo);
+            fase.colocarEjercitosEnPais(cantidadEjercitosInvalida, paisNuevo);
         });
     }
 
@@ -80,15 +86,19 @@ public class FaseColocarTest {
             new MapaMock(listaDePaises), 
             new Canje(listaDePaises));
         Pais pais = new Pais("Estados Unidos");
-        fase.colocarEjercitosEnPais(3, pais);
+        int cantidadEjercitos = 3;
+
+        fase.colocarEjercitosEnPais(cantidadEjercitos, pais);
         assertTrue(fase.faseCompletada());
         assertEquals(pais.cantidadEjercitos(), 3);
 
         fase.siguienteTurno();
 
         Pais paisNuevo = new Pais("Belgica");
+        int cantidadEjercitosInvalida = 1;
+
         assertThrows(PaisNoExistenteError.class, () -> {
-            fase.colocarEjercitosEnPais(1, paisNuevo);
+            fase.colocarEjercitosEnPais(cantidadEjercitosInvalida, paisNuevo);
         });
     }
 
@@ -100,7 +110,9 @@ public class FaseColocarTest {
         FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);
 
         IPais pais = listaDePaises.get(0);
-        fase.colocarEjercitosEnPais(3, pais);
+        int cantidadEjercitos = 3;
+
+        fase.colocarEjercitosEnPais(cantidadEjercitos, pais);
         assertTrue(fase.faseCompletada());
         assertEquals(pais.cantidadEjercitos(), 3);
 
@@ -110,7 +122,7 @@ public class FaseColocarTest {
         assertEquals(3, turno.jugadorActual().cantidadEjercitos());
         paisesAsia.forEach(paisAsia -> paisAsia.definirConquistador(turno.jugadorActual()));
 
-        fase.colocarEjercitosEnPais(3, paisesAsia.get(0));
+        fase.colocarEjercitosEnPais(cantidadEjercitos, paisesAsia.get(0));
         assertEquals(paisesAsia.get(0).cantidadEjercitos(), 3);
         
         assertTrue(fase.faseCompletada());
@@ -121,7 +133,7 @@ public class FaseColocarTest {
         assertEquals(3, turno.jugadorActual().cantidadEjercitos());
 
         IPais paisTercer = listaDePaises.get(2);
-        fase.colocarEjercitosEnPais(3, paisTercer);
+        fase.colocarEjercitosEnPais(cantidadEjercitos, paisTercer);
         assertTrue(fase.faseCompletada());
         assertEquals(paisTercer.cantidadEjercitos(), 3);
 
@@ -132,7 +144,7 @@ public class FaseColocarTest {
             throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
 
         // setup paises y turno
-        List<IPais> paises = Arrays.asList("Bolivia", "Colombia").stream().map(n -> new Pais(n))
+        List<IPais> paises = Arrays.asList("Bolivia", "Colombia").stream().map(pais -> new Pais(pais))
                 .collect(Collectors.toList());
 
         IPais colombia = paises.get(1);
@@ -143,6 +155,7 @@ public class FaseColocarTest {
         IMapa mapa = new Mapa();
         mapa.definirPaises(listaDePaises);
         FaseColocar fase = new FaseColocar(turno, mapa, null);
+        int cantidadEjercitos = 3;
 
         // verificar cantidad de ejercitos de jugador 1 es 3
         IJugador j1 = turno.jugadorActual();
@@ -150,7 +163,7 @@ public class FaseColocarTest {
 
         // jugador 2 ubica sus paises
         turno.siguienteJugador();
-        fase.colocarEjercitosEnPais(3, colombia);
+        fase.colocarEjercitosEnPais(cantidadEjercitos, colombia);
         assertEquals(colombia.cantidadEjercitos(), 3);
 
         //la cantidad de ejercitos de jugador 1 es 3

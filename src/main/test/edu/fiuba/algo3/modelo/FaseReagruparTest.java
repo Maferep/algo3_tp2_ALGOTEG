@@ -19,7 +19,7 @@ public class FaseReagruparTest {
             "Brasil",
             "Italia")
             .stream()
-            .map(n -> new Pais(n))
+            .map(pais -> new Pais(pais))
             .collect(Collectors.toList());
 
     List<IPais> paisesAsia = Arrays.asList(
@@ -27,7 +27,7 @@ public class FaseReagruparTest {
             "Japón",
             "Tailandia")
             .stream()
-            .map(n -> new Pais(n))
+            .map(pais -> new Pais(pais))
             .collect(Collectors.toList());
 
     @Test
@@ -42,8 +42,11 @@ public class FaseReagruparTest {
         paisRojo.agregarAdyacente(paisAzul);
         paisAzul.agregarAdyacente(paisRojo);
 
-        paisRojo.agregarEjercitos(3);
-        reagrupar.transferirEjercitos(2, paisRojo, paisAzul);
+        int cantidadEjercitos = 3;
+        int cantidadEjercitosATransferir = 2;
+
+        paisRojo.agregarEjercitos(cantidadEjercitos);
+        reagrupar.transferirEjercitos(cantidadEjercitosATransferir, paisRojo, paisAzul);
     }
 
     @Test
@@ -56,11 +59,15 @@ public class FaseReagruparTest {
 
         IPais paisRojo = new Pais("Rojo");
         IPais paisAzul = new Pais("Azul");
- 
-        paisRojo.agregarEjercitos(4);
+
+        int cantidadEjercitos = 4;
+
+        paisRojo.agregarEjercitos(cantidadEjercitos);
+
+        int cantidadEjercitosInvalida = 3;
 
         assertThrows(TransferirEjercitosException.class, 
-            () -> reagrupar.transferirEjercitos(3, paisRojo, paisAzul));
+            () -> reagrupar.transferirEjercitos(cantidadEjercitosInvalida, paisRojo, paisAzul));
     }
 
     @Test
@@ -73,11 +80,15 @@ public class FaseReagruparTest {
 
         IPais paisRojo = new Pais("Rojo");
         IPais paisAzul = new Pais("Azul");
- 
-        paisRojo.agregarEjercitos(3);
+
+        int cantidadEjercitos = 3;
+
+        paisRojo.agregarEjercitos(cantidadEjercitos);
+
+        int cantidadEjercitosInvalida = 3;
 
         assertThrows(TransferirEjercitosException.class, 
-            () -> reagrupar.transferirEjercitos(3, paisRojo, paisAzul));
+            () -> reagrupar.transferirEjercitos(cantidadEjercitosInvalida, paisRojo, paisAzul));
     }
 }
 

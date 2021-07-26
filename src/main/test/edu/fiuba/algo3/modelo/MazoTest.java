@@ -19,13 +19,13 @@ public class MazoTest {
             "Chile",
             "Ecuador")
         .stream()
-        .map(n -> new Pais(n))
+        .map(pais -> new Pais(pais))
         .collect(Collectors.toList());
     @Test
     public void test01MazoDePaises() {
         Canje mazo = new Canje(paises);
         IPais eeuu = paises.stream()
-            .filter(p -> p.obtenerNombre() == "Estados Unidos")
+            .filter(pais -> pais.obtenerNombre().equals("Estados Unidos"))
             .findAny()
             .get();
         assertEquals(eeuu, mazo.obtenerTarjeta().obtenerPais());
