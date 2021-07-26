@@ -18,8 +18,6 @@ public class Jugador implements IJugador {
 	int ejercitosPorColocar;
 	IObjetivo objetivo;
 
-	static int minimoPaises = 30;
-
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
 		paises = new ArrayList<IPais>();
@@ -127,14 +125,6 @@ public class Jugador implements IJugador {
 
 	public void asignarObjetivo(IObjetivo objetivoAsignado) {
 		objetivo = objetivoAsignado;
-	}
-
-	public boolean tieneMinimoPaises() {
-		return (this.paises.size() >= minimoPaises);
-	}
-
-	public String colorDeJugador() {
-		return this.color;
 	}
 
 }
