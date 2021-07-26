@@ -46,11 +46,6 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     //colocar
 
     @Override
-    public void asignarNuevosEjercitosAJugadores() throws EjercitosException, FaseErroneaException {
-        faseActual.obtenerFaseColocar().asignarNuevosEjercitosAJugadores();
-    }
-
-    @Override
     public void colocarEjercitosEnPais(final int cantEjercitos, final IPais pais)
             throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError, FaseErroneaException {
         faseActual.obtenerFaseColocar().colocarEjercitosEnPais(cantEjercitos, pais);
