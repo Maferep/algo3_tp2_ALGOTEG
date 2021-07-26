@@ -103,7 +103,7 @@ public class Jugador implements IJugador {
 		tarjetas.add(tarjeta);
 	}
 
-	public void activarTarjeta(Tarjeta tarjeta) {
+	public void activarTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
 		tarjeta.activarTarjeta(this);
 		canje.insertarAlFondoDelMazo(tarjeta);
 		tarjetas.remove(tarjeta);

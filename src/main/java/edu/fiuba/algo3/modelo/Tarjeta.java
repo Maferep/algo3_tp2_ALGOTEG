@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
+import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaException;
+import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 
 public class Tarjeta {
     static int ejercitosParaAgregarPorCanje = 2;
     IPais pais;
+    Boolean encontroTarjeta = false;
     Tarjeta(IPais pais) {
         this.pais = pais;
     }
@@ -11,12 +14,15 @@ public class Tarjeta {
 		return pais;
 	}
 
-    public void activarTarjeta(IJugador jugador) {
+    public void activarTarjeta(IJugador jugador) throws NoExisteTarjetaException {
         for(int i = 0 ; i < jugador.obtenerPaises().size() ; i++) {
             if(jugador.obtenerPaises().get(i).obtenerNombre().equals(pais.obtenerNombre())) {
                 jugador.obtenerPaises().get(i).agregarEjercitos(ejercitosParaAgregarPorCanje);
-
+                encontroTarjeta = true;
             }
+        }
+        if(!encontroTarjeta) {
+            throw new NoExisteTarjetaException("No tienes ese pais para agregar fichas");
         }
     }
 }
