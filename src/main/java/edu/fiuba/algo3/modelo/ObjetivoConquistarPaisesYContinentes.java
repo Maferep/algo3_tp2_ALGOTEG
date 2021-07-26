@@ -20,7 +20,7 @@ public class ObjetivoConquistarPaisesYContinentes implements IObjetivo {
 
     @Override
     public void propertyChange(PropertyChangeEvent evento) {
-
+        
     }
 
     @Override

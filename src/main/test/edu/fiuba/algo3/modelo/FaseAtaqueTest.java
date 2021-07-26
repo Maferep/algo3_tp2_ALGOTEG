@@ -17,7 +17,10 @@ public class FaseAtaqueTest {
         atacante.definirConquistador(new Jugador("Rosa"));
         defensor.definirConquistador(new Jugador("Amarillo"));
 
+        atacante.agregarAdyacente(defensor);
         atacante.agregarEjercitos(4);
+
+        defensor.agregarAdyacente(atacante);
         defensor.agregarEjercitos(3);
 
         ITurno turno = new TurnoMock();

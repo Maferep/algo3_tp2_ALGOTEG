@@ -89,22 +89,6 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
         faseActual = faseActual.siguienteFase(fabrica);
     }
 
-    @Override
-    public Canje obtenerCanje() {
-        return canje;
-    }
-
-    @Override
-    public IMapa obtenerMapa() {
-        // TODO Auto-generated method stub
-        return mapa;
-    }
-
-    @Override
-    public ITurno obtenerTurno() {
-        // TODO Auto-generated method stub
-        return turno;
-    }
 
 	public IJugador jugadorActual() {
 		return turno.jugadorActual();

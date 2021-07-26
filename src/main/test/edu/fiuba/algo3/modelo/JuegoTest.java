@@ -12,6 +12,7 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 
 
 public class JuegoTest {
+    
     @Test
     public void test01avanzarFasesDeJuego() throws FaseErroneaException, Exception {
         Juego juego = new Juego(3);
