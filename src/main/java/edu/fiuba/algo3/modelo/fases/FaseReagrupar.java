@@ -10,8 +10,6 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagrupar {
 
     IEstrategiaFase estrategia = new EstrategiaReagruparSinCompletar();
-    ITurno turno;
-    IMapa paises;
     private Canje canje;
     boolean finDeJuego = false;
 

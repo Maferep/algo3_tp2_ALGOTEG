@@ -95,8 +95,12 @@ public class Turno implements ITurno {
     }
 
     @Override
+    /*
+        Devuelve true si es el jugador anterior al primero.
+    */
     public boolean esUltimoJugador() {
-        int indiceUltimo = (jugadores.indexOf(primero) + 1) % jugadores.size();
+        int indiceUltimo = (jugadores.indexOf(primero) - 1);
+        if(indiceUltimo < 0) indiceUltimo += jugadores.size();
         return jugadorActual().equals(jugadores.get(indiceUltimo));
     }
 }

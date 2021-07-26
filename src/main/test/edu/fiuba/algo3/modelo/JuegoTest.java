@@ -38,9 +38,13 @@ public class JuegoTest {
         assertNotEquals(null, atacante);
         assertNotEquals(null, juego.jugadorActual());
         
+        juego.siguienteTurno();
+        juego.siguienteTurno();
         juego.siguienteFase();
         juego.atacar(atacante, 3, defensor);
 
+        juego.siguienteTurno();
+        juego.siguienteTurno();
         juego.siguienteFase();
         assertEquals(1, juego.jugadorActual().cantidadTarjetas());
     }
@@ -61,7 +65,13 @@ public class JuegoTest {
         IPais pais2 = paisesDeJugadorActual.get(1);
         pais1.agregarAdyacente(pais2);
         pais2.agregarAdyacente(pais1);
+
+        juego.siguienteTurno();
+        juego.siguienteTurno();
         juego.siguienteFase();
+        
+        juego.siguienteTurno();
+        juego.siguienteTurno();
         juego.siguienteFase();
         juego.transferirEjercitos(3, pais1, pais2);
     }

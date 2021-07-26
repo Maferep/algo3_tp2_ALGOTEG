@@ -12,8 +12,7 @@ public class EstrategiaAtaqueSinConquista extends EstrategiaFaseCompleta {
 
     @Override
     public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException, TurnoException {
-        if(!turno.esUltimoJugador())
-            throw new TurnoException(null);
+        verificarUltimoJugador(turno);
         return fabrica.crearFaseReagruparSinConquista();
     }
 }

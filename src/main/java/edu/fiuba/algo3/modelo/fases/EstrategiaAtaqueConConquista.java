@@ -7,8 +7,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public class EstrategiaAtaqueConConquista extends EstrategiaFaseCompleta {
     @Override
     public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException, TurnoException {
-        if(!turno.esUltimoJugador())
-            throw new TurnoException(null);
+        verificarUltimoJugador(turno);
         return fabrica.crearFaseReagruparConConquista();
     }
 }

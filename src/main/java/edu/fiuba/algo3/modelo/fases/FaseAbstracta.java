@@ -33,5 +33,4 @@ public abstract class FaseAbstracta implements IFase {
     public void siguienteTurno() {
         turno.siguienteJugador();
     }
-    
 }
