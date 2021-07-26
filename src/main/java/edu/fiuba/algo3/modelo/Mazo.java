@@ -6,19 +6,19 @@ import java.util.stream.*;
 
 public class Mazo {
 
-    LinkedList<ICanje> mazo = new LinkedList<ICanje>();
+    LinkedList<Tarjeta> mazo = new LinkedList<Tarjeta>();
     public Mazo(List<IPais> paises) {
         mazo.addAll(
             paises.stream()
-                .map(p -> new CanjeParaAgregadoDeEjercitosEnUnPais(p))
+                .map(p -> new Tarjeta(p,null))
                 .collect(Collectors.toList())
         );
     }
-    public ICanje obtenerTarjeta() {
+    public Tarjeta obtenerTarjeta() {
         return mazo.getFirst();
     }
 
-    public void insertarAlFondoDelMazo(ICanje tarjeta) {
+    public void insertarAlFondoDelMazo(Tarjeta tarjeta) {
         mazo.add(tarjeta);
     }
 

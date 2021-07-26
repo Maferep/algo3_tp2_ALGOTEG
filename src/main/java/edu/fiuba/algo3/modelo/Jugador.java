@@ -10,7 +10,7 @@ public class Jugador implements IJugador {
 
 	private String color;
 	private List<IPais> paises;
-	private List<ICanje> tarjetas;
+	private List<Tarjeta> tarjetas;
 	private int ejercitosPorColocar;
 	public Mazo mazo;
 	int numeroDeCanje = 0;
@@ -20,7 +20,7 @@ public class Jugador implements IJugador {
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
 		paises = new ArrayList<IPais>();
-		tarjetas = new ArrayList<ICanje>();
+		tarjetas = new ArrayList<Tarjeta>();
 		ejercitosPorColocar = 0;
 	}
 
@@ -100,13 +100,13 @@ public class Jugador implements IJugador {
 		mazo = mazoNuevo;
 	}
 
-	public void agregarTarjetaAleatoria(ICanje tarjeta) {
+	public void agregarTarjetaAleatoria(Tarjeta tarjeta) {
 		tarjetas.add(tarjeta);
 	}
 
-	public void activarTarjeta(ICanje tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError {
+	public void activarTarjeta(Tarjeta tarjeta, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError {
 		this.verificarQueExistaTarjeta(tarjeta);
-		tarjeta.activarTarjeta(this);
+		tarjeta.activarTarjeta(this, tipoDeCanje);
 		mazo.insertarAlFondoDelMazo(tarjeta);
 		tarjetas.remove(tarjeta);
 		this.actualizarNumeroDeCanje();
@@ -116,7 +116,7 @@ public class Jugador implements IJugador {
 		numeroDeCanje++;
 	}
 
-	public boolean verificarQueExistaTarjeta(ICanje tarjeta) throws NoExisteTarjetaException {
+	public boolean verificarQueExistaTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
 		for(int i = 0 ; i < tarjetas.size() ; i++) {
 			if(tarjetas.get(i).obtenerPais() == tarjeta.obtenerPais()) {
 				return true;

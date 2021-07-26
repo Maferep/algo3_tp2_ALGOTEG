@@ -41,11 +41,14 @@ public class MazoTest {
         Jugador jugador = new Jugador("Rosa");
         jugador.asignarCanje(new Mazo(paises));
         Pais pais = new Pais("Estados Unidos");
+        Simbolo simbolo = new Simbolo("Barco");
         jugador.asignarPais(pais);
 
-        CanjeParaAgregadoDeEjercitosEnUnPais tarjeta = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+
+        Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
-        jugador.activarTarjeta(tarjeta);
+        jugador.activarTarjeta(tarjeta, tipoDeCanje);
     }
 
     @Test
@@ -54,11 +57,15 @@ public class MazoTest {
         jugador.asignarCanje(new Mazo(paises));
         Pais pais = new Pais("Estados Unidos");
 
-        CanjeParaAgregadoDeEjercitosEnUnPais tarjeta = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+        Simbolo simbolo = new Simbolo("Barco");
+
+        Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
 
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+
         assertThrows(NoExisteTarjetaException.class, () -> {
-            jugador.activarTarjeta(tarjeta);
+            jugador.activarTarjeta(tarjeta, tipoDeCanje);
         });
     }
 
@@ -69,13 +76,16 @@ public class MazoTest {
         Pais pais = new Pais("Estados Unidos");
         Pais otroPais = new Pais("Reino Unido");
 
+        Simbolo simbolo = new Simbolo("Barco");
+
         jugador.asignarPais(pais);
 
-        CanjeParaAgregadoDeEjercitosEnUnPais tarjeta = new CanjeParaAgregadoDeEjercitosEnUnPais(otroPais);
-        jugador.agregarTarjetaAleatoria(tarjeta);
+        Tarjeta tarjeta = new Tarjeta(otroPais, simbolo);
+
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
 
         assertThrows(NoExisteTarjetaException.class, () -> {
-            jugador.activarTarjeta(tarjeta);
+            jugador.activarTarjeta(tarjeta, tipoDeCanje);
         });
     }
 
@@ -86,12 +96,17 @@ public class MazoTest {
         Pais pais = new Pais("Estados Unidos");
         jugador.asignarPais(pais);
 
-        CanjeParaAgregadoDeEjercitosEnUnPais tarjeta = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+        Simbolo simbolo = new Simbolo("Barco");
+
+        Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
-        jugador.activarTarjeta(tarjeta);
+
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
+
+        jugador.activarTarjeta(tarjeta, tipoDeCanje);
 
         assertThrows(NoExisteTarjetaException.class, () -> {
-            jugador.activarTarjeta(tarjeta);
+            jugador.activarTarjeta(tarjeta, tipoDeCanje);
         });
     }
 

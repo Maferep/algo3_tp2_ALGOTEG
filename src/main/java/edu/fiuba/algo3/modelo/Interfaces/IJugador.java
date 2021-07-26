@@ -17,7 +17,7 @@ public interface IJugador {
 
 	void inicializarEjercitos(int cantidadEjercitos) throws EjercitosException;
 
-	void agregarTarjetaAleatoria(ICanje obtenerTarjeta);
+	public void agregarTarjetaAleatoria(Tarjeta tarjeta);
 
 	int cantidadTarjetas();
 
