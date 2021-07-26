@@ -12,7 +12,9 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -20,7 +22,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ObjetivoTest {
     List<String> colores = Arrays.asList("Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro");
-
+    List<IPais> paises = Arrays.asList(
+            "Puerto Rico",
+            "Colombia",
+            "Venezuela",
+            "Honduras",
+            "Guayana",
+            "Guatemala")
+            .stream()
+            .map(n -> new Pais(n))
+            .collect(Collectors.toList());
     @Test
     public void test01SuscribirseAUnJugadorQuePierdeSusPaises() 
             throws ObjetivoException, EjercitosException {
@@ -54,6 +65,27 @@ public class ObjetivoTest {
         paisesDePerdedor.addAll(turno.jugadorActual().obtenerPaises());
         for(IPais pais : paisesDePerdedor)
             turno.jugadorActual().quitarPais(pais);
+
+        assertEquals(true, objetivo.completado);
+    }
+    @Test
+    public void test03CantarVictoriaConContinentes() 
+            throws ObjetivoException, EjercitosException {
+        ITurno turno = new Turno(colores, 2);
+        ObjetivoConquistarPaisesYContinentes objetivo 
+                        = new ObjetivoConquistarPaisesYContinentes(null, paises);
+        assertNotEquals(null, objetivo);
+
+        //Asignar el objetivo suscribe al objetivo a los paises de su duenio.
+        turno.jugadorActual().asignarObjetivo(objetivo);
+
+        //agregar paises de la lista para "vencer" al jugador
+        List<IPais> paisesAConquistar = new ArrayList<IPais>();
+        paisesAConquistar.addAll(paises);
+        assertTrue(paisesAConquistar.size() > 2);
+        //TODO: agregar los paises de los continentes
+        for(IPais pais : paisesAConquistar)
+            turno.jugadorActual().asignarPais(pais);
 
         assertEquals(true, objetivo.completado);
     }
