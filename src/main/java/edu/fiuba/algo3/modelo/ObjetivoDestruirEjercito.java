@@ -14,21 +14,21 @@ import java.util.NoSuchElementException;
 
 public class ObjetivoDestruirEjercito implements IObjetivo{
 
-    String colorDelJugadorADestruir;
     ITurno turnoActual;
 	IJugador jugadorADestruir;
 	
-	public ObjetivoDestruirEjercito(ITurno turnoActual, String color) throws ObjetivoException{
-        	try {
-				turnoActual.jugadorDeColor(color);
-			} catch(NoSuchElementException e) {
-				throw new ObjetivoException(null);
-			}
+	public ObjetivoDestruirEjercito(ITurno turnoActual, String color) 
+			throws ObjetivoException{
+		try {
+			jugadorADestruir = turnoActual.jugadorDeColor(color);
+		} catch(NoSuchElementException e) {
+			throw new ObjetivoException(null);
+		}
+		jugadorADestruir.agregarObjetivoSuscriptor(this);
 	}
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 }
