@@ -17,11 +17,11 @@ public class FaseAtaqueTest {
         atacante.definirConquistador(new Jugador("Rosa"));
         defensor.definirConquistador(new Jugador("Amarillo"));
 
-        atacante.agregarAdyacente(defensor);
-        atacante.agregarEjercitos(4);
+        int cantidadEjercitosAtacante = 4;
+        int cantidadEjercitosDefensor = 3;
 
-        defensor.agregarAdyacente(atacante);
-        defensor.agregarEjercitos(3);
+        atacante.agregarEjercitos(cantidadEjercitosAtacante);
+        defensor.agregarEjercitos(cantidadEjercitosDefensor);
 
         ITurno turno = new TurnoMock();
         FaseAtacar fase = new FaseAtacar(turno, null);
@@ -49,13 +49,20 @@ public class FaseAtaqueTest {
         //Primer ataque. El atacante gana.
         ITurno turno = new TurnoMock();
         FaseAtacar fase = new FaseAtacar(turno, null);
-        fase.atacar(atacante1, 3, defensor1);
+
+        int cantidadSoldados = 3;
+
+        fase.atacar(atacante1, cantidadSoldados, defensor1);
 
         assertEquals(3, jugador1.obtenerPaises().size());
         assertEquals(1, jugador2.obtenerPaises().size());
 
         //Segundo ataque. El atacante gana.
-        Ataque ataqueFalsoNew = new Ataque(atacante2, defensor2, new DadosUsadosMock(3,0));
+
+        int cantidadVictorias = 3;
+        int cantidadDerrotas = 0;
+
+        Ataque ataqueFalsoNew = new Ataque(atacante2, defensor2, new DadosUsadosMock(cantidadVictorias, cantidadDerrotas));
 
         ITurno turnoNew = new TurnoMock();
         FaseAtacar faseNew = new FaseAtacar(turnoNew, null);

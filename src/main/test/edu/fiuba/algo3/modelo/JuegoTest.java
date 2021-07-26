@@ -12,14 +12,16 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 
 
 public class JuegoTest {
-    
+
     @Test
     public void test01avanzarFasesDeJuego() throws FaseErroneaException, Exception {
-        Juego juego = new Juego(3);
+        int cantidadJugadores = 3;
+
+        Juego juego = new Juego(cantidadJugadores);
 
         List<IPais> paisesDeUltimo = null;
 
-        for(int i = 0; i < juego.cantidadDePaises(); i++) {
+        for(int i = 0; i < cantidadJugadores; i++) {
             paisesDeUltimo = juego.jugadorActual().obtenerPaises();
             assertNotEquals(0, paisesDeUltimo);
             juego.ubicarEjercitosEnPais(3, paisesDeUltimo.get(0));

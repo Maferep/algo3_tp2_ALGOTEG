@@ -20,11 +20,13 @@ public class FaseInicioTest {
         "Chile",
         "Ecuador")
         .stream()
-        .map(n -> new Pais(n))
+        .map(pais -> new Pais(pais))
         .collect(Collectors.toList());
     @Test
     public void test00AgregarJugadores() throws Exception {
-        FaseInicio primeraEtapa = new FaseInicio(3);
+        int cantidadJugadores = 3;
+
+        FaseInicio primeraEtapa = new FaseInicio(cantidadJugadores);
         assertEquals(primeraEtapa.cantidadDeJugadores(), 3);
     }
 
@@ -39,8 +41,10 @@ public class FaseInicioTest {
 
     @Test
     public void test02NoSePuedeComenzarElJuegoConMasDeSeisJugadores() throws Exception {
+        int cantidadJugadoresInvalida = 7;
+
         assertThrows(CantidadDeJugadoresError.class, () ->  {
-                    new FaseInicio(7);
+                    new FaseInicio(cantidadJugadoresInvalida);
                 }
         );
     }

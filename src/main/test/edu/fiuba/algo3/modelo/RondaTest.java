@@ -19,7 +19,7 @@ public class RondaTest {
             "Brasil",
             "Italia")
             .stream()
-            .map(n -> new Pais(n))
+            .map(pais -> new Pais(pais))
             .collect(Collectors.toList());
     List<IPais> paisesJugadorDos = Arrays.asList(
             "Alemania",
@@ -27,7 +27,7 @@ public class RondaTest {
             "Argentina",
             "Francia")
             .stream()
-            .map(n -> new Pais(n))
+            .map(pais -> new Pais(pais))
             .collect(Collectors.toList());
     List<IPais> paises = Arrays
             .asList(
@@ -39,13 +39,16 @@ public class RondaTest {
             "Chile",
             "Ecuador")
             .stream()
-            .map(n -> new Pais(n))
+            .map(pais -> new Pais(pais))
             .collect(Collectors.toList());
 
     @Test
     public void test00AgregarJugadores() throws Exception {
         FabricaDeFases fabrica = new FabricaDeFases();
-        IFase fase = fabrica.crearFaseInicio(3);
+
+        int cantidadEjercitos = 3;
+
+        IFase fase = fabrica.crearFaseInicio(cantidadEjercitos);
         assertEquals(3, fase.obtenerFaseInicio().cantidadDeJugadores());
     }
 
@@ -54,8 +57,12 @@ public class RondaTest {
         ITurno unJugador = new TurnoMockUnJugador(paisesJugadorUno);
         FaseInicio fase = new FaseInicio(null, unJugador, new Canje(paises));
         assertFalse(fase.faseCompletada());
-        fase.obtenerFaseInicio().ubicarEjercitosEnPais(3, new Pais("Estados Unidos"));
-        fase.obtenerFaseInicio().ubicarEjercitosEnPais(5, new Pais("Estados Unidos"));
+
+        int primerCantidadEjercitos = 3;
+        int segundaCantidadEjercitos = 5;
+
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(primerCantidadEjercitos, new Pais("Estados Unidos"));
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(segundaCantidadEjercitos, new Pais("Estados Unidos"));
         assertTrue(fase.faseCompletada());
     }
 
@@ -66,7 +73,9 @@ public class RondaTest {
         IFase fase = new FaseInicio(null, unJugador, new Canje(paises));
         assertFalse(fase.faseCompletada());
 
-        fase.obtenerFaseInicio().ubicarEjercitosEnPais(3, paisesJugadorDos.get(0));
+        int cantidadEjercitos = 3;
+
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(cantidadEjercitos, paisesJugadorDos.get(0));
         assertTrue(fase.faseCompletada());
         fase = fase.siguienteFase(new FabricaDeFases());
     }
@@ -81,7 +90,10 @@ public class RondaTest {
         IPais mockDefensor = new PaisMock("Azul");
 
         assertEquals(0, turnoMock.jugadorActual().cantidadTarjetas());
-        fase.obtenerFaseAtacar().atacar(mockAtacanteSiempreGana, 3, mockDefensor);
+
+        int cantidadEjercitos = 3;
+
+        fase.obtenerFaseAtacar().atacar(mockAtacanteSiempreGana, cantidadEjercitos, mockDefensor);
 
         FabricaDeFases fabrica = new FabricaDeFases();
         fabrica.definirTurno(turnoMock);
@@ -114,6 +126,10 @@ public class RondaTest {
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
         fase.obtenerFaseAtacar().atacar(mockAtacanteSiemprePierde, 3, mockDefensor);
         fase.siguienteTurno();
+
+        int cantidadEjercitos = 3;
+
+        fase.obtenerFaseAtacar().atacar(mockAtacanteSiemprePierde, cantidadEjercitos, mockDefensor);
         fase = fase.siguienteFase(new FabricaDeFases());
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
     }

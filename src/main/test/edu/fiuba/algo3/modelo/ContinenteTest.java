@@ -15,7 +15,7 @@ public class ContinenteTest {
             "México",
             "Groenlandia")
             .stream()
-            .map(n -> new Pais(n))
+            .map(pais -> new Pais(pais))
             .collect(Collectors.toList());
 
     @Test

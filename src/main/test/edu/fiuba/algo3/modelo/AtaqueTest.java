@@ -12,16 +12,21 @@ public class AtaqueTest {
         IPais atacante = new Pais("Argentina");
         IPais defensor = new Pais("Chile");
 
-        atacante.definirConquistador(new Jugador("Mafer"));
-        defensor.definirConquistador(new Jugador("Cande"));
+        atacante.definirConquistador(new Jugador("Azul"));
+        defensor.definirConquistador(new Jugador("Rojo"));
 
-        atacante.agregarEjercitos(3);
-        defensor.agregarEjercitos(3);
+        int cantidadEjercitos = 3;
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(1,1));
+        atacante.agregarEjercitos(cantidadEjercitos);
+        defensor.agregarEjercitos(cantidadEjercitos);
+
+        int cantidadVictorias = 1;
+        int cantidadDerrotas = 1;
+
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(cantidadVictorias, cantidadDerrotas));
         ataqueFalso.atacar();
 
-        assertEquals("Cande", defensor.obtenerConquistador().obtenerColor());
+        assertEquals("Rojo", defensor.obtenerConquistador().obtenerColor());
         assertEquals(2, atacante.cantidadEjercitos());
     }
 
@@ -30,19 +35,24 @@ public class AtaqueTest {
         IPais atacante = new Pais("Paraguay");
         IPais defensor = new Pais("Uruguay");
 
-        atacante.definirConquistador(new Jugador("Martín"));
-        defensor.definirConquistador(new Jugador("Tobías"));
+        atacante.definirConquistador(new Jugador("Rojo"));
+        defensor.definirConquistador(new Jugador("Azul"));
 
-        atacante.agregarEjercitos(3);
-        defensor.agregarEjercitos(3);
+        int cantidadEjercitos = 3;
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(0, 2));
+        atacante.agregarEjercitos(cantidadEjercitos);
+        defensor.agregarEjercitos(cantidadEjercitos);
+
+        int cantidadVictorias = 0;
+        int cantidadDerrotas = 2;
+
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(cantidadVictorias, cantidadDerrotas));
         ataqueFalso.atacar();
 
         assertEquals(1, atacante.cantidadEjercitos());
         assertEquals(3, defensor.cantidadEjercitos());
 
-        assertEquals("Tobías", defensor.obtenerConquistador().obtenerColor());
+        assertEquals("Azul", defensor.obtenerConquistador().obtenerColor());
         assertEquals(3, defensor.cantidadEjercitos());
         assertEquals(1, atacante.cantidadEjercitos());
     }
@@ -52,15 +62,21 @@ public class AtaqueTest {
         IPais atacante = new Pais("España");
         IPais defensor = new Pais("Francia");
 
-        atacante.definirConquistador(new Jugador("Pepe"));
-        defensor.definirConquistador(new Jugador("Daniel"));
+        atacante.definirConquistador(new Jugador("Rojo"));
+        defensor.definirConquistador(new Jugador("Azul"));
 
-        atacante.agregarEjercitos(3);
-        defensor.agregarEjercitos(3);
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(1,1));
+        int cantidadEjercitos = 3;
+
+        atacante.agregarEjercitos(cantidadEjercitos);
+        defensor.agregarEjercitos(cantidadEjercitos);
+
+        int cantidadVictorias = 1;
+        int cantidadDerrotas = 1;
+
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(cantidadVictorias, cantidadDerrotas));
         ataqueFalso.atacar();
 
-        assertEquals("Daniel", defensor.obtenerConquistador().obtenerColor());
+        assertEquals("Azul", defensor.obtenerConquistador().obtenerColor());
         assertEquals(2, atacante.cantidadEjercitos());
         assertEquals(2, defensor.cantidadEjercitos());
     }
@@ -70,13 +86,19 @@ public class AtaqueTest {
         IPais atacante = new Pais("España");
         IPais defensor = new Pais("Francia");
 
-        atacante.definirConquistador(new Jugador("Chiara"));
-        defensor.definirConquistador(new Jugador("Pili"));
+        atacante.definirConquistador(new Jugador("Azul"));
+        defensor.definirConquistador(new Jugador("Rojo"));
 
-        atacante.agregarEjercitos(4);
-        defensor.agregarEjercitos(3);
+        int cantidadEjercitosAzul = 4;
+        int cantidadEjercitosRojo = 3;
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(3,0));
+        atacante.agregarEjercitos(cantidadEjercitosAzul);
+        defensor.agregarEjercitos(cantidadEjercitosRojo);
+
+        int cantidadVictorias = 3;
+        int cantidadDerrotas = 0;
+
+        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(cantidadVictorias, cantidadDerrotas));
         ataqueFalso.atacar();
 
         assertEquals(atacante.obtenerConquistador().obtenerColor(), defensor.obtenerConquistador().obtenerColor());
@@ -88,11 +110,13 @@ public class AtaqueTest {
         IPais atacante = new Pais("Argentina");
         IPais defensor = new Pais("Chile");
 
-        atacante.definirConquistador(new Jugador("Mafer"));
-        defensor.definirConquistador(new Jugador("Cande"));
+        atacante.definirConquistador(new Jugador("Rojo"));
+        defensor.definirConquistador(new Jugador("Azul"));
 
-        atacante.agregarEjercitos(3);
-        defensor.agregarEjercitos(3);
+        int cantidadEjercitos = 3;
+
+        atacante.agregarEjercitos(cantidadEjercitos);
+        defensor.agregarEjercitos(cantidadEjercitos);
 
         assertThrows(FichasInsuficientesError.class, () -> {
                 Ataque ataque = new Ataque(atacante, defensor, 3);
@@ -105,11 +129,13 @@ public class AtaqueTest {
         IPais atacante = new Pais("Argentina");
         IPais defensor = new Pais("Chile");
 
-        atacante.definirConquistador(new Jugador("Mafer"));
-        defensor.definirConquistador(new Jugador("Cande"));
+        atacante.definirConquistador(new Jugador("Azul"));
+        defensor.definirConquistador(new Jugador("Rojo"));
 
-        atacante.agregarEjercitos(10);
-        defensor.agregarEjercitos(10);
+        int cantidadEjercitos = 10;
+
+        atacante.agregarEjercitos(cantidadEjercitos);
+        defensor.agregarEjercitos(cantidadEjercitos);
 
         assertTrue(atacante.cantidadEjercitos() > 4);
         assertThrows(FichasInsuficientesError.class, () -> {
