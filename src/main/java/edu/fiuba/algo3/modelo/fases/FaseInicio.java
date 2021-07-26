@@ -39,7 +39,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         turno = new Turno(colores, cantJugadores);
         fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
         objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
-        canje = new Canje(paises);
+        
         mapa = new Mapa();
         paises = mapa.obtenerPaises();
         canje = new Canje(paises);

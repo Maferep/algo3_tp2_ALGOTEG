@@ -25,6 +25,9 @@ public class FaseAtaqueTest {
 
         ITurno turno = new TurnoMock();
         FaseAtacar fase = new FaseAtacar(turno, null);
+
+        atacante.agregarAdyacente(defensor);
+        defensor.agregarAdyacente(atacante);
         fase.atacar(atacante, 1, defensor);
     }
 

@@ -58,11 +58,13 @@ public class JuegoTest {
         Juego juego = new Juego(cantidadDeJugadores);
 
         List<IPais> paisesDeUltimo = null;
-        for(int i = 0; i < juego.cantidadDePaises(); i++) {
+        for(int i = 0; i < cantidadDeJugadores; i++) {
             paisesDeUltimo = juego.jugadorActual().obtenerPaises();
             juego.ubicarEjercitosEnPais(cantidadDeJugadores, paisesDeUltimo.get(0));
             juego.siguienteTurno();
         }
+
+
 
         List<IPais> paisesDeJugadorActual = juego.jugadorActual().obtenerPaises();
         IPais pais1 = paisesDeJugadorActual.get(0);
