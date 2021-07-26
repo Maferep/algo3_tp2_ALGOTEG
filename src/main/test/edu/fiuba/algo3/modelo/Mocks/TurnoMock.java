@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Mocks;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Interfaces.*;
@@ -30,6 +31,11 @@ public class TurnoMock implements ITurno {
     public boolean esUltimoJugador() {
         // TODO Auto-generated method stub
         return false;
+    }
+    
+    public IJugador jugadorDeColor(String color) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

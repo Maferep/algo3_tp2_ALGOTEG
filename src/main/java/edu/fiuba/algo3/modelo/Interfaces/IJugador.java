@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
+import edu.fiuba.algo3.modelo.fases.FaseAtacar;
 
 import java.util.List;
 
@@ -33,5 +34,8 @@ public interface IJugador {
 
 	int cantidadEjercitos();
 
+	void asignarObjetivo(IObjetivo iObjetivo);
+	
+	public void agregarObjetivoSuscriptor(IObjetivo objetivo) ;
 	void inicializarPais(IPais actual);
 }

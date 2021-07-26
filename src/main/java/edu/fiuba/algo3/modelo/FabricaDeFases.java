@@ -6,11 +6,14 @@ import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.modelo.fases.*;
 
+import java.util.List;
+
 public class FabricaDeFases {
 
     ITurno turno;
     IMapa mapa;
     Canje canje;
+    ObjetivoManager objetivo;
 
     void definirTurno(ITurno turno) {
         this.turno = turno;
@@ -23,6 +26,8 @@ public class FabricaDeFases {
     void definirCanje(Canje canje) {
         this.canje = canje;
     }
+
+    void definirObjetivo(ObjetivoManager objetivo) { this.objetivo = objetivo;}
 
     public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception {
         IFase fase = new FaseInicio(cantidadDeJugadores);

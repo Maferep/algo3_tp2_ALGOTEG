@@ -6,6 +6,7 @@ import java.util.stream.*;
 import org.junit.Test;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
+import edu.fiuba.algo3.modelo.Mocks.PaisMock;
 
 import static org.junit.Assert.assertEquals;
 public class MazoTest {
@@ -29,5 +30,12 @@ public class MazoTest {
             .findAny()
             .get();
         assertEquals(eeuu, mazo.obtenerTarjeta().obtenerPais());
+    }
+
+    @Test
+    public void test02ProbarTarjeta() {
+        IPais austria = new PaisMock("Austria");
+        Tarjeta tarjeta = new Tarjeta(austria);
+        assertEquals(tarjeta.obtenerPais(), austria);
     }
 }

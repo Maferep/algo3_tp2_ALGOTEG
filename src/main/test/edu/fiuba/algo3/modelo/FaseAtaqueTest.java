@@ -4,9 +4,6 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.Mocks.*;
 import edu.fiuba.algo3.modelo.fases.*;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,11 +17,13 @@ public class FaseAtaqueTest {
         atacante.definirConquistador(new Jugador("Rosa"));
         defensor.definirConquistador(new Jugador("Amarillo"));
 
+        atacante.agregarAdyacente(defensor);
         atacante.agregarEjercitos(4);
+
+        defensor.agregarAdyacente(atacante);
         defensor.agregarEjercitos(3);
 
         ITurno turno = new TurnoMock();
-        List<IPais> p = Arrays.asList(atacante, defensor);
         FaseAtacar fase = new FaseAtacar(turno, null);
         fase.atacar(atacante, 1, defensor);
     }
@@ -49,7 +48,6 @@ public class FaseAtaqueTest {
 
         //Primer ataque. El atacante gana.
         ITurno turno = new TurnoMock();
-        List<IPais> p = Arrays.asList(atacante1, defensor1);
         FaseAtacar fase = new FaseAtacar(turno, null);
         fase.atacar(atacante1, 3, defensor1);
 
@@ -60,7 +58,6 @@ public class FaseAtaqueTest {
         Ataque ataqueFalsoNew = new Ataque(atacante2, defensor2, new DadosUsadosMock(3,0));
 
         ITurno turnoNew = new TurnoMock();
-        List<IPais> pNew = Arrays.asList(atacante2, defensor2);
         FaseAtacar faseNew = new FaseAtacar(turnoNew, null);
         faseNew.atacarConAtaque(ataqueFalsoNew);
 

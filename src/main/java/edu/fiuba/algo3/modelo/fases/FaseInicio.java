@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.fases;
 
+import java.beans.PropertyChangeEvent;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.*;
@@ -10,6 +11,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class FaseInicio extends FaseAbstracta implements IFaseInicio {
+    ITurno turno;
+    IMapa mapa;
+    Canje canje;
+    ObjetivoManager objetivo;
+    FabricaDeObjetivos fabricaObjetivos;
+    Boolean finDeJuego = false;
 
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     List<String> colores =  Arrays.asList(
@@ -36,17 +43,22 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
 
-    public FaseInicio(int cantJugadores) throws CantidadDeJugadoresError, EjercitosException {
+    public FaseInicio(int cantJugadores) throws CantidadDeJugadoresError, EjercitosException, ObjetivoException {
         if (!validarCantidad(cantJugadores))
-            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
-                    + minJugadores + "y un máximo de"
-                    + maxJugadores + "jugadores.");
+            throw new CantidadDeJugadoresError("El juego tiene un mínimo de "
+                    + minJugadores + " y un máximo de "
+                    + maxJugadores + " jugadores.");
         turno = new Turno(colores, cantJugadores);
+        fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
+        objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
         canje = new Canje(paises);
         mapa = new Mapa();
         mapa.definirPaises(paises);
     }
 
+    public ITurno turno() {
+        return turno;
+    }
     //version para mock
     public FaseInicio(IMapa mapa, ITurno turno, Canje canje)  {
         this.turno = turno;
@@ -87,7 +99,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     
     @Override
     public Boolean esFinDeJuego() {
-        return false;
+        return finDeJuego;
     }
     
     @Override
@@ -108,5 +120,5 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     @Override
 	public ITurno obtenerTurno() {
 		return turno;
-    }
+	}
 }

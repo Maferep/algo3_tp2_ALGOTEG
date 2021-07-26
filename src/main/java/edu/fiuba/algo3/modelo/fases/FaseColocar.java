@@ -10,6 +10,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     IMapa mapa;
+    Boolean finDeJuego = false;
 
     public FaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException, TurnoException,
             FaseIncompletaException {
@@ -17,6 +18,10 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
         this.mapa = mapa;
         this.canje = canje;
         asignarNuevosEjercitosAJugadores();
+    }
+
+    public ITurno turno() {
+        return turno;
     }
     
 	private void asignarNuevosEjercitosAJugadores() throws EjercitosException, TurnoException, FaseIncompletaException {
@@ -49,7 +54,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
 
     @Override
     public Boolean esFinDeJuego() {
-        return false;
+        return finDeJuego;
     }
 
     @Override

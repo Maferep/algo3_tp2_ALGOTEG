@@ -28,7 +28,7 @@ public class Turno implements ITurno {
     int cantidadEjercitos = 8;
 
     public Turno(List<String> colores, int cantidad) throws EjercitosException {
-        listaJugadores = construirJugadores(colores, cantidad);
+        List<IJugador> listaJugadores = construirJugadores(colores, cantidad);
         this.jugadores.addAll(listaJugadores);
         definirPrimerJugador(listaJugadores.get((int) (Math.random() % listaJugadores.size())));
     }
@@ -89,8 +89,8 @@ public class Turno implements ITurno {
     }
 
     @Override
-    // Revisa si próximo jugador es el primer jugador
-    public boolean esUltimoJugador() {
-        return (jugadores.get(1) == primero);
+    //Devuelve el jugador de ese color o tira una excepción NoSuchElementException.
+    public IJugador jugadorDeColor(String color) throws NoSuchElementException{
+        return jugadores.stream().filter(j -> j.obtenerColor() == color).findAny().get();
     }
 }

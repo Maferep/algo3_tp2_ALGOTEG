@@ -3,10 +3,16 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
+import javax.swing.text.StyledEditorKit;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
 import java.util.ArrayList;
 
 public class Jugador implements IJugador {
+	public static final String CANTIDAD_PAISES = "cantidadPaises";
+	public static final String PAISES = "paises";
+	IObjetivo objetivo;
 
 	private String color;
 	private List<IPais> paises;
@@ -21,6 +27,11 @@ public class Jugador implements IJugador {
 		tarjetas = new ArrayList<Tarjeta>();
 		ejercitosPorColocar = 0;
 	}
+
+	//Tienes una lista de listeners, o sea, a quienes les interesa el evento
+	private List<PropertyChangeListener> suscriptores = new ArrayList<PropertyChangeListener>();
+
+	
 
 	public String obtenerColor() {
 		return color;
@@ -45,7 +56,6 @@ public class Jugador implements IJugador {
 	public void agregarNuevosEjercitos(int cantidad) throws EjercitosException {
 		this.ejercitosPorColocar = 0;
 		if(cantidad <= 0) throw new EjercitosException("cantidadInvalida");
-		// Si el jugador controla menos de seis países de todas maneras incorpora tres ejércitos.
 		if(this.paises.size() < 6) {
 			this.ejercitosPorColocar += 3;
 		}
@@ -62,11 +72,25 @@ public class Jugador implements IJugador {
 	}
 
 	public void asignarPais(IPais pais) {
+		int paisesQueTenia = paises.size();
+		List<IPais> listaAnterior = new ArrayList<IPais>();
+		listaAnterior.addAll(paises);
+
 		paises.add(pais);
+
+		notifyListeners(this, CANTIDAD_PAISES, paisesQueTenia, paises.size());
+		notifyListeners(this, PAISES, listaAnterior, paises);
 	}
 
 	public void quitarPais(IPais pais) {
+		int paisesQueTenia = paises.size();
+		List<IPais> listaAnterior = new ArrayList<IPais>();
+		listaAnterior.addAll(paises);
+
 		paises.remove(pais);
+		
+		notifyListeners(this, CANTIDAD_PAISES, paisesQueTenia, paises.size());
+		notifyListeners(this, PAISES, listaAnterior, paises);
 	}
 
 	public void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesError,
@@ -105,6 +129,28 @@ public class Jugador implements IJugador {
 	public void quitarEjercitos(int cantidadAQuitar) throws EjercitosException {
 		ejercitosPorColocar -= cantidadAQuitar;
 		if(ejercitosPorColocar < 0) throw new EjercitosException("quita demasiados ejercitos");
+	}
+
+	//para objetivos
+	public void asignarObjetivo(IObjetivo objetivoAsignado) {
+		objetivoAsignado.inicializar(this);
+		objetivo = objetivoAsignado;
+	}
+
+	//metodo para notificar a los listeners de todo evento
+	private void notifyListeners(Object source, String property, Object oldValue, Object newValue) {
+		for (PropertyChangeListener suscriptor : suscriptores) {
+			PropertyChangeEvent event = new PropertyChangeEvent(this, property, oldValue, newValue);
+			suscriptor.propertyChange(event);
+		}
+	}
+
+	public void agregarObjetivoSuscriptor(IObjetivo objetivo) {
+		this.addChangeListener(objetivo);
+	}
+
+	private void addChangeListener(PropertyChangeListener suscriptor) {
+		suscriptores.add(suscriptor);
 	}
 
 	@Override
