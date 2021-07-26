@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo.fases;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
@@ -15,7 +18,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar, ITurno {
         asignarNuevosEjercitosAJugadores();
     }
     
-	public void asignarNuevosEjercitosAJugadores() throws EjercitosException {
+	private void asignarNuevosEjercitosAJugadores() throws EjercitosException {
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++ ) {
             int cantidadDeSoldados = 
                 Math.max( turno.jugadorActual().cantidadPaises()/2, 3);
@@ -27,6 +30,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar, ITurno {
     public void colocarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
         turno.jugadorActual().agregarEjercitosAPais(pais, cantEjercitos);
         if(turno.jugadorActual().cantidadEjercitos() == 0)
+            //current plyer finished task
              estrategia = estrategia.actualizar();
     }
 
