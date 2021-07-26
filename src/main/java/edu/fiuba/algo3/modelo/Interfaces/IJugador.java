@@ -35,6 +35,4 @@ public interface IJugador {
 	void asignarObjetivo(IObjetivo iObjetivo);
 	
 	public void agregarObjetivoSuscriptor(IObjetivo objetivo) ;
-
-	String colorDeJugador();
 }
