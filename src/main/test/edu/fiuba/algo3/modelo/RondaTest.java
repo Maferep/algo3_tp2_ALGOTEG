@@ -92,7 +92,7 @@ public class RondaTest {
     }
     @Test
     public void test05NoAtaqueImplicaNoTarjetas() throws FaseErroneaException, Exception {
-        ITurno t = new TurnoMockUnJugador(null);
+        ITurno t = new TurnoMockUnJugador(paises);
         IMapa mapa = new Mapa();
         mapa.definirPaises(paises);
         IFase fase = new FaseAtacar(t, mapa);
@@ -104,7 +104,7 @@ public class RondaTest {
 
     @Test
     public void test06NoConquistaImplicaNoTarjetas() throws FaseErroneaException, Exception {
-        ITurno t = new TurnoMockUnJugador(null);
+        ITurno t = new TurnoMockUnJugador(paises);
         IMapa mapa = new Mapa();
         mapa.definirPaises(paises);
         IFase fase = new FaseAtacar(t, mapa);

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Mocks;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Interfaces.*;
@@ -12,7 +13,8 @@ public class TurnoMockUnJugador implements ITurno {
     public TurnoMockUnJugador(List<IPais> paises) throws EjercitosException {
         miJugador = new Jugador("Color");
         miJugador.inicializarEjercitos(8);
-        miJugador.paises = paises;
+        for(IPais pais : paises)
+            miJugador.asignarPais(pais);
     }
 
     public Jugador jugadorActual() {
@@ -26,6 +28,12 @@ public class TurnoMockUnJugador implements ITurno {
     @Override
     public int cantidadDeJugadores() {
         return 1;
+    }
+
+    @Override
+    public IJugador jugadorDeColor(String color) throws NoSuchElementException {
+        // TODO Auto-generated method stub
+        return null;
     }
     
 }

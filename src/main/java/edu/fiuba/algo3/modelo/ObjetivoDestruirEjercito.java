@@ -28,7 +28,10 @@ public class ObjetivoDestruirEjercito implements IObjetivo{
 	}
 	
 	@Override
-	public void propertyChange(PropertyChangeEvent arg0) {
-		
+	public void propertyChange(PropertyChangeEvent evento) {
+		Integer cero = Integer.valueOf(0);
+		if(evento.getNewValue().equals(cero) ) {
+            // VICTORIA!
+        }
 	}
 }

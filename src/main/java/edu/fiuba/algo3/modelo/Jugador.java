@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Jugador implements IJugador {
-
+	public static final String ATRIBUTO_PAISES_CONQUISTADOS = "paises";
 	String color;
 	//TODO: smell de atributo publico
-	public List<IPais> paises;
+	private List<IPais> paises;
 	List<Tarjeta> tarjetas;
 	int ejercitosPorColocar;
 	IObjetivo objetivo;
@@ -28,21 +28,7 @@ public class Jugador implements IJugador {
 	//Tienes una lista de listeners, o sea, a quienes les interesa el evento
 	private List<PropertyChangeListener> suscriptores = new ArrayList<PropertyChangeListener>();
 
-	//metodo para notificar a los listeners de un evento
-	private void notifyListeners(Object object, String property, Boolean oldValue, Boolean newValue) {
-		for (PropertyChangeListener suscriptor : suscriptores) {
-			PropertyChangeEvent event = new PropertyChangeEvent(this, property, oldValue, newValue);
-			suscriptor.propertyChange(event);
-		}
-	}
-
-	public void agregarObjetivoSuscriptor(IObjetivo objetivo) {
-		this.addChangeListener(objetivo);
-	}
-
-	private void addChangeListener(PropertyChangeListener suscriptor) {
-		suscriptores.add(suscriptor);
-	}
+	
 
 	public String obtenerColor() {
 		return color;
@@ -80,7 +66,9 @@ public class Jugador implements IJugador {
 	}
 
 	public void quitarPais(IPais pais) {
+		int paisesQueTenia = paises.size();
 		paises.remove(pais);
+		notifyListeners(this, ATRIBUTO_PAISES_CONQUISTADOS, paisesQueTenia, paises.size());
 	}
 
 	public void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesError,
@@ -125,6 +113,22 @@ public class Jugador implements IJugador {
 
 	public void asignarObjetivo(IObjetivo objetivoAsignado) {
 		objetivo = objetivoAsignado;
+	}
+
+	//metodo para notificar a los listeners de un evento
+	private void notifyListeners(Object object, String property, Integer oldValue, Integer newValue) {
+		for (PropertyChangeListener suscriptor : suscriptores) {
+			PropertyChangeEvent event = new PropertyChangeEvent(this, property, oldValue, newValue);
+			suscriptor.propertyChange(event);
+		}
+	}
+
+	public void agregarObjetivoSuscriptor(IObjetivo objetivo) {
+		this.addChangeListener(objetivo);
+	}
+
+	private void addChangeListener(PropertyChangeListener suscriptor) {
+		suscriptores.add(suscriptor);
 	}
 
 }
