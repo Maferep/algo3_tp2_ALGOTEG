@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.fases;
 
+import java.beans.PropertyChangeEvent;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.*;
@@ -15,6 +16,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     Canje canje;
     Objetivo objetivo;
     FabricaDeObjetivos fabricaObjetivos;
+    Boolean finDeJuego = false;
 
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     List<String> colores =  Arrays.asList(
@@ -93,7 +95,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     
     @Override
     public Boolean esFinDeJuego() {
-        return false;
+        return finDeJuego;
     }
     
     @Override
@@ -118,5 +120,9 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
 
     @Override
     public Objetivo obtenerObjetivo() { return objetivo; }
-    //turno tiene al jugador actual y a toda la cantidad de jugadores.
+
+    @Override
+    public void propertyChange(PropertyChangeEvent event) {
+        finDeJuego = (Boolean) event.getNewValue();
+    }
 }

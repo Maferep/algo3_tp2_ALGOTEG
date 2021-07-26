@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.fases;
 
+import java.beans.PropertyChangeEvent;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.Canje;
@@ -20,5 +21,10 @@ public class FaseReagruparConConquista extends FaseReagrupar {
     @Override
     public Objetivo obtenerObjetivo() {
         return null;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
     }
 }

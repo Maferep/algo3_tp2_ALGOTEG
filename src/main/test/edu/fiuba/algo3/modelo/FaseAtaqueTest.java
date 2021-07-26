@@ -17,7 +17,10 @@ public class FaseAtaqueTest {
         IPais atacante = new Pais("España");
         IPais defensor = new Pais("Francia");
 
-        atacante.definirConquistador(new Jugador("Rosa"));
+        Jugador jugador = new Jugador("Rosa");
+        jugador.asignarObjetivo(new ObjetivoGeneral());
+
+        atacante.definirConquistador(jugador);
         defensor.definirConquistador(new Jugador("Amarillo"));
 
         atacante.agregarEjercitos(4);
@@ -27,6 +30,8 @@ public class FaseAtaqueTest {
         List<IPais> p = Arrays.asList(atacante, defensor);
         FaseAtacar fase = new FaseAtacar(turno, null);
         fase.atacar(atacante, 1, defensor);
+        assertEquals(fase.esFinDeJuego(), false);
+
     }
 
     //Juego de una ronda con 2 jugadores.

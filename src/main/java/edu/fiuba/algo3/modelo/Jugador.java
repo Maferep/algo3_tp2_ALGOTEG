@@ -3,6 +3,9 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
+import javax.swing.text.StyledEditorKit;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -22,6 +25,32 @@ public class Jugador implements IJugador {
 		paises = new ArrayList<IPais>();
 		tarjetas = new ArrayList<Tarjeta>();
 		ejercitosPorColocar = 0;
+	}
+
+	//Tienes una lista de listeners, o sea, a quienes les interesa el evento
+	private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
+
+	//metodo para notificar a los listeners de un evento
+	private void notifyListeners(Object object, String property, Boolean oldValue, Boolean newValue) {
+		for (PropertyChangeListener name : listener) {
+			PropertyChangeEvent event = new PropertyChangeEvent(this, property, oldValue, newValue);
+			name.propertyChange(event);
+		}
+	}
+
+	// y para agregar listeners
+	@Override
+	public void addChangeListener(IFase fase) {
+		listener.add(fase);
+	}
+
+	// se esta notificando mal.. porque?
+	public boolean seCumplioObjetivo() {
+		if(objetivo.seCumpleObjetivo(this)) {
+			this.notifyListeners(null, null, false, true);
+			return true;
+		}
+		return false;
 	}
 
 	public String obtenerColor() {

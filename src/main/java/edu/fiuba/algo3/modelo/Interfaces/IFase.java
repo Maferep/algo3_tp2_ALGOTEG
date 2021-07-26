@@ -4,7 +4,9 @@ import edu.fiuba.algo3.modelo.Objetivo;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.fases.*;
 
-public interface IFase {
+import java.beans.PropertyChangeListener;
+
+public interface IFase extends PropertyChangeListener {
 
 	Boolean faseCompletada();
 

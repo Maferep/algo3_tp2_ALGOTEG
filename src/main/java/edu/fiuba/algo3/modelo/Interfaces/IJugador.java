@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
+import edu.fiuba.algo3.modelo.fases.FaseAtacar;
 
 import java.util.List;
 
@@ -38,4 +39,8 @@ public interface IJugador {
 	String colorDeJugador();
 
 	boolean cumplioObjetivo();
+	
+    void addChangeListener(IFase fase);
+
+	boolean seCumplioObjetivo();
 }

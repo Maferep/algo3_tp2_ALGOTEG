@@ -1,20 +1,23 @@
 package edu.fiuba.algo3.modelo.fases;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class FaseAtacar extends FaseAbstracta {
+public class FaseAtacar extends FaseAbstracta implements PropertyChangeListener {
     IEstrategiaFase estrategia = new EstrategiaAtaqueSinConquista();
     IMapa mapa;
     ITurno turno;
-    //No usa estrtegias pues puede terminar sin hacer nada
+    Boolean finDeJuego = false;
 
     public FaseAtacar(ITurno turno, IMapa mapa) {
         this.turno = turno;
         this.mapa = mapa;
+        this.turno.jugadorActual().addChangeListener(this);
     }
 
     public ITurno turno() {
@@ -22,9 +25,18 @@ public class FaseAtacar extends FaseAbstracta {
     }
 
     // métodos públicos
+
+    @Override
+    public void propertyChange(PropertyChangeEvent event) {
+        //hacer algo porque la propiedad cambio
+        //finDeJuego = (Boolean) event.getNewValue();
+        finDeJuego = true;
+    }
+
     public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
         //TODO: validar existencia de paises y turno correcto
         atacante.atacar(defensor, cantidadDeSoldados);
+        atacante.obtenerConquistador().seCumplioObjetivo(); //verifico si se cumplio el objetivo del jugador cuando este ya ataco.
         //TODO: corregir if ambiguo
         if(defensor.obtenerConquistador() == atacante.obtenerConquistador())
             estrategia = estrategia.actualizar();
@@ -47,7 +59,7 @@ public class FaseAtacar extends FaseAbstracta {
 
     @Override
     public Boolean esFinDeJuego() {
-        return false;
+        return finDeJuego;
     }
 
     @Override

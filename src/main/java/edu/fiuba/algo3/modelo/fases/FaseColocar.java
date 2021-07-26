@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.fases;
 
+import java.beans.PropertyChangeEvent;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.*;
@@ -9,6 +10,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     IMapa mapa;
+    Boolean finDeJuego = false;
 
     public FaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException {
         this.turno = turno;
@@ -54,7 +56,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
 
     @Override
     public Boolean esFinDeJuego() {
-        return false;
+        return finDeJuego;
     }
 
     @Override
@@ -65,5 +67,10 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     @Override
     public Objetivo obtenerObjetivo() {
         return null;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent event) {
+        finDeJuego = (Boolean) event.getNewValue();
     }
 }
