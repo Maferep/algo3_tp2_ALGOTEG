@@ -51,12 +51,14 @@ public class JuegoTest {
 
     @Test
     public void test02TransferirEjercitos() throws FaseErroneaException, Exception {
-        Juego juego = new Juego(3);
+        int cantidadDeJugadores = 3;
+        int cantidadDeEjercitos = 3;
+        Juego juego = new Juego(cantidadDeJugadores);
 
         List<IPais> paisesDeUltimo = null;
         for(int i = 0; i < juego.cantidadDePaises(); i++) {
             paisesDeUltimo = juego.jugadorActual().obtenerPaises();
-            juego.ubicarEjercitosEnPais(3, paisesDeUltimo.get(0));
+            juego.ubicarEjercitosEnPais(cantidadDeJugadores, paisesDeUltimo.get(0));
             juego.siguienteTurno();
         }
 
@@ -69,11 +71,11 @@ public class JuegoTest {
         juego.siguienteTurno();
         juego.siguienteTurno();
         juego.siguienteFase();
-        
+
         juego.siguienteTurno();
         juego.siguienteTurno();
         juego.siguienteFase();
-        juego.transferirEjercitos(3, pais1, pais2);
+        juego.transferirEjercitos(cantidadDeEjercitos, pais1, pais2);
     }
     
 
