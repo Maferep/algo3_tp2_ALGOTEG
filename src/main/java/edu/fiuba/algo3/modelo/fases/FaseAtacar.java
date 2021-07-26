@@ -64,9 +64,4 @@ public class FaseAtacar extends FaseAbstracta implements PropertyChangeListener 
         return this;
     }
 
-    @Override
-    public ObjetivoManager obtenerObjetivo() {
-        return null;
-    }
-
 }

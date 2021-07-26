@@ -120,12 +120,4 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
 	public ITurno obtenerTurno() {
 		return turno;
 	}
-
-    @Override
-    public ObjetivoManager obtenerObjetivo() { return objetivo; }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent event) {
-        finDeJuego = (Boolean) event.getNewValue();
-    }
 }

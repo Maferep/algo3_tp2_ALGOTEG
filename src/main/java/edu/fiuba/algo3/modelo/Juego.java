@@ -31,22 +31,17 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 
     @Override
     public Canje obtenerCanje() {
-        return null;
+        return canje;
     }
 
     @Override
     public IMapa obtenerMapa() {
-        return null;
+        return mapa;
     }
 
     @Override
     public ITurno obtenerTurno() {
-        return null;
-    }
-
-    @Override
-    public ObjetivoManager obtenerObjetivo() {
-        return null;
+        return turno;
     }
 
     // reagrupar

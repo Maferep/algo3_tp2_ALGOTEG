@@ -12,14 +12,4 @@ public class FaseReagruparSinConquista extends FaseReagrupar {
     public FaseReagruparSinConquista(ITurno turno, IMapa paises, Canje canje) {
         super(turno, paises, canje);
     }
-
-    @Override
-    public ObjetivoManager obtenerObjetivo() {
-        return null;
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent event) {
-        finDeJuego = (Boolean) event.getNewValue();
-    }
 }

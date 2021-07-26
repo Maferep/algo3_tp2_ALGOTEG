@@ -1,12 +1,9 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 import edu.fiuba.algo3.modelo.FabricaDeFases;
-import edu.fiuba.algo3.modelo.ObjetivoManager;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.fases.*;
 
-import java.beans.PropertyChangeListener;
-
-public interface IFase extends PropertyChangeListener {
+public interface IFase {
 
 	Boolean faseCompletada();
 
@@ -23,8 +20,4 @@ public interface IFase extends PropertyChangeListener {
 	FaseColocar obtenerFaseColocar() throws FaseErroneaException;
 
 	FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException;
-
-	ObjetivoManager obtenerObjetivo();
-
-	ITurno turno();
 }

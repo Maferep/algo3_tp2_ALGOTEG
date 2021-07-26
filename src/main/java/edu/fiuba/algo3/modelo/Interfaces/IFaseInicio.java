@@ -14,5 +14,4 @@ public interface IFaseInicio {
     public Canje obtenerCanje();
     public IMapa obtenerMapa();
     public ITurno obtenerTurno();
-    public ObjetivoManager obtenerObjetivo();
 }

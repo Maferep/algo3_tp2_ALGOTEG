@@ -17,14 +17,4 @@ public class FaseReagruparConConquista extends FaseReagrupar {
                 canje.obtenerTarjeta()
             );
     }
-
-    @Override
-    public ObjetivoManager obtenerObjetivo() {
-        return null;
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent event) {
-        finDeJuego = (Boolean) event.getNewValue();
-    }
 }

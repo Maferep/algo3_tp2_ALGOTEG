@@ -58,14 +58,4 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     public FaseColocar obtenerFaseColocar() {
         return this;
     }
-
-    @Override
-    public ObjetivoManager obtenerObjetivo() {
-        return null;
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent event) {
-        finDeJuego = (Boolean) event.getNewValue();
-    }
 }

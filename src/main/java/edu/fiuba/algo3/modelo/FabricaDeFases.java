@@ -34,7 +34,6 @@ public class FabricaDeFases {
         definirCanje(fase.obtenerFaseInicio().obtenerCanje());
         definirMapa(fase.obtenerFaseInicio().obtenerMapa());
         definirTurno(fase.obtenerFaseInicio().obtenerTurno());
-        definirObjetivo(fase.obtenerFaseInicio().obtenerObjetivo());
 
         return fase;
     }
