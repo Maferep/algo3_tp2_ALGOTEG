@@ -62,6 +62,39 @@ public class MazoTest {
         });
     }
 
+    @Test
+    public void test04NoSePuedeActivarUnaTarjetaQueNoSeTiene() throws NoExisteTarjetaException {
+        Jugador jugador = new Jugador("Rosa");
+        jugador.asignarCanje(new Canje(paises));
+        Pais pais = new Pais("Estados Unidos");
+        Pais otroPais = new Pais("Reino Unido");
+
+        jugador.asignarPais(pais);
+
+        Tarjeta tarjeta = new Tarjeta(otroPais);
+        jugador.agregarTarjetaAleatoria(tarjeta);
+
+        assertThrows(NoExisteTarjetaException.class, () -> {
+            jugador.activarTarjeta(tarjeta);
+        });
+    }
+
+    @Test
+    public void test05NoSePuedeActivarUnaTarjetaDosVeces() throws NoExisteTarjetaException {
+        Jugador jugador = new Jugador("Rosa");
+        jugador.asignarCanje(new Canje(paises));
+        Pais pais = new Pais("Estados Unidos");
+        jugador.asignarPais(pais);
+
+        Tarjeta tarjeta = new Tarjeta(pais);
+        jugador.agregarTarjetaAleatoria(tarjeta);
+        jugador.activarTarjeta(tarjeta);
+
+        assertThrows(NoExisteTarjetaException.class, () -> {
+            jugador.activarTarjeta(tarjeta);
+        });
+    }
+
     //Pruebas para 2do tipo de activacion
 
 }

@@ -104,9 +104,19 @@ public class Jugador implements IJugador {
 	}
 
 	public void activarTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
+		this.verificarQueExistaTarjeta(tarjeta);
 		tarjeta.activarTarjeta(this);
 		canje.insertarAlFondoDelMazo(tarjeta);
 		tarjetas.remove(tarjeta);
+	}
+
+	public boolean verificarQueExistaTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
+		for(int i = 0 ; i < tarjetas.size() ; i++) {
+			if(tarjetas.get(i).pais == tarjeta.pais) {
+				return true;
+			}
+		}
+		throw new NoExisteTarjetaException("No tienes la tarjeta que buscas activar");
 	}
 
 	@Override
