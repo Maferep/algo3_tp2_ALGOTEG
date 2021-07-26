@@ -24,6 +24,11 @@ public class Mapa implements IMapa {
         return paises;
     }
 
+    /*
+    Asigna aleatoriamente paises de la lista recibida a los jugadores.
+    No verifica que las listas estén vacías.
+    Preserva el orden de la lista de jugadores, no de la de paises.
+    */
     public void asignarPaises(List<IJugador> jugadores) {
         Collections.shuffle(paises);
         for (int i = 0; i < paises.size(); i++) {

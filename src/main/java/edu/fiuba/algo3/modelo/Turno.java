@@ -57,16 +57,6 @@ public class Turno implements ITurno {
                 .collect(Collectors.toList());
     }
 
-    /*
-    Asigna aleatoriamente paises de la lista recibida a los jugadores.
-    No verifica que las listas estén vacías.
-    Preserva el orden de la lista de jugadores, no de la de paises.
-    */ 
-    public void asignarPaisesAleatoriamente(List<IPais> paises, List<IJugador> jugadores) {
-
-
-    }
-
     public void asignarEjercitosAJugadores(List<IJugador> jugadores) throws EjercitosException {
         for (IJugador j : jugadores) {
             j.inicializarEjercitos(cantidadEjercitos);
