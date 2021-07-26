@@ -64,7 +64,7 @@ public class MazoTest {
 
         ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais();
 
-        assertThrows(NoExisteTarjetaException.class, () -> {
+        assertThrows(PaisNoExistenteError.class, () -> {
             jugador.activarTarjeta(tarjeta, tipoDeCanje);
         });
     }

@@ -105,15 +105,22 @@ public class Jugador implements IJugador {
 	}
 
 	public void activarTarjeta(Tarjeta tarjeta, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError {
-		this.verificarQueExistaTarjeta(tarjeta);
+		this.realizarVerificaciones(tarjeta);
 		tarjeta.activarTarjeta(this, tipoDeCanje);
-		mazo.insertarAlFondoDelMazo(tarjeta);
-		tarjetas.remove(tarjeta);
+		this.mazo.insertarAlFondoDelMazo(tarjeta);
+		this.tarjetas.remove(tarjeta);
 		this.actualizarNumeroDeCanje();
 	}
 
 	public void actualizarNumeroDeCanje() {
 		numeroDeCanje++;
+	}
+
+	// verificaciones para los canjes
+
+	public void realizarVerificaciones(Tarjeta tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError {
+		this.verificarQueExistaTarjeta(tarjeta);
+		this.verificarQueExistaPais(tarjeta.obtenerPais());
 	}
 
 	public boolean verificarQueExistaTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
@@ -125,13 +132,13 @@ public class Jugador implements IJugador {
 		throw new NoExisteTarjetaException("No tienes la tarjeta que buscas activar");
 	}
 
-	public boolean verificarQueExistaPais(IPais pais) {
+	public boolean verificarQueExistaPais(IPais pais) throws PaisNoExistenteError {
 		for(int i = 0 ; i < this.cantidadPaises() ; i++) {
 			if(this.obtenerPaises().get(i).obtenerNombre().equals(pais.obtenerNombre())) {
 				return true;
 			}
 		}
-		return false;
+		throw new PaisNoExistenteError("No tienes este pais para agregar fichas");
 	}
 
 	@Override

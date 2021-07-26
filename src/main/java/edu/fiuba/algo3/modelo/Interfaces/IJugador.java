@@ -37,5 +37,5 @@ public interface IJugador {
 
 	void asignarCanje(Mazo mazo);
 
-	boolean verificarQueExistaPais(IPais iPais);
+	boolean verificarQueExistaPais(IPais iPais) throws PaisNoExistenteError;
 }

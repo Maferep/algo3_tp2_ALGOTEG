@@ -14,13 +14,7 @@ public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
     //Asimismo, si un jugador posee tres tarjetas de país con el mismo símbolo o
     //tres símbolos distintos puede solicitar un canje según la siguiente tabla:
 
-    Boolean encontroTarjeta = false;
-
     public void activarTarjeta(IJugador jugador, Tarjeta tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError {
-        for(int i = 0 ; i < jugador.obtenerPaises().size() ; i++) {
-            if(!jugador.verificarQueExistaPais(tarjeta.obtenerPais())) {
-                throw new PaisNoExistenteError("No tienes ese pais para agregar fichas");
-            }
-        }
+
     }
 }
