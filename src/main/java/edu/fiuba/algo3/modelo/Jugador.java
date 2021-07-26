@@ -28,28 +28,22 @@ public class Jugador implements IJugador {
 	}
 
 	//Tienes una lista de listeners, o sea, a quienes les interesa el evento
-	private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
+	private List<PropertyChangeListener> suscriptores = new ArrayList<PropertyChangeListener>();
 
 	//metodo para notificar a los listeners de un evento
 	private void notifyListeners(Object object, String property, Boolean oldValue, Boolean newValue) {
-		for (PropertyChangeListener name : listener) {
+		for (PropertyChangeListener name : suscriptores) {
 			PropertyChangeEvent event = new PropertyChangeEvent(this, property, oldValue, newValue);
 			name.propertyChange(event);
 		}
 	}
 
-	// y para agregar listeners
-	@Override
-	public void addChangeListener(IFase fase) {
-		listener.add(fase);
+	public void agregarObjetivoSuscriptor(IObjetivo objetivo) {
+		this.addChangeListener(objetivo);
 	}
 
-	public boolean seCumplioObjetivo() {
-		if(objetivo.seCumpleObjetivo(this)) {
-			this.notifyListeners(null, null, false, true);
-			return true;
-		}
-		return false;
+	private void addChangeListener(PropertyChangeListener suscriptor) {
+		suscriptores.add(suscriptor);
 	}
 
 	public String obtenerColor() {
@@ -135,11 +129,7 @@ public class Jugador implements IJugador {
 		objetivo = objetivoAsignado;
 	}
 
-	public boolean cumplioObjetivo() {
-		return objetivo.seCumpleObjetivo(this);
-	}
-
-	public boolean esDestruido() {
+	private boolean esDestruido() {
 		return (this.paises.size() == 0);
 	}
 

@@ -37,7 +37,7 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     }
 
     @Override
-    public Objetivo obtenerObjetivo() {
+    public ObjetivoManager obtenerObjetivo() {
         return null;
     }
 

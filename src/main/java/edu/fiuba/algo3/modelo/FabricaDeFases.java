@@ -11,7 +11,7 @@ public class FabricaDeFases {
     ITurno turno;
     IMapa mapa;
     Canje canje;
-    Objetivo objetivo;
+    ObjetivoManager objetivo;
 
     void definirTurno(ITurno turno) {
         this.turno = turno;
@@ -25,7 +25,7 @@ public class FabricaDeFases {
         this.canje = canje;
     }
 
-    void definirObjetivo(Objetivo objetivo) { this.objetivo = objetivo;}
+    void definirObjetivo(ObjetivoManager objetivo) { this.objetivo = objetivo;}
 
     public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception {
         IFase fase = new FaseInicio(cantidadDeJugadores);

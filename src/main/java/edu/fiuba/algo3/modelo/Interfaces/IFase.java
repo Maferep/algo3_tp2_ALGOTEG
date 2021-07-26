@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 import edu.fiuba.algo3.modelo.FabricaDeFases;
-import edu.fiuba.algo3.modelo.Objetivo;
+import edu.fiuba.algo3.modelo.ObjetivoManager;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.fases.*;
 
@@ -24,7 +24,7 @@ public interface IFase extends PropertyChangeListener {
 
 	FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException;
 
-	Objetivo obtenerObjetivo();
+	ObjetivoManager obtenerObjetivo();
 
 	ITurno turno();
 }

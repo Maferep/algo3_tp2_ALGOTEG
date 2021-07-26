@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import java.beans.PropertyChangeListener;
 
-public interface IObjetivo {
-    public boolean seCumpleObjetivo(Jugador jugador);
+public interface IObjetivo extends PropertyChangeListener{
 }

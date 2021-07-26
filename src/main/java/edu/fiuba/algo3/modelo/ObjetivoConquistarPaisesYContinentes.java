@@ -11,13 +11,14 @@ public class ObjetivoConquistarPaisesYContinentes implements IObjetivo {
 
     List<Continente> continentesAConquistar;
     List<IPais> paisesAConquistar;
-
+    
     public ObjetivoConquistarPaisesYContinentes(List<Continente> continentes,List<IPais> paises) {
         continentesAConquistar = continentes;
         paisesAConquistar = paises;
     }
+    @Override
+    public void propertyChange(PropertyChangeEvent arg0) {
+        // TODO Auto-generated method stub
 
-    public boolean seCumpleObjetivo(Jugador jugadorActual) {
-        return (jugadorActual.conquistaContinentes(continentesAConquistar) && (jugadorActual.conquistaPaises(paisesAConquistar)));
     }
 }

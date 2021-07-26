@@ -34,8 +34,6 @@ public class FaseAtacar extends FaseAbstracta implements PropertyChangeListener 
         //TODO: validar existencia de paises y turno correcto
         atacante.atacar(defensor, cantidadDeSoldados);
         //verifico si se cumplio el objetivo del jugador cuando este ya ataco.
-        atacante.obtenerConquistador().addChangeListener(this);
-        atacante.obtenerConquistador().seCumplioObjetivo();
         //TODO: corregir if ambiguo
         if(defensor.obtenerConquistador() == atacante.obtenerConquistador())
             estrategia = estrategia.actualizar();
@@ -67,7 +65,7 @@ public class FaseAtacar extends FaseAbstracta implements PropertyChangeListener 
     }
 
     @Override
-    public Objetivo obtenerObjetivo() {
+    public ObjetivoManager obtenerObjetivo() {
         return null;
     }
 

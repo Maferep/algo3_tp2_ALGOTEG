@@ -21,19 +21,19 @@ public class FabricaDeObjetivos {
 
     //raro como se agregan los objetivos. repensar
     public FabricaDeObjetivos(ITurno turno) {
-        agregarObjetivo(new ObjetivoGeneral());
-        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesUno,paisesEnAmerica));
-        agregarObjetivo(new ObjetivoDestruirEjercito("Azul", turno));
-        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesDos,paisesEnEuropa));
-        agregarObjetivo(new ObjetivoDestruirEjercito("Rojo", turno));
-        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesTres,paisesEnAsia));
     }
 
     public void agregarObjetivo(IObjetivo objetivo) {
         objetivos.add(objetivo);
     }
 
-    public List<IObjetivo> objetivos() {
+    public List<IObjetivo> crearObjetivos() {
+        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesUno,paisesEnAmerica));
+        agregarObjetivo(new ObjetivoDestruirEjercito("Azul"));
+        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesDos,paisesEnEuropa));
+        agregarObjetivo(new ObjetivoDestruirEjercito("Rojo"));
+        agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesTres,paisesEnAsia));
+    
         return objetivos;
     }
 }

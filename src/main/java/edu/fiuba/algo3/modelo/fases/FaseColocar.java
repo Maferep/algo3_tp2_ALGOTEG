@@ -65,7 +65,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     }
 
     @Override
-    public Objetivo obtenerObjetivo() {
+    public ObjetivoManager obtenerObjetivo() {
         return null;
     }
 

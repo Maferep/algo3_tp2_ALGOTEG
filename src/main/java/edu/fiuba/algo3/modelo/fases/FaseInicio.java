@@ -14,7 +14,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     ITurno turno;
     IMapa mapa;
     Canje canje;
-    Objetivo objetivo;
+    ObjetivoManager objetivo;
     FabricaDeObjetivos fabricaObjetivos;
     Boolean finDeJuego = false;
 
@@ -50,7 +50,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
                     + maxJugadores + " jugadores.");
         turno = new Turno(colores, cantJugadores);
         fabricaObjetivos = new FabricaDeObjetivos(turno);
-        objetivo = new Objetivo(turno, fabricaObjetivos.objetivos());
+        objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
         canje = new Canje(paises);
     }
 
@@ -119,7 +119,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
 	}
 
     @Override
-    public Objetivo obtenerObjetivo() { return objetivo; }
+    public ObjetivoManager obtenerObjetivo() { return objetivo; }
 
     @Override
     public void propertyChange(PropertyChangeEvent event) {

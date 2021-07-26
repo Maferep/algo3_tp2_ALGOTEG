@@ -32,15 +32,9 @@ public interface IJugador {
 
 	int cantidadEjercitos();
 
-    void asignarObjetivo(IObjetivo iObjetivo);
-
-	boolean esDestruido();
+	void asignarObjetivo(IObjetivo iObjetivo);
+	
+	public void agregarObjetivoSuscriptor(IObjetivo objetivo) ;
 
 	String colorDeJugador();
-
-	boolean cumplioObjetivo();
-	
-    void addChangeListener(IFase fase);
-
-	boolean seCumplioObjetivo();
 }

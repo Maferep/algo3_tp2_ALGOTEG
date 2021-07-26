@@ -7,28 +7,22 @@ import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 
 import edu.fiuba.algo3.modelo.Jugador;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 public class ObjetivoDestruirEjercito implements IObjetivo{
 
     String colorDelJugadorADestruir;
     ITurno turnoActual;
-    IJugador jugadorADestruir;
-
-    public ObjetivoDestruirEjercito(String color, ITurno turno) {
+	IJugador jugadorADestruir;
+	
+	public ObjetivoDestruirEjercito(String color) {
         colorDelJugadorADestruir = color;
-        turnoActual = turno;
-    }
-
-    //Muchos ifs, refactorizar
-    public boolean seCumpleObjetivo(Jugador jugador) {
-        for(int i = 0 ; i < turnoActual.cantidadDeJugadores() ; i++) {
-            if(turnoActual.jugadorActual().colorDeJugador().equals(colorDelJugadorADestruir)) {
-                jugadorADestruir = turnoActual.jugadorActual();
-            }
-            turnoActual.siguienteJugador();
-        }
-        if(jugadorADestruir == null) {
-            jugadorADestruir = turnoActual.jugadorActual();
-        }
-        return jugadorADestruir.esDestruido();
-    }
+	}
+	
+	@Override
+	public void propertyChange(PropertyChangeEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }
