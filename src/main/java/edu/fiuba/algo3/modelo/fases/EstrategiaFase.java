@@ -13,11 +13,6 @@ public abstract class EstrategiaFase implements IEstrategiaFase {
     }
 
     @Override
-    public Boolean faseCompletada() {
-        return true;
-    }
-
-    @Override
     public void siguienteJugador(ITurno turno) throws TurnoException, FaseIncompletaException {
         if(turno.esUltimoJugador()) 
             throw new TurnoException(null);

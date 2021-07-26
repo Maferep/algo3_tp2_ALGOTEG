@@ -14,4 +14,8 @@ public abstract class EstrategiaFaseCompleta extends EstrategiaFase {
             throw new TurnoException(null);
         turno.siguienteJugador();
     }
+
+    public Boolean faseCompletada() {
+        return true;
+    }
 }

@@ -33,12 +33,10 @@ public class TurnoMockUnJugador implements ITurno {
 
     @Override
     public boolean esUltimoJugador() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
     public IJugador jugadorDeColor(String color) throws NoSuchElementException {
-        // TODO Auto-generated method stub
-        return null;
+        return miJugador;
     }
     
 }

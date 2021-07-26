@@ -113,6 +113,7 @@ public class RondaTest {
 
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
         fase.obtenerFaseAtacar().atacar(mockAtacanteSiemprePierde, 3, mockDefensor);
+        fase.siguienteTurno();
         fase = fase.siguienteFase(new FabricaDeFases());
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
     }

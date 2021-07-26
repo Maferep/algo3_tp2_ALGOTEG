@@ -93,4 +93,10 @@ public class Turno implements ITurno {
     public IJugador jugadorDeColor(String color) throws NoSuchElementException{
         return jugadores.stream().filter(j -> j.obtenerColor() == color).findAny().get();
     }
+
+    @Override
+    public boolean esUltimoJugador() {
+        int indiceUltimo = (jugadores.indexOf(primero) + 1) % jugadores.size();
+        return jugadorActual().equals(jugadores.get(indiceUltimo));
+    }
 }

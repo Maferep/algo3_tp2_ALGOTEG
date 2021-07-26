@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class EstrategiaColocarCompletado extends EstrategiaFase {
+public class EstrategiaColocarCompletado extends EstrategiaFaseCompleta {
     @Override
     public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException, TurnoException {
         if(!turno.esUltimoJugador())

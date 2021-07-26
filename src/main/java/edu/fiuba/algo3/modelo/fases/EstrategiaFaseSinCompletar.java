@@ -17,4 +17,9 @@ public abstract class EstrategiaFaseSinCompletar extends EstrategiaFase {
     public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException {
         throw new FaseIncompletaException("La fase está incompleta.");
     }
+    
+    @Override
+    public Boolean faseCompletada() {
+        return false;
+    }
 }

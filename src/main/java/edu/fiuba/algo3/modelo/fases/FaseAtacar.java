@@ -8,10 +8,8 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class FaseAtacar extends FaseAbstracta implements PropertyChangeListener {
+public class FaseAtacar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaAtaqueSinConquista();
-    IMapa mapa;
-    ITurno turno;
     Boolean finDeJuego = false;
 
     public FaseAtacar(ITurno turno, IMapa mapa) {
@@ -24,11 +22,6 @@ public class FaseAtacar extends FaseAbstracta implements PropertyChangeListener 
     }
 
     // métodos públicos
-
-    @Override
-    public void propertyChange(PropertyChangeEvent event) {
-        finDeJuego = (Boolean) event.getNewValue();
-    }
 
     public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
         //TODO: validar existencia de paises y turno correcto
