@@ -12,6 +12,7 @@ public class Jugador implements IJugador {
 	private List<IPais> paises;
 	private List<Tarjeta> tarjetas;
 	private int ejercitosPorColocar;
+	public Canje canje;
 
 	static int minimoPaises = 30;
 
@@ -92,8 +93,20 @@ public class Jugador implements IJugador {
 		}
 	}
 
+	//Sistema de canjes
+
+	public void asignarCanje(Canje canjeNuevo) {
+		canje = canjeNuevo;
+	}
+
 	public void agregarTarjetaAleatoria(Tarjeta tarjeta) {
 		tarjetas.add(tarjeta);
+	}
+
+	public void activarTarjeta(Tarjeta tarjeta) {
+		tarjeta.activarTarjeta(this);
+		canje.insertarAlFondoDelMazo(tarjeta);
+		tarjetas.remove(tarjeta);
 	}
 
 	@Override

@@ -26,8 +26,8 @@ public class Turno implements ITurno {
             .collect(Collectors.toList());
     int cantidadEjercitos = 8;
 
-    public Turno(List<String> colores, int cantidad) throws EjercitosException {
-        listaJugadores = construirJugadores(colores, cantidad);
+    public Turno(List<String> colores, int cantidad, Canje canje) throws EjercitosException {
+        listaJugadores = construirJugadores(colores, cantidad, canje);
         this.jugadores.addAll(listaJugadores);
         definirPrimerJugador(listaJugadores.get((int) (Math.random() % listaJugadores.size())));
     }
@@ -54,11 +54,18 @@ public class Turno implements ITurno {
         return new FaseInicio(cantJugadores);
     }
 
-    public List<IJugador> construirJugadores(List<String> colores, int cantidad) throws EjercitosException {
+    public List<IJugador> construirJugadores(List<String> colores, int cantidad, Canje canje) throws EjercitosException {
         List<IJugador> jugadores = jugadoresDeColores(colores.subList(0, cantidad));
+        asignarSistemaDeCanje(canje,jugadores);
         asignarPaisesAleatoriamente(paises, jugadores);
         asignarEjercitosAJugadores(jugadores);
         return jugadores;
+    }
+
+    public void asignarSistemaDeCanje(Canje canje, List<IJugador> jugadores) {
+        for(int i = 0 ; i < jugadores.size() ; i++) {
+            jugadores.get(i).asignarCanje(canje);
+        }
     }
 
     private List<IJugador> jugadoresDeColores(List<String> colores) {

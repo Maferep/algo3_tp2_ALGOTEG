@@ -41,8 +41,8 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
                     + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
-        turno = new Turno(colores, cantJugadores);
         canje = new Canje(paises);
+        turno = new Turno(colores, cantJugadores, canje);
         mapa = new Mapa();
         mapa.definirPaises(paises);
     }

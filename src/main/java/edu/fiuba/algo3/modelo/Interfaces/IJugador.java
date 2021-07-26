@@ -34,4 +34,6 @@ public interface IJugador {
 	int cantidadEjercitos();
 
 	void inicializarPais(IPais actual);
+
+	void asignarCanje(Canje canje);
 }

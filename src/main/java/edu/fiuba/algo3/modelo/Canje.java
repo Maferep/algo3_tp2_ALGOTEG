@@ -20,4 +20,5 @@ public class Canje {
     public void insertarAlFondoDelMazo(Tarjeta tarjeta) {
         mazo.add(tarjeta);
     }
+
 }
