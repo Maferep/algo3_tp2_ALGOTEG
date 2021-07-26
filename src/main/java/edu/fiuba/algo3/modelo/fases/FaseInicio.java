@@ -41,17 +41,17 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
                     + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
-        canje = new Canje(paises);
-        turno = new Turno(colores, cantJugadores, canje);
+        mazo = new Mazo(paises);
+        turno = new Turno(colores, cantJugadores, mazo);
         mapa = new Mapa();
         mapa.definirPaises(paises);
     }
 
     //version para mock
-    public FaseInicio(IMapa mapa, ITurno turno, Canje canje)  {
+    public FaseInicio(IMapa mapa, ITurno turno, Mazo mazo)  {
         this.turno = turno;
         this.mapa = mapa;
-        this.canje = canje;
+        this.mazo = mazo;
     }
 
     // interfaz de inicio
@@ -95,8 +95,8 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     @Override
-	public Canje obtenerCanje() {
-		return canje;
+	public Mazo obtenerCanje() {
+		return mazo;
 	}
 
     @Override

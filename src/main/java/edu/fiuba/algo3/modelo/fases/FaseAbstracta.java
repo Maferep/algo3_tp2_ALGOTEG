@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 
 public abstract class FaseAbstracta implements IFase {
     ITurno turno;
-    Canje canje;
+    Mazo mazo;
     IMapa mapa;
     
     @Override

@@ -36,7 +36,7 @@ public class FaseReagruparTest {
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
             new Mapa(), 
-            new Canje(paises));
+            new Mazo(paises));
         IPais paisRojo = new Pais("Rojo");
         IPais paisAzul = new Pais("Azul");
         paisRojo.agregarAdyacente(paisAzul);
@@ -52,7 +52,7 @@ public class FaseReagruparTest {
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
             new Mapa(), 
-            new Canje(paises));
+            new Mazo(paises));
 
         IPais paisRojo = new Pais("Rojo");
         IPais paisAzul = new Pais("Azul");
@@ -69,7 +69,7 @@ public class FaseReagruparTest {
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
             new Mapa(), 
-            new Canje(paises));
+            new Mazo(paises));
 
         IPais paisRojo = new Pais("Rojo");
         IPais paisAzul = new Pais("Azul");

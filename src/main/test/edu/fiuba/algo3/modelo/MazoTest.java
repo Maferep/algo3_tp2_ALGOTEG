@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo;
 import java.util.*;
 import java.util.stream.*;
 
-import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
 import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
 import org.junit.Test;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
@@ -27,7 +27,7 @@ public class MazoTest {
         .collect(Collectors.toList());
     @Test
     public void test01MazoDePaises() {
-        Canje mazo = new Canje(paises);
+        Mazo mazo = new Mazo(paises);
         IPais eeuu = paises.stream()
             .filter(p -> p.obtenerNombre() == "Estados Unidos")
             .findAny()
@@ -37,13 +37,13 @@ public class MazoTest {
 
     //Pruebas para 1er tipo de activacion
     @Test
-    public void test02SeActivanTarjetas() throws NoExisteTarjetaException {
+    public void test02SeActivanTarjetas() throws NoExisteTarjetaException, PaisNoExistenteError {
         Jugador jugador = new Jugador("Rosa");
-        jugador.asignarCanje(new Canje(paises));
+        jugador.asignarCanje(new Mazo(paises));
         Pais pais = new Pais("Estados Unidos");
         jugador.asignarPais(pais);
 
-        Tarjeta tarjeta = new Tarjeta(pais);
+        CanjeParaAgregadoDeEjercitosEnUnPais tarjeta = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
         jugador.agregarTarjetaAleatoria(tarjeta);
         jugador.activarTarjeta(tarjeta);
     }
@@ -51,10 +51,10 @@ public class MazoTest {
     @Test
     public void test03NoSePuedeActivarLaTarjetaDeUnPaisQueNoSeConquisto() throws NoExisteTarjetaException {
         Jugador jugador = new Jugador("Rosa");
-        jugador.asignarCanje(new Canje(paises));
+        jugador.asignarCanje(new Mazo(paises));
         Pais pais = new Pais("Estados Unidos");
 
-        Tarjeta tarjeta = new Tarjeta(pais);
+        CanjeParaAgregadoDeEjercitosEnUnPais tarjeta = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
         jugador.agregarTarjetaAleatoria(tarjeta);
 
         assertThrows(NoExisteTarjetaException.class, () -> {
@@ -65,13 +65,13 @@ public class MazoTest {
     @Test
     public void test04NoSePuedeActivarUnaTarjetaQueNoSeTiene() throws NoExisteTarjetaException {
         Jugador jugador = new Jugador("Rosa");
-        jugador.asignarCanje(new Canje(paises));
+        jugador.asignarCanje(new Mazo(paises));
         Pais pais = new Pais("Estados Unidos");
         Pais otroPais = new Pais("Reino Unido");
 
         jugador.asignarPais(pais);
 
-        Tarjeta tarjeta = new Tarjeta(otroPais);
+        CanjeParaAgregadoDeEjercitosEnUnPais tarjeta = new CanjeParaAgregadoDeEjercitosEnUnPais(otroPais);
         jugador.agregarTarjetaAleatoria(tarjeta);
 
         assertThrows(NoExisteTarjetaException.class, () -> {
@@ -80,13 +80,13 @@ public class MazoTest {
     }
 
     @Test
-    public void test05NoSePuedeActivarUnaTarjetaDosVeces() throws NoExisteTarjetaException {
+    public void test05NoSePuedeActivarUnaTarjetaDosVeces() throws NoExisteTarjetaException, PaisNoExistenteError {
         Jugador jugador = new Jugador("Rosa");
-        jugador.asignarCanje(new Canje(paises));
+        jugador.asignarCanje(new Mazo(paises));
         Pais pais = new Pais("Estados Unidos");
         jugador.asignarPais(pais);
 
-        Tarjeta tarjeta = new Tarjeta(pais);
+        CanjeParaAgregadoDeEjercitosEnUnPais tarjeta = new CanjeParaAgregadoDeEjercitosEnUnPais(pais);
         jugador.agregarTarjetaAleatoria(tarjeta);
         jugador.activarTarjeta(tarjeta);
 

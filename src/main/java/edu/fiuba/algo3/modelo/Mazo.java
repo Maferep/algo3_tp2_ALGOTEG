@@ -4,20 +4,21 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import java.util.*;
 import java.util.stream.*;
 
-public class Canje {
-    LinkedList<ITarjeta> mazo = new LinkedList<ITarjeta>();
-    public Canje(List<IPais> paises) {
+public class Mazo {
+
+    LinkedList<ICanje> mazo = new LinkedList<ICanje>();
+    public Mazo(List<IPais> paises) {
         mazo.addAll(
             paises.stream()
-                .map(p -> new Tarjeta(p))
+                .map(p -> new CanjeParaAgregadoDeEjercitosEnUnPais(p))
                 .collect(Collectors.toList())
         );
     }
-    public ITarjeta obtenerTarjeta() {
+    public ICanje obtenerTarjeta() {
         return mazo.getFirst();
     }
 
-    public void insertarAlFondoDelMazo(ITarjeta tarjeta) {
+    public void insertarAlFondoDelMazo(ICanje tarjeta) {
         mazo.add(tarjeta);
     }
 

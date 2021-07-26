@@ -9,14 +9,14 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 
     IMapa mapa;
     ITurno turno;
-    Canje canje;
+    Mazo mazo;
 
     public Juego(final int cantidadDeJugadores) throws Exception {
         faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
 
         mapa = faseActual.obtenerFaseInicio().obtenerMapa();
         turno = faseActual.obtenerFaseInicio().obtenerTurno();
-        canje = faseActual.obtenerFaseInicio().obtenerCanje();
+        mazo = faseActual.obtenerFaseInicio().obtenerCanje();
     }
 
     // inicio
@@ -68,8 +68,8 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     }
 
     @Override
-    public Canje obtenerCanje() {
-        return canje;
+    public Mazo obtenerCanje() {
+        return mazo;
     }
 
     @Override

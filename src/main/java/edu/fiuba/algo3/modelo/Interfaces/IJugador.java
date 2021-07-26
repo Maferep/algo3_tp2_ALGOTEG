@@ -17,7 +17,7 @@ public interface IJugador {
 
 	void inicializarEjercitos(int cantidadEjercitos) throws EjercitosException;
 
-	void agregarTarjetaAleatoria(ITarjeta obtenerTarjeta);
+	void agregarTarjetaAleatoria(ICanje obtenerTarjeta);
 
 	int cantidadTarjetas();
 
@@ -35,5 +35,7 @@ public interface IJugador {
 
 	void inicializarPais(IPais actual);
 
-	void asignarCanje(Canje canje);
+	void asignarCanje(Mazo mazo);
+
+	boolean verificarQueExistaPais(IPais iPais);
 }

@@ -8,10 +8,10 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     IMapa mapa;
 
-    public FaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException {
+    public FaseColocar(ITurno turno, IMapa mapa, Mazo mazo) throws EjercitosException {
         this.turno = turno;
         this.mapa = mapa;
-        this.canje = canje;
+        this.mazo = mazo;
         asignarNuevosEjercitosAJugadores();
     }
     

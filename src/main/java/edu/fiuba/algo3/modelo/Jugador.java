@@ -10,16 +10,17 @@ public class Jugador implements IJugador {
 
 	private String color;
 	private List<IPais> paises;
-	private List<ITarjeta> tarjetas;
+	private List<ICanje> tarjetas;
 	private int ejercitosPorColocar;
-	public Canje canje;
+	public Mazo mazo;
+	int numeroDeCanje = 0;
 
 	static int minimoPaises = 30;
 
 	public Jugador(String colorDelJugador) {
 		color = colorDelJugador;
 		paises = new ArrayList<IPais>();
-		tarjetas = new ArrayList<ITarjeta>();
+		tarjetas = new ArrayList<ICanje>();
 		ejercitosPorColocar = 0;
 	}
 
@@ -95,28 +96,42 @@ public class Jugador implements IJugador {
 
 	//Sistema de canjes
 
-	public void asignarCanje(Canje canjeNuevo) {
-		canje = canjeNuevo;
+	public void asignarCanje(Mazo mazoNuevo) {
+		mazo = mazoNuevo;
 	}
 
-	public void agregarTarjetaAleatoria(ITarjeta tarjeta) {
+	public void agregarTarjetaAleatoria(ICanje tarjeta) {
 		tarjetas.add(tarjeta);
 	}
 
-	public void activarTarjeta(ITarjeta tarjeta) throws NoExisteTarjetaException {
+	public void activarTarjeta(ICanje tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError {
 		this.verificarQueExistaTarjeta(tarjeta);
 		tarjeta.activarTarjeta(this);
-		canje.insertarAlFondoDelMazo(tarjeta);
+		mazo.insertarAlFondoDelMazo(tarjeta);
 		tarjetas.remove(tarjeta);
+		this.actualizarNumeroDeCanje();
 	}
 
-	public boolean verificarQueExistaTarjeta(ITarjeta tarjeta) throws NoExisteTarjetaException {
+	public void actualizarNumeroDeCanje() {
+		numeroDeCanje++;
+	}
+
+	public boolean verificarQueExistaTarjeta(ICanje tarjeta) throws NoExisteTarjetaException {
 		for(int i = 0 ; i < tarjetas.size() ; i++) {
 			if(tarjetas.get(i).obtenerPais() == tarjeta.obtenerPais()) {
 				return true;
 			}
 		}
 		throw new NoExisteTarjetaException("No tienes la tarjeta que buscas activar");
+	}
+
+	public boolean verificarQueExistaPais(IPais pais) {
+		for(int i = 0 ; i < this.cantidadPaises() ; i++) {
+			if(this.obtenerPaises().get(i).obtenerNombre().equals(pais.obtenerNombre())) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override

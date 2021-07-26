@@ -10,10 +10,10 @@ public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagr
 
     //private Canje canje;
 
-    public FaseReagrupar(ITurno turno, IMapa paises, Canje canje) {
+    public FaseReagrupar(ITurno turno, IMapa paises, Mazo mazo) {
         this.turno = turno;
         this.mapa = paises;
-        this.canje = canje;
+        this.mazo = mazo;
     }
     public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws TransferirEjercitosException {
         unPais.transferirEjercitosA(cantidad, otroPais);

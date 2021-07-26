@@ -38,7 +38,7 @@ public class FaseColocarTest {
         FaseColocar fase = new FaseColocar(
             unJugador,
             new MapaMock(listaDePaises), 
-            new Canje(listaDePaises));
+            new Mazo(listaDePaises));
         IPais pais = listaDePaises.get(0);
         fase.colocarEjercitosEnPais(3, pais);
         assertTrue(fase.faseCompletada());
@@ -58,7 +58,7 @@ public class FaseColocarTest {
         FaseColocar fase = new FaseColocar(
             unJugador,
             new MapaMock(listaDePaises), 
-            new Canje(listaDePaises));
+            new Mazo(listaDePaises));
         IPais pais = listaDePaises.get(0);
         fase.colocarEjercitosEnPais(3, pais);
         assertTrue(fase.faseCompletada());
@@ -78,7 +78,7 @@ public class FaseColocarTest {
         FaseColocar fase = new FaseColocar(
             unJugador,
             new MapaMock(listaDePaises), 
-            new Canje(listaDePaises));
+            new Mazo(listaDePaises));
         Pais pais = new Pais("Estados Unidos");
         fase.colocarEjercitosEnPais(3, pais);
         assertTrue(fase.faseCompletada());

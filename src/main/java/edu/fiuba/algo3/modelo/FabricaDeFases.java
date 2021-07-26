@@ -8,7 +8,7 @@ public class FabricaDeFases {
 
     ITurno turno;
     IMapa mapa;
-    Canje canje;
+    Mazo mazo;
 
     void definirTurno(ITurno turno) {
         this.turno = turno;
@@ -18,8 +18,8 @@ public class FabricaDeFases {
         this.mapa = mapa;
     }
 
-    void definirCanje(Canje canje) {
-        this.canje = canje;
+    void definirCanje(Mazo mazo) {
+        this.mazo = mazo;
     }
 
     public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception {
@@ -41,27 +41,27 @@ public class FabricaDeFases {
         return new FaseAtacar(turno, mapa);
     }
 
-    public IFase crearFaseReagruparConConquista(ITurno turno, IMapa mapa, Canje canje){
-        return new FaseReagruparConConquista(turno, mapa, canje);
+    public IFase crearFaseReagruparConConquista(ITurno turno, IMapa mapa, Mazo mazo){
+        return new FaseReagruparConConquista(turno, mapa, mazo);
     }
 
     public IFase crearFaseReagruparConConquista() {
-        return new FaseReagruparConConquista(turno, mapa, canje);
+        return new FaseReagruparConConquista(turno, mapa, mazo);
     }
 
-    public IFase crearFaseReagruparSinConquista(ITurno turno, IMapa mapa, Canje canje) {
-        return new FaseReagruparSinConquista(turno, mapa, canje);
+    public IFase crearFaseReagruparSinConquista(ITurno turno, IMapa mapa, Mazo mazo) {
+        return new FaseReagruparSinConquista(turno, mapa, mazo);
     }
 
     public IFase crearFaseReagruparSinConquista() {
-        return new FaseReagruparSinConquista(turno, mapa, canje);
+        return new FaseReagruparSinConquista(turno, mapa, mazo);
     }
 
-    public IFase crearFaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException {
-        return new FaseColocar(turno, mapa, canje);
+    public IFase crearFaseColocar(ITurno turno, IMapa mapa, Mazo mazo) throws EjercitosException {
+        return new FaseColocar(turno, mapa, mazo);
     }
 
     public IFase crearFaseColocar() throws EjercitosException {
-        return new FaseColocar(turno, mapa, canje);
+        return new FaseColocar(turno, mapa, mazo);
     }
 }
