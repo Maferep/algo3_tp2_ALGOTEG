@@ -19,5 +19,7 @@ public class FaseReagruparSinConquista extends FaseReagrupar {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) { }
+    public void propertyChange(PropertyChangeEvent event) {
+        finDeJuego = (Boolean) event.getNewValue();
+    }
 }

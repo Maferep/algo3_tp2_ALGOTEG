@@ -100,7 +100,7 @@ public class ObjetivoTest {
         assertEquals(atacante.obtenerConquistador().obtenerPaises().size(), 31);
         assertEquals(atacante.obtenerConquistador().seCumplioObjetivo(), true);
         fase.atacar(atacante, 1, defensor);
-       // assertEquals(fase.esFinDeJuego(), true);
+        assertEquals(fase.esFinDeJuego(), true);
     }
 
 }

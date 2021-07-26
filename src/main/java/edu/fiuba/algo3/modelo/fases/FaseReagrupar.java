@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.fases;
 
+import java.beans.PropertyChangeEvent;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.*;
@@ -12,6 +13,7 @@ public abstract class FaseReagrupar extends FaseAbstracta {
     ITurno turno;
     IMapa paises;
     private Canje canje;
+    boolean finDeJuego = false;
 
     public FaseReagrupar(ITurno turno, IMapa paises, Canje canje) {
         this.turno = turno;
@@ -41,7 +43,7 @@ public abstract class FaseReagrupar extends FaseAbstracta {
 
     @Override
     public Boolean esFinDeJuego() {
-        return false;
+        return finDeJuego;
     }
 
     @Override

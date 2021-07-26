@@ -17,7 +17,6 @@ public class FaseAtacar extends FaseAbstracta implements PropertyChangeListener 
     public FaseAtacar(ITurno turno, IMapa mapa) {
         this.turno = turno;
         this.mapa = mapa;
-        this.turno.jugadorActual().addChangeListener(this);
     }
 
     public ITurno turno() {
@@ -28,15 +27,16 @@ public class FaseAtacar extends FaseAbstracta implements PropertyChangeListener 
 
     @Override
     public void propertyChange(PropertyChangeEvent event) {
-        //hacer algo porque la propiedad cambio
-        //finDeJuego = (Boolean) event.getNewValue();
-        finDeJuego = true;
+        finDeJuego = (Boolean) event.getNewValue();
     }
 
     public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
         //TODO: validar existencia de paises y turno correcto
         atacante.atacar(defensor, cantidadDeSoldados);
-        atacante.obtenerConquistador().seCumplioObjetivo(); //verifico si se cumplio el objetivo del jugador cuando este ya ataco.
+        //verifico si se cumplio el objetivo del jugador cuando este ya ataco.
+        //quizas esto se podria hacer directamente en el jugador que ataca con x pais.
+        atacante.obtenerConquistador().addChangeListener(this);
+        atacante.obtenerConquistador().seCumplioObjetivo();
         //TODO: corregir if ambiguo
         if(defensor.obtenerConquistador() == atacante.obtenerConquistador())
             estrategia = estrategia.actualizar();

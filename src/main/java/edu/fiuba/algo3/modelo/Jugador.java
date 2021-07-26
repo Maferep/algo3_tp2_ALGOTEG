@@ -44,7 +44,6 @@ public class Jugador implements IJugador {
 		listener.add(fase);
 	}
 
-	// se esta notificando mal.. porque?
 	public boolean seCumplioObjetivo() {
 		if(objetivo.seCumpleObjetivo(this)) {
 			this.notifyListeners(null, null, false, true);
