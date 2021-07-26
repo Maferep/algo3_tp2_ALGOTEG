@@ -12,7 +12,8 @@ import edu.fiuba.algo3.modelo.fases.FaseInicio;
 
 public class Turno implements ITurno {
     private LinkedList<IJugador> jugadores = new LinkedList<IJugador>();
-    public List<IJugador> listaJugadores = new LinkedList<IJugador>();
+    private List<IJugador> listaJugadores = new LinkedList<IJugador>();
+    private IJugador primero;
     List<IPais> paises = Arrays.asList(
             "Estados Unidos",
             "Canadá",
@@ -35,6 +36,7 @@ public class Turno implements ITurno {
     private void definirPrimerJugador(IJugador iJugador) {
         while (jugadorActual() != iJugador)
             siguienteJugador();
+        primero = jugadorActual();
     }
 
     public IJugador jugadorActual() {
@@ -84,5 +86,11 @@ public class Turno implements ITurno {
         for (IJugador j : jugadores) {
             j.inicializarEjercitos(cantidadEjercitos);
         }
+    }
+
+    @Override
+    // Revisa si próximo jugador es el primer jugador
+    public boolean esUltimoJugador() {
+        return (jugadores.get(1) == primero);
     }
 }

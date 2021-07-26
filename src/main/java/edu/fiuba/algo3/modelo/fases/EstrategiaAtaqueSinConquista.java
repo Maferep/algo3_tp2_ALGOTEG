@@ -4,14 +4,16 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class EstrategiaAtaqueSinConquista extends EstrategiaFase {
+public class EstrategiaAtaqueSinConquista extends EstrategiaFaseCompleta {
     @Override
-    public IEstrategiaFase actualizar() {
+    public IEstrategiaFase turnoCompleto(ITurno turno) {
         return new EstrategiaAtaqueConConquista();
     }
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException {
+    public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException, TurnoException {
+        if(!turno.esUltimoJugador())
+            throw new TurnoException(null);
         return fabrica.crearFaseReagruparSinConquista();
     }
 }

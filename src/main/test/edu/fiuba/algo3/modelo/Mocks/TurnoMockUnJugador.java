@@ -29,5 +29,11 @@ public class TurnoMockUnJugador implements ITurno {
     public int cantidadDeJugadores() {
         return 1;
     }
+
+    @Override
+    public boolean esUltimoJugador() {
+        // TODO Auto-generated method stub
+        return false;
+    }
     
 }

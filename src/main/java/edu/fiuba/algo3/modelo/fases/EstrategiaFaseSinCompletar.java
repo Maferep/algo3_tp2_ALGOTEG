@@ -6,26 +6,15 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public abstract class EstrategiaFase implements IEstrategiaFase {
-    @Override
-    public IEstrategiaFase turnoCompleto(ITurno turno) {
-        return this;
-    }
-
-    @Override
-    public Boolean faseCompletada() {
-        return true;
-    }
+public abstract class EstrategiaFaseSinCompletar extends EstrategiaFase {
 
     @Override
     public void siguienteJugador(ITurno turno) throws TurnoException, FaseIncompletaException {
-        if(turno.esUltimoJugador()) 
-            throw new TurnoException(null);
-        turno.siguienteJugador();
+        throw new FaseIncompletaException("No puede avanzr el turno hasta terminar.");
     }
 
     @Override
     public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException {
-        throw new FaseIncompletaException("No se puede seguir aun a la siguiente fase.");
+        throw new FaseIncompletaException("La fase está incompleta.");
     }
 }

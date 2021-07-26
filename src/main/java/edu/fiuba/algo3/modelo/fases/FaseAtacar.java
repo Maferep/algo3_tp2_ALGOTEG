@@ -20,7 +20,7 @@ public class FaseAtacar extends FaseAbstracta {
         atacante.atacar(defensor, cantidadDeSoldados);
         //TODO: corregir if ambiguo
         if(defensor.obtenerConquistador() == atacante.obtenerConquistador())
-            estrategia = estrategia.actualizar();
+            estrategia = estrategia.turnoCompleto(turno);
     }
 
     public void atacarConAtaque(Ataque tipoAtaque) throws Exception {
@@ -34,8 +34,9 @@ public class FaseAtacar extends FaseAbstracta {
     }
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(fabrica);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
+            TurnoException {
+        return estrategia.siguienteFase(turno, fabrica);
     }
 
     @Override

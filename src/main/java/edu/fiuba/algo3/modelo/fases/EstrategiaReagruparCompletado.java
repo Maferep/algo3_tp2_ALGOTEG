@@ -7,8 +7,8 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public class EstrategiaReagruparCompletado extends EstrategiaFase {
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException,
-            EjercitosException {
+    public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException,
+            EjercitosException, TurnoException {
         return fabrica.crearFaseColocar();
     }
 }

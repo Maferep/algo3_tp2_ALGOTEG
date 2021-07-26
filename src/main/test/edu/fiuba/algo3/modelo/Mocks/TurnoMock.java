@@ -26,4 +26,10 @@ public class TurnoMock implements ITurno {
         return 1;
     }
 
+    @Override
+    public boolean esUltimoJugador() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }

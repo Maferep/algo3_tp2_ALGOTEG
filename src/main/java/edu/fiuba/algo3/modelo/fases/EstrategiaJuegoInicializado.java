@@ -4,10 +4,10 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class EstrategiaJuegoInicializado extends EstrategiaFase {
+public class EstrategiaJuegoInicializado extends EstrategiaFaseCompleta {
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException {
+    public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException {
         return fabrica.crearFaseAtacar();
     }
 

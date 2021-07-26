@@ -4,19 +4,14 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class EstrategiaReagruparSinCompletar extends EstrategiaFase {
+public class EstrategiaReagruparSinCompletar extends EstrategiaFaseSinCompletar {
     @Override
-    public IEstrategiaFase actualizar() {
+    public IEstrategiaFase turnoCompleto(ITurno turno) {
         return new EstrategiaReagruparCompletado();
     }
 
     @Override
     public Boolean faseCompletada() {
         return false;
-    }
-
-    @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException {
-        throw new FaseIncompletaException(null);
     }
 }

@@ -3,13 +3,14 @@ package edu.fiuba.algo3.modelo.Interfaces;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
+import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 
 public interface IEstrategiaFase {
-	public IEstrategiaFase actualizar();
-
 	public Boolean faseCompletada();
 
-	public void siguienteJugador(ITurno turno);
+	public IEstrategiaFase turnoCompleto(ITurno turno);
 
-	public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException;
+	public void siguienteJugador(ITurno turno) throws TurnoException, FaseIncompletaException;
+
+	public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException;
 }

@@ -7,18 +7,19 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class FaseColocar extends FaseAbstracta implements IFaseColocar, ITurno {
+public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     IMapa mapa;
 
-    public FaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException {
+    public FaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException, TurnoException,
+            FaseIncompletaException {
         this.turno = turno;
         this.mapa = mapa;
         this.canje = canje;
         asignarNuevosEjercitosAJugadores();
     }
     
-	private void asignarNuevosEjercitosAJugadores() throws EjercitosException {
+	private void asignarNuevosEjercitosAJugadores() throws EjercitosException, TurnoException, FaseIncompletaException {
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++ ) {
             int cantidadDeSoldados = 
                 Math.max( turno.jugadorActual().cantidadPaises()/2, 3);
@@ -31,7 +32,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar, ITurno {
         turno.jugadorActual().agregarEjercitosAPais(pais, cantEjercitos);
         if(turno.jugadorActual().cantidadEjercitos() == 0)
             //current plyer finished task
-             estrategia = estrategia.actualizar();
+             estrategia = estrategia.turnoCompleto(turno);
     }
 
     // métodos de fase
@@ -41,8 +42,9 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar, ITurno {
     }
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(fabrica);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
+            TurnoException {
+        return estrategia.siguienteFase(turno, fabrica);
     }
 
     @Override
@@ -55,20 +57,15 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar, ITurno {
         return this;
     }
 
-    @Override
     public IJugador jugadorActual() {
         return turno.jugadorActual();
     }
 
-    @Override
-    public void siguienteJugador() {
-        //TODO turno
-        estrategia = estrategia.actualizar();
+    public void siguienteJugador() throws TurnoException, FaseIncompletaException {
+        estrategia.siguienteJugador(turno);
     }
 
-    @Override
     public int cantidadDeJugadores() {
-        // TODO Auto-generated method stub
-        return 0;
+        return turno.cantidadDeJugadores();
     }
 }

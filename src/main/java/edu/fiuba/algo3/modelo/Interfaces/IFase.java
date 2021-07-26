@@ -7,7 +7,7 @@ public interface IFase {
 
 	Boolean faseCompletada();
 
-	IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException;
+	IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException;
 
 	public void siguienteTurno();
 

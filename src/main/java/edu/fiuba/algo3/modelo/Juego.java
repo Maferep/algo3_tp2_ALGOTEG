@@ -58,7 +58,7 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     }
 
     //avanzar fase
-    public void siguienteFase() throws FaseIncompletaException, EjercitosException {
+    public void siguienteFase() throws FaseIncompletaException, EjercitosException, TurnoException {
         faseActual = faseActual.siguienteFase(fabrica);
     }
 

@@ -17,7 +17,7 @@ public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagr
     }
     public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws TransferirEjercitosException {
         unPais.transferirEjercitosA(cantidad, otroPais);
-        estrategia = estrategia.actualizar();
+        estrategia = estrategia.turnoCompleto(turno);
     }
 
     // métodos de fase
@@ -27,8 +27,9 @@ public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagr
     }
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(fabrica);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
+            TurnoException {
+        return estrategia.siguienteFase(turno, fabrica);
     }
 
     @Override

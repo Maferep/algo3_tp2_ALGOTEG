@@ -2,14 +2,9 @@ package edu.fiuba.algo3.modelo.fases;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
 
-public class EstrategiaColocarSinCompletar extends EstrategiaFase {
+public class EstrategiaColocarSinCompletar extends EstrategiaFaseSinCompletar {
     @Override
-    public IEstrategiaFase actualizar() {
+    public IEstrategiaFase turnoCompleto(ITurno turno) {
         return new EstrategiaColocarCompletado();
-    }
-
-    @Override
-    public Boolean faseCompletada() {
-        return false;
     }
 }

@@ -7,4 +7,6 @@ public interface ITurno {
     public void siguienteJugador() ;
 
     public int cantidadDeJugadores() ;
+
+	public boolean esUltimoJugador();
 }

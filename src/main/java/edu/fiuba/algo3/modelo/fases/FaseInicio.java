@@ -63,7 +63,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws FichasInsuficientesError, PaisNoExistenteError,
             EjercitosException {
         turno.jugadorActual().agregarEjercitosAPais(pais, cantEjercitos);
-        estrategia = estrategia.actualizar();
+        estrategia = estrategia.turnoCompleto(turno);
     }
 
     // lógica interna
@@ -80,8 +80,9 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException {
-        return estrategia.siguienteFase(fabrica);
+    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
+            TurnoException {
+        return estrategia.siguienteFase(turno, fabrica);
     }
     
     @Override

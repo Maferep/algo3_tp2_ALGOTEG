@@ -129,7 +129,8 @@ public class FaseColocarTest {
 
     @Test
     public void colocarEjercitosEnPaisNoAfectaOtrosJugadores()
-            throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
+            throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError, TurnoException,
+            FaseIncompletaException {
 
         // setup paises y turno
         List<IPais> paises = Arrays.asList("Bolivia", "Colombia").stream().map(n -> new Pais(n))
@@ -160,7 +161,7 @@ public class FaseColocarTest {
     }
 
     @Test
-    public void test06VerificarCantidadEjercitos() throws EjercitosException {
+    public void test06VerificarCantidadEjercitos() throws EjercitosException, TurnoException, FaseIncompletaException {
         ITurno turno = new TurnoMockUnJugadorPorPais(listaDePaises);
         assertEquals(turno.cantidadDeJugadores(), 4);
         assertEquals(0, turno.jugadorActual().cantidadEjercitos());
@@ -170,7 +171,7 @@ public class FaseColocarTest {
     }
 
     @Test
-    public void test06VerificarFaseCompletada() throws EjercitosException {
+    public void test06VerificarFaseCompletada() throws EjercitosException, TurnoException, FaseIncompletaException {
         ITurno turno = new TurnoMockUnJugadorPorPais(listaDePaises);
 
         FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);
