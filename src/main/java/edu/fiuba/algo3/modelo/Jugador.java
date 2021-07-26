@@ -65,9 +65,11 @@ public class Jugador implements IJugador {
 	}
 
 	//agrega un pais con un ejército nuevo. 
+	//define el conquistador del pais.
 	//No afecta la cantidad de ejércitos por colocar del jugador.
 	public void inicializarPais(IPais pais) {
 		asignarPais(pais);
+		pais.definirConquistador(this);
 		pais.agregarEjercitos(1);
 	}
 

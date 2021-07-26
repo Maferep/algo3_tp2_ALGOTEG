@@ -39,6 +39,8 @@ public class JuegoTest {
         assertNotEquals(null, defensor);
         assertNotEquals(null, atacante);
         assertNotEquals(null, juego.jugadorActual());
+
+        assertNotEquals(null, defensor.obtenerConquistador());
         
         juego.siguienteTurno();
         juego.siguienteTurno();
