@@ -35,7 +35,7 @@ public class ObjetivoTest {
     @Test
     public void test01SuscribirseAUnJugadorQuePierdeSusPaises() 
             throws ObjetivoException, EjercitosException {
-        ITurno turno = new Turno(colores, 2);
+        ITurno turno = new Turno(colores, 2, null);
         //creación de objetivo falla por ser un color inexistente
         assertThrows(
             ObjetivoException.class, 
@@ -50,7 +50,7 @@ public class ObjetivoTest {
     @Test
     public void test02CantarVictoria() 
             throws ObjetivoException, EjercitosException {
-        ITurno turno = new Turno(colores, 2);
+        ITurno turno = new Turno(colores, 2,null);
         ObjetivoDestruirEjercito objetivo 
                         = new ObjetivoDestruirEjercito(turno, "Rojo"  );
         assertNotEquals(null, objetivo);
@@ -71,7 +71,7 @@ public class ObjetivoTest {
     @Test
     public void test03CantarVictoriaConContinentes() 
             throws ObjetivoException, EjercitosException {
-        ITurno turno = new Turno(colores, 2);
+        ITurno turno = new Turno(colores, 2,null);
         ObjetivoConquistarPaisesYContinentes objetivo 
                         = new ObjetivoConquistarPaisesYContinentes(null, paises);
         assertNotEquals(null, objetivo);

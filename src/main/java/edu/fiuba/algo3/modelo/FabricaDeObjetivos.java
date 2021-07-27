@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-//hacer mock? porque testeo con un determinado orden en objetivoTest
 public class FabricaDeObjetivos {
 
     List<IObjetivo> objetivos = new ArrayList<>();
@@ -23,7 +22,6 @@ public class FabricaDeObjetivos {
 
     ITurno turno;
 
-    // raro como se agregan los objetivos. repensar
     public FabricaDeObjetivos(ITurno turno, IMapa mapa) {
         this.turno = turno;
         this.mapa = mapa;

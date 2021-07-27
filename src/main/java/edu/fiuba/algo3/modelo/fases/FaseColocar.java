@@ -11,11 +11,10 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     Boolean finDeJuego = false;
 
-    public FaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException, TurnoException,
-            FaseIncompletaException {
+    public FaseColocar(ITurno turno, IMapa mapa, Mazo mazo) throws EjercitosException, FaseIncompletaException, TurnoException {
         this.turno = turno;
         this.mapa = mapa;
-        this.canje = canje;
+        this.mazo = mazo;
         asignarNuevosEjercitosAJugadores();
     }
 

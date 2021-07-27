@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 import edu.fiuba.algo3.modelo.Interfaces.IFase;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
-import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Interfaces.ITurno;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.fases.FaseInicio;
@@ -17,8 +16,8 @@ public class Turno implements ITurno {
     Mapa mapa = new Mapa();
     int cantidadEjercitos = 8;
 
-    public Turno(List<String> colores, int cantidad) throws EjercitosException {
-        List<IJugador> listaJugadores = construirJugadores(colores, cantidad);
+    public Turno(List<String> colores, int cantidad, Mazo mazo) throws EjercitosException {
+        listaJugadores = construirJugadores(colores, cantidad, mazo);
         this.jugadores.addAll(listaJugadores);
         definirPrimerJugador(listaJugadores.get((int) (Math.random() % listaJugadores.size())));
     }
@@ -46,11 +45,18 @@ public class Turno implements ITurno {
         return new FaseInicio(cantJugadores);
     }
 
-    public List<IJugador> construirJugadores(List<String> colores, int cantidad) throws EjercitosException {
+    public List<IJugador> construirJugadores(List<String> colores, int cantidad, Mazo mazo) throws EjercitosException {
         List<IJugador> jugadores = jugadoresDeColores(colores.subList(0, cantidad));
         mapa.asignarPaises(jugadores);
+        asignarSistemaDeCanje(mazo,jugadores);
         asignarEjercitosAJugadores(jugadores);
         return jugadores;
+    }
+
+    public void asignarSistemaDeCanje(Mazo mazo, List<IJugador> jugadores) {
+        for(int i = 0 ; i < jugadores.size() ; i++) {
+            jugadores.get(i).asignarCanje(mazo);
+        }
     }
 
     private List<IJugador> jugadoresDeColores(List<String> colores) {

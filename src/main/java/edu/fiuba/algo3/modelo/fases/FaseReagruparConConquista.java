@@ -1,20 +1,14 @@
 package edu.fiuba.algo3.modelo.fases;
-
-import java.beans.PropertyChangeEvent;
-import java.util.List;
-
-import edu.fiuba.algo3.modelo.Canje;
+import edu.fiuba.algo3.modelo.Mazo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.ObjetivoManager;
 
 public class FaseReagruparConConquista extends FaseReagrupar {
-
-    public FaseReagruparConConquista(ITurno turno, IMapa paises, Canje canje) {
-        super(turno, paises, canje);
+    public FaseReagruparConConquista(ITurno turno, IMapa paises, Mazo mazo) {
+        super(turno, paises, mazo);
         turno
             .jugadorActual()
             .agregarTarjetaAleatoria(
-                canje.obtenerTarjeta()
+                mazo.obtenerTarjeta()
             );
     }
 }
