@@ -53,4 +53,11 @@ public class FaseAtacar extends FaseAbstracta {
         return this;
     }
 
+    @Override
+    public void siguienteTurno() throws TurnoException, FaseIncompletaException {
+        estrategia.siguienteJugador(turno);
+    }
+
+    
+
 }

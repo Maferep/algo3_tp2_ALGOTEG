@@ -107,5 +107,9 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     @Override
 	public ITurno obtenerTurno() {
 		return turno;
-	}
+    }
+    @Override
+    public void siguienteTurno() throws TurnoException, FaseIncompletaException {
+        estrategia.siguienteJugador(turno);
+    }
 }

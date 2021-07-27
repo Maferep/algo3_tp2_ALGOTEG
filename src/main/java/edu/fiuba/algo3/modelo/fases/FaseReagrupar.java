@@ -45,5 +45,9 @@ public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagr
     public FaseReagrupar obtenerFaseReagrupar() {
         return this;
     }
+    @Override
+    public void siguienteTurno() throws TurnoException, FaseIncompletaException {
+        estrategia.siguienteJugador(turno);
+    }
 
 }

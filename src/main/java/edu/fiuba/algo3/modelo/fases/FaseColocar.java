@@ -76,4 +76,8 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     public int cantidadDeJugadores() {
         return turno.cantidadDeJugadores();
     }
+    @Override
+    public void siguienteTurno() throws TurnoException, FaseIncompletaException {
+        estrategia.siguienteJugador(turno);
+    }
 }

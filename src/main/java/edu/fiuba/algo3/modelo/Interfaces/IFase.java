@@ -9,7 +9,7 @@ public interface IFase {
 
 	IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException;
 
-	public void siguienteTurno();
+	public void siguienteTurno() throws TurnoException, FaseIncompletaException;
 
 	Boolean esFinDeJuego();
 

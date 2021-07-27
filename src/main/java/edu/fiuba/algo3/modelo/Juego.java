@@ -81,7 +81,7 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 		return turno.jugadorActual();
 	}
 
-	public void siguienteTurno() {
+	public void siguienteTurno() throws TurnoException, FaseIncompletaException {
 		faseActual.siguienteTurno();
 		
 	}
