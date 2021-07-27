@@ -14,37 +14,55 @@ import edu.fiuba.algo3.modelo.Mocks.PaisMock;
 
 
 public class JuegoTest {
+    
+    @Test
+    public void test00avanzarFaseAvanzaJugador() throws Exception {
+        int cantidadJugadores = 3;
+        Juego juego = new Juego(cantidadJugadores);
+        IJugador primerJugador = juego.jugadorActual();
+        
+        for(int i = 0; i < cantidadJugadores - 1; i++) {
+            juego.ubicarEjercitosEnPais(3, 
+                juego.jugadorActual().obtenerPaises().get(0));
+            juego.siguienteTurno();
+        }
+        IJugador ultimoJugador = juego.jugadorActual();
+        juego.siguienteFase();
+        assertNotEquals(ultimoJugador, juego.jugadorActual());
+        assertEquals(primerJugador, juego.jugadorActual());
+    }
 
     @Test
-    public void test01avanzarFasesDeJuego() throws FaseErroneaException, Exception {
+    public void test01NoPuedeSeguirTurnoSinAsignarSusEjercitos() throws Exception {
+        int cantidadJugadores = 3;
+        Juego juego = new Juego(cantidadJugadores);
+        IJugador primerJugador = juego.jugadorActual();
+        assertThrows(Exception.class, () -> juego.siguienteTurno());
+    }
+    
+    @Test
+    public void test05JugarBatalla() throws FaseErroneaException, Exception {
         int cantidadJugadores = 3;
 
         Juego juego = new Juego(cantidadJugadores);
-
-        List<IPais> paisesDeUltimo = null;
-
-        paisesDeUltimo = juego.jugadorActual().obtenerPaises();
-        assertNotEquals(0, paisesDeUltimo);
-        juego.ubicarEjercitosEnPais(3, paisesDeUltimo.get(0));
-            
         for(int i = 0; i < cantidadJugadores - 1; i++) {
+            juego.ubicarEjercitosEnPais(3, juego.jugadorActual().obtenerPaises().get(0));
             juego.siguienteTurno();
-            paisesDeUltimo = juego.jugadorActual().obtenerPaises();
-            assertNotEquals(0, paisesDeUltimo);
-            juego.ubicarEjercitosEnPais(3, paisesDeUltimo.get(0));
-            
         }
+        IJugador jugadorAPerder = juego.jugadorActual();
         juego.siguienteFase();
 
         List<IPais> paisesDeJugadorActual = juego.jugadorActual().obtenerPaises();
         assertNotEquals(true, paisesDeJugadorActual.isEmpty());
 
-        IPais defensor = paisesDeUltimo.get(0);
-        IJugador jugadorAPerder = defensor.obtenerConquistador();
+        //obtener un pais arbitrario del último jugador
+        IPais defensor = jugadorAPerder.obtenerPaises().get(0);
 
+        //asignar un pais mock al jugador actual
         IPais atacante = new PaisMock("Siempregania");
         juego.jugadorActual().inicializarPais(atacante);
 
+        //agregamos adyacencia manualmente para test
         defensor.agregarAdyacente(atacante);
         atacante.agregarAdyacente(defensor);
 
@@ -82,8 +100,6 @@ public class JuegoTest {
             juego.ubicarEjercitosEnPais(cantidadDeJugadores, paisesDeUltimo.get(0));
             
         }
-
-
 
         List<IPais> paisesDeJugadorActual = juego.jugadorActual().obtenerPaises();
         IPais pais1 = paisesDeJugadorActual.get(0);
