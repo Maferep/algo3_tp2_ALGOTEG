@@ -36,10 +36,19 @@ public interface IJugador {
 
 	void asignarObjetivo(IObjetivo iObjetivo);
 	
-	public void agregarObjetivoSuscriptor(IObjetivo objetivo) ;
+	public void agregarObjetivoSuscriptor(IObjetivo objetivo);
+
 	void inicializarPais(IPais actual);
 
 	void asignarCanje(Mazo mazo);
 
 	boolean verificarQueExistaPais(IPais iPais) throws PaisNoExistenteError;
+
+	INumeroDeCanje obtenerNumeroDeCanje();
+
+	public void actualizarNumeroDeCanje();
+
+	public Mazo obtenerMazo();
+
+	public List<Tarjeta> obtenerTarjetas();
 }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Simbolo {
@@ -14,21 +15,11 @@ public class Simbolo {
         return simbolo;
     }
 
-    public boolean sonIgualesA(Simbolo simbolo , List<Tarjeta> tarjetas) {
-        for(int i = 0 ; i < tarjetas.size() ; i++) {
-            if(!simbolo.obtenerSimbolo().equals(tarjetas.get(i).obtenerSimbolo().simbolo)) {
-                return false;
-            }
-        }
-        return true;
+    public boolean sonIgualesA(String simbolo, LinkedList<String> simbolos) {
+        return (simbolos.stream().allMatch(j -> j.equals(simbolo)));
     }
 
-    public boolean noSonIgualesA(Simbolo simbolo , List<Tarjeta> tarjetas) {
-        for(int i = 0 ; i < tarjetas.size() ; i++) {
-            if(simbolo.obtenerSimbolo().equals(tarjetas.get(i).obtenerSimbolo().simbolo)) {
-                return false;
-            }
-        }
-        return true;
+    public boolean noSonIgualesA(String simbolo,String otroSimboloDeReferencia, LinkedList<String> simbolos, LinkedList<String> otraListaDeSimbolos ) {
+        return (simbolos.stream().noneMatch(j -> j.equals(simbolo)) && (otraListaDeSimbolos.stream().noneMatch(j -> j.equals(otroSimboloDeReferencia))));
     }
 }

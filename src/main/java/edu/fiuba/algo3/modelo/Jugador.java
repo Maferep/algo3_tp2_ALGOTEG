@@ -19,7 +19,7 @@ public class Jugador implements IJugador {
 	private List<Tarjeta> tarjetas;
 	private int ejercitosPorColocar;
 	public Mazo mazo;
-	int numeroDeCanje = 0;
+	INumeroDeCanje numeroCanje = new PrimerCanje();
 
 	static int minimoPaises = 30;
 
@@ -140,13 +140,22 @@ public class Jugador implements IJugador {
 	public void activarTarjeta(Tarjeta tarjeta, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
 		this.realizarVerificaciones(tarjeta);
 		tarjeta.activarTarjeta(this, tipoDeCanje);
-		this.mazo.insertarAlFondoDelMazo(tarjeta);
-		this.tarjetas.remove(tarjeta);
-		this.actualizarNumeroDeCanje();
+		//this.mazo.insertarAlFondoDelMazo(tarjeta);
+		//this.tarjetas.remove(tarjeta);
 	}
 
 	public void actualizarNumeroDeCanje() {
-		numeroDeCanje++;
+		numeroCanje = numeroCanje.actualizar();
+	}
+
+	public INumeroDeCanje obtenerNumeroDeCanje() { return numeroCanje; }
+
+	public Mazo obtenerMazo() {
+		return mazo;
+	}
+
+	public List<Tarjeta> obtenerTarjetas() {
+		return tarjetas;
 	}
 
 	// verificaciones para los canjes
