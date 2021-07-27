@@ -39,6 +39,24 @@ public class JuegoTest {
         IJugador primerJugador = juego.jugadorActual();
         assertThrows(Exception.class, () -> juego.siguienteTurno());
     }
+
+    @Test
+    public void test04VerificarTurno() throws FaseErroneaException, Exception {
+        int cantidadJugadores = 3;
+
+        Juego juego = new Juego(cantidadJugadores);
+
+        IJugador jugadorActual = juego.jugadorActual();
+
+        for(int i = 0; i < cantidadJugadores - 1; i++) {
+            assertNotEquals(0, juego.jugadorActual().cantidadPaises());
+            juego.ubicarEjercitosEnPais(3, juego.jugadorActual().obtenerPaises().get(0));
+            juego.siguienteTurno();
+        }
+        assertNotEquals(0, juego.jugadorActual().cantidadPaises());
+        juego.ubicarEjercitosEnPais(3, juego.jugadorActual().obtenerPaises().get(0));
+        juego.siguienteFase(); 
+    }
     
     @Test
     public void test05JugarBatalla() throws FaseErroneaException, Exception {
@@ -164,21 +182,5 @@ public class JuegoTest {
         assertEquals(0, jugadorAPerder.cantidadTarjetas());
     }
 
-    @Test
-    public void test04VerificarTurno() throws FaseErroneaException, Exception {
-        int cantidadJugadores = 3;
-
-        Juego juego = new Juego(cantidadJugadores);
-
-        IJugador jugadorActual = juego.jugadorActual();
-
-        for(int i = 0; i < cantidadJugadores - 1; i++) {
-            assertNotEquals(0, juego.jugadorActual().cantidadPaises());
-            juego.ubicarEjercitosEnPais(3, juego.jugadorActual().obtenerPaises().get(0));
-            juego.siguienteTurno();
-        }
-        assertNotEquals(0, juego.jugadorActual().cantidadPaises());
-        juego.ubicarEjercitosEnPais(3, juego.jugadorActual().obtenerPaises().get(0));
-        juego.siguienteFase(); 
-    }
+    
 }
