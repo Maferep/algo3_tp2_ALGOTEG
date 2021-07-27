@@ -28,6 +28,7 @@ public class MazoTest {
         .stream()
         .map(pais -> new Pais(pais))
         .collect(Collectors.toList());
+
     @Test
     public void test01MazoDePaises() {
         Mazo mazo = new Mazo(paises);
@@ -38,14 +39,13 @@ public class MazoTest {
         assertEquals(eeuu, mazo.obtenerTarjeta().obtenerPais());
     }
 
-//<<<<<<< HEAD
     @Test
     public void test02ProbarTarjeta() {
         IPais austria = new PaisMock("Austria");
         Tarjeta tarjeta = new Tarjeta(austria, null);
         assertEquals(tarjeta.obtenerPais(), austria);
     }
-//=======
+
     //Pruebas para 1er tipo de activacion
     @Test
     public void test02SeActivanTarjetas() throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
@@ -123,5 +123,4 @@ public class MazoTest {
 
     //Pruebas para 2do tipo de activacion
 
-//>>>>>>> canjes
 }
