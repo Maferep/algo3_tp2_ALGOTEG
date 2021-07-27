@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.beans.PropertyChangeEvent;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.*;
@@ -9,7 +8,6 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.Mapa;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     ObjetivoManager objetivo;
@@ -27,27 +25,14 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
 
     static int minJugadores = 2;
     static int maxJugadores = 6;
-    static int cantidadEjercitos = 8;
-
-    //para que pasen los test hago una lista de paises random
     List<IPais> paises;
     Mazo mazo;
 
     public FaseInicio(int cantJugadores) throws CantidadDeJugadoresError, EjercitosException, ObjetivoException {
         if (!validarCantidad(cantJugadores)) {
-//<<<<<<< HEAD
-        /*    throw new CantidadDeJugadoresError("El juego tiene un mínimo de "
-                    + minJugadores + " y un máximo de "
-                    + maxJugadores + " jugadores.");
-        turno = new Turno(colores, cantJugadores);
-        fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
-        objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());*/
-        
-//=======
             throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
                     + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
-//>>>>>>> canjes
         }
         mapa = new Mapa();
         paises = mapa.obtenerPaises();
@@ -55,12 +40,12 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         turno = new Turno(colores, cantJugadores, mazo);
         fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
         objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
-        //canje = new Canje(paises);
     }
 
     public ITurno turno() {
         return turno;
     }
+
     //version para mock
     public FaseInicio(IMapa mapa, ITurno turno, Mazo mazo)  {
         this.turno = turno;

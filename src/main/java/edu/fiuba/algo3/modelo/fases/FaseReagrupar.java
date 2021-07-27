@@ -1,8 +1,5 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.beans.PropertyChangeEvent;
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
@@ -10,7 +7,6 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagrupar {
 
     IEstrategiaFase estrategia = new EstrategiaReagruparSinCompletar();
-    //private Canje canje;
     boolean finDeJuego = false;
 
     public FaseReagrupar(ITurno turno, IMapa paises, Mazo mazo) {

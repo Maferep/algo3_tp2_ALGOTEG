@@ -9,15 +9,10 @@ import edu.fiuba.algo3.modelo.fases.*;
 import java.util.List;
 
 public class FabricaDeFases {
-
     ITurno turno;
     IMapa mapa;
-//<<<<<<< HEAD
-  //  Canje canje;
     ObjetivoManager objetivo;
-//=======
     Mazo mazo;
-//>>>>>>> canjes
 
     void definirTurno(ITurno turno) {
         this.turno = turno;

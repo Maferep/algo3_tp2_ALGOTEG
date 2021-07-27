@@ -5,11 +5,9 @@ import java.util.stream.Collectors;
 
 import edu.fiuba.algo3.modelo.Interfaces.IFase;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
-import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Interfaces.ITurno;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.fases.FaseInicio;
-import edu.fiuba.algo3.modelo.Mazo;
 
 public class Turno implements ITurno {
     private LinkedList<IJugador> jugadores = new LinkedList<IJugador>();
@@ -17,14 +15,9 @@ public class Turno implements ITurno {
     private IJugador primero;
     Mapa mapa = new Mapa();
     int cantidadEjercitos = 8;
-/*
-<<<<<<< HEAD
-    public Turno(List<String> colores, int cantidad) throws EjercitosException {
-        List<IJugador> listaJugadores = construirJugadores(colores, cantidad);
-=======*/
+
     public Turno(List<String> colores, int cantidad, Mazo mazo) throws EjercitosException {
         listaJugadores = construirJugadores(colores, cantidad, mazo);
-//>>>>>>> canjes
         this.jugadores.addAll(listaJugadores);
         definirPrimerJugador(listaJugadores.get((int) (Math.random() % listaJugadores.size())));
     }
@@ -54,12 +47,8 @@ public class Turno implements ITurno {
 
     public List<IJugador> construirJugadores(List<String> colores, int cantidad, Mazo mazo) throws EjercitosException {
         List<IJugador> jugadores = jugadoresDeColores(colores.subList(0, cantidad));
-//<<<<<<< HEAD
         mapa.asignarPaises(jugadores);
-//=======
         asignarSistemaDeCanje(mazo,jugadores);
-        //asignarPaisesAleatoriamente(paises, jugadores);
-//>>>>>>> canjes
         asignarEjercitosAJugadores(jugadores);
         return jugadores;
     }
