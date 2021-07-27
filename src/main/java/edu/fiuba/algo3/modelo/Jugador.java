@@ -149,6 +149,8 @@ public class Jugador implements IJugador {
 		numeroDeCanje++;
 	}
 
+	public int obtenerNumeroDeCanje() { return numeroDeCanje; }
+
 	// verificaciones para los canjes
 
 	public void realizarVerificaciones(Tarjeta tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError {

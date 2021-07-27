@@ -263,6 +263,4 @@ public class MazoTest {
             jugador.activarTarjeta(tarjeta, tipoDeCanje);
         });
     }
-
-
 }

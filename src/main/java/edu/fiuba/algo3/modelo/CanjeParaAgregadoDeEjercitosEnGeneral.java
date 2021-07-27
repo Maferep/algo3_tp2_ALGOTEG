@@ -14,12 +14,14 @@ import java.util.List;
 public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
 
     Tarjetas tarjetasNuevas = new Tarjetas();
+    IJugador jugadorActual;
 
     public void activarTarjeta(IJugador jugador, Tarjeta tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
         tarjetasNuevas.agregarTarjeta(tarjeta);
         if(this.verificarPosibilidadDeCanje()) {
             this.realizarCanje(jugador);
         }
+        jugadorActual = jugador;
     }
 
     public boolean verificarPosibilidadDeCanje() throws NoSePuedeProducirCanjeException {
@@ -39,11 +41,16 @@ public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
     }
 
     public int determinarCantidadDeEjercitos() {
-        return 1;
+        int cantDeCanjes = jugadorActual.obtenerNumeroDeCanje();
+        if(cantDeCanjes == 1) {
+            return 4;
+        }
+        else if(cantDeCanjes == 2) {
+            return 7;
+        }
+        else {
+            return ((cantDeCanjes-1) * 5);
+        }
     }
-
-    //Clase canje en Juego
-    //Clase canje tenga un diccionario de jugadores que hicieron canje
-    //Verificacion de cantidad de canjes desde canje
 
 }
