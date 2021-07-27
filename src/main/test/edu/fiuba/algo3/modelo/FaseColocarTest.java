@@ -119,7 +119,7 @@ public class FaseColocarTest {
         // seguir al jugador 2
         fase.siguienteTurno();
 
-        assertEquals(3, turno.jugadorActual().cantidadEjercitos());
+        assertEquals(3, turno.jugadorActual().cantidadEjercitosPorColocar());
         paisesAsia.forEach(paisAsia -> paisAsia.definirConquistador(turno.jugadorActual()));
 
         fase.colocarEjercitosEnPais(cantidadEjercitos, paisesAsia.get(0));
@@ -130,7 +130,7 @@ public class FaseColocarTest {
 
         // seguir al jugador 3
         fase.siguienteTurno();
-        assertEquals(3, turno.jugadorActual().cantidadEjercitos());
+        assertEquals(3, turno.jugadorActual().cantidadEjercitosPorColocar());
 
         IPais paisTercer = listaDePaises.get(2);
         fase.colocarEjercitosEnPais(cantidadEjercitos, paisTercer);
@@ -160,7 +160,7 @@ public class FaseColocarTest {
 
         // verificar cantidad de ejercitos de jugador 1 es 3
         IJugador j1 = turno.jugadorActual();
-        assertEquals(j1.cantidadEjercitos(), 3);
+        assertEquals(j1.cantidadEjercitosPorColocar(), 3);
 
         // jugador 2 ubica sus paises
         turno.siguienteJugador();
@@ -170,17 +170,17 @@ public class FaseColocarTest {
         //la cantidad de ejercitos de jugador 1 es 3
         turno.siguienteJugador();
         assertEquals(j1, turno.jugadorActual());
-        assertEquals(turno.jugadorActual().cantidadEjercitos(), 3);
+        assertEquals(turno.jugadorActual().cantidadEjercitosPorColocar(), 3);
     }
 
     @Test
     public void test06VerificarCantidadEjercitos() throws EjercitosException, TurnoException, FaseIncompletaException {
         ITurno turno = new TurnoMockUnJugadorPorPais(listaDePaises);
         assertEquals(turno.cantidadDeJugadores(), 4);
-        assertEquals(0, turno.jugadorActual().cantidadEjercitos());
+        assertEquals(0, turno.jugadorActual().cantidadEjercitosPorColocar());
 
         FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);
-        assertEquals(3, turno.jugadorActual().cantidadEjercitos());
+        assertEquals(3, turno.jugadorActual().cantidadEjercitosPorColocar());
     }
 
     @Test
@@ -189,5 +189,22 @@ public class FaseColocarTest {
 
         FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);
         assertFalse(fase.faseCompletada());
+    }
+
+    //TODO bug misterioso
+    @Test
+    public void test07siguienteFase() throws EjercitosException, TurnoException, FaseIncompletaException,
+            FichasInsuficientesError, PaisNoExistenteError {
+        assertEquals(4, listaDePaises.size());
+        ITurno turno = new TurnoMockUnJugador(listaDePaises);
+        assertEquals(8, turno.jugadorActual().cantidadEjercitosPorColocar());
+        assertEquals(4, turno.jugadorActual().cantidadPaises());
+        FaseColocar fase = new FaseColocar(turno, new MapaMock(listaDePaises), null);
+
+        // tiene 4 paises, entonces coloca 3 ejércitos
+        assertEquals(3, turno.jugadorActual().cantidadEjercitosPorColocar());
+        fase.colocarEjercitosEnPais(3, listaDePaises.get(0));
+        IFase fase2 = fase.siguienteFase(new FabricaDeFases());
+        assertTrue(fase2 instanceof FaseAtacar);
     }
 }

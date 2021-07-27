@@ -41,8 +41,13 @@ public class Jugador implements IJugador {
 		return this.paises;
 	}
 
-	public int cantidadEjercitos() {
+	public int cantidadEjercitosPorColocar() {
 		return ejercitosPorColocar;
+	}
+
+	@Override
+	public int cantidadPaises() {
+		return paises.size();
 	}
 
 	@Override
@@ -52,6 +57,9 @@ public class Jugador implements IJugador {
 		ejercitosPorColocar += cantidad;
 	}
 
+	/*
+	Resetea ejércitos por colocar y los redefine segun la cantidad de paises.
+	*/
 	@Override
 	public void agregarNuevosEjercitos(int cantidad) throws EjercitosException {
 		this.ejercitosPorColocar = 0;
@@ -68,7 +76,6 @@ public class Jugador implements IJugador {
 	//define el conquistador del pais.
 	//No afecta la cantidad de ejércitos por colocar del jugador.
 	public void inicializarPais(IPais pais) {
-		asignarPais(pais);
 		pais.definirConquistador(this);
 		pais.agregarEjercitos(1);
 	}
@@ -113,7 +120,7 @@ public class Jugador implements IJugador {
 	}
 
 	private void verificarCantidadDeEjercitos(int cantEjercitos) throws FichasInsuficientesError{
-		if(cantEjercitos > this.cantidadEjercitos()) {
+		if(cantEjercitos > this.cantidadEjercitosPorColocar()) {
 			throw new FichasInsuficientesError("No tienes esa cantidad de fichas para colocar en el pais");
 		}
 	}
@@ -155,9 +162,6 @@ public class Jugador implements IJugador {
 		suscriptores.add(suscriptor);
 	}
 
-	@Override
-	public int cantidadPaises() {
-		return paises.size();
-	}
+	
 
 }

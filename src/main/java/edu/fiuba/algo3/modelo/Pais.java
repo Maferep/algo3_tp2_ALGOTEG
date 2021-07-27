@@ -31,7 +31,9 @@ public class Pais implements IPais {
 	public void quitarEjercitos(long cantidadEjercitos) {
 		ejercitos -= cantidadEjercitos;
 	}
-
+	/*
+		Asigna el pais a su conquistador y viceversa.
+	*/
 	public void definirConquistador(IJugador conquistador) {
 		conquistador.asignarPais(this);
 		this.conquistador = conquistador;

@@ -32,7 +32,7 @@ public interface IJugador {
 
 	void quitarEjercitos(int cantidadAQuitar) throws EjercitosException;
 
-	int cantidadEjercitos();
+	int cantidadEjercitosPorColocar();
 
 	void asignarObjetivo(IObjetivo iObjetivo);
 	

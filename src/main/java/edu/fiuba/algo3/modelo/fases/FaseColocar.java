@@ -22,7 +22,12 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     public ITurno turno() {
         return turno;
     }
-    
+    /*
+        Agrega ejércitos a todos los jugadores en el turno de acuerdo con
+        la regla de "la mitad de sus paises, excepto si tiene menos de 6,
+        en cual caso recibe 3. No verifica la cantidad de ejércitos que
+        tenían." 
+    */ 
 	private void asignarNuevosEjercitosAJugadores() throws EjercitosException, TurnoException, FaseIncompletaException {
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++ ) {
             int cantidadDeSoldados = 
@@ -34,7 +39,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
 
     public void colocarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
         turno.jugadorActual().agregarEjercitosAPais(pais, cantEjercitos);
-        if(turno.jugadorActual().cantidadEjercitos() == 0)
+        if(turno.jugadorActual().cantidadEjercitosPorColocar() == 0)
             //current plyer finished task
              estrategia = estrategia.turnoCompleto(turno);
     }
