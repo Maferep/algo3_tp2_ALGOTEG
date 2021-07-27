@@ -24,6 +24,10 @@ public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
         jugadorActual = jugador;
     }
 
+    public Tarjetas tarjetasNuevas() {
+        return tarjetasNuevas;
+    }
+
     public boolean verificarPosibilidadDeCanje() throws NoSePuedeProducirCanjeException {
         if(tarjetasNuevas.existeCantidadValidaDeTarjetas()) {
             return verificarIgualdad(tarjetasNuevas.tarjetas);
@@ -37,20 +41,16 @@ public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
 
     public void realizarCanje(IJugador jugador) throws EjercitosException {
         jugador.agregarNuevosEjercitos(determinarCantidadDeEjercitos());
+        for(int i = 0 ; i < tarjetasNuevas.tarjetas.size() ; i++) {
+            jugador.obtenerMazo().insertarAlFondoDelMazo(tarjetasNuevas.tarjetas.get(i));
+            jugador.obtenerTarjetas().remove(tarjetasNuevas.tarjetas.get(i));
+        }
         tarjetasNuevas.usarTarjetas();
+        jugador.actualizarNumeroDeCanje();
     }
 
     public int determinarCantidadDeEjercitos() {
-        int cantDeCanjes = jugadorActual.obtenerNumeroDeCanje();
-        if(cantDeCanjes == 1) {
-            return 4;
-        }
-        else if(cantDeCanjes == 2) {
-            return 7;
-        }
-        else {
-            return ((cantDeCanjes-1) * 5);
-        }
+        return jugadorActual.obtenerNumeroDeCanje().cantidadDeSoldadosParaCanjear();
     }
 
 }

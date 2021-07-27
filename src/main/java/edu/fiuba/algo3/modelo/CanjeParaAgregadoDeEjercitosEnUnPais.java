@@ -9,7 +9,13 @@ public class CanjeParaAgregadoDeEjercitosEnUnPais implements ICanje {
         for(int i = 0 ; i < jugador.obtenerPaises().size() ; i++) {
             if(jugador.obtenerPaises().get(i).obtenerNombre().equals(tarjeta.obtenerPais().obtenerNombre())) {
                 jugador.obtenerPaises().get(i).agregarEjercitos(ejercitosParaAgregarPorCanje);
+                jugador.obtenerMazo().insertarAlFondoDelMazo(tarjeta);
+                jugador.obtenerTarjetas().remove(tarjeta);
             }
         }
+    }
+
+    public Tarjetas tarjetasNuevas() {
+        return null;
     }
 }

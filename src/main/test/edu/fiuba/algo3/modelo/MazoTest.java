@@ -263,4 +263,155 @@ public class MazoTest {
             jugador.activarTarjeta(tarjeta, tipoDeCanje);
         });
     }
+
+    @Test
+    public void test11JugadorPasaAlSegundoNumeroDeCanje() throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
+        Jugador jugador = new Jugador("Rosa");
+        jugador.asignarCanje(new Mazo(paises));
+
+        Pais pais = new Pais("Estados Unidos");
+        Simbolo simbolo = new Simbolo("Barco");
+
+        Pais paisDos = new Pais("Argentina");
+        Simbolo simboloDos = new Simbolo("Barco");
+
+        Pais paisTres = new Pais("Uruguay");
+        Simbolo simboloTres = new Simbolo("Barco");
+
+        jugador.asignarPais(pais);
+        jugador.asignarPais(paisDos);
+        jugador.asignarPais(paisTres);
+
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+
+        Tarjeta tarjeta = new Tarjeta(pais, simbolo);
+        jugador.agregarTarjetaAleatoria(tarjeta);
+
+        Tarjeta tarjetaDos = new Tarjeta(paisDos, simboloDos);
+        jugador.agregarTarjetaAleatoria(tarjetaDos);
+
+        Tarjeta tarjetaTres = new Tarjeta(paisTres, simboloTres);
+        jugador.agregarTarjetaAleatoria(tarjetaTres);
+
+        jugador.activarTarjeta(tarjeta, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaDos, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaTres, tipoDeCanje);
+
+        //Ya realizo un canje, por lo tanto ahora esta en el segundo canje (no lo realizo aun).
+        assertEquals(jugador.numeroCanje.cantidadDeSoldadosParaCanjear(), 7);
+    }
+
+    @Test
+    public void test12JugadorPasaAlTercerNumeroDeCanje() throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
+        Jugador jugador = new Jugador("Rosa");
+        jugador.asignarCanje(new Mazo(paises));
+
+        Pais pais = new Pais("Estados Unidos");
+        Simbolo simbolo = new Simbolo("Barco");
+
+        Pais paisDos = new Pais("Argentina");
+        Simbolo simboloDos = new Simbolo("Barco");
+
+        Pais paisTres = new Pais("Uruguay");
+        Simbolo simboloTres = new Simbolo("Barco");
+
+        jugador.asignarPais(pais);
+        jugador.asignarPais(paisDos);
+        jugador.asignarPais(paisTres);
+
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+
+        Tarjeta tarjeta = new Tarjeta(pais, simbolo);
+        jugador.agregarTarjetaAleatoria(tarjeta);
+
+        Tarjeta tarjetaDos = new Tarjeta(paisDos, simboloDos);
+        jugador.agregarTarjetaAleatoria(tarjetaDos);
+
+        Tarjeta tarjetaTres = new Tarjeta(paisTres, simboloTres);
+        jugador.agregarTarjetaAleatoria(tarjetaTres);
+
+        jugador.activarTarjeta(tarjeta, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaDos, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaTres, tipoDeCanje);
+
+        //Ya realizo un canje, por lo tanto ahora esta en el segundo canje (no lo realizo aun).
+        assertEquals(jugador.numeroCanje.cantidadDeSoldadosParaCanjear(), 7);
+
+        jugador.agregarTarjetaAleatoria(tarjeta);
+        jugador.agregarTarjetaAleatoria(tarjetaDos);
+        jugador.agregarTarjetaAleatoria(tarjetaTres);
+
+        jugador.activarTarjeta(tarjeta, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaDos, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaTres, tipoDeCanje);
+
+        //Ya realizo dos canjes, por lo tanto ahora esta en el tercer canje (no lo realizo aun).
+        assertEquals(jugador.numeroCanje.cantidadDeSoldadosParaCanjear(), 10);
+    }
+
+    @Test
+    public void test13JugadorPasaAlCuartoNumeroDeCanje() throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
+        Jugador jugador = new Jugador("Rosa");
+        jugador.asignarCanje(new Mazo(paises));
+
+        Pais pais = new Pais("Estados Unidos");
+        Simbolo simbolo = new Simbolo("Barco");
+
+        Pais paisDos = new Pais("Argentina");
+        Simbolo simboloDos = new Simbolo("Estrella");
+
+        Pais paisTres = new Pais("Uruguay");
+        Simbolo simboloTres = new Simbolo("Velero");
+
+        jugador.asignarPais(pais);
+        jugador.asignarPais(paisDos);
+        jugador.asignarPais(paisTres);
+
+        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+
+        Tarjeta tarjeta = new Tarjeta(pais, simbolo);
+        jugador.agregarTarjetaAleatoria(tarjeta);
+
+        Tarjeta tarjetaDos = new Tarjeta(paisDos, simboloDos);
+        jugador.agregarTarjetaAleatoria(tarjetaDos);
+
+        Tarjeta tarjetaTres = new Tarjeta(paisTres, simboloTres);
+        jugador.agregarTarjetaAleatoria(tarjetaTres);
+
+        //No realizo ningun canje, por default tiene 4 jugadores para canjear si realiza uno.
+        assertEquals(jugador.numeroCanje.cantidadDeSoldadosParaCanjear(), 4);
+
+        jugador.activarTarjeta(tarjeta, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaDos, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaTres, tipoDeCanje);
+
+        //Ya realizo un canje, por lo tanto ahora esta en el segundo canje (no lo realizo aun).
+        assertEquals(jugador.numeroCanje.cantidadDeSoldadosParaCanjear(), 7);
+        assertEquals(tipoDeCanje.tarjetasNuevas().tarjetas.size(), 0);
+
+        jugador.agregarTarjetaAleatoria(tarjeta);
+        jugador.agregarTarjetaAleatoria(tarjetaDos);
+        jugador.agregarTarjetaAleatoria(tarjetaTres);
+
+        jugador.activarTarjeta(tarjeta, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaDos, tipoDeCanje);
+
+        assertEquals(tipoDeCanje.tarjetasNuevas().tarjetas.size(), 2);
+
+        jugador.activarTarjeta(tarjetaTres, tipoDeCanje);
+
+        //Ya realizo dos canjes, por lo tanto ahora esta en el tercer canje (no lo realizo aun).
+        assertEquals(jugador.obtenerNumeroDeCanje().cantidadDeSoldadosParaCanjear(), 10);
+
+        jugador.agregarTarjetaAleatoria(tarjeta);
+        jugador.agregarTarjetaAleatoria(tarjetaDos);
+        jugador.agregarTarjetaAleatoria(tarjetaTres);
+
+        jugador.activarTarjeta(tarjeta, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaDos, tipoDeCanje);
+        jugador.activarTarjeta(tarjetaTres, tipoDeCanje);
+
+        //Ya realizo tres canjes, por lo tanto ahora esta en el cuarto canje (no lo realizo aun).
+        assertEquals(jugador.obtenerNumeroDeCanje().cantidadDeSoldadosParaCanjear(), 15);
+    }
 }

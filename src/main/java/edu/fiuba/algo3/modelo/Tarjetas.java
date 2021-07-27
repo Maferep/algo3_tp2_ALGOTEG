@@ -20,12 +20,23 @@ public class Tarjetas {
     public boolean verificarIgualdad(LinkedList<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException {
         String simboloDeReferencia = tarjetas.peekFirst().obtenerSimbolo().obtenerSimbolo();
         String otroSimboloDeReferencia = tarjetas.peekLast().obtenerSimbolo().obtenerSimbolo();
-        if(tarjetas.peekFirst().obtenerSimbolo().sonIgualesA(simboloDeReferencia, simbolos)) { return true; }
+        if(tarjetas.peekFirst().obtenerSimbolo().sonIgualesA(simboloDeReferencia, simbolos)) {
+            limpiarListas();
+            return true;
+        }
         simbolos.removeFirst();
         otraListaDeSimbolos.removeLast();
-        if(tarjetas.peekFirst().obtenerSimbolo().noSonIgualesA(simboloDeReferencia, otroSimboloDeReferencia, simbolos, otraListaDeSimbolos)) { return true; }
+        if(tarjetas.peekFirst().obtenerSimbolo().noSonIgualesA(simboloDeReferencia, otroSimboloDeReferencia, simbolos, otraListaDeSimbolos)) {
+            limpiarListas();
+            return true;
+        }
         throw new NoSePuedeProducirCanjeException("No se puede producir el canje ya que no existen " +
                 "tarjetas con simbolos o todos diferentes o todos iguales");
+    }
+
+    public void limpiarListas() {
+        simbolos.clear();
+        otraListaDeSimbolos.clear();
     }
 
     public void usarTarjetas() {

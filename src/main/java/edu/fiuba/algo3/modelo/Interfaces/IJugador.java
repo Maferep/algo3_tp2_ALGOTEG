@@ -44,5 +44,11 @@ public interface IJugador {
 
 	boolean verificarQueExistaPais(IPais iPais) throws PaisNoExistenteError;
 
-	int obtenerNumeroDeCanje();
+	INumeroDeCanje obtenerNumeroDeCanje();
+
+	public void actualizarNumeroDeCanje();
+
+	public Mazo obtenerMazo();
+
+	public List<Tarjeta> obtenerTarjetas();
 }
