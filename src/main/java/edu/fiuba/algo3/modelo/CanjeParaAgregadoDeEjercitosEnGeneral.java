@@ -24,10 +24,6 @@ public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
         jugadorActual = jugador;
     }
 
-    public Tarjetas tarjetasNuevas() {
-        return tarjetasNuevas;
-    }
-
     public boolean verificarPosibilidadDeCanje() throws NoSePuedeProducirCanjeException {
         if(tarjetasNuevas.existeCantidadValidaDeTarjetas()) {
             return verificarIgualdad(tarjetasNuevas.tarjetas);

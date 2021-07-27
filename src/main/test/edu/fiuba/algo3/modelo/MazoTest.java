@@ -387,7 +387,6 @@ public class MazoTest {
 
         //Ya realizo un canje, por lo tanto ahora esta en el segundo canje (no lo realizo aun).
         assertEquals(jugador.numeroCanje.cantidadDeSoldadosParaCanjear(), 7);
-        assertEquals(tipoDeCanje.tarjetasNuevas().tarjetas.size(), 0);
 
         jugador.agregarTarjetaAleatoria(tarjeta);
         jugador.agregarTarjetaAleatoria(tarjetaDos);
@@ -395,9 +394,6 @@ public class MazoTest {
 
         jugador.activarTarjeta(tarjeta, tipoDeCanje);
         jugador.activarTarjeta(tarjetaDos, tipoDeCanje);
-
-        assertEquals(tipoDeCanje.tarjetasNuevas().tarjetas.size(), 2);
-
         jugador.activarTarjeta(tarjetaTres, tipoDeCanje);
 
         //Ya realizo dos canjes, por lo tanto ahora esta en el tercer canje (no lo realizo aun).
