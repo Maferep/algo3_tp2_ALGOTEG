@@ -10,12 +10,16 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     Boolean finDeJuego = false;
-
+/*
+<<<<<<< HEAD
     public FaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException, TurnoException,
             FaseIncompletaException {
+=======*/
+    public FaseColocar(ITurno turno, IMapa mapa, Mazo mazo) throws EjercitosException, FaseIncompletaException, TurnoException {
+//>>>>>>> canjes
         this.turno = turno;
         this.mapa = mapa;
-        this.canje = canje;
+        this.mazo = mazo;
         asignarNuevosEjercitosAJugadores();
     }
 

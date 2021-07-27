@@ -4,12 +4,13 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import java.util.*;
 import java.util.stream.*;
 
-public class Canje {
+public class Mazo {
+
     LinkedList<Tarjeta> mazo = new LinkedList<Tarjeta>();
-    public Canje(List<IPais> paises) {
+    public Mazo(List<IPais> paises) {
         mazo.addAll(
             paises.stream()
-                .map(p -> new Tarjeta(p))
+                .map(p -> new Tarjeta(p,null))
                 .collect(Collectors.toList())
         );
     }
@@ -20,4 +21,5 @@ public class Canje {
     public void insertarAlFondoDelMazo(Tarjeta tarjeta) {
         mazo.add(tarjeta);
     }
+
 }

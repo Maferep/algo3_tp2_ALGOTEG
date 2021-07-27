@@ -6,6 +6,7 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.Mapa;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -30,29 +31,41 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
 
     //para que pasen los test hago una lista de paises random
     List<IPais> paises;
+    Mazo mazo;
 
     public FaseInicio(int cantJugadores) throws CantidadDeJugadoresError, EjercitosException, ObjetivoException {
-        if (!validarCantidad(cantJugadores))
-            throw new CantidadDeJugadoresError("El juego tiene un mínimo de "
+        if (!validarCantidad(cantJugadores)) {
+//<<<<<<< HEAD
+        /*    throw new CantidadDeJugadoresError("El juego tiene un mínimo de "
                     + minJugadores + " y un máximo de "
                     + maxJugadores + " jugadores.");
         turno = new Turno(colores, cantJugadores);
         fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
-        objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
+        objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());*/
         
+//=======
+            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
+                    + minJugadores + "y un máximo de"
+                    + maxJugadores + "jugadores.");
+//>>>>>>> canjes
+        }
         mapa = new Mapa();
         paises = mapa.obtenerPaises();
-        canje = new Canje(paises);
+        mazo = new Mazo(paises);
+        turno = new Turno(colores, cantJugadores, mazo);
+        fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
+        objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
+        //canje = new Canje(paises);
     }
 
     public ITurno turno() {
         return turno;
     }
     //version para mock
-    public FaseInicio(IMapa mapa, ITurno turno, Canje canje)  {
+    public FaseInicio(IMapa mapa, ITurno turno, Mazo mazo)  {
         this.turno = turno;
         this.mapa = mapa;
-        this.canje = canje;
+        this.mazo = mazo;
     }
 
     // interfaz de inicio
@@ -97,8 +110,8 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     @Override
-	public Canje obtenerCanje() {
-		return canje;
+	public Mazo obtenerCanje() {
+		return mazo;
 	}
 
     @Override

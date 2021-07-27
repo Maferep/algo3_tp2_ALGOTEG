@@ -18,7 +18,7 @@ public interface IJugador {
 
 	void inicializarEjercitos(int cantidadEjercitos) throws EjercitosException;
 
-	void agregarTarjetaAleatoria(Tarjeta obtenerTarjeta);
+	public void agregarTarjetaAleatoria(Tarjeta tarjeta);
 
 	int cantidadTarjetas();
 
@@ -38,4 +38,8 @@ public interface IJugador {
 	
 	public void agregarObjetivoSuscriptor(IObjetivo objetivo) ;
 	void inicializarPais(IPais actual);
+
+	void asignarCanje(Mazo mazo);
+
+	boolean verificarQueExistaPais(IPais iPais) throws PaisNoExistenteError;
 }
