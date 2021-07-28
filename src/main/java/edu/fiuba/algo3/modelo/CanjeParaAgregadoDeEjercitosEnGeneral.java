@@ -12,29 +12,25 @@ import java.util.LinkedList;
 public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
 
     Tarjetas tarjetasNuevas = new Tarjetas();
-    IJugador jugadorActual;
 
     public void activarTarjeta(IJugador jugador, Tarjeta tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
         tarjetasNuevas.agregarTarjeta(tarjeta);
-        if(this.verificarPosibilidadDeCanje()) {
-            this.realizarCanje(jugador);
-        }
-        jugadorActual = jugador;
+        this.verificarPosibilidadDeCanje();
+        this.realizarCanje(jugador);
     }
 
-    public boolean verificarPosibilidadDeCanje() throws NoSePuedeProducirCanjeException {
-        if(tarjetasNuevas.existeCantidadValidaDeTarjetas()) {
-            return verificarIgualdad(tarjetasNuevas.tarjetas);
-        }
-        return false;
+    private void verificarPosibilidadDeCanje() throws NoSePuedeProducirCanjeException {
+        if(!tarjetasNuevas.existeCantidadValidaDeTarjetas() 
+            || !verificarIgualdad(tarjetasNuevas.tarjetas)) 
+            throw new NoSePuedeProducirCanjeException(null);
     }
 
-    public boolean verificarIgualdad(LinkedList<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException {
+    private boolean verificarIgualdad(LinkedList<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException {
         return tarjetasNuevas.verificarIgualdad(tarjetas);
     }
 
-    public void realizarCanje(IJugador jugador) throws EjercitosException {
-        jugador.agregarNuevosEjercitos(determinarCantidadDeEjercitos());
+    private void realizarCanje(IJugador jugador) throws EjercitosException {
+        jugador.agregarNuevosEjercitos(determinarCantidadDeEjercitos(jugador));
         for(int i = 0 ; i < tarjetasNuevas.tarjetas.size() ; i++) {
             jugador.obtenerMazo().insertarAlFondoDelMazo(tarjetasNuevas.tarjetas.get(i));
             jugador.obtenerTarjetas().remove(tarjetasNuevas.tarjetas.get(i));
@@ -43,7 +39,7 @@ public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
         jugador.actualizarNumeroDeCanje();
     }
 
-    public int determinarCantidadDeEjercitos() {
+    private int determinarCantidadDeEjercitos(IJugador jugadorActual) {
         return jugadorActual.obtenerNumeroDeCanje().cantidadDeSoldadosParaCanjear();
     }
 
