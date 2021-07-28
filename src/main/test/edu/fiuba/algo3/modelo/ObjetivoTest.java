@@ -35,10 +35,7 @@ public class ObjetivoTest {
         assertThrows(
             ObjetivoException.class, 
             () ->
-                {
-                    ObjetivoDestruirEjercito objetivo 
-                        = new ObjetivoDestruirEjercito(turno, "Amarillo");
-                }
+                    new ObjetivoDestruirEjercito(turno, "Amarillo")
             );
     }
 
