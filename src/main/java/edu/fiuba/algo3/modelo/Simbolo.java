@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class Simbolo {
@@ -15,11 +14,11 @@ public class Simbolo {
         return simbolo;
     }
 
-    public boolean sonIgualesA(String simbolo, LinkedList<String> simbolos) {
+    public boolean sonIgualesA(String simbolo, List<String> simbolos) {
         return (simbolos.stream().allMatch(j -> j.equals(simbolo)));
     }
 
-    public boolean noSonIgualesA(String simbolo,String otroSimboloDeReferencia, LinkedList<String> simbolos, LinkedList<String> otraListaDeSimbolos ) {
+    public boolean noSonIgualesA(String simbolo,String otroSimboloDeReferencia, List<String> simbolos, List<String> otraListaDeSimbolos ) {
         return (simbolos.stream().noneMatch(j -> j.equals(simbolo)) && (otraListaDeSimbolos.stream().noneMatch(j -> j.equals(otroSimboloDeReferencia))));
     }
 }

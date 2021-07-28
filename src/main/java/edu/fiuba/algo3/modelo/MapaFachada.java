@@ -36,6 +36,7 @@ public class MapaFachada {
         }
     }
 
+    //TODO corregir advertencia!
     private void parsearPaises(JSONArray paises) {
         paises.forEach(pais ->
                 paisesDict.put(

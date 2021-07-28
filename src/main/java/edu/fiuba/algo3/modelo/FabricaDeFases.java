@@ -6,8 +6,6 @@ import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.modelo.fases.*;
 
-import java.util.List;
-
 public class FabricaDeFases {
     ITurno turno;
     IMapa mapa;

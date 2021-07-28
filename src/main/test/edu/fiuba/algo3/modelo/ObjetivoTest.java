@@ -2,11 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Interfaces.ITurno;
-import edu.fiuba.algo3.modelo.Mocks.PaisMock;
-import edu.fiuba.algo3.modelo.Mocks.TurnoMock;
-import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
-import edu.fiuba.algo3.modelo.excepciones.ObjetivoException;
-import edu.fiuba.algo3.modelo.fases.FaseAtacar;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -16,7 +12,6 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

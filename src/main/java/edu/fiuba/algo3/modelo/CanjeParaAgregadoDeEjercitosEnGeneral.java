@@ -7,9 +7,7 @@ import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaException;
 import edu.fiuba.algo3.modelo.excepciones.NoSePuedeProducirCanjeException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
 

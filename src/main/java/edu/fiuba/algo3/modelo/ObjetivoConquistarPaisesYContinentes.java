@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.excepciones.ObjetivoException;
 
 import java.beans.PropertyChangeEvent;
 import java.util.List;
@@ -28,6 +27,7 @@ public class ObjetivoConquistarPaisesYContinentes implements IObjetivo {
         Collection<?> paises = ((Collection<?>)(evento.getNewValue()));
 
         if(paises.containsAll(paisesAConquistar))
+            //TODO sistema para enviar mensaje al duenio
             completado = true;
             
     }
