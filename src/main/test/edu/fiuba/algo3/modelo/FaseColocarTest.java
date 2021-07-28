@@ -180,7 +180,7 @@ public class FaseColocarTest {
         assertEquals(0, turno.jugadorActual().cantidadEjercitosPorColocar());
 
         FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);
-        assertEquals(3, turno.jugadorActual().cantidadEjercitosPorColocar());
+        assertEquals(3, fase.jugadorActual().cantidadEjercitosPorColocar());
     }
 
     @Test
