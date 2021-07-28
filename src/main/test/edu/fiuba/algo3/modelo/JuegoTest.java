@@ -36,74 +36,32 @@ public class JuegoTest {
     public void test01NoPuedeSeguirTurnoSinAsignarSusEjercitos() throws Exception {
         int cantidadJugadores = 3;
         Juego juego = new Juego(cantidadJugadores);
-        IJugador primerJugador = juego.jugadorActual();
         assertThrows(Exception.class, () -> juego.siguienteTurno());
     }
 
     @Test
-    public void test04VerificarTurno() throws FaseErroneaException, Exception {
+    public void test02VerificarTurno() throws FaseErroneaException, Exception {
         int cantidadJugadores = 3;
 
         Juego juego = new Juego(cantidadJugadores);
 
-        IJugador jugadorActual = juego.jugadorActual();
-
         for(int i = 0; i < cantidadJugadores - 1; i++) {
-            assertNotEquals(0, juego.jugadorActual().cantidadPaises());
             juego.ubicarEjercitosEnPais(3, juego.jugadorActual().obtenerPaises().get(0));
             juego.siguienteTurno();
         }
-        assertNotEquals(0, juego.jugadorActual().cantidadPaises());
         juego.ubicarEjercitosEnPais(3, juego.jugadorActual().obtenerPaises().get(0));
+
+        //ultimo jugador no puede avanzar al siguiente turno
+        assertThrows(TurnoException.class, () -> {
+            juego.siguienteTurno();
+        });
         juego.siguienteFase(); 
     }
     
-    @Test
-    public void test05JugarBatalla() throws FaseErroneaException, Exception {
-        int cantidadJugadores = 3;
-
-        Juego juego = new Juego(cantidadJugadores);
-        for(int i = 0; i < cantidadJugadores - 1; i++) {
-            juego.ubicarEjercitosEnPais(3, juego.jugadorActual().obtenerPaises().get(0));
-            juego.siguienteTurno();
-        }
-        IJugador jugadorAPerder = juego.jugadorActual();
-        juego.siguienteFase();
-
-        List<IPais> paisesDeJugadorActual = juego.jugadorActual().obtenerPaises();
-        assertNotEquals(true, paisesDeJugadorActual.isEmpty());
-
-        //obtener un pais arbitrario del último jugador
-        IPais defensor = jugadorAPerder.obtenerPaises().get(0);
-
-        //asignar un pais mock al jugador actual
-        IPais atacante = new PaisMock("Siempregania");
-        juego.jugadorActual().inicializarPais(atacante);
-
-        //agregamos adyacencia manualmente para test
-        defensor.agregarAdyacente(atacante);
-        atacante.agregarAdyacente(defensor);
-
-        assertNotEquals(null, defensor);
-        assertNotEquals(null, atacante);
-        assertNotEquals(null, juego.jugadorActual());
-
-        assertNotEquals(null, defensor.obtenerConquistador());
-
-        assertEquals(atacante.obtenerConquistador(), juego.jugadorActual());
-        juego.atacar(atacante, 1, defensor);
-
-        juego.siguienteTurno();
-        juego.siguienteTurno();
-        juego.siguienteFase();
-
-        //como siempregania siempre gana, el jugador obtiene una tarjeta
-        assertEquals(1, juego.jugadorActual().cantidadTarjetas());
-        assertEquals(0, jugadorAPerder.cantidadTarjetas());
-    }
+    
 
     @Test
-    public void test02TransferirEjercitos() throws FaseErroneaException, Exception {
+    public void test03TransferirEjercitos() throws FaseErroneaException, Exception {
         int cantidadDeJugadores = 3;
         int cantidadDeEjercitos = 3;
         Juego juego = new Juego(cantidadDeJugadores);
@@ -134,7 +92,7 @@ public class JuegoTest {
     }
     
     @Test
-    public void test03JugadorObtieneTarjetaAlGanar() throws FaseErroneaException, Exception {
+    public void test04JugadorObtieneTarjetaAlGanar() throws FaseErroneaException, Exception {
         int cantidadJugadores = 3;
 
         Juego juego = new Juego(cantidadJugadores);
