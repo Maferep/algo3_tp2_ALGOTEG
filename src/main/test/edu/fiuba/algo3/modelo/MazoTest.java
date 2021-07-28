@@ -55,7 +55,7 @@ public class MazoTest {
         Simbolo simbolo = new Simbolo("Barco");
         jugador.asignarPais(pais);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais();
+        ICanje tipoDeCanje = new CanjePais();
 
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
@@ -73,7 +73,7 @@ public class MazoTest {
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais();
+        ICanje tipoDeCanje = new CanjePais();
 
         assertThrows(PaisNoExistenteError.class, () -> {
             jugador.activarTarjeta(tarjeta, tipoDeCanje);
@@ -93,7 +93,7 @@ public class MazoTest {
 
         Tarjeta tarjeta = new Tarjeta(otroPais, simbolo);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais();
+        ICanje tipoDeCanje = new CanjePais();
 
         assertThrows(NoExisteTarjetaException.class, () -> {
             jugador.activarTarjeta(tarjeta, tipoDeCanje);
@@ -112,7 +112,7 @@ public class MazoTest {
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnUnPais();
+        ICanje tipoDeCanje = new CanjePais();
 
         jugador.activarTarjeta(tarjeta, tipoDeCanje);
 
@@ -141,7 +141,7 @@ public class MazoTest {
         jugador.asignarPais(paisDos);
         jugador.asignarPais(paisTres);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+        ICanje tipoDeCanje = new CanjeSimbolos();
 
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
@@ -175,7 +175,7 @@ public class MazoTest {
         jugador.asignarPais(paisDos);
         jugador.asignarPais(paisTres);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+        ICanje tipoDeCanje = new CanjeSimbolos();
 
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
@@ -209,7 +209,7 @@ public class MazoTest {
         jugador.asignarPais(paisDos);
         jugador.asignarPais(paisTres);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+        ICanje tipoDeCanje = new CanjeSimbolos();
 
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
@@ -239,7 +239,7 @@ public class MazoTest {
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+        ICanje tipoDeCanje = new CanjeSimbolos();
 
         assertThrows(PaisNoExistenteError.class, () -> {
             jugador.activarTarjeta(tarjeta, tipoDeCanje);
@@ -257,7 +257,7 @@ public class MazoTest {
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+        ICanje tipoDeCanje = new CanjeSimbolos();
 
         assertThrows(PaisNoExistenteError.class, () -> {
             jugador.activarTarjeta(tarjeta, tipoDeCanje);
@@ -282,7 +282,7 @@ public class MazoTest {
         jugador.asignarPais(paisDos);
         jugador.asignarPais(paisTres);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+        ICanje tipoDeCanje = new CanjeSimbolos();
 
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
@@ -319,7 +319,7 @@ public class MazoTest {
         jugador.asignarPais(paisDos);
         jugador.asignarPais(paisTres);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+        ICanje tipoDeCanje = new CanjeSimbolos();
 
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);
@@ -367,7 +367,7 @@ public class MazoTest {
         jugador.asignarPais(paisDos);
         jugador.asignarPais(paisTres);
 
-        ICanje tipoDeCanje = new CanjeParaAgregadoDeEjercitosEnGeneral();
+        ICanje tipoDeCanje = new CanjeSimbolos();
 
         Tarjeta tarjeta = new Tarjeta(pais, simbolo);
         jugador.agregarTarjetaAleatoria(tarjeta);

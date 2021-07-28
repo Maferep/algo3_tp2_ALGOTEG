@@ -9,7 +9,7 @@ import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
 
 import java.util.LinkedList;
 
-public class CanjeParaAgregadoDeEjercitosEnGeneral implements ICanje {
+public class CanjeSimbolos implements ICanje {
 
     Tarjetas tarjetasNuevas = new Tarjetas();
 

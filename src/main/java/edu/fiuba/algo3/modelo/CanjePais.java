@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 
-public class CanjeParaAgregadoDeEjercitosEnUnPais implements ICanje {
+public class CanjePais implements ICanje {
 
     static int ejercitosParaAgregarPorCanje = 2;
 
