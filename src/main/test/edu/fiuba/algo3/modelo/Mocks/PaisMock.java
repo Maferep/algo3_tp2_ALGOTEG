@@ -72,6 +72,11 @@ public class PaisMock implements IPais {
     public void transferirEjercitosA(int cantidad, IPais otroPais) throws TransferirEjercitosException {
     }
 
+    @Override
+    public Boolean esAdyacenteA(IPais otroPais) {
+        return true;
+    }
+
     
     
 }

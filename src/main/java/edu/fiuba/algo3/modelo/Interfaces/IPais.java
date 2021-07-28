@@ -14,6 +14,8 @@ public interface IPais {
 
 	void agregarAdyacente(IPais iPais);
 
+	Boolean esAdyacenteA(IPais otroPais);
+
 	void quitarEjercitos(long cantDerrotas);
 
 	void conquistar(IPais defensor);

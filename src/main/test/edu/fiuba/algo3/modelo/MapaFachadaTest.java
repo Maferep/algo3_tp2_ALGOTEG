@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
-import edu.fiuba.algo3.modelo.MapaFachada;
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -43,7 +41,6 @@ public class MapaFachadaTest {
                 .findAny()
                 .get();
 
-        //List<IPais> adyacentesItalia = italia.obtenerAdyacentes();
 
         IPais alemania = paises
                 .stream()
@@ -57,8 +54,11 @@ public class MapaFachadaTest {
                 .findAny()
                 .get();
 
-        //Assert.assertTrue(adyacentesItalia.contains(alemania));
-        //Assert.assertTrue(adyacentesItalia.contains(francia));
-        //Assert.assertEquals(2, adyacentesItalia.size());
+        //es adyacente a estos paises...
+        Assert.assertTrue(italia.esAdyacenteA(alemania));
+        Assert.assertTrue(italia.esAdyacenteA(francia));
+
+        //pero no a cualquier pais.
+        Assert.assertFalse(italia.esAdyacenteA(new Pais("Argentina")));
     }
 }

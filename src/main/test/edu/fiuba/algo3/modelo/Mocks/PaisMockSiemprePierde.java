@@ -77,6 +77,11 @@ public class PaisMockSiemprePierde implements IPais {
 
     }
 
+    @Override
+    public Boolean esAdyacenteA(IPais otroPais) {
+        return true;
+    }
+
     
     
 }

@@ -70,4 +70,9 @@ public class Pais implements IPais {
 		quitarEjercitos(cantidad);
 		otroPais.agregarEjercitos(cantidad);
 	}
+
+	@Override
+	public Boolean esAdyacenteA(IPais otroPais) {
+		return adyacentes.contains(otroPais);
+	}
 }
