@@ -54,9 +54,7 @@ public class Turno implements ITurno {
     }
 
     public void asignarSistemaDeCanje(Mazo mazo, List<IJugador> jugadores) {
-        for(int i = 0 ; i < jugadores.size() ; i++) {
-            jugadores.get(i).asignarCanje(mazo);
-        }
+        
     }
 
     private List<IJugador> jugadoresDeColores(List<String> colores) {

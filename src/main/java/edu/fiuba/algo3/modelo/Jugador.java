@@ -17,7 +17,6 @@ public class Jugador implements IJugador {
 	private List<IPais> paises;
 	private List<Tarjeta> tarjetas;
 	private int ejercitosPorColocar;
-	public Mazo mazo;
 	INumeroDeCanje numeroCanje = new PrimerCanje();
 
 	static int minimoPaises = 30;
@@ -128,19 +127,14 @@ public class Jugador implements IJugador {
 
 	//Sistema de canjes
 
-	public void asignarCanje(Mazo mazoNuevo) {
-		mazo = mazoNuevo;
-	}
-
 	public void agregarTarjetaAleatoria(Tarjeta tarjeta) {
 		tarjetas.add(tarjeta);
 	}
 
-	public void activarTarjeta(Tarjeta tarjeta, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
-		this.realizarVerificaciones(tarjeta);
-		tarjeta.activarTarjeta(this, tipoDeCanje);
-		//this.mazo.insertarAlFondoDelMazo(tarjeta);
-		//this.tarjetas.remove(tarjeta);
+	public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException {
+		if (!paises.contains(tarjeta.obtenerPais())) { throw new NoSePuedeProducirCanjeException("El jugador no tiene ese país"); }
+		tarjeta.activar();
+		//agregar tarjeta al mazo
 	}
 
 	public void actualizarNumeroDeCanje() {
@@ -149,12 +143,15 @@ public class Jugador implements IJugador {
 
 	public INumeroDeCanje obtenerNumeroDeCanje() { return numeroCanje; }
 
-	public Mazo obtenerMazo() {
-		return mazo;
-	}
-
 	public List<Tarjeta> obtenerTarjetas() {
 		return tarjetas;
+	}
+
+	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, IPais pais) throws NoSePuedeProducirCanjeException {
+		Canje canje = new Canje(tarjetasACanjear);
+		canje.realizarCanje(pais, numeroCanje);
+		//agregar tarjeta al mazo
+		numeroCanje = numeroCanje.actualizar();
 	}
 
 	// verificaciones para los canjes
@@ -214,7 +211,5 @@ public class Jugador implements IJugador {
 	private void addChangeListener(PropertyChangeListener suscriptor) {
 		suscriptores.add(suscriptor);
 	}
-
-	
 
 }

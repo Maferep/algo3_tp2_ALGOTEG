@@ -15,7 +15,7 @@ public class Mazo {
         );
     }
     public Tarjeta obtenerTarjeta() {
-        return mazo.getFirst();
+        return mazo.remove();
     }
 
     public void insertarAlFondoDelMazo(Tarjeta tarjeta) {
