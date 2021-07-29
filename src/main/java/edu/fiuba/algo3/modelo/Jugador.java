@@ -131,18 +131,16 @@ public class Jugador implements IJugador {
 		tarjetas.add(tarjeta);
 	}
 
-	public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException {
+	public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException,
+			PaisNoExistenteError {
 		if (!paises.contains(tarjeta.obtenerPais())) 
-		throw new NoSePuedeProducirCanjeException("El jugador no tiene ese país"); 
+			throw new NoSePuedeProducirCanjeException("El jugador no tiene ese país"); 
+		verificarQueExistaTarjeta(tarjeta);
+		//parece que este metodo es redundante dado el if anterior
+		verificarQueExistaPais(tarjeta.obtenerPais());
 		tarjeta.activar();
 	}
 
-/* 	public void actualizarNumeroDeCanje() {
-		numeroCanje = numeroCanje.actualizar();
-	}
-
-	public INumeroDeCanje obtenerNumeroDeCanje() { return numeroCanje; }
- */
 	public List<Tarjeta> obtenerTarjetas() {
 		return tarjetas;
 	}
@@ -154,11 +152,6 @@ public class Jugador implements IJugador {
 	}
 
 	// verificaciones para los canjes, quitar responsabilidad
-
-	public void realizarVerificaciones(Tarjeta tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError {
-		this.verificarQueExistaTarjeta(tarjeta);
-		this.verificarQueExistaPais(tarjeta.obtenerPais());
-	}
 
 	private void verificarQueExistaTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
 		for(int i = 0 ; i < tarjetas.size() ; i++) {

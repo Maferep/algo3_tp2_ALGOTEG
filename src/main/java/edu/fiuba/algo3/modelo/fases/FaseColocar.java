@@ -42,7 +42,8 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
              estrategia = estrategia.turnoCompleto(turno);
     }
 
-    public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException {
+    public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException,
+            PaisNoExistenteError {
         turno.jugadorActual().activarTarjeta(tarjeta);
     }
 

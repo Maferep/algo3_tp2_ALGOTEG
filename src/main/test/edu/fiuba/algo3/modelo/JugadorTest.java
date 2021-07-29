@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class JugadorTest {
 
     @Test
-    public void test01JugadorActivaUnaTarjetaPais() throws NoSePuedeProducirCanjeException {
+    public void test01JugadorActivaUnaTarjetaPais() throws NoSePuedeProducirCanjeException, NoExisteTarjetaException,
+            PaisNoExistenteError {
         Jugador jugadorRojo = new Jugador("Rojo");
         IPais argentina = new Pais("Argentina");
         Simbolo simbolo = new Simbolo("Globlo");

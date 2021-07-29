@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.Interfaces;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
+import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaException;
 import edu.fiuba.algo3.modelo.excepciones.NoSePuedeProducirCanjeException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
 
@@ -44,6 +45,6 @@ public interface IJugador {
 
 	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, Mazo mazo) throws NoSePuedeProducirCanjeException, EjercitosException;
 
-	public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException;
+	public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException, PaisNoExistenteError;
 
 }
