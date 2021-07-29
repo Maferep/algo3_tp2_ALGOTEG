@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.NoSePuedeProducirCanjeException;
 import java.util.LinkedList;
 import java.util.List;
 

@@ -42,8 +42,9 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
              estrategia = estrategia.turnoCompleto(turno);
     }
 
-    public void realizarCanje(IPais pais, List<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException {
-	    turno.jugadorActual().canjearTarjetas(tarjetas, pais);
+    public void realizarCanje(IPais pais, List<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException,
+            EjercitosException {
+	    turno.jugadorActual().canjearTarjetas(tarjetas, mazo);
     }
 
     // métodos de fase

@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.INumeroDeCanje;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
+import edu.fiuba.algo3.modelo.Mocks.PaisMock;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.NoSePuedeProducirCanjeException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -21,24 +23,31 @@ public class CanjeTest {
     IPais chile = new Pais("Chile");
 
     @Test
-    public void test01RealizarCanjeTresSimbolosIguales() throws NoSePuedeProducirCanjeException {
-        INumeroDeCanje nroCanje = new PrimerCanje();
+    public void test01RealizarCanjeTresSimbolosIguales() 
+            throws NoSePuedeProducirCanjeException, 
+                EjercitosException {
+        Mazo mazo = new Mazo(Arrays.asList(
+            argentina, 
+            colombia, 
+            chile, 
+            new PaisMock("Cambodia")));
 
         Tarjeta tarjetaArgentina = new Tarjeta(argentina, globo);
         Tarjeta tarjetaColombia = new Tarjeta(colombia, globo);
         Tarjeta tarjetaChile = new Tarjeta(chile, globo);
 
-        List<Tarjeta> tarjetas = Arrays.asList(tarjetaArgentina, tarjetaChile, tarjetaColombia);
+        List<Tarjeta> tarjetas = Arrays.asList(
+            tarjetaArgentina, tarjetaChile, tarjetaColombia);
 
-        Canje canje = new Canje(tarjetas);
-        canje.realizarCanje(argentina, nroCanje);
+        Canje canje = new Canje();
+        int ejercitosObtenidos = canje.realizarCanje(tarjetas, mazo);
 
-        Assert.assertEquals(4, argentina.cantidadEjercitos());
+        Assert.assertEquals(4, ejercitosObtenidos);
     }
 
     @Test
-    public void test02RealizarCanjeTresSimbolosDistintos() throws NoSePuedeProducirCanjeException {
-        INumeroDeCanje nroCanje = new PrimerCanje();
+    public void test02RealizarCanjeTresSimbolosDistintos() throws NoSePuedeProducirCanjeException, EjercitosException {
+        Mazo mazo = new Mazo(Arrays.asList(argentina, colombia, chile, new PaisMock("Groenlandia")));
 
         Tarjeta tarjetaArgentina = new Tarjeta(argentina, globo);
         Tarjeta tarjetaColombia = new Tarjeta(colombia, maquina);
@@ -46,9 +55,9 @@ public class CanjeTest {
 
         List<Tarjeta> tarjetas = Arrays.asList(tarjetaArgentina, tarjetaChile, tarjetaColombia);
 
-        Canje canje = new Canje(tarjetas);
-        canje.realizarCanje(colombia, nroCanje);
+        Canje canje = new Canje();
+        int cantidadEjercitos = canje.realizarCanje(tarjetas, mazo);
 
-        Assert.assertEquals(4, colombia.cantidadEjercitos());
+        Assert.assertEquals(4, cantidadEjercitos);
     }
 }

@@ -17,7 +17,7 @@ public class Jugador implements IJugador {
 	private List<IPais> paises;
 	private List<Tarjeta> tarjetas;
 	private int ejercitosPorColocar;
-	INumeroDeCanje numeroCanje = new PrimerCanje();
+	Canje canje = new Canje();
 
 	static int minimoPaises = 30;
 
@@ -132,29 +132,28 @@ public class Jugador implements IJugador {
 	}
 
 	public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException {
-		if (!paises.contains(tarjeta.obtenerPais())) { throw new NoSePuedeProducirCanjeException("El jugador no tiene ese país"); }
+		if (!paises.contains(tarjeta.obtenerPais())) 
+		throw new NoSePuedeProducirCanjeException("El jugador no tiene ese país"); 
 		tarjeta.activar();
-		//agregar tarjeta al mazo
 	}
 
-	public void actualizarNumeroDeCanje() {
+/* 	public void actualizarNumeroDeCanje() {
 		numeroCanje = numeroCanje.actualizar();
 	}
 
 	public INumeroDeCanje obtenerNumeroDeCanje() { return numeroCanje; }
-
+ */
 	public List<Tarjeta> obtenerTarjetas() {
 		return tarjetas;
 	}
 
-	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, IPais pais) throws NoSePuedeProducirCanjeException {
-		Canje canje = new Canje(tarjetasACanjear);
-		canje.realizarCanje(pais, numeroCanje);
-		//agregar tarjeta al mazo
-		numeroCanje = numeroCanje.actualizar();
+	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, Mazo mazo) 
+			throws NoSePuedeProducirCanjeException,
+				EjercitosException {
+		agregarNuevosEjercitos(canje.realizarCanje(tarjetasACanjear, mazo));
 	}
 
-	// verificaciones para los canjes
+	// verificaciones para los canjes, quitar responsabilidad
 
 	public void realizarVerificaciones(Tarjeta tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError {
 		this.verificarQueExistaTarjeta(tarjeta);
