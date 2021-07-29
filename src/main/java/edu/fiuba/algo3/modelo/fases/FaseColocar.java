@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
+import java.util.List;
+
 public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     Boolean finDeJuego = false;
@@ -38,6 +40,10 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
         if(turno.jugadorActual().cantidadEjercitosPorColocar() == 0)
             //current plyer finished task
              estrategia = estrategia.turnoCompleto(turno);
+    }
+
+    public void realizarCanje(IPais pais, List<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException {
+	    turno.jugadorActual().canjearTarjetas(tarjetas, pais);
     }
 
     // métodos de fase
