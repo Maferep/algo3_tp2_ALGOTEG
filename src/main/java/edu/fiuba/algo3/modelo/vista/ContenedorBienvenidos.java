@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.modelo.manejadores;
+package edu.fiuba.algo3.modelo.vista;
 
+import edu.fiuba.algo3.modelo.vista.eventos.BotonEntrarEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,14 +12,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.LineBorder;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class ContenedorBienvenidos extends VBox {

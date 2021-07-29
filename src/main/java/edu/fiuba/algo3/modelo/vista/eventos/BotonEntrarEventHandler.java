@@ -1,11 +1,9 @@
-package edu.fiuba.algo3.modelo.manejadores;
+package edu.fiuba.algo3.modelo.vista.eventos;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import javafx.event.Event;
 
 public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 

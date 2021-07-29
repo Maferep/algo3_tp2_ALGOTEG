@@ -1,7 +1,9 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.manejadores.BotonComenzarJuego;
-import edu.fiuba.algo3.modelo.manejadores.ContenedorBienvenidos;
+import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.vista.ContenedorBienvenidos;
+import edu.fiuba.algo3.modelo.vista.ContenedorPrincipal;
+import edu.fiuba.algo3.modelo.vista.eventos.AplicacionOnKeyPressEventHandler;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -45,12 +47,24 @@ public class Main extends Application {
         Scene escena = new Scene(ruta);*/
 
         stage.setTitle("ALGOTEG");
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, null);
+
+        Juego juego = crearJuego(); //modelo
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego);
+        Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480);
+
+        AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new  AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
+        escenaJuego.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
+
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos,640,480);
 
         stage.setScene(escenaBienvenidos);
         stage.setFullScreen(true);
 
         stage.show();
+    }
+
+    private Juego crearJuego() {
+    return null;
     }
 }

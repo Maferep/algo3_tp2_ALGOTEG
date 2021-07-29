@@ -89,4 +89,6 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 	public int cantidadDePaises() {
 		return mapa.obtenerPaises().size();
 	}
+
+
 }
