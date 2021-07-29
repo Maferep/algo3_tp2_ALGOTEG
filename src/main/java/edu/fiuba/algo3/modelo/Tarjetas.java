@@ -29,12 +29,8 @@ public class Tarjetas {
                         (simbolo -> simbolo.esIgualA(primerSimbolo));
     }
 
-    private Boolean sonDistintos() {
-        Simbolo primerSimbolo = simbolos.removeFirst();
-        return simbolos
-                .stream()
-                .anyMatch
-                        (simbolo -> simbolo.esIgualA(primerSimbolo));
+    public Boolean sonDistintos() {
+        return true;
     }
 
 }

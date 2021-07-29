@@ -10,12 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TarjetasTest {
+    IPais pais = new PaisMock("Pais mockito");
+    Simbolo globo = new Simbolo("globo");
+    Simbolo maquina = new Simbolo("maquina");
+    Simbolo lampara = new Simbolo("lampara");
 
     @Test
     public void test01TarjetasSonIguales() {
-        IPais pais = new PaisMock("Pais mockito");
-        Simbolo globo = new Simbolo("globo");
-
         Tarjeta tarjetaArgentina = new Tarjeta(pais, globo);
         Tarjeta tarjetaColombia = new Tarjeta(pais, globo);
         Tarjeta tarjetaChile = new Tarjeta(pais, globo);
@@ -25,5 +26,18 @@ public class TarjetasTest {
         Tarjetas tarjetas = new Tarjetas(tarjetasPaises);
 
         Assert.assertTrue(tarjetas.sonValidas());
+    }
+
+    @Test
+    public void test02TresTarjetasDistintas() {
+        Tarjeta tarjetaArgentina = new Tarjeta(pais, globo);
+        Tarjeta tarjetaColombia = new Tarjeta(pais, maquina);
+        Tarjeta tarjetaChile = new Tarjeta(pais, lampara);
+
+        List<Tarjeta> tarjetasPaises = Arrays.asList(tarjetaArgentina, tarjetaChile, tarjetaColombia);
+
+        Tarjetas tarjetas = new Tarjetas(tarjetasPaises);
+
+        Assert.assertTrue(tarjetas.sonDistintos());
     }
 }

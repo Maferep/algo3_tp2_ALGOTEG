@@ -12,15 +12,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CanjeTest {
+    Simbolo globo = new Simbolo("globo");
+    Simbolo maquina = new Simbolo("maquina");
+    Simbolo lampara = new Simbolo("lampara");
+
+    IPais argentina = new Pais("Argentina");
+    IPais colombia = new Pais("Colombia");
+    IPais chile = new Pais("Chile");
+
     @Test
     public void test01RealizarCanjeTresSimbolosIguales() throws NoSePuedeProducirCanjeException {
         INumeroDeCanje nroCanje = new PrimerCanje();
-
-        IPais argentina = new Pais("Argentina");
-        IPais colombia = new Pais("Colombia");
-        IPais chile = new Pais("Chile");
-
-        Simbolo globo = new Simbolo("globo");
 
         Tarjeta tarjetaArgentina = new Tarjeta(argentina, globo);
         Tarjeta tarjetaColombia = new Tarjeta(colombia, globo);
@@ -32,5 +34,21 @@ public class CanjeTest {
         canje.realizarCanje(argentina, nroCanje);
 
         Assert.assertEquals(4, argentina.cantidadEjercitos());
+    }
+
+    @Test
+    public void test02RealizarCanjeTresSimbolosDistintos() throws NoSePuedeProducirCanjeException {
+        INumeroDeCanje nroCanje = new PrimerCanje();
+
+        Tarjeta tarjetaArgentina = new Tarjeta(argentina, globo);
+        Tarjeta tarjetaColombia = new Tarjeta(colombia, maquina);
+        Tarjeta tarjetaChile = new Tarjeta(chile, lampara);
+
+        List<Tarjeta> tarjetas = Arrays.asList(tarjetaArgentina, tarjetaChile, tarjetaColombia);
+
+        Canje canje = new Canje(tarjetas);
+        canje.realizarCanje(colombia, nroCanje);
+
+        Assert.assertEquals(4, colombia.cantidadEjercitos());
     }
 }
