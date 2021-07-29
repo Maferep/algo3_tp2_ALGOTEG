@@ -25,7 +25,7 @@ public interface IJugador {
 	void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException;
 
 	int cantidadPaises();
-	
+
 	List<IPais> obtenerPaises();
 
 	void agregarNuevosEjercitos(int i) throws EjercitosException;
@@ -35,7 +35,7 @@ public interface IJugador {
 	int cantidadEjercitosPorColocar();
 
 	void asignarObjetivo(IObjetivo iObjetivo);
-	
+
 	public void agregarObjetivoSuscriptor(IObjetivo objetivo);
 
 	void inicializarPais(IPais actual);
@@ -49,5 +49,7 @@ public interface IJugador {
 	public List<Tarjeta> obtenerTarjetas();
 
 	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, IPais pais) throws NoSePuedeProducirCanjeException;
+
+	public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException;
 
 }

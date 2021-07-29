@@ -24,6 +24,10 @@ public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagr
         estrategia = estrategia.turnoCompleto(turno);
     }
 
+    public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException {
+        turno.jugadorActual().activarTarjeta(tarjeta);
+    }
+
     // métodos de fase
     @Override
     public Boolean faseCompletada() {
