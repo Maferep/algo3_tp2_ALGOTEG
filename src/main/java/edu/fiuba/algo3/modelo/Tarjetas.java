@@ -18,7 +18,7 @@ public class Tarjetas {
     }
 
     public boolean sonValidas() {
-        return (simbolos.size() == 3) & (sonIguales() | sonDistintos());
+        return (simbolos.size() == cantidadNecesaria) & (sonIguales() | sonDistintos());
     }
 
     private Boolean sonIguales() {
