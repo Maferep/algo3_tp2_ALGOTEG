@@ -160,21 +160,18 @@ public class Jugador implements IJugador {
 		this.verificarQueExistaPais(tarjeta.obtenerPais());
 	}
 
-	public boolean verificarQueExistaTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
+	private void verificarQueExistaTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
 		for(int i = 0 ; i < tarjetas.size() ; i++) {
-			if(tarjetas.get(i).obtenerPais() == tarjeta.obtenerPais()) {
-				return true;
-			}
+			if(tarjetas.get(i).obtenerPais() == tarjeta.obtenerPais()) 
+				return;
 		}
 		throw new NoExisteTarjetaException("No tienes la tarjeta que buscas activar");
 	}
 
-	public boolean verificarQueExistaPais(IPais pais) throws PaisNoExistenteError {
-		for(int i = 0 ; i < this.cantidadPaises() ; i++) {
-			if(this.obtenerPaises().get(i).obtenerNombre().equals(pais.obtenerNombre())) {
-				return true;
-			}
-		}
+	private void verificarQueExistaPais(IPais pais) throws PaisNoExistenteError {
+		for(IPais paisActual : paises) 
+			if(paisActual.equals(pais)) return;
+		
 		throw new PaisNoExistenteError("No tienes este pais para agregar fichas");
 	}
 
@@ -186,7 +183,8 @@ public class Jugador implements IJugador {
 	@Override
 	public void quitarEjercitos(int cantidadAQuitar) throws EjercitosException {
 		ejercitosPorColocar -= cantidadAQuitar;
-		if(ejercitosPorColocar < 0) throw new EjercitosException("quita demasiados ejercitos");
+		if(ejercitosPorColocar < 0) 
+			throw new EjercitosException("quita demasiados ejercitos");
 	}
 
 	//para objetivos

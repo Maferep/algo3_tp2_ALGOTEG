@@ -40,8 +40,6 @@ public interface IJugador {
 
 	void inicializarPais(IPais actual);
 
-	boolean verificarQueExistaPais(IPais iPais) throws PaisNoExistenteError;
-
 	public List<Tarjeta> obtenerTarjetas();
 
 	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, Mazo mazo) throws NoSePuedeProducirCanjeException, EjercitosException;
