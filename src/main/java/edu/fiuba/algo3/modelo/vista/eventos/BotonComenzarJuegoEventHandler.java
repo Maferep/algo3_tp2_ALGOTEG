@@ -17,6 +17,13 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        if (this.campoParaTexto.getText().trim().equals("")) {
+            this.texto.setText("Debe ingresar jugadores");
+            this.campoParaTexto.requestFocus();
 
+        } else {
+            this.texto.setText("¡Que comience el juego!");
+            //Comenzar con el juego. Inicializar jugadores segun la cantidad que me escribieron en el campo.
+        }
     }
 }

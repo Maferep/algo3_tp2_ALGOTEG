@@ -39,6 +39,7 @@ public class ContenedorJuego extends BorderPane {
         texto.setText("Ingrese cantidad de jugadores");
 
         TextField campo = new TextField();
+        campo.setPromptText("Ingrese el cantidad de jugadores");
 
         Button boton = new Button();
         boton.setText("Empezar juego");
