@@ -5,14 +5,13 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
-import edu.fiuba.algo3.modelo.Mapa;
 
 import java.util.*;
 
 public class FaseInicio extends FaseAbstracta implements IFaseInicio {
-    ObjetivoManager objetivo;
     FabricaDeObjetivos fabricaObjetivos;
     Boolean finDeJuego = false;
+    ObjetivoManager objetivos;
 
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     List<String> colores =  Arrays.asList(
@@ -39,7 +38,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         mazo = new Mazo(paises);
         turno = new Turno(colores, cantJugadores, mazo);
         fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
-        objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
+        objetivos = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
     }
 
     public ITurno turno() {
@@ -112,4 +111,8 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     public void siguienteTurno() throws TurnoException, FaseIncompletaException {
         estrategia.siguienteJugador(turno);
     }
+
+	public ObjetivoManager obtenerObjetivos() {
+		return null;
+	}
 }
