@@ -6,21 +6,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent> {
-    private TextField campo;
-    private Label texto;
 
-    public BotonComenzarJuegoEventHandler(TextField textField, Label label) {
-        campo = textField;
+    private Label texto;
+    private TextField campoParaTexto;
+
+    public BotonComenzarJuegoEventHandler(TextField campo,Label label) {
+        campoParaTexto = campo;
         texto = label;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        if (this.campo.getText().trim().equals("")) {
-            this.texto.setText("Debe ingresar jugadores");
-            this.campo.requestFocus();
-        } else {
-            this.texto.setText("¡Que comience el juego!");
-        }
+
     }
 }

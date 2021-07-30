@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.vista;
 
+import edu.fiuba.algo3.modelo.vista.eventos.OpcionAbrirEventHandler;
 import edu.fiuba.algo3.modelo.vista.eventos.OpcionAcercaDeEventHandler;
 import edu.fiuba.algo3.modelo.vista.eventos.OpcionPantallaCompletaEventHandler;
 import edu.fiuba.algo3.modelo.vista.eventos.OpcionSalirEventHandler;
@@ -28,6 +29,9 @@ public class BarraDeMenu extends MenuBar {
 
         OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
         opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
+
+        OpcionAbrirEventHandler opcionAbrirHandler = new OpcionAbrirEventHandler();
+        opcionAbrir.setOnAction(opcionAbrirHandler);
 
         OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
         opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
