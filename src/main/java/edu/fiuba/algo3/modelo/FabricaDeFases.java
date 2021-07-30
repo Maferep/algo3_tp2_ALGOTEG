@@ -27,12 +27,11 @@ public class FabricaDeFases {
     void definirObjetivo(ObjetivoManager objetivo) { this.objetivo = objetivo;}
 
     public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception {
-        IFase fase = new FaseInicio(cantidadDeJugadores);
+        FaseInicio fase = new FaseInicio(cantidadDeJugadores);
 
-        // TODO forma rara de transferir datos. repensar.
-        definirCanje(fase.obtenerFaseInicio().obtenerCanje());
-        definirMapa(fase.obtenerFaseInicio().obtenerMapa());
-        definirTurno(fase.obtenerFaseInicio().obtenerTurno());
+        definirCanje(fase.obtenerCanje());
+        definirMapa(fase.obtenerMapa());
+        definirTurno(fase.obtenerTurno());
 
         return fase;
     }
@@ -44,14 +43,9 @@ public class FabricaDeFases {
     public IFase crearFaseAtacar() {
         return new FaseAtacar(turno, mapa);
     }
-/*
-<<<<<<< HEAD
-    public IFase crearFaseReagruparConConquista(ITurno turno, IMapa mapa, Canje canje) {
-        return new FaseReagruparConConquista(turno, mapa, canje);
-=======*/
+
     public IFase crearFaseReagruparConConquista(ITurno turno, IMapa mapa, Mazo mazo){
         return new FaseReagruparConConquista(turno, mapa, mazo);
-//>>>>>>> canjes
     }
 
     public IFase crearFaseReagruparConConquista() {
@@ -65,23 +59,11 @@ public class FabricaDeFases {
     public IFase crearFaseReagruparSinConquista() {
         return new FaseReagruparSinConquista(turno, mapa, mazo);
     }
-
-//<<<<<<< HEAD
-    /*public IFase crearFaseColocar(ITurno turno, IMapa mapa, Canje canje)
-            throws EjercitosException, TurnoException, FaseIncompletaException {
-        return new FaseColocar(turno, mapa, canje);
-    }*/
-
-  /*  public IFase crearFaseColocar()
-            throws EjercitosException, TurnoException, FaseIncompletaException {
-        return new FaseColocar(turno, mapa, canje);
-=======*/
     public IFase crearFaseColocar(ITurno turno, IMapa mapa, Mazo mazo) throws EjercitosException, FaseIncompletaException, TurnoException {
         return new FaseColocar(turno, mapa, mazo);
     }
 
     public IFase crearFaseColocar() throws EjercitosException, FaseIncompletaException, TurnoException {
         return new FaseColocar(turno, mapa, mazo);
-//>>>>>>> canjes
     }
 }
