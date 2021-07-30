@@ -21,10 +21,11 @@ public class ObjetivoConquistarPaisesYContinentes implements IObjetivo {
 
     @Override
     public void propertyChange(PropertyChangeEvent evento) {
-        if(!evento.getPropertyName().equals("paises") 
-            || !(evento.getNewValue() instanceof Collection<?>)) 
+        if(!evento.getPropertyName().equals("paises")) 
                 return;
-        Collection<?> paises = ((Collection<?>)(evento.getNewValue()));
+        
+        //todo: encapsular con método "tiene paises"
+        List<IPais> paises = duenio.obtenerPaises();
 
         if(paises.containsAll(paisesAConquistar))
             //TODO sistema para enviar mensaje al duenio
