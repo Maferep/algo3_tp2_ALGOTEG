@@ -27,18 +27,13 @@ public class Tarjetas {
                 .allMatch
                         (simbolo -> simbolo.esIgualA(primerSimbolo));
     }
-
+    /*
+        Identifica simbolos distintos usando .equals()
+    */
     protected Boolean sonDistintos() {
         LinkedList<Simbolo> listaAuxiliar = new LinkedList<>();
         listaAuxiliar.addAll(simbolos);
-        for (Simbolo simbolo : simbolos) {
-            listaAuxiliar.remove(simbolo);
-            if (listaAuxiliar.stream()
-                    .anyMatch(simboloTarjeta -> simboloTarjeta.esIgualA(simbolo))) 
-                return false; 
-            listaAuxiliar.add(simbolo);
-        }
-        return true;
+        return listaAuxiliar.stream().distinct().count() == listaAuxiliar.size();
     }
 
 }

@@ -11,4 +11,10 @@ public class Simbolo {
     public Boolean esIgualA(Simbolo otroSimbolo) {
         return this.simbolo.equals(otroSimbolo.simbolo);
     }
+    
+    @Override
+    public boolean equals(Object object) {
+        if(!(object instanceof Simbolo)) return false;
+        return ((Simbolo) object).esIgualA(this);
+    }
 }
