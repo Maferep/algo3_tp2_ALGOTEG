@@ -131,42 +131,25 @@ public class Jugador implements IJugador {
 		tarjetas.add(tarjeta);
 	}
 
-	public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException,
-			PaisNoExistenteError {
+	public void activarTarjeta(Tarjeta tarjeta, Mazo mazo) throws NoSePuedeProducirCanjeException {
 		if (!paises.contains(tarjeta.obtenerPais())) 
-			throw new NoSePuedeProducirCanjeException("El jugador no tiene ese país"); 
-		verificarQueExistaTarjeta(tarjeta);
-		//parece que este metodo es redundante dado el if anterior
-		verificarQueExistaPais(tarjeta.obtenerPais());
+			throw new NoSePuedeProducirCanjeException("El jugador no tiene ese país");
 		tarjeta.activar();
+		mazo.insertarAlFondoDelMazo(tarjeta);
 	}
 
 	public List<Tarjeta> obtenerTarjetas() {
 		return tarjetas;
 	}
 
-	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, Mazo mazo) 
+	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, Mazo mazo)
 			throws NoSePuedeProducirCanjeException,
 				EjercitosException {
-		agregarNuevosEjercitos(canje.realizarCanje(tarjetasACanjear, mazo));
+		agregarNuevosEjercitos(canje.realizarCanje(tarjetasACanjear));
+		for (Tarjeta tarjetaUsada : tarjetasACanjear) { mazo.insertarAlFondoDelMazo(tarjetaUsada); }
 	}
 
 	// verificaciones para los canjes, quitar responsabilidad
-
-	private void verificarQueExistaTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
-		for(int i = 0 ; i < tarjetas.size() ; i++) {
-			if(tarjetas.get(i).obtenerPais() == tarjeta.obtenerPais()) 
-				return;
-		}
-		throw new NoExisteTarjetaException("No tienes la tarjeta que buscas activar");
-	}
-
-	private void verificarQueExistaPais(IPais pais) throws PaisNoExistenteError {
-		for(IPais paisActual : paises) 
-			if(paisActual.equals(pais)) return;
-		
-		throw new PaisNoExistenteError("No tienes este pais para agregar fichas");
-	}
 
 	@Override
 	public int cantidadTarjetas() {

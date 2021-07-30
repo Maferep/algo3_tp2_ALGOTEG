@@ -26,12 +26,7 @@ public class CanjeTest {
     public void test01RealizarCanjeTresSimbolosIguales() 
             throws NoSePuedeProducirCanjeException, 
                 EjercitosException {
-        Mazo mazo = new Mazo(Arrays.asList(
-            argentina, 
-            colombia, 
-            chile, 
-            new PaisMock("Cambodia")));
-
+        
         Tarjeta tarjetaArgentina = new Tarjeta(argentina, globo);
         Tarjeta tarjetaColombia = new Tarjeta(colombia, globo);
         Tarjeta tarjetaChile = new Tarjeta(chile, globo);
@@ -40,15 +35,13 @@ public class CanjeTest {
             tarjetaArgentina, tarjetaChile, tarjetaColombia);
 
         Canje canje = new Canje();
-        int ejercitosObtenidos = canje.realizarCanje(tarjetas, mazo);
+        int ejercitosObtenidos = canje.realizarCanje(tarjetas);
 
         Assert.assertEquals(4, ejercitosObtenidos);
     }
 
     @Test
     public void test02RealizarCanjeTresSimbolosDistintos() throws NoSePuedeProducirCanjeException, EjercitosException {
-        Mazo mazo = new Mazo(Arrays.asList(argentina, colombia, chile, new PaisMock("Groenlandia")));
-
         Tarjeta tarjetaArgentina = new Tarjeta(argentina, globo);
         Tarjeta tarjetaColombia = new Tarjeta(colombia, maquina);
         Tarjeta tarjetaChile = new Tarjeta(chile, lampara);
@@ -56,7 +49,7 @@ public class CanjeTest {
         List<Tarjeta> tarjetas = Arrays.asList(tarjetaArgentina, tarjetaChile, tarjetaColombia);
 
         Canje canje = new Canje();
-        int cantidadEjercitos = canje.realizarCanje(tarjetas, mazo);
+        int cantidadEjercitos = canje.realizarCanje(tarjetas);
 
         Assert.assertEquals(4, cantidadEjercitos);
     }

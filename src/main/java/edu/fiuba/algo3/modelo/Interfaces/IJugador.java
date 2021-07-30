@@ -45,6 +45,6 @@ public interface IJugador {
 
 	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, Mazo mazo) throws NoSePuedeProducirCanjeException, EjercitosException;
 
-	public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException, PaisNoExistenteError;
+	public void activarTarjeta(Tarjeta tarjeta, Mazo mazo) throws NoSePuedeProducirCanjeException;
 
 }

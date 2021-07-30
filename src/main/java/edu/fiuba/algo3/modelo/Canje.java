@@ -20,7 +20,7 @@ public class Canje {
         Recibe el mazo del juego, un jugador y una lista de tarjetas.
         Le asigna al jugador nuevos ejercitos por colocar.
     */
-    public int realizarCanje(List<Tarjeta> listaTarjetas, Mazo mazo)
+    public int realizarCanje(List<Tarjeta> listaTarjetas)
             throws NoSePuedeProducirCanjeException, EjercitosException {
         Tarjetas tarjetas = new Tarjetas(listaTarjetas);
         if (!tarjetas.sonValidas()) 
@@ -29,10 +29,6 @@ public class Canje {
 
         //agregar ejercitos
         int cantidadEjercitos = numero.cantidadDeSoldadosParaCanjear();
-
-        //insertar al fondo del mazo
-        for(Tarjeta tarjeta : listaTarjetas)
-            mazo.insertarAlFondoDelMazo(tarjeta);
 
         //actualizar numero de canje
         numero.actualizar();
