@@ -16,7 +16,7 @@ public class TarjetasTest {
     Simbolo lampara = new Simbolo("lampara");
 
     @Test
-    public void test01TarjetasSonIguales() {
+    public void test01TarjetasIgualesSonValidas() {
         Tarjeta tarjetaArgentina = new Tarjeta(pais, globo);
         Tarjeta tarjetaColombia = new Tarjeta(pais, globo);
         Tarjeta tarjetaChile = new Tarjeta(pais, globo);
@@ -29,7 +29,7 @@ public class TarjetasTest {
     }
 
     @Test
-    public void test02TresTarjetasDistintas() {
+    public void test02TresTarjetasDistintasSonValidas() {
         Tarjeta tarjetaArgentina = new Tarjeta(pais, globo);
         Tarjeta tarjetaColombia = new Tarjeta(pais, maquina);
         Tarjeta tarjetaChile = new Tarjeta(pais, lampara);
@@ -41,7 +41,8 @@ public class TarjetasTest {
         Assert.assertTrue(tarjetas.sonValidas());
     }
 
-    @Test public void test03DosTarjetasIgualesUnaDistinta() {
+    @Test
+    public void test03DosTarjetasIgualesUnaDistintaNoSonValidas() {
         Tarjeta tarjetaArgentina = new Tarjeta(pais, globo);
         Tarjeta tarjetaColombia = new Tarjeta(pais, maquina);
         Tarjeta tarjetaChile = new Tarjeta(pais, globo);
@@ -52,4 +53,6 @@ public class TarjetasTest {
 
         Assert.assertFalse(tarjetas.sonValidas());
     }
+
+    
 }
