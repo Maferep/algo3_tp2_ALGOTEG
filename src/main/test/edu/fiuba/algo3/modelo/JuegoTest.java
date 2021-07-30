@@ -139,6 +139,4 @@ public class JuegoTest {
         assertEquals(1, juego.jugadorActual().cantidadTarjetas());
         assertEquals(0, jugadorAPerder.cantidadTarjetas());
     }
-
-    
 }

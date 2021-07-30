@@ -63,7 +63,7 @@ public class Jugador implements IJugador {
 	@Override
 	public void agregarNuevosEjercitos(int cantidad) throws EjercitosException {
 		this.ejercitosPorColocar = 0;
-		if(cantidad <= 0) throw new EjercitosException("cantidadInvalida");
+		if(cantidad <= 0) throw new EjercitosException("Cantidad invalida");
 		if(this.paises.size() < 6) {
 			this.ejercitosPorColocar += 3;
 		}
