@@ -19,9 +19,6 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
-import java.util.Objects;
-
 public class ContenedorJuego extends BorderPane {
 
     BarraDeMenu menuBar;
@@ -34,7 +31,6 @@ public class ContenedorJuego extends BorderPane {
         this.setCentro(juego);
         this.setConsola();
         this.setBotonera(juego);
-        //this.setTablero(stage);
     }
 
     private void setBotonera(Juego juego) {
@@ -58,7 +54,7 @@ public class ContenedorJuego extends BorderPane {
         BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(campo, texto);
         boton.setOnAction(botonEnviarEventHandler);
 
-        Scene escena = new Scene(ruta);
+        //Scene escena = new Scene(ruta);
 
         //VBox contenedorVertical = new VBox(botonAgregar);
         contenedor.setSpacing(10);
@@ -74,20 +70,8 @@ public class ContenedorJuego extends BorderPane {
     }
 
     private void setCentro(Juego juego) {
-       /* vistaJuego = new VistaJuego(juego, canvasCentral);
-        vistaJuego.dibujar();
-
-        canvasCentral = new Canvas(460,220);
-
-        contenedorCentral = new VBox(canvasCentral);
-        contenedorCentral.setAlignment(Pos.CENTER);
-        contenedorCentral.setSpacing(20);
-        contenedorCentral.setPadding(new Insets(25));*/
         Image imagen = new Image("file:src/main/resources/vintageopciontres.jpeg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
-        //contenedorCentral.setBackground(new Background(imagenDeFondo));
-
-        //this.setCenter(contenedorCentral);
 
         ImageView tablero = new ImageView("file:src/main/resources/tableroTEG.png");
         VBox contenedor = new VBox(tablero);
@@ -113,19 +97,6 @@ public class ContenedorJuego extends BorderPane {
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
         this.setBottom(contenedorConsola);
-    }
-
-    private void setTablero(Stage stage) {
-        /*Label etiqueta = new Label();
-        Image image = new Image("file:src/main/resources/tableroTEG.png");
-        BackgroundImage imagen = new BackgroundImage(image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
-        Background imagenDeFondo = new Background(imagen);
-        etiqueta.setBackground(imagenDeFondo);
-
-        VBox contenedorConsola = new VBox(etiqueta);
-        contenedorConsola.setSpacing(10);
-        contenedorConsola.setPadding(new Insets(15));
-        this.setCenter(contenedorConsola);*/
     }
 
     public BarraDeMenu getBarraDeMenu() {
