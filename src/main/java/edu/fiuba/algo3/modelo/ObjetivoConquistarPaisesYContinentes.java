@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 
 import java.beans.PropertyChangeEvent;
 import java.util.List;
-import java.util.Collection;
 
 public class ObjetivoConquistarPaisesYContinentes implements IObjetivo {
     IJugador duenio;

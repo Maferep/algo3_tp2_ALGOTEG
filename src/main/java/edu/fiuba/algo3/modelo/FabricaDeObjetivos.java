@@ -46,7 +46,7 @@ public class FabricaDeObjetivos {
         try {
             agregarObjetivo(new ObjetivoDestruirEjercito(turno, color));
         } catch (ObjetivoException e) {
-            agregarObjetivo(new ObjetivoGeneral(mapa));
+            agregarObjetivo(new ObjetivoGeneral());
         }
     }
 }

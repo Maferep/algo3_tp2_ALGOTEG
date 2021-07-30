@@ -55,6 +55,7 @@ public class ObjetivoTest {
         //quitar paises para "vencer" al jugador lol
         List<IPais> paisesDePerdedor = new ArrayList<IPais>();
         paisesDePerdedor.addAll(turno.jugadorActual().obtenerPaises());
+        assertEquals(false, objetivo.fueCompletado());
         for(IPais pais : paisesDePerdedor)
             turno.jugadorActual().quitarPais(pais);
 
@@ -64,6 +65,7 @@ public class ObjetivoTest {
     public void test03CantarVictoriaConContinentes() 
             throws ObjetivoException, EjercitosException {
         ITurno turno = new Turno(colores, 2,null);
+        
         ObjetivoConquistarPaisesYContinentes objetivo 
                         = new ObjetivoConquistarPaisesYContinentes(null, paises);
         assertNotEquals(null, objetivo);
@@ -76,9 +78,61 @@ public class ObjetivoTest {
         paisesAConquistar.addAll(paises);
         assertTrue(paisesAConquistar.size() > 2);
         //TODO: agregar los paises de los continentes
+        assertEquals(false, objetivo.fueCompletado());
         for(IPais pais : paisesAConquistar)
             turno.jugadorActual().asignarPais(pais);
 
         assertEquals(true, objetivo.fueCompletado());
+    }
+
+    @Test
+    public void test04CantarVictoriaConObjetivoGeneral() 
+            throws ObjetivoException, EjercitosException {
+        //inicializar jugador
+        ITurno turno = new Turno(colores, 2, null);
+        
+        //inicializar objetivo
+        ObjetivoGeneral objetivo 
+                        = new ObjetivoGeneral();
+        assertNotEquals(null, objetivo);
+
+        //Asignar el objetivo suscribe al objetivo a los paises de su duenio.
+        turno.jugadorActual().asignarObjetivo(objetivo);
+
+        //agregar paises de la lista para "vencer" al jugador
+        List<IPais> paisesAConquistar = new ArrayList<IPais>();
+        paisesAConquistar.addAll(paises);
+
+        //jugador no tiene todos los paises actualmente, pero los tendra
+        assertTrue(turno.jugadorActual().cantidadPaises() < 30);
+        assertTrue(paisesAConquistar.size() 
+            + turno.jugadorActual().cantidadPaises() >= 30);
+        assertEquals(false, objetivo.fueCompletado());
+
+        //agregar paises necesarios
+        for(IPais pais : paisesAConquistar)
+            turno.jugadorActual().asignarPais(pais);
+
+        assertEquals(true, objetivo.fueCompletado());
+    }
+
+    @Test
+    public void test05NoAgregarTodosLosPaisesNoCausaVictoria() 
+            throws ObjetivoException, EjercitosException {
+        ITurno turno = new Turno(colores, 2,null);
+        ObjetivoGeneral objetivo 
+                        = new ObjetivoGeneral();
+        assertNotEquals(null, objetivo);
+
+        //Asignar el objetivo suscribe al objetivo a los paises de su duenio.
+        turno.jugadorActual().asignarObjetivo(objetivo);
+
+        //no completa el objetivo
+        assertEquals(false, objetivo.fueCompletado());
+        
+        //agregar un pais no completa el objetivo
+        turno.jugadorActual().asignarPais(paises.get(0));
+
+        assertEquals(false, objetivo.fueCompletado());
     }
 }

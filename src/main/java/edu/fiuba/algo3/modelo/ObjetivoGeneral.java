@@ -7,26 +7,28 @@ import edu.fiuba.algo3.modelo.Interfaces.IObjetivo;
 import java.beans.PropertyChangeEvent;
 
 public class ObjetivoGeneral implements IObjetivo {
-
-    public ObjetivoGeneral(IMapa mapa) {
-    }
+    IJugador duenio;
+    Boolean completado = false;
 
     @Override
-    public void propertyChange(PropertyChangeEvent arg0) {
-        // TODO Auto-generated method stub
+    public void propertyChange(PropertyChangeEvent evento) {
+        if(!evento.getPropertyName().equals("paises")) 
+            return;
 
+        if(duenio.cantidadPaises() >= 30)
+            completado = true;
     }
 
     @Override
     public void inicializar(IJugador duenio) {
-        // TODO Auto-generated method stub
+        this.duenio = duenio;
+        duenio.agregarObjetivoSuscriptor(this);
 
     }
 
     @Override
     public Boolean fueCompletado() {
-        // TODO Auto-generated method stub
-        return null;
+        return completado;
     }
 
 }
