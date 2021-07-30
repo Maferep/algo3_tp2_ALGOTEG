@@ -60,9 +60,9 @@ public class RondaTest {
 
         int primerCantidadEjercitos = 3;
         int segundaCantidadEjercitos = 5;
-
-        fase.obtenerFaseInicio().ubicarEjercitosEnPais(primerCantidadEjercitos, new Pais("Estados Unidos"));
-        fase.obtenerFaseInicio().ubicarEjercitosEnPais(segundaCantidadEjercitos, new Pais("Estados Unidos"));
+        IPais eeuu = new Pais("Estados Unidos");
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(primerCantidadEjercitos, eeuu);
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(segundaCantidadEjercitos, eeuu);
         assertTrue(fase.faseCompletada());
     }
 

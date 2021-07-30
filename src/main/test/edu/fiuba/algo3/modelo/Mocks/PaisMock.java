@@ -77,6 +77,9 @@ public class PaisMock implements IPais {
         return true;
     }
 
-    
+    @Override
+    public boolean sonMismoPais(IPais pais) {
+        return pais.obtenerNombre().equals(this.obtenerNombre());
+    }
     
 }

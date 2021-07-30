@@ -75,4 +75,8 @@ public class Pais implements IPais {
 	public Boolean esAdyacenteA(IPais otroPais) {
 		return adyacentes.contains(otroPais);
 	}
+
+	public boolean sonMismoPais(IPais pais) {
+		return ((IPais) pais).obtenerNombre().equals(obtenerNombre());
+	}
 }

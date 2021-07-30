@@ -112,9 +112,9 @@ public class Jugador implements IJugador {
 
 	private void verificarPais(IPais pais) throws PaisNoExistenteError {
 		for(int i = 0 ; i < paises.size() ; i++) {
-			if( paises.get(i).obtenerNombre().equals(pais.obtenerNombre())) {
+			if( paises.get(i).sonMismoPais(pais)) 
 				return;
-			}
+			
 		}
 		throw new PaisNoExistenteError("El jugador no es conquistador del pais " + pais.obtenerNombre());
 	}

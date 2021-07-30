@@ -27,4 +27,6 @@ public interface IPais {
 	void definirConquistador(IJugador jugador2);
 	
 	public void transferirEjercitosA(int cantidad, IPais otroPais) throws TransferirEjercitosException;
+
+	public boolean sonMismoPais(IPais pais);
 }
