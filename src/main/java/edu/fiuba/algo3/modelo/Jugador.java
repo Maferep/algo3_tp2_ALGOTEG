@@ -170,18 +170,18 @@ public class Jugador implements IJugador {
 	}
 
 	//metodo para notificar a los listeners de todo evento
-	private void notifyListeners(Object source, String property, Object oldValue, Object newValue) {
+	private void notifyListeners(Object fuente, String propiedad, Object valorViejo, Object valorNuevo) {
 		for (PropertyChangeListener suscriptor : suscriptores) {
-			PropertyChangeEvent event = new PropertyChangeEvent(this, property, oldValue, newValue);
-			suscriptor.propertyChange(event);
+			PropertyChangeEvent evento = new PropertyChangeEvent(this, propiedad, valorViejo, valorNuevo);
+			suscriptor.propertyChange(evento);
 		}
 	}
 
 	public void agregarObjetivoSuscriptor(IObjetivo objetivo) {
-		this.addChangeListener(objetivo);
+		this.añadirSuscriptorAEvento(objetivo);
 	}
 
-	private void addChangeListener(PropertyChangeListener suscriptor) {
+	private void añadirSuscriptorAEvento(PropertyChangeListener suscriptor) {
 		suscriptores.add(suscriptor);
 	}
 
