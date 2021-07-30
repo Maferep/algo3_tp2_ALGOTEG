@@ -25,6 +25,6 @@ public class TarjetaTest {
         Simbolo simbolo = new Simbolo("Globo");
         Tarjeta tarjeta = new Tarjeta(argentina, simbolo);
 
-
+        Assert.assertTrue(argentina.cantidadEjercitos() == 0);
     }
 }
