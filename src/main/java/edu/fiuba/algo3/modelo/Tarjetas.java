@@ -29,10 +29,13 @@ public class Tarjetas {
     }
 
     protected Boolean sonDistintos() {
-        LinkedList<Simbolo> listaAuxiliar = (LinkedList<Simbolo>) simbolos.clone();
+        LinkedList<Simbolo> listaAuxiliar = new LinkedList<>();
+        listaAuxiliar.addAll(simbolos);
         for (Simbolo simbolo : simbolos) {
             listaAuxiliar.remove(simbolo);
-            if ( listaAuxiliar.stream().anyMatch(simboloTarjeta -> simboloTarjeta.esIgualA(simbolo)) ) { return false; }
+            if (listaAuxiliar.stream()
+                    .anyMatch(simboloTarjeta -> simboloTarjeta.esIgualA(simbolo))) 
+                return false; 
             listaAuxiliar.add(simbolo);
         }
         return true;
