@@ -38,6 +38,18 @@ public class TarjetasTest {
 
         Tarjetas tarjetas = new Tarjetas(tarjetasPaises);
 
-        Assert.assertTrue(tarjetas.sonDistintos());
+        Assert.assertTrue(tarjetas.sonValidas());
+    }
+
+    @Test public void test03DosTarjetasIgualesUnaDistinta() {
+        Tarjeta tarjetaArgentina = new Tarjeta(pais, globo);
+        Tarjeta tarjetaColombia = new Tarjeta(pais, maquina);
+        Tarjeta tarjetaChile = new Tarjeta(pais, globo);
+
+        List<Tarjeta> tarjetasPaises = Arrays.asList(tarjetaArgentina, tarjetaChile, tarjetaColombia);
+
+        Tarjetas tarjetas = new Tarjetas(tarjetasPaises);
+
+        Assert.assertFalse(tarjetas.sonValidas());
     }
 }
