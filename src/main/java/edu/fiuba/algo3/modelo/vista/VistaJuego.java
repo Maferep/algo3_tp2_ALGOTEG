@@ -1,13 +1,26 @@
 package edu.fiuba.algo3.modelo.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 
-public class VistaJuego {
+import javax.swing.*;
+
+public class VistaJuego extends Pane {
 
     private Juego juego;
     Canvas canvas;
+    VBox contenedorCentral;
 
     public VistaJuego(Juego juego, Canvas canvasCentral) {
         this.juego = juego;
@@ -19,14 +32,11 @@ public class VistaJuego {
     }
 
     private void dibujarMapa() {
-        this.clean();
-        canvas.getGraphicsContext2D().setFill(Color.DARKBLUE);
-        //canvas.getGraphicsContext2D().fillOval(juego.); //le pido info a juego
     }
 
     public void clean() {
-        canvas.getGraphicsContext2D().setFill(Color.LIGHTBLUE);
-        canvas.getGraphicsContext2D().fillRect(0,0,460,220);
+        //canvas.getGraphicsContext2D().setFill(Color.LIGHTBLUE);
+        //canvas.getGraphicsContext2D().fillRect(0,0,460,220);
     }
 
     public void update() {

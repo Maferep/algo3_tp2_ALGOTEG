@@ -5,11 +5,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class BotonComenzarJuego implements EventHandler<ActionEvent> {
+public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent> {
     private TextField campo;
     private Label texto;
 
-    public BotonComenzarJuego(TextField textField, Label label) {
+    public BotonComenzarJuegoEventHandler(TextField textField, Label label) {
         campo = textField;
         texto = label;
     }

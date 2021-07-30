@@ -16,7 +16,7 @@ public class BarraDeMenu extends MenuBar {
     public BarraDeMenu(Stage stage) {
 
         Menu menuArchivo = new Menu("Archivo");
-        Menu menuVer = new Menu("Ver");
+        Menu menuVer = new Menu("Tipo de vista");
         Menu menuAyuda = new Menu("Ayuda");
 
         MenuItem opcionSalir = new MenuItem("Salir");

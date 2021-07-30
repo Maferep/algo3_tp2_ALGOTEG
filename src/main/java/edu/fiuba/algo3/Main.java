@@ -2,21 +2,11 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.vista.ContenedorBienvenidos;
-import edu.fiuba.algo3.modelo.vista.ContenedorPrincipal;
-import edu.fiuba.algo3.modelo.vista.eventos.AplicacionOnKeyPressEventHandler;
+import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
+import edu.fiuba.algo3.modelo.vista.eventos.BotonParaActivarOpcionDePantallaCompletaEventHandler;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.awt.*;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -49,11 +39,11 @@ public class Main extends Application {
         stage.setTitle("ALGOTEG");
 
         Juego juego = crearJuego(); //modelo
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego);
-        Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480);
+        ContenedorJuego contenedorJuego = new ContenedorJuego(stage, juego);
+        Scene escenaJuego = new Scene(contenedorJuego, 640, 480);
 
-        AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new  AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
-        escenaJuego.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
+        BotonParaActivarOpcionDePantallaCompletaEventHandler BotonParaActivarOpcionDePantallaCompletaEventHandler = new BotonParaActivarOpcionDePantallaCompletaEventHandler(stage, contenedorJuego.getBarraDeMenu());
+        escenaJuego.setOnKeyPressed(BotonParaActivarOpcionDePantallaCompletaEventHandler);
 
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos,640,480);
