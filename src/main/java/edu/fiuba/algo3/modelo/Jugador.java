@@ -17,8 +17,7 @@ public class Jugador implements IJugador {
 	private List<IPais> paises;
 	private List<Tarjeta> tarjetas;
 	private int ejercitosPorColocar;
-	public Mazo mazo;
-	INumeroDeCanje numeroCanje = new PrimerCanje();
+	Canje canje = new Canje();
 
 	static int minimoPaises = 30;
 
@@ -64,7 +63,7 @@ public class Jugador implements IJugador {
 	@Override
 	public void agregarNuevosEjercitos(int cantidad) throws EjercitosException {
 		this.ejercitosPorColocar = 0;
-		if(cantidad <= 0) throw new EjercitosException("cantidadInvalida");
+		if(cantidad <= 0) throw new EjercitosException("Cantidad invalida");
 		if(this.paises.size() < 6) {
 			this.ejercitosPorColocar += 3;
 		}
@@ -128,59 +127,29 @@ public class Jugador implements IJugador {
 
 	//Sistema de canjes
 
-	public void asignarCanje(Mazo mazoNuevo) {
-		mazo = mazoNuevo;
-	}
-
 	public void agregarTarjetaAleatoria(Tarjeta tarjeta) {
 		tarjetas.add(tarjeta);
 	}
 
-	public void activarTarjeta(Tarjeta tarjeta, ICanje tipoDeCanje) throws NoExisteTarjetaException, PaisNoExistenteError, NoSePuedeProducirCanjeException, EjercitosException {
-		this.realizarVerificaciones(tarjeta);
-		tarjeta.activarTarjeta(this, tipoDeCanje);
-		//this.mazo.insertarAlFondoDelMazo(tarjeta);
-		//this.tarjetas.remove(tarjeta);
-	}
-
-	public void actualizarNumeroDeCanje() {
-		numeroCanje = numeroCanje.actualizar();
-	}
-
-	public INumeroDeCanje obtenerNumeroDeCanje() { return numeroCanje; }
-
-	public Mazo obtenerMazo() {
-		return mazo;
+	public void activarTarjeta(Tarjeta tarjeta, Mazo mazo) throws NoSePuedeProducirCanjeException {
+		if (!paises.contains(tarjeta.obtenerPais())) 
+			throw new NoSePuedeProducirCanjeException("El jugador no tiene ese país");
+		tarjeta.activar();
+		mazo.insertarAlFondoDelMazo(tarjeta);
 	}
 
 	public List<Tarjeta> obtenerTarjetas() {
 		return tarjetas;
 	}
 
-	// verificaciones para los canjes
-
-	public void realizarVerificaciones(Tarjeta tarjeta) throws NoExisteTarjetaException, PaisNoExistenteError {
-		this.verificarQueExistaTarjeta(tarjeta);
-		this.verificarQueExistaPais(tarjeta.obtenerPais());
+	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, Mazo mazo)
+			throws NoSePuedeProducirCanjeException,
+				EjercitosException {
+		agregarNuevosEjercitos(canje.realizarCanje(tarjetasACanjear));
+		for (Tarjeta tarjetaUsada : tarjetasACanjear) { mazo.insertarAlFondoDelMazo(tarjetaUsada); }
 	}
 
-	public boolean verificarQueExistaTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException {
-		for(int i = 0 ; i < tarjetas.size() ; i++) {
-			if(tarjetas.get(i).obtenerPais() == tarjeta.obtenerPais()) {
-				return true;
-			}
-		}
-		throw new NoExisteTarjetaException("No tienes la tarjeta que buscas activar");
-	}
-
-	public boolean verificarQueExistaPais(IPais pais) throws PaisNoExistenteError {
-		for(int i = 0 ; i < this.cantidadPaises() ; i++) {
-			if(this.obtenerPaises().get(i).obtenerNombre().equals(pais.obtenerNombre())) {
-				return true;
-			}
-		}
-		throw new PaisNoExistenteError("No tienes este pais para agregar fichas");
-	}
+	// verificaciones para los canjes, quitar responsabilidad
 
 	@Override
 	public int cantidadTarjetas() {
@@ -190,7 +159,8 @@ public class Jugador implements IJugador {
 	@Override
 	public void quitarEjercitos(int cantidadAQuitar) throws EjercitosException {
 		ejercitosPorColocar -= cantidadAQuitar;
-		if(ejercitosPorColocar < 0) throw new EjercitosException("quita demasiados ejercitos");
+		if(ejercitosPorColocar < 0) 
+			throw new EjercitosException("quita demasiados ejercitos");
 	}
 
 	//para objetivos
@@ -214,7 +184,5 @@ public class Jugador implements IJugador {
 	private void addChangeListener(PropertyChangeListener suscriptor) {
 		suscriptores.add(suscriptor);
 	}
-
-	
 
 }

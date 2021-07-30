@@ -1,49 +1,41 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.NoSePuedeProducirCanjeException;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Tarjetas {
 
-    public static int cantidadEstipulada = 3;
+    public static int cantidadNecesaria = 3;
 
-    public LinkedList<Tarjeta> tarjetas = new LinkedList<Tarjeta>();
-    public LinkedList<String> simbolos = new LinkedList<String>();
-    public LinkedList<String> otraListaDeSimbolos = new LinkedList<String>();
+    private LinkedList<Simbolo> simbolos;
 
-    public void agregarTarjeta(Tarjeta tarjeta) {
-        tarjetas.add(tarjeta);
-        simbolos.add(tarjeta.obtenerSimbolo().obtenerSimbolo());
-        otraListaDeSimbolos.add(tarjeta.obtenerSimbolo().obtenerSimbolo());
-    }
-
-    public boolean verificarIgualdad(LinkedList<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException {
-        String simboloDeReferencia = tarjetas.peekFirst().obtenerSimbolo().obtenerSimbolo();
-        String otroSimboloDeReferencia = tarjetas.peekLast().obtenerSimbolo().obtenerSimbolo();
-        if(tarjetas.peekFirst().obtenerSimbolo().sonIgualesA(simboloDeReferencia, simbolos)) {
-            limpiarListas();
-            return true;
+    public Tarjetas(List<Tarjeta> tarjetas) {
+        simbolos = new LinkedList<Simbolo>();
+        for (Tarjeta tarjeta : tarjetas) {
+            simbolos.add(tarjeta.obtenerSimbolo());
         }
-        simbolos.removeFirst();
-        otraListaDeSimbolos.removeLast();
-        if(tarjetas.peekFirst().obtenerSimbolo().noSonIgualesA(simboloDeReferencia, otroSimboloDeReferencia, simbolos, otraListaDeSimbolos)) {
-            limpiarListas();
-            return true;
+    }
+
+    public boolean sonValidas() {
+        return (simbolos.size() == cantidadNecesaria) & (sonIguales() | sonDistintos());
+    }
+
+    private Boolean sonIguales() {
+        Simbolo primerSimbolo = simbolos.getFirst();
+        return simbolos
+                .stream()
+                .allMatch
+                        (simbolo -> simbolo.esIgualA(primerSimbolo));
+    }
+
+    protected Boolean sonDistintos() {
+        LinkedList<Simbolo> listaAuxiliar = (LinkedList<Simbolo>) simbolos.clone();
+        for (Simbolo simbolo : simbolos) {
+            listaAuxiliar.remove(simbolo);
+            if ( listaAuxiliar.stream().anyMatch(simboloTarjeta -> simboloTarjeta.esIgualA(simbolo)) ) { return false; }
+            listaAuxiliar.add(simbolo);
         }
-        throw new NoSePuedeProducirCanjeException("No se puede producir el canje ya que no existen " +
-                "tarjetas con simbolos o todos diferentes o todos iguales");
+        return true;
     }
 
-    public void limpiarListas() {
-        simbolos.clear();
-        otraListaDeSimbolos.clear();
-    }
-
-    public void usarTarjetas() {
-        tarjetas.clear();
-    }
-
-    public boolean existeCantidadValidaDeTarjetas() {
-        return (tarjetas.size() == cantidadEstipulada);
-    }
 }
