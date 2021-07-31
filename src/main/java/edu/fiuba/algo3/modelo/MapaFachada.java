@@ -81,8 +81,10 @@ public class MapaFachada {
         }
     }
 
-    private void parsearContinentes(JSONArray continentes) {
-
+    private void parsearContinentes(JSONArray continentesJSON) {
+        for ( Object continente : continentesJSON ) {
+            continente = (JSONObject) continente;
+        }
     }
 
     public List<IPais> obtenerPaises(){
