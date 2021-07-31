@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-//hacer mock? porque testeo con un determinado orden en objetivoTest
 public class FabricaDeObjetivos {
 
     List<IObjetivo> objetivos = new ArrayList<>();
@@ -17,13 +16,12 @@ public class FabricaDeObjetivos {
     List<IPais> paisesEnEuropa = Arrays.asList(new Pais("Rusia"), new Pais("Francia"));
     List<IPais> paisesEnAsia = Arrays.asList(new Pais("China"), new Pais("India"));
 
-    List<Continente> continentesUno = Arrays.asList(new Continente(paisesEnEuropa));
-    List<Continente> continentesDos = Arrays.asList(new Continente(paisesEnAmerica));
-    List<Continente> continentesTres = Arrays.asList(new Continente(paisesEnAsia));
+    List<Continente> continentesUno = Arrays.asList(new Continente("America", paisesEnEuropa));
+    List<Continente> continentesDos = Arrays.asList(new Continente("Europa", paisesEnAmerica));
+    List<Continente> continentesTres = Arrays.asList(new Continente("Asia", paisesEnAsia));
 
     ITurno turno;
 
-    // raro como se agregan los objetivos. repensar
     public FabricaDeObjetivos(ITurno turno, IMapa mapa) {
         this.turno = turno;
         this.mapa = mapa;
@@ -48,7 +46,7 @@ public class FabricaDeObjetivos {
         try {
             agregarObjetivo(new ObjetivoDestruirEjercito(turno, color));
         } catch (ObjetivoException e) {
-            agregarObjetivo(new ObjetivoGeneral(mapa));
+            agregarObjetivo(new ObjetivoGeneral());
         }
     }
 }

@@ -1,23 +1,38 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import java.util.*;
-import java.util.stream.*;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
+import edu.fiuba.algo3.modelo.excepciones.NoSePuedeProducirCanjeException;
 
+import java.util.List;
+/*
+    Utilizado por el Jugador para mantener el estado de sus canjes y
+    realizar canjes. Persiste a lo largo de la vida del Jugador.
+*/
 public class Canje {
-    LinkedList<Tarjeta> mazo = new LinkedList<Tarjeta>();
-    public Canje(List<IPais> paises) {
-        mazo.addAll(
-            paises.stream()
-                .map(p -> new Tarjeta(p))
-                .collect(Collectors.toList())
-        );
-    }
-    public Tarjeta obtenerTarjeta() {
-        return mazo.getFirst();
+    INumeroDeCanje numero;
+
+    public Canje() {
+        numero = new PrimerCanje();
     }
 
-    public void insertarAlFondoDelMazo(Tarjeta tarjeta) {
-        mazo.add(tarjeta);
+    /*
+        Recibe el mazo del juego, un jugador y una lista de tarjetas.
+        Le asigna al jugador nuevos ejercitos por colocar.
+    */
+    public int realizarCanje(List<Tarjeta> listaTarjetas)
+            throws NoSePuedeProducirCanjeException, EjercitosException {
+        Tarjetas tarjetas = new Tarjetas(listaTarjetas);
+        if (!tarjetas.sonValidas()) 
+            throw new NoSePuedeProducirCanjeException(
+                "No es posible realizar el canje con estas tarjetas."); 
+
+        //agregar ejercitos
+        int cantidadEjercitos = numero.cantidadDeSoldadosParaCanjear();
+
+        //actualizar numero de canje
+        numero.actualizar();
+
+        return cantidadEjercitos;
     }
 }

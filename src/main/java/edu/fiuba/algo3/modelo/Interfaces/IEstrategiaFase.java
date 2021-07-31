@@ -12,5 +12,5 @@ public interface IEstrategiaFase {
 
 	public void siguienteJugador(ITurno turno) throws TurnoException, FaseIncompletaException;
 
-	public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException;
+	public IFase siguienteFase(ITurno turno, IFabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException;
 }

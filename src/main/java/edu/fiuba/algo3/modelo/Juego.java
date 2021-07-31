@@ -1,27 +1,47 @@
 package edu.fiuba.algo3.modelo;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagrupar {
+public class Juego implements  PropertyChangeListener {
+    //TODO reemplazar por estrategia
+    Boolean juegoTerminado = false;
+    
     IFase faseActual;
-    FabricaDeFases fabrica = new FabricaDeFases();
+    IFabricaDeFases fabrica = new FabricaDeFases();
 
     IMapa mapa;
     ITurno turno;
-    Canje canje;
+    Mazo mazo;
+    ObjetivoManager objetivos;
 
     public Juego(final int cantidadDeJugadores) throws Exception {
         faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
 
         mapa = faseActual.obtenerFaseInicio().obtenerMapa();
         turno = faseActual.obtenerFaseInicio().obtenerTurno();
-        canje = faseActual.obtenerFaseInicio().obtenerCanje();
+        mazo = faseActual.obtenerFaseInicio().obtenerCanje();
+        objetivos = faseActual.obtenerFaseInicio().obtenerObjetivos();
+        objetivos.agregarSuscriptorAVictoria(this);
+    }
+
+    public Juego(IFabricaDeFases fabrica, int cantidadDeJugadores) throws Exception {
+        this.fabrica = fabrica;
+        faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
+
+        mapa = faseActual.obtenerFaseInicio().obtenerMapa();
+        turno = faseActual.obtenerFaseInicio().obtenerTurno();
+        mazo = faseActual.obtenerFaseInicio().obtenerCanje();
+        objetivos = faseActual.obtenerFaseInicio().obtenerObjetivos();
+        objetivos.agregarSuscriptorAVictoria(this);
     }
 
     // inicio
 
-    @Override
+    
     public void ubicarEjercitosEnPais(final int cantEjercitos, final IPais pais)
             throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException, FaseErroneaException {
         faseActual.obtenerFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
@@ -29,66 +49,69 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 
     // reagrupar
 
-    @Override
-    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws 
-            FaseErroneaException,
-            TransferirEjercitosException {
+    
+    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais)
+            throws FaseErroneaException, TransferirEjercitosException {
         faseActual.obtenerFaseReagrupar().transferirEjercitos(cantidad, unPais, otroPais);
     }
 
     // atacar
 
-    @Override
+    
     public void atacar(final IPais atacante, final int cantidadDeSoldados, final IPais defensor) throws Exception {
         faseActual.obtenerFaseAtacar().atacar(atacante, cantidadDeSoldados, defensor);
     }
 
-    //colocar
+    // colocar
 
-    @Override
+    
     public void colocarEjercitosEnPais(final int cantEjercitos, final IPais pais)
             throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError, FaseErroneaException {
         faseActual.obtenerFaseColocar().colocarEjercitosEnPais(cantEjercitos, pais);
     }
 
-    //datos persistentes del juego
+    // datos persistentes del juego
 
     public int cantidadDeJugadores() throws FaseErroneaException {
         return faseActual.obtenerFaseInicio().cantidadDeJugadores();
     }
 
-    //avanzar fase
+    // avanzar fase
     public void siguienteFase() throws FaseIncompletaException, EjercitosException, TurnoException {
         faseActual = faseActual.siguienteFase(fabrica);
     }
 
-    @Override
-    public Canje obtenerCanje() {
-        return canje;
+    
+    public Mazo obtenerCanje() {
+        return mazo;
     }
 
-    @Override
+    
     public IMapa obtenerMapa() {
         return mapa;
     }
 
-    @Override
+    
     public ITurno obtenerTurno() {
         return turno;
     }
 
-	public IJugador jugadorActual() {
-		return turno.jugadorActual();
-	}
+    public IJugador jugadorActual() {
+        return turno.jugadorActual();
+    }
 
-	public void siguienteTurno() {
-		faseActual.siguienteTurno();
-		
-	}
+    public void siguienteTurno() throws TurnoException, FaseIncompletaException {
+        faseActual.siguienteTurno();
 
-	public int cantidadDePaises() {
-		return mapa.obtenerPaises().size();
-	}
+    }
 
-
+    public int cantidadDePaises() {
+        return mapa.obtenerPaises().size();
+    }
+    
+    public void propertyChange(PropertyChangeEvent evento) {
+        //TODO cambiar a estrategia 'juego completado'
+        //y buscar el ganador
+        juegoTerminado = true;
+    }
 }

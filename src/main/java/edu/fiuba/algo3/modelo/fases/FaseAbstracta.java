@@ -1,16 +1,19 @@
 package edu.fiuba.algo3.modelo.fases;
 
+import java.beans.PropertyChangeListener;
+
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 public abstract class FaseAbstracta implements IFase {
     ITurno turno;
-    Canje canje;
+    Mazo mazo;
     IMapa mapa;
+    ObjetivoManager objetivoManager;
     
     @Override
-    public FaseInicio obtenerFaseInicio() throws FaseErroneaException {
+    public IFaseInicio obtenerFaseInicio() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 
@@ -27,10 +30,5 @@ public abstract class FaseAbstracta implements IFase {
     @Override
     public FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException {
         throw new FaseErroneaException(null);
-    }
-
-    @Override
-    public void siguienteTurno() {
-        turno.siguienteJugador();
     }
 }

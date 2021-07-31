@@ -31,7 +31,9 @@ public class Pais implements IPais {
 	public void quitarEjercitos(long cantidadEjercitos) {
 		ejercitos -= cantidadEjercitos;
 	}
-
+	/*
+		Asigna el pais a su conquistador y viceversa.
+	*/
 	public void definirConquistador(IJugador conquistador) {
 		conquistador.asignarPais(this);
 		this.conquistador = conquistador;
@@ -67,5 +69,14 @@ public class Pais implements IPais {
 	
 		quitarEjercitos(cantidad);
 		otroPais.agregarEjercitos(cantidad);
+	}
+
+	@Override
+	public Boolean esAdyacenteA(IPais otroPais) {
+		return adyacentes.contains(otroPais);
+	}
+
+	public boolean sonMismoPais(IPais pais) {
+		return ((IPais) pais).obtenerNombre().equals(obtenerNombre());
 	}
 }

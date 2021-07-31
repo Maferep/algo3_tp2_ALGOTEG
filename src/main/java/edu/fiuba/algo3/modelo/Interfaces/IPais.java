@@ -14,6 +14,8 @@ public interface IPais {
 
 	void agregarAdyacente(IPais iPais);
 
+	Boolean esAdyacenteA(IPais otroPais);
+
 	void quitarEjercitos(long cantDerrotas);
 
 	void conquistar(IPais defensor);
@@ -25,4 +27,6 @@ public interface IPais {
 	void definirConquistador(IJugador jugador2);
 	
 	public void transferirEjercitosA(int cantidad, IPais otroPais) throws TransferirEjercitosException;
+
+	public boolean sonMismoPais(IPais pais);
 }
