@@ -13,12 +13,17 @@ import org.json.simple.parser.ParseException;
 
 public class MapaFachada {
     Hashtable<String, IPais> paisesDict;
-    Hashtable<String, List<IPais>> continentesDict;
+    List<Continente> continentes;
 
     public MapaFachada() {
-        JSONParser jsonParser = new JSONParser();
         paisesDict = new Hashtable<String, IPais>();
-        continentesDict = new Hashtable<String, List<IPais>>();
+        continentes = new ArrayList<Continente>();
+        crearPaises();
+        crearContinentes();
+    }
+
+    private void crearPaises() {
+        JSONParser jsonParser = new JSONParser();
 
         try (FileReader reader = new FileReader("src/main/resources/fronteras.json")) {
             Object obj = jsonParser.parse(reader);
@@ -59,11 +64,44 @@ public class MapaFachada {
         }
     }
 
-    private void parsearContinentes(JSONArray paises) {
+    private void crearContinentes() {
+        JSONParser jsonParser = new JSONParser();
 
+        try (FileReader reader = new FileReader("src/main/resources/continentes.json")) {
+            Object obj = jsonParser.parse(reader);
+            JSONArray continentesList = (JSONArray) obj;
+            parsearContinentes(continentesList);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parsearContinentes(JSONArray continentesJSON) {
+        for ( Object continenteJSON : continentesJSON ) {
+            List<IPais> paises = new ArrayList<IPais>();
+
+            continenteJSON = (JSONObject) continenteJSON;
+            List<String> paisesContinente = (List<String>) ((JSONObject) continenteJSON).get("Contiene");
+
+            for (String pais : paisesContinente) {
+                paises.add(paisesDict.get(pais));
+            }
+
+            String nombreContinente = (String) ((JSONObject) continenteJSON).get("Continente");
+            continentes.add(new Continente(nombreContinente, paises));
+        }
     }
 
     public List<IPais> obtenerPaises(){
         return new ArrayList<IPais>(paisesDict.values());
+    }
+
+    public List<Continente> obtenerContinentes() {
+        return continentes;
     }
 }

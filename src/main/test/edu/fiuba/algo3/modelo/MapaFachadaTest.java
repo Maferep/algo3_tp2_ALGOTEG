@@ -61,4 +61,30 @@ public class MapaFachadaTest {
         //pero no a cualquier pais.
         Assert.assertFalse(italia.esAdyacenteA(new Pais("Argentina")));
     }
+
+    @Test
+    public void test03ContinentesFueronCreados() {
+        MapaFachada mapa = new MapaFachada();
+        List<Continente> continentes = mapa.obtenerContinentes();
+
+        Assert.assertFalse(continentes.isEmpty());
+    }
+
+    @Test
+    public void test04AsiaFueCreadoConSusPaises() {
+        MapaFachada mapa = new MapaFachada();
+        List<Continente> continentes = mapa.obtenerContinentes();
+
+        Continente asia = continentes
+                .stream()
+                .filter(continente -> (continente.obtenerNombre().equals("Asia")))
+                .findAny()
+                .get();
+
+        List<IPais> paisesAsia = mapa.obtenerPaises();
+
+        Assert.assertTrue(paisesAsia
+                .stream()
+                .anyMatch(pais -> (pais.obtenerNombre().equals("Tartaria"))));
+    }
 }

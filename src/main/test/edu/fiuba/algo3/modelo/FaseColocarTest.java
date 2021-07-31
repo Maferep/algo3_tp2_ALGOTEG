@@ -104,7 +104,7 @@ public class FaseColocarTest {
 
     @Test
     public void test04RondaDeTresJugadoresJugadorControlaAsia() throws Exception {
-        Continente asia = new Continente(paisesAsia);
+        Continente asia = new Continente("Asia", paisesAsia);
 
         ITurno turno = new TurnoMockUnJugadorPorPais(listaDePaises);
         FaseColocar fase = new FaseColocar(turno,new MapaMock(listaDePaises), null);

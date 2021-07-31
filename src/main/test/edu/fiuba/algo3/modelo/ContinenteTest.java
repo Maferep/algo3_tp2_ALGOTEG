@@ -21,7 +21,7 @@ public class ContinenteTest {
     @Test
     public void test00JugadorConqusitaContinente() {
         Jugador jugador = new Jugador("Azul");
-        Continente continente = new Continente(paises);
+        Continente continente = new Continente("America del Norte", paises);
 
         paises.forEach(pais -> pais.definirConquistador(jugador));
 
@@ -33,7 +33,7 @@ public class ContinenteTest {
         Jugador jugadorRojo = new Jugador("Rojo");
         Jugador jugadorAzul = new Jugador("Azul");
 
-        Continente continente = new Continente(paises);
+        Continente continente = new Continente("America del Norte", paises);
 
         paises.forEach(pais -> pais.definirConquistador(jugadorRojo));
 
