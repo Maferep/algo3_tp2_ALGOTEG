@@ -41,6 +41,10 @@ public class Jugador implements IJugador {
 		return this.paises;
 	}
 
+	public boolean esIgualA(IJugador otroJugador) {
+		return color.equals(otroJugador.obtenerColor());
+	}
+
 	public int cantidadEjercitosPorColocar() {
 		return ejercitosPorColocar;
 	}
