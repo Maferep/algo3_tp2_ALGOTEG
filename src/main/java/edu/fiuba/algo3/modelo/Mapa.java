@@ -2,11 +2,13 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Mapa implements IMapa {
     private List<IPais> paises;
+    private List<Continente> continentes;
 
     public Mapa() {
         MapaFachada mapaFachada = new MapaFachada();
@@ -35,6 +37,14 @@ public class Mapa implements IMapa {
             IPais actual = paises.get(i);
             jugadores.get(i % jugadores.size()).inicializarPais(actual);
         }
+    }
+
+    public List<Continente> continentesConquistados(Jugador jugador) {
+        List<Continente> continentesConquistados = new ArrayList<Continente>();
+        for (Continente continente : continentes) {
+            if ( continente.fueConquistadoPor(jugador) ) { continentesConquistados.add(continente); }
+        }
+        return continentesConquistados;
     }
 
 }

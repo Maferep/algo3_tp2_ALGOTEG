@@ -1,0 +1,44 @@
+[
+  {
+    "Europa": [
+      "Francia",
+      "Gran Bretaña",
+      "Polonia",
+      "Rusia",
+      "Italia",
+      "España",
+      "Suecia",
+      "Alemania",
+      "Islandia"
+    ]
+  },
+  {
+    "Asia": [
+      "Tartaria",
+      "Mongolia",
+      "Kamtchatka",
+      "Turquia",
+      "Iran",
+      "Israel",
+      "Taymir",
+      "Aral",
+      "Siberia",
+      "Japon",
+      "Gobi",
+      "Arabia",
+      "India",
+      "China",
+      "Malasia"
+    ]
+  },
+  {
+    "Africa": [
+      "Zaire",
+      "Etiopia",
+      "Egipto",
+      "Madagascar",
+      "Sahara",
+      "Sudafrica"
+    ]
+  }
+]
