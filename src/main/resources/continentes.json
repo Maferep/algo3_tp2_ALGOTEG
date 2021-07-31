@@ -40,5 +40,29 @@
       "Sahara",
       "Sudafrica"
     ]
+  },
+  {
+    "America del Norte": [
+      "Oregon",
+      "Nueva York",
+      "Terranova",
+      "California",
+      "Canada",
+      "Yukon",
+      "Groenlandia",
+      "Alaska",
+      "Mexico",
+      "Labrador"
+    ]
+  },
+  {
+    "America del Sur": [
+      "Chile",
+      "Argentina",
+      "Uruguay",
+      "Brasil",
+      "Colombia",
+      "Peru"
+    ]
   }
 ]
