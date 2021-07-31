@@ -6,7 +6,7 @@ import java.beans.PropertyChangeListener;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagrupar, PropertyChangeListener {
+public class Juego implements  PropertyChangeListener {
     //TODO reemplazar por estrategia
     Boolean juegoTerminado = false;
     
@@ -41,7 +41,7 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 
     // inicio
 
-    @Override
+    
     public void ubicarEjercitosEnPais(final int cantEjercitos, final IPais pais)
             throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException, FaseErroneaException {
         faseActual.obtenerFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
@@ -49,7 +49,7 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 
     // reagrupar
 
-    @Override
+    
     public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais)
             throws FaseErroneaException, TransferirEjercitosException {
         faseActual.obtenerFaseReagrupar().transferirEjercitos(cantidad, unPais, otroPais);
@@ -57,14 +57,14 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
 
     // atacar
 
-    @Override
+    
     public void atacar(final IPais atacante, final int cantidadDeSoldados, final IPais defensor) throws Exception {
         faseActual.obtenerFaseAtacar().atacar(atacante, cantidadDeSoldados, defensor);
     }
 
     // colocar
 
-    @Override
+    
     public void colocarEjercitosEnPais(final int cantEjercitos, final IPais pais)
             throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError, FaseErroneaException {
         faseActual.obtenerFaseColocar().colocarEjercitosEnPais(cantEjercitos, pais);
@@ -81,17 +81,17 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
         faseActual = faseActual.siguienteFase(fabrica);
     }
 
-    @Override
+    
     public Mazo obtenerCanje() {
         return mazo;
     }
 
-    @Override
+    
     public IMapa obtenerMapa() {
         return mapa;
     }
 
-    @Override
+    
     public ITurno obtenerTurno() {
         return turno;
     }
@@ -109,7 +109,7 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
         return mapa.obtenerPaises().size();
     }
 
-    @Override
+    
     public void propertyChange(PropertyChangeEvent evento) {
         //TODO cambiar a estrategia 'juego completado'
         //y buscar el ganador

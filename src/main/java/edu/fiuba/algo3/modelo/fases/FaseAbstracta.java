@@ -13,7 +13,7 @@ public abstract class FaseAbstracta implements IFase {
     ObjetivoManager objetivoManager;
     
     @Override
-    public FaseInicio obtenerFaseInicio() throws FaseErroneaException {
+    public IFaseInicio obtenerFaseInicio() throws FaseErroneaException {
         throw new FaseErroneaException(null);
     }
 

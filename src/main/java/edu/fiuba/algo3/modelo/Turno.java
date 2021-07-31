@@ -3,9 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import edu.fiuba.algo3.modelo.Interfaces.IFase;
-import edu.fiuba.algo3.modelo.Interfaces.IJugador;
-import edu.fiuba.algo3.modelo.Interfaces.ITurno;
+import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.fases.FaseInicio;
 
