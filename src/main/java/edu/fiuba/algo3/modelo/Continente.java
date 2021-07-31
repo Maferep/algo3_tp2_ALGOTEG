@@ -29,5 +29,9 @@ public class Continente {
         return paises;
     }
 
+    public String obtenerNombre() { return nombre; }
+
+    public List<IPais> obtenerPaises() { return paises; }
+
 }
 

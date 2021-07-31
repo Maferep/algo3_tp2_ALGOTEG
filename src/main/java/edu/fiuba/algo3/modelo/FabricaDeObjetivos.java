@@ -16,9 +16,9 @@ public class FabricaDeObjetivos {
     List<IPais> paisesEnEuropa = Arrays.asList(new Pais("Rusia"), new Pais("Francia"));
     List<IPais> paisesEnAsia = Arrays.asList(new Pais("China"), new Pais("India"));
 
-    List<Continente> continentesUno = Arrays.asList(new Continente(paisesEnEuropa));
-    List<Continente> continentesDos = Arrays.asList(new Continente(paisesEnAmerica));
-    List<Continente> continentesTres = Arrays.asList(new Continente(paisesEnAsia));
+    List<Continente> continentesUno = Arrays.asList(new Continente("America", paisesEnEuropa));
+    List<Continente> continentesDos = Arrays.asList(new Continente("Europa", paisesEnAmerica));
+    List<Continente> continentesTres = Arrays.asList(new Continente("Asia", paisesEnAsia));
 
     ITurno turno;
 
