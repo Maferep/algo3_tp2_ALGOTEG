@@ -48,4 +48,6 @@ public class Mapa implements IMapa {
         return continentesConquistados;
     }
 
+    public List<Continente> obtenerContinentes() { return continentes; }
+
 }

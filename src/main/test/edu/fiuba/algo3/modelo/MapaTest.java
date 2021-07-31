@@ -35,4 +35,12 @@ public class MapaTest {
         Assert.assertFalse(jugadores.get(0).obtenerPaises().isEmpty());
         Assert.assertFalse(jugadores.get(1).obtenerPaises().isEmpty());
     }
+
+    @Test
+    public void test02MapaDevuelveCincoContinentes() {
+        Mapa mapa = new Mapa();
+        List<Continente> continentes = mapa.obtenerContinentes();
+
+        Assert.assertTrue(continentes.size() == 5);
+    }
 }
