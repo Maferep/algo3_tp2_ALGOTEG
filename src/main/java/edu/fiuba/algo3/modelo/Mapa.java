@@ -29,8 +29,8 @@ public class Mapa implements IMapa {
     No verifica que las listas estén vacías.
     Preserva el orden de la lista de jugadores, no de la de paises.
     */
-    public void asignarPaises(List<IJugador> jugadores) {
-        Collections.shuffle(paises);
+    public void asignarPaises(List<IJugador> jugadores, IOrdenador ordenador) {;
+        ordenador.ordenar(paises);
         for (int i = 0; i < paises.size(); i++) {
             IPais actual = paises.get(i);
             jugadores.get(i % jugadores.size()).inicializarPais(actual);

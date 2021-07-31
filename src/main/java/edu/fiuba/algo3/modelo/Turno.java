@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import edu.fiuba.algo3.OrdenadorAleatorio;
 import edu.fiuba.algo3.modelo.Interfaces.IFase;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Interfaces.ITurno;
@@ -47,7 +48,7 @@ public class Turno implements ITurno {
 
     public List<IJugador> construirJugadores(List<String> colores, int cantidad, Mazo mazo) throws EjercitosException {
         List<IJugador> jugadores = jugadoresDeColores(colores.subList(0, cantidad));
-        mapa.asignarPaises(jugadores);
+        mapa.asignarPaises(jugadores, new OrdenadorAleatorio());
         asignarSistemaDeCanje(mazo,jugadores);
         asignarEjercitosAJugadores(jugadores);
         return jugadores;
