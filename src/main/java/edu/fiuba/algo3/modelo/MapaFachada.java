@@ -13,12 +13,16 @@ import org.json.simple.parser.ParseException;
 
 public class MapaFachada {
     Hashtable<String, IPais> paisesDict;
-    Hashtable<String, List<IPais>> continentesDict;
+    List<Continente> continentes;
 
     public MapaFachada() {
-        JSONParser jsonParser = new JSONParser();
         paisesDict = new Hashtable<String, IPais>();
-        continentesDict = new Hashtable<String, List<IPais>>();
+        continentes = new ArrayList<Continente>();
+        crearPaises();
+    }
+
+    private void crearPaises() {
+        JSONParser jsonParser = new JSONParser();
 
         try (FileReader reader = new FileReader("src/main/resources/fronteras.json")) {
             Object obj = jsonParser.parse(reader);
@@ -59,7 +63,25 @@ public class MapaFachada {
         }
     }
 
-    private void parsearContinentes(JSONArray paises) {
+    private void crearContinentes(JSONArray paises) {
+        JSONParser jsonParser = new JSONParser();
+
+        try (FileReader reader = new FileReader("src/main/resources/continentes.json")) {
+            Object obj = jsonParser.parse(reader);
+            JSONArray continentesList = (JSONArray) obj;
+
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parsearContinentes(JSONArray continentes) {
 
     }
 
