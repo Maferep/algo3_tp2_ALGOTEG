@@ -1,16 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.Mocks.PaisMock;
+import edu.fiuba.algo3.modelo.Mocks.*;
 
 
 public class JuegoTest {
@@ -138,5 +139,74 @@ public class JuegoTest {
         //como siempregania siempre gana, el jugador obtiene una tarjeta
         assertEquals(1, juego.jugadorActual().cantidadTarjetas());
         assertEquals(0, jugadorAPerder.cantidadTarjetas());
+    }
+
+    @Test
+    public void test05GanarJuegoCon30Paises() throws FaseErroneaException, Exception {
+        List<IPais> paisesVarios = Arrays.asList(
+            "Estados Unidos",
+            "Canadá", 
+            "Brasil", 
+            "Bolivia",
+            "Colombia",
+            "Chile",
+            "Ecuador",
+            "Canadá2", 
+            "Brasil2", 
+            "Bolivia2",
+            "Colombia2",
+            "Chile2",
+            "Ecuador2",
+            "Canadá3", 
+            "Brasil3", 
+            "Bolivia3",
+            "Colombia3",
+            "Chile3",
+            "Ecuador3",
+            "Canadá4", 
+            "Brasil4", 
+            "Bolivia4",
+            "Colombia4",
+            "Chile4",
+            "Ecuador4",
+            "Canadá5", 
+            "Brasil5", 
+            "Bolivia5",
+            "Colombia5",
+            "Chile5",
+            "Ecuador5",
+            "Canadá6", 
+            "Brasil6", 
+            "Bolivia6",
+            "Colombia6",
+            "Chile6",
+            "Ecuador6")
+            .stream()
+            .map(pais -> new Pais(pais))
+            .collect(Collectors.toList());
+
+        List<IPais> paises = new ArrayList<>();
+        //List<IPais> paises = Arrays.asList(new PaisMock("Cambodia"));
+        List<IObjetivo> objetivos = Arrays.asList(new ObjetivoGeneral());
+        //necesito una fabrica que le pase el objetivoManager mock
+        IFabricaDeFases fabrica = new FabricaDeFasesMock();
+
+        //pasarle objetos mock
+        ITurno turno = new TurnoMockUnJugador(paises);
+        ObjetivoManager objetivoManager = new ObjetivoManager(turno, objetivos);
+        fabrica.definirObjetivo(objetivoManager);
+        fabrica.definirTurno(turno);
+
+        //crear juego, extraer jugador actual
+        Juego juego = new Juego(fabrica, 3);
+        IJugador jugador = juego.jugadorActual();
+
+        assertFalse(jugador.cantidadPaises() > 30);
+
+        for (IPais pais : paisesVarios) 
+            pais.definirConquistador(jugador);
+        
+        assertTrue(jugador.cantidadPaises() > 30);
+        assertTrue(juego.juegoTerminado);
     }
 }

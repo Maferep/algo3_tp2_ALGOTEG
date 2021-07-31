@@ -46,10 +46,11 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     //version para mock
-    public FaseInicio(IMapa mapa, ITurno turno, Mazo mazo)  {
+    public FaseInicio(IMapa mapa, ITurno turno, Mazo mazo, ObjetivoManager objetivos)  {
         this.turno = turno;
         this.mapa = mapa;
         this.mazo = mazo;
+        this.objetivos = objetivos;
     }
 
     // interfaz de inicio

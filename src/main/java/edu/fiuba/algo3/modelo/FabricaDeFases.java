@@ -19,7 +19,11 @@ public class FabricaDeFases implements IFabricaDeFases {
     }
 
     public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception {
-        IFaseInicio fase = new FaseInicio(cantidadDeJugadores);
+        IFaseInicio fase;
+        //si se configura algun elemento primero, lo usa
+        if(turno != null || mapa != null || mazo != null || objetivo != null)
+            fase = new FaseInicio(mapa, turno, mazo, objetivo);
+        else fase = new FaseInicio(cantidadDeJugadores);
 
         definirCanje(fase.obtenerCanje());
         definirMapa(fase.obtenerMapa());

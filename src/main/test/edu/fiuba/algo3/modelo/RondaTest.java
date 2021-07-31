@@ -55,7 +55,7 @@ public class RondaTest {
     @Test
     public void test01agregarEjercitos() throws Exception {
         ITurno unJugador = new TurnoMockUnJugador(paisesJugadorUno);
-        FaseInicio fase = new FaseInicio(null, unJugador, new Mazo(paises));
+        FaseInicio fase = new FaseInicio(null, unJugador, new Mazo(paises), null);
         assertFalse(fase.faseCompletada());
 
         int primerCantidadEjercitos = 3;
@@ -70,7 +70,7 @@ public class RondaTest {
     public void test02PasarPorEtapasDistintas() throws Exception {
         //genera una etapa de inicio en estado 'finalizado' de ejemplo
         ITurno unJugador = new TurnoMockUnJugador(paisesJugadorDos);
-        IFase fase = new FaseInicio(null, unJugador, new Mazo(paises));
+        IFase fase = new FaseInicio(null, unJugador, new Mazo(paises), null);
         assertFalse(fase.faseCompletada());
 
         int cantidadEjercitos = 3;
