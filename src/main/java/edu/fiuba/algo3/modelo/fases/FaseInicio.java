@@ -78,7 +78,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
+    public IFase siguienteFase(IFabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
             TurnoException {
         return estrategia.siguienteFase(turno, fabrica);
     }
@@ -113,6 +113,6 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
 	public ObjetivoManager obtenerObjetivos() {
-		return null;
+		return objetivos;
 	}
 }

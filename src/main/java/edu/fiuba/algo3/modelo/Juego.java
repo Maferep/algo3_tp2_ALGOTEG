@@ -11,7 +11,7 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     Boolean juegoTerminado = false;
     
     IFase faseActual;
-    FabricaDeFases fabrica = new FabricaDeFases();
+    IFabricaDeFases fabrica = new FabricaDeFases();
 
     IMapa mapa;
     ITurno turno;
@@ -19,6 +19,17 @@ public class Juego implements IFaseInicio, IFaseAtacar, IFaseColocar, IFaseReagr
     ObjetivoManager objetivos;
 
     public Juego(final int cantidadDeJugadores) throws Exception {
+        faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
+
+        mapa = faseActual.obtenerFaseInicio().obtenerMapa();
+        turno = faseActual.obtenerFaseInicio().obtenerTurno();
+        mazo = faseActual.obtenerFaseInicio().obtenerCanje();
+        objetivos = faseActual.obtenerFaseInicio().obtenerObjetivos();
+        objetivos.agregarSuscriptorAVictoria(this);
+    }
+
+    public Juego(IFabricaDeFases fabrica, int cantidadDeJugadores) throws Exception {
+        this.fabrica = fabrica;
         faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
 
         mapa = faseActual.obtenerFaseInicio().obtenerMapa();

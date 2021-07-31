@@ -18,7 +18,7 @@ public abstract class EstrategiaFase implements IEstrategiaFase {
     }
 
     @Override
-    public IFase siguienteFase(ITurno turno, FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException {
+    public IFase siguienteFase(ITurno turno, IFabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException {
         throw new FaseIncompletaException("No se puede seguir aun a la siguiente fase.");
     }
 }
