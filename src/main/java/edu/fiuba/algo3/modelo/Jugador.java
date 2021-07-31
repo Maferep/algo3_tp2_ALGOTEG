@@ -145,7 +145,7 @@ public class Jugador implements IJugador {
 	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, Mazo mazo)
 			throws NoSePuedeProducirCanjeException,
 				EjercitosException {
-		agregarNuevosEjercitos(canje.realizarCanje(tarjetasACanjear));
+		ejercitosPorColocar += canje.realizarCanje(tarjetasACanjear);
 		for (Tarjeta tarjetaUsada : tarjetasACanjear) { mazo.insertarAlFondoDelMazo(tarjetaUsada); }
 	}
 
