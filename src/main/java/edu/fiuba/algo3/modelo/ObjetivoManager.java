@@ -10,10 +10,6 @@ import java.util.List;
 
 public class ObjetivoManager {
     List<IObjetivo> objetivos;
-    
-	private List<PropertyChangeListener> suscriptores = new ArrayList<PropertyChangeListener>();
-
-
     public ObjetivoManager(ITurno turno, List<IObjetivo> objetivosCreados) throws ObjetivoException {
         this.objetivos = objetivosCreados;
         this.asignarObjetivos(turno);
@@ -28,26 +24,11 @@ public class ObjetivoManager {
             turno.siguienteJugador();
         }
     }
-
+    /*
+        Suscribe al Listener recibido a todos los objetivos
+    */
     public void agregarSuscriptorAVictoria(PropertyChangeListener suscriptor) {
-        suscriptores.add(suscriptor);
+        for(IObjetivo objetivo : objetivos)
+            objetivo.agregarSuscriptor(suscriptor);
     }
-
-    public void notificarVictoria(IObjetivo objetivo, IJugador ganador) throws ObjetivoException {
-        for(IObjetivo miObjetivo : objetivos)
-            if(miObjetivo.equals(objetivo)){
-                notificarVictoriaASuscriptores(ganador, objetivo);
-                return;
-            }
-        throw new ObjetivoException("Se logro un objetivo invalido");
-    }
-
-    //COMENTARIO
-    private void notificarVictoriaASuscriptores(IJugador ganador, IObjetivo objetivo) {
-        //TODO: crear objetivo.toString() para poder escribir el tipo de objetivo
-		for (PropertyChangeListener suscriptor : suscriptores) {
-			PropertyChangeEvent evento = new PropertyChangeEvent(this, "ganador", null, ganador);
-			suscriptor.propertyChange(evento);
-		}
-	}
 }
