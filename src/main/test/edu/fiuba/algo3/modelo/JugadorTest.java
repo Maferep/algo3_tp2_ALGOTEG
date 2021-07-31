@@ -63,6 +63,6 @@ public class JugadorTest {
 
         jugadorRojo.canjearTarjetas(tarjetas, mazo);
 
-        //Assert.assertEquals(4, jugadorRojo.cantidadEjercitosPorColocar());
+        Assert.assertEquals(4, jugadorRojo.cantidadEjercitosPorColocar());
     }
 }

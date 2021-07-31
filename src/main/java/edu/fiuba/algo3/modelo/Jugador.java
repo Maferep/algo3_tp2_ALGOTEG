@@ -41,6 +41,10 @@ public class Jugador implements IJugador {
 		return this.paises;
 	}
 
+	public boolean esIgualA(IJugador otroJugador) {
+		return color.equals(otroJugador.obtenerColor());
+	}
+
 	public int cantidadEjercitosPorColocar() {
 		return ejercitosPorColocar;
 	}
@@ -145,7 +149,7 @@ public class Jugador implements IJugador {
 	public void canjearTarjetas(List<Tarjeta> tarjetasACanjear, Mazo mazo)
 			throws NoSePuedeProducirCanjeException,
 				EjercitosException {
-		agregarNuevosEjercitos(canje.realizarCanje(tarjetasACanjear));
+		ejercitosPorColocar += canje.realizarCanje(tarjetasACanjear);
 		for (Tarjeta tarjetaUsada : tarjetasACanjear) { mazo.insertarAlFondoDelMazo(tarjetaUsada); }
 	}
 

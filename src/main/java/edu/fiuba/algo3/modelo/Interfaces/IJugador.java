@@ -47,4 +47,5 @@ public interface IJugador {
 
 	public void activarTarjeta(Tarjeta tarjeta, Mazo mazo) throws NoSePuedeProducirCanjeException;
 
+	public boolean esIgualA(IJugador otroJugador);
 }

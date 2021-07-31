@@ -12,10 +12,8 @@ public class Continente {
     }
 
     public Boolean fueConquistadoPor(IJugador jugador) {
-        for (int i = 0; i < this.paises.size(); i++) {
-            if (!this.paises.get(i).obtenerConquistador().obtenerColor().equals(jugador.obtenerColor())) {
-                return false;
-            }
+        for (IPais pais : paises) {
+            if (!pais.obtenerConquistador().esIgualA(jugador)) { return false; }
         }
         return true;
     }
