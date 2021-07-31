@@ -39,7 +39,7 @@ public class ContenedorJuego extends BorderPane {
         texto.setText("Ingrese cantidad de jugadores");
 
         TextField campo = new TextField();
-        campo.setPromptText("Ingrese el cantidad de jugadores");
+        campo.setPromptText("Ingrese la cantidad de jugadores");
 
         Button boton = new Button();
         boton.setText("Empezar juego");
@@ -52,7 +52,7 @@ public class ContenedorJuego extends BorderPane {
 
         ruta.getChildren().addAll(contenedor);
 
-        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(campo, texto);
+        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(campo, texto, this);
         boton.setOnAction(botonEnviarEventHandler);
 
         //Scene escena = new Scene(ruta);
