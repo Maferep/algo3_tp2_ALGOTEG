@@ -13,6 +13,7 @@ public class Mapa implements IMapa {
     public Mapa() {
         MapaFachada mapaFachada = new MapaFachada();
         paises = mapaFachada.obtenerPaises();
+        continentes = mapaFachada.obtenerContinentes();
     }
 
     @Override

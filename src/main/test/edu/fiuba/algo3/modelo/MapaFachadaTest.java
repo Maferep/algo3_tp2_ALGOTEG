@@ -61,4 +61,12 @@ public class MapaFachadaTest {
         //pero no a cualquier pais.
         Assert.assertFalse(italia.esAdyacenteA(new Pais("Argentina")));
     }
+
+    @Test
+    public void test03ContinentesFueronCreados() {
+        MapaFachada mapa = new MapaFachada();
+        List<Continente> continentes = mapa.obtenerContinentes();
+
+        Assert.assertFalse(continentes.isEmpty());
+    }
 }

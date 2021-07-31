@@ -19,6 +19,7 @@ public class MapaFachada {
         paisesDict = new Hashtable<String, IPais>();
         continentes = new ArrayList<Continente>();
         crearPaises();
+        crearContinentes();
     }
 
     private void crearPaises() {
@@ -63,14 +64,13 @@ public class MapaFachada {
         }
     }
 
-    private void crearContinentes(JSONArray paises) {
+    private void crearContinentes() {
         JSONParser jsonParser = new JSONParser();
 
         try (FileReader reader = new FileReader("src/main/resources/continentes.json")) {
             Object obj = jsonParser.parse(reader);
             JSONArray continentesList = (JSONArray) obj;
-
-
+            parsearContinentes(continentesList);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -82,12 +82,26 @@ public class MapaFachada {
     }
 
     private void parsearContinentes(JSONArray continentesJSON) {
-        for ( Object continente : continentesJSON ) {
-            continente = (JSONObject) continente;
+        for ( Object continenteJSON : continentesJSON ) {
+            List<IPais> paises = new ArrayList<IPais>();
+
+            continenteJSON = (JSONObject) continenteJSON;
+            List<String> paisesContinente = (List<String>) ((JSONObject) continenteJSON).get("Contiene");
+
+            for (String pais : paisesContinente) {
+                paises.add(paisesDict.get(pais));
+            }
+
+            String nombreContinente = (String) ((JSONObject) continenteJSON).get("Continente");
+            continentes.add(new Continente(nombreContinente, paises));
         }
     }
 
     public List<IPais> obtenerPaises(){
         return new ArrayList<IPais>(paisesDict.values());
+    }
+
+    public List<Continente> obtenerContinentes() {
+        return continentes;
     }
 }
