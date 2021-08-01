@@ -41,8 +41,7 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
             try {
                 faseInicio = new VisualizadorFaseInicio(cantidadDeJugadores, contenedorJuego);
             } catch (Exception e) {
-                //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
-                return;
+                System.exit(-1);
             }
             
             faseInicio.visualizar();
