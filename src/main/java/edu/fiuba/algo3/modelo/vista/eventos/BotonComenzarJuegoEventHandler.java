@@ -54,12 +54,12 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
             this.campoParaTexto.requestFocus();
         }
         else {
-            /*this.proximoContenedor.asignarCantidadJugadores(Integer.parseInt(this.campoParaTexto.getText()));
-            stage.setScene(proximaEscena);
+            //this.proximoContenedor.asignarCantidadJugadores(Integer.parseInt(this.campoParaTexto.getText()));
+            this.stage.setScene(proximaEscena);
             stage.setFullScreenExitHint("");
-            stage.setFullScreen(true);*/
+            stage.setFullScreen(true);
 
-            this.texto.setText("¡Que comience el juego!");
+            /*this.texto.setText("¡Que comience el juego!");
 
             VBox contenedor = new VBox(texto);
 
@@ -90,7 +90,7 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
             StackPane ruta = new StackPane();
 
             ruta.getChildren().addAll(contenedor);
-            this.contenedor.setRight(contenedor);
+            this.contenedor.setRight(contenedor);*/
         }
     }
 

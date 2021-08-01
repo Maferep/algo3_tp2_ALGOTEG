@@ -30,13 +30,14 @@ public class ContenedorJuego extends BorderPane {
     ContenedorRealizaJuego proximoContenedor;
 
     public ContenedorJuego(Stage stage, Scene proximaEscena, ContenedorRealizaJuego contenedorRealizaJuego) {
+        super();
+        this.proximaEscena = proximaEscena;
+        this.proximoContenedor = contenedorRealizaJuego;
+        this.stage = stage;
         this.setMenu(stage);
         this.setCentro();
         this.setConsola();
         this.setBotonera();
-        this.proximaEscena = proximaEscena;
-        this.proximoContenedor = contenedorRealizaJuego;
-        this.stage = stage;
     }
 
     private void setBotonera() {

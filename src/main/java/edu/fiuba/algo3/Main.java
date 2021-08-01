@@ -39,10 +39,10 @@ public class Main extends Application {
 
         stage.setTitle("ALGOTEG");
 
-        //ContenedorRealizaJuego contenedorRealizaJuego = new ContenedorRealizaJuego(stage);
-        //Scene escenaRealizaJuego = new Scene(contenedorRealizaJuego, 640, 480);
+        ContenedorRealizaJuego contenedorRealizaJuego = new ContenedorRealizaJuego(stage);
+        Scene escenaRealizaJuego = new Scene(contenedorRealizaJuego, 640, 480);
 
-        ContenedorJuego contenedorJuego = new ContenedorJuego(stage, null, null);
+        ContenedorJuego contenedorJuego = new ContenedorJuego(stage, escenaRealizaJuego, contenedorRealizaJuego);
         Scene escenaJuego = new Scene(contenedorJuego, 640, 480);
 
         BotonParaActivarOpcionDePantallaCompletaEventHandler BotonParaActivarOpcionDePantallaCompletaEventHandler = new BotonParaActivarOpcionDePantallaCompletaEventHandler(stage, contenedorJuego.getBarraDeMenu());
