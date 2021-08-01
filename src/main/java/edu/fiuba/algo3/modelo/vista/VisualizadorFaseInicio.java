@@ -23,6 +23,8 @@ public class VisualizadorFaseInicio {
     int cantidadDeJugadores;
     ContenedorJuego contenedorJuego;
 
+    static String ARCHIVO_FONDO = "file:src/main/resources/fondoBlanco.jpeg";
+
     List<Color> coloresParaJugadores =  Arrays.asList(
             Color.web("#0000FF",1.0),
             Color.web("#DC143C",1.0),
@@ -66,7 +68,7 @@ public class VisualizadorFaseInicio {
 
     private void imprimirJugador(String texto) {
         Label nombreJugador = new Label();
-        javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
+        javafx.scene.image.Image imagen = new Image(ARCHIVO_FONDO);
         BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         nombreJugador.setText(texto);
         nombreJugador.setTextFill(coloresParaJugadores.get(0));
