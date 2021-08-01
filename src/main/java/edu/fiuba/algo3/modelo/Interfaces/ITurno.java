@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 
 public interface ITurno {
 
+    public List<String> obtenerColores();
+
     public IJugador jugadorActual() ;
 
     public void siguienteJugador() ;

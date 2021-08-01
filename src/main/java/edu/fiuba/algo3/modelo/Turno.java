@@ -85,10 +85,10 @@ public class Turno implements ITurno {
         return jugadorActual().equals(jugadores.get(indiceUltimo));
     }
 
-    @Override
     public List<String> obtenerColores() {
         return jugadores.stream()
-            .map(j -> j.obtenerColor())
-            .collect(Collectors.toList());
+                .map(j -> j.obtenerColor())
+                .collect(Collectors.toList());
     }
+
 }

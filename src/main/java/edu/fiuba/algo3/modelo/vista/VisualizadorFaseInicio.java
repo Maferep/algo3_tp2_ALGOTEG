@@ -5,10 +5,15 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class VisualizadorFaseInicio  extends VisualizadorFase {
+import java.util.Arrays;
+import java.util.List;
+
+public class VisualizadorFaseInicio {
     VBox contenedor;
     Juego juego;
     int cantidadDeJugadores;
@@ -26,13 +31,23 @@ public class VisualizadorFaseInicio  extends VisualizadorFase {
             e.printStackTrace();
         }
         int i = 1;
+
         //solo para mostrar que funciona
+        List<Color> coloresParaJugadores =  Arrays.asList(
+                Color.web("#0000FF",1.0),
+                Color.web("#DC143C",1.0),
+                Color.web("#FFD700",1.0),
+                Color.web("#008000",1.0),
+                Color.web("#FF69B4",1.0),
+                Color.web("#000000",1.0)
+        );
+
         while(i <= this.cantidadDeJugadores) {
             Label texto = new Label();
             javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
             BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
             texto.setText("Jugador " + i + ":" + juego.obtenerFaseActual().turno().jugadorActual().obtenerColor()) ;
-            texto.setTextFill(javafx.scene.paint.Color.BLACK);
+            texto.setTextFill(coloresParaJugadores.get(i-1));
             texto.setMinWidth(10);
             texto.setMinSize(10,10);
             texto.setBackground(new Background(imagenDeFondo));
