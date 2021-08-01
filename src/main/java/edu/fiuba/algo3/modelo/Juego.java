@@ -77,8 +77,8 @@ public class Juego implements  PropertyChangeListener {
 
     // datos persistentes del juego
 
-    public int cantidadDeJugadores() throws FaseErroneaException {
-        return faseActual.obtenerFaseInicio().cantidadDeJugadores();
+    public int cantidadDeJugadores()  {
+        return turno.cantidadDeJugadores();
     }
 
     // avanzar fase
