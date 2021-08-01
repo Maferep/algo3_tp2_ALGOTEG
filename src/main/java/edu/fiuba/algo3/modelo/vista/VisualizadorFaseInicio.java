@@ -52,47 +52,29 @@ public class VisualizadorFaseInicio {
         * Luego paso a la fase de ataque
         */
 
-        /*while(i <= this.cantidadDeJugadores) {
-            Label texto = new Label();
-            javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
-            BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-            texto.setText("Jugador " + i + ":" + juego.obtenerFaseActual().turno().jugadorActual().obtenerColor()) ;
-            texto.setTextFill(coloresParaJugadores.get(i-1));
-            texto.setMinWidth(10);
-            texto.setMinSize(10,10);
-            texto.setBackground(new Background(imagenDeFondo));
-            texto.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
-            contenedor.getChildren().add(texto);
-            i++;
-            juego.obtenerFaseActual().turno().siguienteJugador();
-        }*/
+        imprimirJugador("Jugador " + i + ":" + juego.obtenerNombresDeColores().get(0));
 
-            Label nombreJugador = new Label();
-            javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
-            BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-            nombreJugador.setText("Jugador " + i + ":" + juego.obtenerNombresDeColores().get(0));
-            nombreJugador.setTextFill(coloresParaJugadores.get(0));
-            nombreJugador.setMinWidth(10);
-            nombreJugador.setMinSize(10,10);
-            nombreJugador.setBackground(new Background(imagenDeFondo));
-            nombreJugador.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
-            contenedor.getChildren().add(nombreJugador);
+        this.mostrarPaisesConquistados();
 
-            this.mostrarPaisesConquistados();
-            /*Label titulo = new Label();
-            titulo.setText("Paises conquistados");
-            contenedor.getChildren().add(titulo);
-            for(int j = 0 ; j < juego.jugadorActual().obtenerPaises().size() ; j++ ) {
-                Label paisesJugador = new Label();
-                paisesJugador.setText(juego.jugadorActual().obtenerPaises().get(j).obtenerNombre());
-                contened*/
+        contenedor.setSpacing(10);
+        contenedor.setPadding(new Insets(100));
 
-            contenedor.setSpacing(10);
-            contenedor.setPadding(new Insets(100));
+        StackPane ruta = new StackPane();
 
-            StackPane ruta = new StackPane();
+        ruta.getChildren().addAll(contenedor);
+    }
 
-            ruta.getChildren().addAll(contenedor);
+    private void imprimirJugador(String texto) {
+        Label nombreJugador = new Label();
+        javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
+        BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        nombreJugador.setText(texto);
+        nombreJugador.setTextFill(coloresParaJugadores.get(0));
+        nombreJugador.setMinWidth(10);
+        nombreJugador.setMinSize(10,10);
+        nombreJugador.setBackground(new Background(imagenDeFondo));
+        nombreJugador.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
+        contenedor.getChildren().add(nombreJugador);
     }
 
     private Juego crearJuego(int cantidadJugadores) throws Exception {
