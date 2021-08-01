@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.vista.eventos;
 
 import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
+import edu.fiuba.algo3.modelo.vista.VisualizadorFaseInicio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -21,30 +22,34 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
     private TextField campoParaTexto;
     private ContenedorJuego contenedor;
 
-    public BotonComenzarJuegoEventHandler(TextField campo, Label label, ContenedorJuego contenedor) {
+    public BotonComenzarJuegoEventHandler(TextField campo, Label label, ContenedorJuego contenedorJuego) {
         this.campoParaTexto = campo;
         this.texto = label;
-        this.contenedor = contenedor;
+
+        // TODO para que se usa el contenedorJuego?
+        this.contenedor = contenedorJuego;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        // TODO usar string to int para obtener cantidadDeJugadores
+        int cantidadDeJugadores = 3;
         if (this.campoParaTexto.getText().trim().equals("")) {
             this.texto.setText("Debe ingresar jugadores");
             this.campoParaTexto.requestFocus();
-
+            return;
         } else {
             this.texto.setText("¡Que comience el juego!");
             Label texto = new Label();
-            texto.setText("Jugador " + this.campoParaTexto.getText());
+            // texto.setText("Jugador " + this.campoParaTexto.getText());
             javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
-            BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
+            BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
             texto.setTextFill(javafx.scene.paint.Color.BLACK);
             texto.setMinWidth(10);
-            texto.setMinSize(10,10);
+            texto.setMinSize(10, 10);
             texto.setBackground(new Background(imagenDeFondo));
             texto.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
-
 
             VBox contenedor = new VBox(texto);
 
@@ -56,9 +61,18 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
             ruta.getChildren().addAll(contenedor);
 
             this.contenedor.setRight(contenedor);
+            
+            VisualizadorFaseInicio faseInicio = null;
+            while(faseInicio == null) {
+                try {
+                    faseInicio = new VisualizadorFaseInicio(cantidadDeJugadores, contenedor);
+                } catch (Exception e) {
+                    //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
+                }
+            }
 
-            //Comenzar con el juego. Inicializar jugadores segun la cantidad que me escribieron en el campo.
-
+            faseInicio.visualizar();
         }
+        
     }
 }
