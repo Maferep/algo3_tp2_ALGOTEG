@@ -50,10 +50,6 @@ public class ContenedorJuego extends BorderPane {
         //contenedor de botones
         contenedorDeBotones = new VBox(texto,campo,boton);
 
-        StackPane ruta = new StackPane();
-
-        ruta.getChildren().addAll(contenedorDeBotones);
-
         BotonComenzarJuegoEventHandler botonEnviarEventHandler = 
             new BotonComenzarJuegoEventHandler(campo,texto,this);
         boton.setOnAction(botonEnviarEventHandler);
