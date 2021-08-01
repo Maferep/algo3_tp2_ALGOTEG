@@ -36,20 +36,5 @@ public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent>
         this.contenedorJuego.setRight(contenedor);
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
-
-        /*Button boton = new Button();
-        boton.setText("Volver");
-
-        this.contenedor.getChildren().add(boton);
-
-        StackPane ruta = new StackPane();
-
-        ruta.getChildren().addAll(contenedor);
-
-        BotonVolver botonVolver = new BotonVolver();
-        boton.setOnAction(botonVolver);*/
-
-        //BotonVolver botonVolver = new BotonVolver(this.contenedor, this.contenedorJuego);
-        //boton.setOnAction(botonVolver);
     }
 }

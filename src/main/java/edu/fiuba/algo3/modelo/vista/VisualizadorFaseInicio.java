@@ -55,14 +55,15 @@ public class VisualizadorFaseInicio {
         * Luego paso a la fase de ataque
         */
 
+        this.mostrarObjetivos();
         this.mostrarPaisesConquistados();
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
 
-        StackPane ruta = new StackPane();
+        //StackPane ruta = new StackPane();
 
-        ruta.getChildren().addAll(contenedor);
+        //ruta.getChildren().addAll(contenedor);
     }
 
     private void imprimirJugador(String texto) {
@@ -88,15 +89,25 @@ public class VisualizadorFaseInicio {
         return juego;
     }
 
+    private void mostrarObjetivos() {
+        Button boton = new Button();
+        boton.setText("Mostrar Objetivos");
+        contenedor.getChildren().add(boton);
+        EventoMostrarObjetivos objetivos = new EventoMostrarObjetivos(
+            juego, this.contenedor, this.contenedorJuego
+        );
+        boton.setOnAction(objetivos);
+    }
+
     private void mostrarPaisesConquistados() {
         Button boton = new Button();
         boton.setText("Mostrar paises conquistados");
 
         contenedor.getChildren().add(boton);
 
-        StackPane ruta = new StackPane();
+        //StackPane ruta = new StackPane();
 
-        ruta.getChildren().addAll(contenedor);
+        //ruta.getChildren().addAll(contenedor);
 
         BotonMostrarPaisesConquistados botonMostrarPaisesConquistados 
             = new BotonMostrarPaisesConquistados(

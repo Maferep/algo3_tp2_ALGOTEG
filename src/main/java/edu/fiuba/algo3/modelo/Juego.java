@@ -123,4 +123,8 @@ public class Juego implements  PropertyChangeListener {
         //y buscar el ganador
         juegoTerminado = true;
     }
+
+	public List<String> obtenerObjetivos() {
+        return objetivos.nombresDeObjetivos();
+	}
 }
