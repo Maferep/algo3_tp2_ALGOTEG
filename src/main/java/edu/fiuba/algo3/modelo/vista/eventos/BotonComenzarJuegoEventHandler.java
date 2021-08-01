@@ -34,7 +34,6 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
             this.campoParaTexto.requestFocus();
         }
         else {
-            //HACER ALGO COMO ESTO
             int cantidadDeJugadores = (Integer.parseInt(this.campoParaTexto.getText()));
             VBox contenedor = new VBox();
             VisualizadorFaseInicio faseInicio = null;

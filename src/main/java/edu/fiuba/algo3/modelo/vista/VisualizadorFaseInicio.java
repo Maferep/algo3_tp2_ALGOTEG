@@ -70,7 +70,6 @@ public class VisualizadorFaseInicio {
             Label nombreJugador = new Label();
             javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
             BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-            //texto.setText("Jugador " + i + ":" + juego.obtenerFaseActual().turno().jugadorActual().obtenerColor()) ;
             nombreJugador.setText("Jugador " + i + ":" + juego.obtenerNombresDeColores().get(0));
             nombreJugador.setTextFill(coloresParaJugadores.get(0));
             nombreJugador.setMinWidth(10);
@@ -94,8 +93,6 @@ public class VisualizadorFaseInicio {
             StackPane ruta = new StackPane();
 
             ruta.getChildren().addAll(contenedor);
-
-
     }
 
     private Juego crearJuego(int cantidadJugadores) throws Exception {
@@ -107,7 +104,7 @@ public class VisualizadorFaseInicio {
         Button boton = new Button();
         boton.setText("Mostrar paises conquistados");
 
-        this.contenedor.getChildren().add(boton);
+        contenedor.getChildren().add(boton);
 
         StackPane ruta = new StackPane();
 

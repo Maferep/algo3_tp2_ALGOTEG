@@ -37,7 +37,7 @@ public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent>
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
 
-        Button boton = new Button();
+        /*Button boton = new Button();
         boton.setText("Volver");
 
         this.contenedor.getChildren().add(boton);
@@ -47,7 +47,7 @@ public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent>
         ruta.getChildren().addAll(contenedor);
 
         BotonVolver botonVolver = new BotonVolver();
-        boton.setOnAction(botonVolver);
+        boton.setOnAction(botonVolver);*/
 
         //BotonVolver botonVolver = new BotonVolver(this.contenedor, this.contenedorJuego);
         //boton.setOnAction(botonVolver);
