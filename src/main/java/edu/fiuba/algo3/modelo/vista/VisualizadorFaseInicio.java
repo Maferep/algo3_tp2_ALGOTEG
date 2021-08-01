@@ -47,14 +47,15 @@ public class VisualizadorFaseInicio {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        int i = 1;
+        for(int i = 0; i < juego.cantidadDeJugadores(); i++)
+            imprimirJugador("Jugador " + (i+1) + ":" + juego.obtenerNombresDeColores().get(i));
 
         /*
         * Mostrar los jugadores uno por uno. Cuando termina uno sigue el otro y asi.
         * Luego paso a la fase de ataque
         */
 
-        imprimirJugador("Jugador " + i + ":" + juego.obtenerNombresDeColores().get(0));
+        
 
         this.mostrarPaisesConquistados();
 
