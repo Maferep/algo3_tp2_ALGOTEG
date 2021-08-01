@@ -22,17 +22,9 @@ import javafx.scene.control.TextField;
 public class ContenedorJuego extends BorderPane {
 
     BarraDeMenu menuBar;
-    VistaJuego vistaJuego;
-    Canvas canvasCentral;
-    VBox contenedorCentral;
-    Scene proximaEscena;
     Stage stage;
-    ContenedorRealizaJuego proximoContenedor;
 
-    public ContenedorJuego(Stage stage, Scene proximaEscena, ContenedorRealizaJuego contenedorRealizaJuego) {
-        super();
-        this.proximaEscena = proximaEscena;
-        this.proximoContenedor = contenedorRealizaJuego;
+    public ContenedorJuego(Stage stage) {
         this.stage = stage;
         this.setMenu(stage);
         this.setCentro();
@@ -41,7 +33,6 @@ public class ContenedorJuego extends BorderPane {
     }
 
     private void setBotonera() {
-        //ImageView tablero = new ImageView("file:src/main/resources/tableroTEG.png");
         Label texto = new Label();
         texto.setText("Ingrese cantidad de jugadores");
 
@@ -51,20 +42,15 @@ public class ContenedorJuego extends BorderPane {
         Button boton = new Button();
         boton.setText("Empezar juego");
 
-       // VBox contenedor = new VBox(tablero, texto, campo, boton);
-
         VBox contenedor = new VBox(texto,campo,boton);
 
         StackPane ruta = new StackPane();
 
         ruta.getChildren().addAll(contenedor);
 
-        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(stage, proximaEscena, campo, texto, this, this.proximoContenedor);
+        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(campo,texto,this);
         boton.setOnAction(botonEnviarEventHandler);
 
-        //Scene escena = new Scene(ruta);
-
-        //VBox contenedorVertical = new VBox(botonAgregar);
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
 
