@@ -31,7 +31,6 @@ public class VisualizadorFaseInicio {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        int i = 1;
 
         //solo para mostrar que funciona
         List<Color> coloresParaJugadores =  Arrays.asList(
@@ -43,8 +42,9 @@ public class VisualizadorFaseInicio {
                 Color.web("#000000",1.0)
         );
 
-        while(i <= this.cantidadDeJugadores) {
-            String contenidoTexto =  "Jugador " + i + ":" 
+        int i = 0;
+        while(i <= juego.cantidadDeJugadores()) {
+            String contenidoTexto =  "Jugador " + (i+1) + ":" 
                     + juego.obtenerNombresDeColores().get(i);
             imprimirJugador(contenedor, contenidoTexto, coloresParaJugadores.get(i));
             i++;
@@ -72,7 +72,7 @@ public class VisualizadorFaseInicio {
         texto.setMinWidth(10);
         texto.setMinSize(10,10);
         texto.setBackground(new Background(imagenDeFondo));
-        texto.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
+        texto.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 10));
         contenedor.getChildren().add(texto);
 
     }
