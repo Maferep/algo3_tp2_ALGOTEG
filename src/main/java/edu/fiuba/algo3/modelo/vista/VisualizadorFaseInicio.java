@@ -42,6 +42,11 @@ public class VisualizadorFaseInicio {
                 Color.web("#000000",1.0)
         );
 
+        /*
+        * Mostrar los jugadores uno por uno. Cuando termina uno sigue el otro y asi.
+        * Luego paso a la fase de ataque
+        */
+
         while(i <= this.cantidadDeJugadores) {
             Label texto = new Label();
             javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
