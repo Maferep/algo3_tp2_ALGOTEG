@@ -63,12 +63,11 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
             this.contenedor.setRight(contenedor);
             
             VisualizadorFaseInicio faseInicio = null;
-            while(faseInicio == null) {
-                try {
-                    faseInicio = new VisualizadorFaseInicio(cantidadDeJugadores, contenedor);
-                } catch (Exception e) {
-                    //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
-                }
+            try {
+                faseInicio = new VisualizadorFaseInicio(cantidadDeJugadores, contenedor);
+            } catch (Exception e) {
+                //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
+                return;
             }
 
             faseInicio.visualizar();
