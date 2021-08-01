@@ -92,7 +92,10 @@ public class Juego implements  PropertyChangeListener {
         return mapa;
     }
 
-    
+    /*
+        Obtiene los nombres de los colores de cada jugador existente en orden, 
+        empezando por el jugador actual.
+    */
     public List<String> obtenerNombresDeColores() {
         return turno.obtenerColores();
     }
