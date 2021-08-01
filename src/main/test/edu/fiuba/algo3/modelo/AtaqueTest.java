@@ -23,8 +23,10 @@ public class AtaqueTest {
         int cantidadVictorias = 1;
         int cantidadDerrotas = 1;
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(cantidadVictorias, cantidadDerrotas));
-        ataqueFalso.atacar();
+        IDado dadoMock = new DadosUsadosMock(cantidadVictorias, cantidadDerrotas);
+
+        Ataque ataque = new Ataque(atacante, defensor, dadoMock);
+        ataque.atacar();
 
         assertEquals("Rojo", defensor.obtenerConquistador().obtenerColor());
         assertEquals(2, atacante.cantidadEjercitos());
@@ -118,7 +120,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(cantidadEjercitos);
         defensor.agregarEjercitos(cantidadEjercitos);
 
-        assertThrows(FichasInsuficientesError.class, () -> {
+        assertThrows(FichasInsuficientesException.class, () -> {
                 Ataque ataque = new Ataque(atacante, defensor, 3);
                 ataque.atacar();
         } );
@@ -138,7 +140,7 @@ public class AtaqueTest {
         defensor.agregarEjercitos(cantidadEjercitos);
 
         assertTrue(atacante.cantidadEjercitos() > 4);
-        assertThrows(FichasInsuficientesError.class, () -> {
+        assertThrows(FichasInsuficientesException.class, () -> {
                 Ataque ataque = new Ataque(atacante, defensor, 4);
                 ataque.atacar();
         } );

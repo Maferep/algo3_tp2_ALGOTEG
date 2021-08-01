@@ -27,9 +27,9 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     List<IPais> paises;
     Mazo mazo;
 
-    public FaseInicio(int cantJugadores) throws CantidadDeJugadoresError, EjercitosException, ObjetivoException {
+    public FaseInicio(int cantJugadores) throws CantidadDeJugadoresException, EjercitosException, ObjetivoException {
         if (!validarCantidad(cantJugadores)) {
-            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
+            throw new CantidadDeJugadoresException("El juego tiene un mínimo de"
                     + minJugadores + "y un máximo de"
                     + maxJugadores + "jugadores.");
         }
@@ -63,7 +63,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         return turno.cantidadDeJugadores();
     }
 
-    public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws FichasInsuficientesError, PaisNoExistenteError,
+    public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) throws FichasInsuficientesException, PaisNoExistenteException,
             EjercitosException {
         turno.jugadorActual().agregarEjercitosAPais(pais, cantEjercitos);
         estrategia = estrategia.turnoCompleto(turno);
