@@ -11,5 +11,8 @@ public class FaseReagruparConConquista extends FaseReagrupar {
                 mazo.obtenerTarjeta()
             );
     }
+    public IFase faseActual() {
+        return this;
+    }
 }
 

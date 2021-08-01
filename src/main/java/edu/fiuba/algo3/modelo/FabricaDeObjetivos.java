@@ -38,7 +38,7 @@ public class FabricaDeObjetivos {
         agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesDos,paisesEnEuropa));
         agregarObjetivoDeEjercitos("Rojo");
         agregarObjetivo(new ObjetivoConquistarPaisesYContinentes(continentesTres,paisesEnAsia));
-    
+        agregarObjetivoDeEjercitos("Verde");
         return objetivos;
     }
 

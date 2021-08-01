@@ -7,4 +7,8 @@ public class FaseReagruparSinConquista extends FaseReagrupar {
     public FaseReagruparSinConquista(ITurno turno, IMapa paises, Mazo mazo) {
         super(turno, paises, mazo);
     }
+
+    public IFase faseActual() {
+        return this;
+    }
 }

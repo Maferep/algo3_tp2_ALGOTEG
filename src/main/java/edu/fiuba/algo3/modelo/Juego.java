@@ -39,6 +39,10 @@ public class Juego implements  PropertyChangeListener {
         objetivos.agregarSuscriptorAVictoria(this);
     }
 
+    public IFase obtenerFaseActual() {
+        return this.faseActual.faseActual();
+    }
+
     // inicio
 
     

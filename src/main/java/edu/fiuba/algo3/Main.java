@@ -3,6 +3,7 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.vista.ContenedorBienvenidos;
 import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
+import edu.fiuba.algo3.modelo.vista.ContenedorRealizaJuego;
 import edu.fiuba.algo3.modelo.vista.eventos.BotonParaActivarOpcionDePantallaCompletaEventHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -38,8 +39,10 @@ public class Main extends Application {
 
         stage.setTitle("ALGOTEG");
 
-        Juego juego = crearJuego(); //modelo
-        ContenedorJuego contenedorJuego = new ContenedorJuego(stage, juego);
+        //ContenedorRealizaJuego contenedorRealizaJuego = new ContenedorRealizaJuego(stage);
+        //Scene escenaRealizaJuego = new Scene(contenedorRealizaJuego, 640, 480);
+
+        ContenedorJuego contenedorJuego = new ContenedorJuego(stage, null, null);
         Scene escenaJuego = new Scene(contenedorJuego, 640, 480);
 
         BotonParaActivarOpcionDePantallaCompletaEventHandler BotonParaActivarOpcionDePantallaCompletaEventHandler = new BotonParaActivarOpcionDePantallaCompletaEventHandler(stage, contenedorJuego.getBarraDeMenu());
@@ -52,9 +55,5 @@ public class Main extends Application {
         stage.setFullScreen(true);
 
         stage.show();
-    }
-
-    private Juego crearJuego() {
-    return null;
     }
 }

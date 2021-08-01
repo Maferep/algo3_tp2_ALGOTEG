@@ -25,15 +25,21 @@ public class ContenedorJuego extends BorderPane {
     VistaJuego vistaJuego;
     Canvas canvasCentral;
     VBox contenedorCentral;
+    Scene proximaEscena;
+    Stage stage;
+    ContenedorRealizaJuego proximoContenedor;
 
-    public ContenedorJuego(Stage stage, Juego juego) {
+    public ContenedorJuego(Stage stage, Scene proximaEscena, ContenedorRealizaJuego contenedorRealizaJuego) {
         this.setMenu(stage);
-        this.setCentro(juego);
+        this.setCentro();
         this.setConsola();
-        this.setBotonera(juego);
+        this.setBotonera();
+        this.proximaEscena = proximaEscena;
+        this.proximoContenedor = contenedorRealizaJuego;
+        this.stage = stage;
     }
 
-    private void setBotonera(Juego juego) {
+    private void setBotonera() {
         //ImageView tablero = new ImageView("file:src/main/resources/tableroTEG.png");
         Label texto = new Label();
         texto.setText("Ingrese cantidad de jugadores");
@@ -52,7 +58,7 @@ public class ContenedorJuego extends BorderPane {
 
         ruta.getChildren().addAll(contenedor);
 
-        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(campo, texto, this);
+        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(stage, proximaEscena, campo, texto, this, this.proximoContenedor);
         boton.setOnAction(botonEnviarEventHandler);
 
         //Scene escena = new Scene(ruta);
@@ -70,7 +76,7 @@ public class ContenedorJuego extends BorderPane {
         this.setTop(menuBar);
     }
 
-    private void setCentro(Juego juego) {
+    private void setCentro() {
         Image imagen = new Image("file:src/main/resources/vintageopciontres.jpeg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
 

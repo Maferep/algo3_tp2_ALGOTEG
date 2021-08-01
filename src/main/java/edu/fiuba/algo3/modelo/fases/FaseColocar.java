@@ -17,6 +17,10 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
         asignarNuevosEjercitosAJugadores();
     }
 
+    public IFase faseActual() {
+        return this;
+    }
+
     public ITurno turno() {
         return turno;
     }
