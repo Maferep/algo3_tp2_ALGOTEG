@@ -113,18 +113,10 @@ public class Juego implements  PropertyChangeListener {
         return mapa.obtenerPaises().size();
     }
 
-<<<<<<< HEAD
-	public int cantidadDePaises() {
-		return mapa.obtenerPaises().size();
-	}
-
-
-=======
     
     public void propertyChange(PropertyChangeEvent evento) {
         //TODO cambiar a estrategia 'juego completado'
         //y buscar el ganador
         juegoTerminado = true;
     }
->>>>>>> experimental
 }

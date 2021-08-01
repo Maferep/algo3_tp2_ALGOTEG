@@ -15,15 +15,9 @@ import edu.fiuba.algo3.modelo.Mocks.*;
 
 
 public class JuegoTest {
-<<<<<<< HEAD
-
-  /*  @Test
-    public void test01avanzarFasesDeJuego() throws FaseErroneaException, Exception {
-=======
     
     @Test
     public void test00avanzarFaseAvanzaJugador() throws Exception {
->>>>>>> experimental
         int cantidadJugadores = 3;
         Juego juego = new Juego(cantidadJugadores);
         IJugador primerJugador = juego.jugadorActual();
@@ -58,13 +52,6 @@ public class JuegoTest {
         }
         juego.ubicarEjercitosEnPais(3, juego.jugadorActual().obtenerPaises().get(0));
 
-<<<<<<< HEAD
-        juego.siguienteTurno();
-        juego.siguienteTurno();
-        juego.siguienteFase();
-        assertEquals(1, juego.jugadorActual().cantidadTarjetas());
-    }*/
-=======
         //ultimo jugador no puede avanzar al siguiente turno
         assertThrows(TurnoException.class, () -> {
             juego.siguienteTurno();
@@ -73,7 +60,6 @@ public class JuegoTest {
     }
     
     
->>>>>>> experimental
 
     @Test
     public void test03TransferirEjercitos() throws FaseErroneaException, Exception {
