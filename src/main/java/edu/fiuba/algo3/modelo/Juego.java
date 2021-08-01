@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.List;
 
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
@@ -98,6 +99,10 @@ public class Juego implements  PropertyChangeListener {
     
     public ITurno obtenerTurno() {
         return turno;
+    }
+
+    public List<String> obtenerNombresDeColores() {
+        return turno.obtenerColores();
     }
 
     public IJugador jugadorActual() {

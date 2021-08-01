@@ -85,4 +85,8 @@ public class Turno implements ITurno {
         if(indiceUltimo < 0) indiceUltimo += jugadores.size();
         return jugadorActual().equals(jugadores.get(indiceUltimo));
     }
+
+    public void obtenerColores() {
+
+    }
 }
