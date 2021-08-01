@@ -23,6 +23,7 @@ public class ContenedorJuego extends BorderPane {
 
     BarraDeMenu menuBar;
     Stage stage;
+    VBox contenedorDeBotones;
 
     public ContenedorJuego(Stage stage) {
         this.stage = stage;
@@ -32,6 +33,10 @@ public class ContenedorJuego extends BorderPane {
         this.setBotonera();
     }
 
+    /*
+    
+        Define el espacio donde se imprimen los botones
+    */
     private void setBotonera() {
         Label texto = new Label();
         texto.setText("Ingrese cantidad de jugadores");
@@ -42,27 +47,36 @@ public class ContenedorJuego extends BorderPane {
         Button boton = new Button();
         boton.setText("Empezar juego");
 
-        VBox contenedor = new VBox(texto,campo,boton);
+        //contenedor de botones
+        contenedorDeBotones = new VBox(texto,campo,boton);
 
         StackPane ruta = new StackPane();
 
-        ruta.getChildren().addAll(contenedor);
+        ruta.getChildren().addAll(contenedorDeBotones);
 
-        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(campo,texto,this);
+        BotonComenzarJuegoEventHandler botonEnviarEventHandler = 
+            new BotonComenzarJuegoEventHandler(campo,texto,this);
         boton.setOnAction(botonEnviarEventHandler);
 
-        contenedor.setSpacing(10);
-        contenedor.setPadding(new Insets(100));
+        contenedorDeBotones.setSpacing(10);
+        contenedorDeBotones.setPadding(new Insets(100));
 
-        this.setRight(contenedor);
+        //ubicar a la derecha del contenedorJuego
+        this.setRight(contenedorDeBotones);
         this.setStyle("-fx-background-color: rgba(243,177,64,0.51);");
     }
 
+    /*
+        Setea el menú de opciones arriba de todo
+    */
     private void setMenu(Stage stage) {
         this.menuBar = new BarraDeMenu(stage);
         this.setTop(menuBar);
     }
 
+    /*
+        Ubica mapa al centro de contenedorJuego
+    */
     private void setCentro() {
         Image imagen = new Image("file:src/main/resources/vintageopciontres.jpeg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
@@ -95,5 +109,9 @@ public class ContenedorJuego extends BorderPane {
 
     public BarraDeMenu getBarraDeMenu() {
         return menuBar;
+    }
+
+    public VBox obtenerBotonera() {
+        return contenedorDeBotones;
     }
 }

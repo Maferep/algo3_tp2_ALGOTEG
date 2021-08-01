@@ -38,4 +38,10 @@ public class TurnoMock implements ITurno {
         return null;
     }
 
+    @Override
+    public List<String> obtenerColores() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

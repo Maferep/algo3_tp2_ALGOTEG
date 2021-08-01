@@ -38,5 +38,11 @@ public class TurnoMockUnJugador implements ITurno {
     public IJugador jugadorDeColor(String color) throws NoSuchElementException {
         return miJugador;
     }
+
+    @Override
+    public List<String> obtenerColores() {
+        // TODO Auto-generated method stub
+        return null;
+    }
     
 }

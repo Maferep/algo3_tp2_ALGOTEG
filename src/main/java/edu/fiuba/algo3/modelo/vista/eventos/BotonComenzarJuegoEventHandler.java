@@ -12,7 +12,7 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
 
     private Label texto;
     private TextField campoParaTexto;
-    private ContenedorJuego contenedor;
+    private ContenedorJuego contenedorJuego;
     static int minimoJugadores = 2;
     static int maximoJugadores = 6;
 
@@ -20,7 +20,7 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
         this.campoParaTexto = campo;
         this.texto = label;
         // TODO para que se usa el contenedorJuego?
-        this.contenedor = contenedorJuego;
+        this.contenedorJuego = contenedorJuego;
     }
 
     @Override
@@ -37,15 +37,16 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
             int cantidadDeJugadores = (Integer.parseInt(this.campoParaTexto.getText()));
             VBox contenedor = new VBox();
             VisualizadorFaseInicio faseInicio = null;
-            while(faseInicio == null) {
-                try {
-                    faseInicio = new VisualizadorFaseInicio(cantidadDeJugadores, contenedor);
-                } catch (Exception e) {
-                    //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
-                }
+            
+            try {
+                faseInicio = new VisualizadorFaseInicio(cantidadDeJugadores, contenedorJuego);
+            } catch (Exception e) {
+                //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
+                return;
             }
+            
             faseInicio.visualizar();
-            this.contenedor.setRight(contenedor);
+            this.contenedorJuego.setRight(contenedor);
         }
     }
 }

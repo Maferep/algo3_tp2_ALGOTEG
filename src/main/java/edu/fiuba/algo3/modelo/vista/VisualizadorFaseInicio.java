@@ -8,13 +8,13 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class VisualizadorFaseInicio {
+public class VisualizadorFaseInicio  extends VisualizadorFase {
     VBox contenedor;
     Juego juego;
     int cantidadDeJugadores;
 
-    public VisualizadorFaseInicio(int cantidadJugadores, VBox contenedor) throws Exception {
-        this.contenedor = contenedor;
+    public VisualizadorFaseInicio(int cantidadJugadores, ContenedorJuego contenedor) throws Exception {
+        this.contenedor = contenedor.obtenerBotonera();
         this.cantidadDeJugadores = cantidadJugadores;
     }
 

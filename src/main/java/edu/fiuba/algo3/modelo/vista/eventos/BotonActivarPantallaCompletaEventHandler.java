@@ -6,12 +6,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class BotonParaActivarOpcionDePantallaCompletaEventHandler implements EventHandler<KeyEvent> {
+public class BotonActivarPantallaCompletaEventHandler implements EventHandler<KeyEvent> {
 
     private Stage stage;
     private BarraDeMenu menuBar;
 
-    public BotonParaActivarOpcionDePantallaCompletaEventHandler(Stage stage, BarraDeMenu menuBar) {
+    public BotonActivarPantallaCompletaEventHandler(Stage stage, BarraDeMenu menuBar) {
         this.stage = stage;
         this.menuBar = menuBar;
     }

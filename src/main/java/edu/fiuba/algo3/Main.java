@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.vista.ContenedorBienvenidos;
 import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
-import edu.fiuba.algo3.modelo.vista.eventos.BotonParaActivarOpcionDePantallaCompletaEventHandler;
+import edu.fiuba.algo3.modelo.vista.eventos.BotonActivarPantallaCompletaEventHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -19,10 +19,13 @@ public class Main extends Application {
         ContenedorJuego contenedorJuego = new ContenedorJuego(stage);
         Scene escenaJuego = new Scene(contenedorJuego, 640, 480);
 
-        BotonParaActivarOpcionDePantallaCompletaEventHandler BotonParaActivarOpcionDePantallaCompletaEventHandler = new BotonParaActivarOpcionDePantallaCompletaEventHandler(stage, contenedorJuego.getBarraDeMenu());
-        escenaJuego.setOnKeyPressed(BotonParaActivarOpcionDePantallaCompletaEventHandler);
+        BotonActivarPantallaCompletaEventHandler BotonActivarPantallaCompletaEventHandler 
+            = new BotonActivarPantallaCompletaEventHandler(
+                stage, contenedorJuego.getBarraDeMenu());
+        escenaJuego.setOnKeyPressed(BotonActivarPantallaCompletaEventHandler);
 
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
+        ContenedorBienvenidos contenedorBienvenidos 
+            = new ContenedorBienvenidos(stage, escenaJuego);
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos,640,480);
 
         stage.setScene(escenaBienvenidos);
