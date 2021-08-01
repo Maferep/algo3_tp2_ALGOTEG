@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.excepciones;
 
-public class FaseErroneaException extends Exception{
+public class FaseErroneaException extends AlgoTegException {
 
     /**
      *

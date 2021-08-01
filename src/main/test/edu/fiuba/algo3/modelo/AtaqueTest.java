@@ -120,7 +120,7 @@ public class AtaqueTest {
         atacante.agregarEjercitos(cantidadEjercitos);
         defensor.agregarEjercitos(cantidadEjercitos);
 
-        assertThrows(FichasInsuficientesError.class, () -> {
+        assertThrows(FichasInsuficientesException.class, () -> {
                 Ataque ataque = new Ataque(atacante, defensor, 3);
                 ataque.atacar();
         } );
@@ -140,7 +140,7 @@ public class AtaqueTest {
         defensor.agregarEjercitos(cantidadEjercitos);
 
         assertTrue(atacante.cantidadEjercitos() > 4);
-        assertThrows(FichasInsuficientesError.class, () -> {
+        assertThrows(FichasInsuficientesException.class, () -> {
                 Ataque ataque = new Ataque(atacante, defensor, 4);
                 ataque.atacar();
         } );

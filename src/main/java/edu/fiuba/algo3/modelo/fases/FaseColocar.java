@@ -35,7 +35,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
         }
     }
 
-    public void colocarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
+    public void colocarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesException, PaisNoExistenteException {
         turno.jugadorActual().agregarEjercitosAPais(pais, cantEjercitos);
         if(turno.jugadorActual().cantidadEjercitosPorColocar() == 0)
             //current plyer finished task
@@ -43,7 +43,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     }
 
     public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException,
-            PaisNoExistenteError {
+            PaisNoExistenteException {
         turno.jugadorActual().activarTarjeta(tarjeta, mazo);
     }
 

@@ -43,7 +43,7 @@ public class Juego implements  PropertyChangeListener {
 
     
     public void ubicarEjercitosEnPais(final int cantEjercitos, final IPais pais)
-            throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException, FaseErroneaException {
+            throws FichasInsuficientesException, PaisNoExistenteException, EjercitosException, FaseErroneaException {
         faseActual.obtenerFaseInicio().ubicarEjercitosEnPais(cantEjercitos, pais);
     }
 
@@ -66,7 +66,7 @@ public class Juego implements  PropertyChangeListener {
 
     
     public void colocarEjercitosEnPais(final int cantEjercitos, final IPais pais)
-            throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError, FaseErroneaException {
+            throws EjercitosException, FichasInsuficientesException, PaisNoExistenteException, FaseErroneaException {
         faseActual.obtenerFaseColocar().colocarEjercitosEnPais(cantEjercitos, pais);
     }
 

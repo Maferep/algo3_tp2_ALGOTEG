@@ -61,7 +61,7 @@ public class FaseInicioMock implements IFaseInicio {
 
     @Override
     public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais)
-            throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException, FaseErroneaException {
+            throws FichasInsuficientesException, PaisNoExistenteException, EjercitosException, FaseErroneaException {
         // TODO Auto-generated method stub
 
     }
