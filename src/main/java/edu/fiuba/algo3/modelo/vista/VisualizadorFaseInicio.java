@@ -10,6 +10,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class VisualizadorFaseInicio {
@@ -30,13 +31,23 @@ public class VisualizadorFaseInicio {
             e.printStackTrace();
         }
         int i = 1;
+
         //solo para mostrar que funciona
+        List<Color> coloresParaJugadores =  Arrays.asList(
+                Color.web("#0000FF",1.0),
+                Color.web("#DC143C",1.0),
+                Color.web("#FFD700",1.0),
+                Color.web("#008000",1.0),
+                Color.web("#FF69B4",1.0),
+                Color.web("#000000",1.0)
+        );
+
         while(i <= this.cantidadDeJugadores) {
             Label texto = new Label();
             javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
             BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
             texto.setText("Jugador " + i + ":" + juego.obtenerFaseActual().turno().jugadorActual().obtenerColor()) ;
-            texto.setTextFill(javafx.scene.paint.Color.BLACK);
+            texto.setTextFill(coloresParaJugadores.get(i-1));
             texto.setMinWidth(10);
             texto.setMinSize(10,10);
             texto.setBackground(new Background(imagenDeFondo));
@@ -45,19 +56,6 @@ public class VisualizadorFaseInicio {
             i++;
             juego.obtenerFaseActual().turno().siguienteJugador();
         }
-
-        /*List<String> colores = juego.obtenerNombresDeColores();
-        Rectangle rectangulo;
-        HBox cajaDeColores = new HBox();
-        cajaDeColores.setSpacing(10);
-        Color color;
-        for(String nombreColor : colores){
-            rectangulo = new Rectangle(30,30);
-            //TODO imprimir cada color mediante un diccionario
-            rectangulo.setFill(new Color(0.420,0.69,0.1313, 1));
-            cajaDeColores.getChildren().add(rectangulo);
-        }
-        contenedor.getChildren().add(cajaDeColores);*/
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));

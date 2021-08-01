@@ -1,8 +1,11 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public interface ITurno {
+
+    public List<String> obtenerColores();
 
     public IJugador jugadorActual() ;
 

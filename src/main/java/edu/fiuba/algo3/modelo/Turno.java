@@ -87,6 +87,9 @@ public class Turno implements ITurno {
     }
 
     public List<String> obtenerColores() {
-
+        return jugadores.stream()
+                .map(j -> j.obtenerColor())
+                .collect(Collectors.toList());
     }
+
 }
