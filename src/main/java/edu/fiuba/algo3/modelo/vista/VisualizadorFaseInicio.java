@@ -55,8 +55,6 @@ public class VisualizadorFaseInicio {
         * Luego paso a la fase de ataque
         */
 
-        
-
         this.mostrarPaisesConquistados();
 
         contenedor.setSpacing(10);
@@ -70,7 +68,12 @@ public class VisualizadorFaseInicio {
     private void imprimirJugador(String texto) {
         Label nombreJugador = new Label();
         javafx.scene.image.Image imagen = new Image(ARCHIVO_FONDO);
-        BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo= new BackgroundImage(
+            imagen, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.CENTER, 
+            BackgroundSize.DEFAULT);
         nombreJugador.setText(texto);
         nombreJugador.setTextFill(coloresParaJugadores.get(0));
         nombreJugador.setMinWidth(10);
@@ -95,7 +98,10 @@ public class VisualizadorFaseInicio {
 
         ruta.getChildren().addAll(contenedor);
 
-        BotonMostrarPaisesConquistados botonMostrarPaisesConquistados = new BotonMostrarPaisesConquistados(juego,this.contenedor, this.contenedorJuego);
+        BotonMostrarPaisesConquistados botonMostrarPaisesConquistados 
+            = new BotonMostrarPaisesConquistados(
+                juego,this.contenedor, 
+                this.contenedorJuego);
         boton.setOnAction(botonMostrarPaisesConquistados);
 
     }
