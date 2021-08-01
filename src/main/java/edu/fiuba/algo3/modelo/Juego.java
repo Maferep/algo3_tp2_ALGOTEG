@@ -104,10 +104,6 @@ public class Juego implements  PropertyChangeListener {
         return turno.obtenerColores();
     }
 
-    public List<String> obtenerNombresDeColores() {
-        return turno.obtenerColores();
-    }
-
     public IJugador jugadorActual() {
         return turno.jugadorActual();
     }
