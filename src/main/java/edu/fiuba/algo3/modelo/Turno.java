@@ -86,7 +86,7 @@ public class Turno implements ITurno {
         return jugadorActual().equals(jugadores.get(indiceUltimo));
     }
 
-    public void obtenerColores() {
+    public List<String> obtenerColores() {
 
     }
 }
