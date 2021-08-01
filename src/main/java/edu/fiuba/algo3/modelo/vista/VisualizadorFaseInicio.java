@@ -53,9 +53,9 @@ public class VisualizadorFaseInicio {
 
         ruta.getChildren().addAll(contenedorBotones);
 
-        VistaAsignarObjetivos asignarObjetivos = null;
-        asignarObjetivos = new VistaAsignarObjetivos(contenedorJuego);
-        BotonSiguiente boton = new BotonSiguiente(asignarObjetivos);
+        //VistaAsignarObjetivos asignarObjetivos = null;
+        //asignarObjetivos = new VistaAsignarObjetivos(contenedorJuego);
+        //BotonSiguiente boton = new BotonSiguiente(asignarObjetivos);
         contenedorBotones.getChildren().add(new Button("siguiente"));
     }
 
