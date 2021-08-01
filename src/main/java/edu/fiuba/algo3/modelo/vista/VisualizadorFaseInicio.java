@@ -5,8 +5,12 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import java.util.List;
 
 public class VisualizadorFaseInicio {
     VBox contenedor;
@@ -41,6 +45,19 @@ public class VisualizadorFaseInicio {
             i++;
             juego.obtenerFaseActual().turno().siguienteJugador();
         }
+
+        /*List<String> colores = juego.obtenerNombresDeColores();
+        Rectangle rectangulo;
+        HBox cajaDeColores = new HBox();
+        cajaDeColores.setSpacing(10);
+        Color color;
+        for(String nombreColor : colores){
+            rectangulo = new Rectangle(30,30);
+            //TODO imprimir cada color mediante un diccionario
+            rectangulo.setFill(new Color(0.420,0.69,0.1313, 1));
+            cajaDeColores.getChildren().add(rectangulo);
+        }
+        contenedor.getChildren().add(cajaDeColores);*/
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
