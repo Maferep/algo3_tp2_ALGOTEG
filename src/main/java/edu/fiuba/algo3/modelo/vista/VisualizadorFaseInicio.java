@@ -17,6 +17,7 @@ public class VisualizadorFaseInicio {
     VBox contenedor;
     Juego juego;
     int cantidadDeJugadores;
+    static String DIRECCION_IMAGEN_FONDO = "file:src/main/resources/fondoBlanco.jpeg";
 
     public VisualizadorFaseInicio(int cantidadJugadores, ContenedorJuego contenedor) throws Exception {
         this.contenedor = contenedor.obtenerBotonera();
@@ -43,18 +44,10 @@ public class VisualizadorFaseInicio {
         );
 
         while(i <= this.cantidadDeJugadores) {
-            Label texto = new Label();
-            javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
-            BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-            texto.setText("Jugador " + i + ":" + juego.obtenerFaseActual().turno().jugadorActual().obtenerColor()) ;
-            texto.setTextFill(coloresParaJugadores.get(i-1));
-            texto.setMinWidth(10);
-            texto.setMinSize(10,10);
-            texto.setBackground(new Background(imagenDeFondo));
-            texto.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
-            contenedor.getChildren().add(texto);
+            String contenidoTexto =  "Jugador " + i + ":" 
+                    + juego.obtenerNombresDeColores().get(i);
+            imprimirJugador(contenedor, contenidoTexto, coloresParaJugadores.get(i));
             i++;
-            juego.obtenerFaseActual().turno().siguienteJugador();
         }
 
         contenedor.setSpacing(10);
@@ -63,6 +56,25 @@ public class VisualizadorFaseInicio {
         StackPane ruta = new StackPane();
 
         ruta.getChildren().addAll(contenedor);
+    }
+
+    private void imprimirJugador(VBox contenedor, String contenidoTexto, Color color) {
+        Label texto = new Label();
+        javafx.scene.image.Image imagen = new Image(DIRECCION_IMAGEN_FONDO);
+        BackgroundImage imagenDeFondo = 
+            new BackgroundImage(
+                imagen, 
+                BackgroundRepeat.NO_REPEAT, 
+                BackgroundRepeat.NO_REPEAT, 
+                BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        texto.setText(contenidoTexto) ;
+        texto.setTextFill(color);
+        texto.setMinWidth(10);
+        texto.setMinSize(10,10);
+        texto.setBackground(new Background(imagenDeFondo));
+        texto.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
+        contenedor.getChildren().add(texto);
+
     }
 
     private Juego crearJuego(int cantidadJugadores) throws Exception {
