@@ -55,14 +55,14 @@ public class RondaTest {
     @Test
     public void test01agregarEjercitos() throws Exception {
         ITurno unJugador = new TurnoMockUnJugador(paisesJugadorUno);
-        FaseInicio fase = new FaseInicio(null, unJugador, new Canje(paises));
+        FaseInicio fase = new FaseInicio(null, unJugador, new Mazo(paises), null);
         assertFalse(fase.faseCompletada());
 
         int primerCantidadEjercitos = 3;
         int segundaCantidadEjercitos = 5;
-
-        fase.obtenerFaseInicio().ubicarEjercitosEnPais(primerCantidadEjercitos, new Pais("Estados Unidos"));
-        fase.obtenerFaseInicio().ubicarEjercitosEnPais(segundaCantidadEjercitos, new Pais("Estados Unidos"));
+        IPais eeuu = new Pais("Estados Unidos");
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(primerCantidadEjercitos, eeuu);
+        fase.obtenerFaseInicio().ubicarEjercitosEnPais(segundaCantidadEjercitos, eeuu);
         assertTrue(fase.faseCompletada());
     }
 
@@ -70,7 +70,7 @@ public class RondaTest {
     public void test02PasarPorEtapasDistintas() throws Exception {
         //genera una etapa de inicio en estado 'finalizado' de ejemplo
         ITurno unJugador = new TurnoMockUnJugador(paisesJugadorDos);
-        IFase fase = new FaseInicio(null, unJugador, new Canje(paises));
+        IFase fase = new FaseInicio(null, unJugador, new Mazo(paises), null);
         assertFalse(fase.faseCompletada());
 
         int cantidadEjercitos = 3;
@@ -97,7 +97,7 @@ public class RondaTest {
 
         FabricaDeFases fabrica = new FabricaDeFases();
         fabrica.definirTurno(turnoMock);
-        fabrica.definirCanje(new Canje(paises));
+        fabrica.definirCanje(new Mazo(paises));
         fabrica.definirMapa(mapa);
         fase = fase.siguienteFase(fabrica);
         assertEquals(1, turnoMock.jugadorActual().cantidadTarjetas());
@@ -125,7 +125,6 @@ public class RondaTest {
 
         assertEquals(0, t.jugadorActual().cantidadTarjetas());
         fase.obtenerFaseAtacar().atacar(mockAtacanteSiemprePierde, 3, mockDefensor);
-        fase.siguienteTurno();
 
         int cantidadEjercitos = 3;
 

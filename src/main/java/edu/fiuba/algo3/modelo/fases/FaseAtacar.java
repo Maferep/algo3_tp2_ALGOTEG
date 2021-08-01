@@ -1,9 +1,5 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
@@ -26,7 +22,6 @@ public class FaseAtacar extends FaseAbstracta {
     public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
         //TODO: validar existencia de paises y turno correcto
         atacante.atacar(defensor, cantidadDeSoldados);
-        //verifico si se cumplio el objetivo del jugador cuando este ya ataco.
         //TODO: corregir if ambiguo
         if(defensor.obtenerConquistador() == atacante.obtenerConquistador())
             estrategia = estrategia.turnoCompleto(turno);
@@ -43,7 +38,7 @@ public class FaseAtacar extends FaseAbstracta {
     }
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
+    public IFase siguienteFase(IFabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
             TurnoException {
         return estrategia.siguienteFase(turno, fabrica);
     }
@@ -54,8 +49,15 @@ public class FaseAtacar extends FaseAbstracta {
     }
 
     @Override
-    public FaseAtacar obtenerFaseAtacar() throws FaseErroneaException {
+    public FaseAtacar obtenerFaseAtacar() {
         return this;
     }
+
+    @Override
+    public void siguienteTurno() throws TurnoException, FaseIncompletaException {
+        estrategia.siguienteJugador(turno);
+    }
+
+    
 
 }

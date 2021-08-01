@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.beans.PropertyChangeEvent;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.*;
@@ -8,12 +7,11 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class FaseInicio extends FaseAbstracta implements IFaseInicio {
-    ObjetivoManager objetivo;
     FabricaDeObjetivos fabricaObjetivos;
     Boolean finDeJuego = false;
+    ObjetivoManager objetivos;
 
     IEstrategiaFase estrategia = new EstrategiaInicioSinCompletar();
     List<String> colores =  Arrays.asList(
@@ -26,33 +24,33 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
 
     static int minJugadores = 2;
     static int maxJugadores = 6;
-    static int cantidadEjercitos = 8;
-
-    //para que pasen los test hago una lista de paises random
     List<IPais> paises;
+    Mazo mazo;
 
     public FaseInicio(int cantJugadores) throws CantidadDeJugadoresError, EjercitosException, ObjetivoException {
-        if (!validarCantidad(cantJugadores))
-            throw new CantidadDeJugadoresError("El juego tiene un mínimo de "
-                    + minJugadores + " y un máximo de "
-                    + maxJugadores + " jugadores.");
-        turno = new Turno(colores, cantJugadores);
-        fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
-        objetivo = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
-        
+        if (!validarCantidad(cantJugadores)) {
+            throw new CantidadDeJugadoresError("El juego tiene un mínimo de" 
+                    + minJugadores + "y un máximo de"
+                    + maxJugadores + "jugadores.");
+        }
         mapa = new Mapa();
         paises = mapa.obtenerPaises();
-        canje = new Canje(paises);
+        mazo = new Mazo(paises);
+        turno = new Turno(colores, cantJugadores, mazo);
+        fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
+        objetivos = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
     }
 
     public ITurno turno() {
         return turno;
     }
+
     //version para mock
-    public FaseInicio(IMapa mapa, ITurno turno, Canje canje)  {
+    public FaseInicio(IMapa mapa, ITurno turno, Mazo mazo, ObjetivoManager objetivos)  {
         this.turno = turno;
         this.mapa = mapa;
-        this.canje = canje;
+        this.mazo = mazo;
+        this.objetivos = objetivos;
     }
 
     // interfaz de inicio
@@ -81,7 +79,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
+    public IFase siguienteFase(IFabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
             TurnoException {
         return estrategia.siguienteFase(turno, fabrica);
     }
@@ -92,13 +90,13 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
     
     @Override
-    public FaseInicio obtenerFaseInicio() {
+    public IFaseInicio obtenerFaseInicio() {
         return this;
     }
 
     @Override
-	public Canje obtenerCanje() {
-		return canje;
+	public Mazo obtenerCanje() {
+		return mazo;
 	}
 
     @Override
@@ -109,5 +107,13 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     @Override
 	public ITurno obtenerTurno() {
 		return turno;
+    }
+    @Override
+    public void siguienteTurno() throws TurnoException, FaseIncompletaException {
+        estrategia.siguienteJugador(turno);
+    }
+
+	public ObjetivoManager obtenerObjetivos() {
+		return objetivos;
 	}
 }

@@ -13,7 +13,7 @@ public class TurnoTest {
     @Test
     public void test00JugadorConTurnoCorrecto() throws Exception {
         List <String> colores = Arrays.asList("Azul","Rojo","Amarillo","Verde");
-        ITurno turno = new Turno(colores, 4);
+        ITurno turno = new Turno(colores, 4,null);
         assertEquals(turno.cantidadDeJugadores(), 4);
         assertEquals(turno.jugadorActual().obtenerColor(), "Azul");
         

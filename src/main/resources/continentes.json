@@ -1,0 +1,73 @@
+[
+  {
+    "Continente": "Europa",
+    "Contiene": [
+      "Francia",
+      "Gran Bretaña",
+      "Polonia",
+      "Rusia",
+      "Italia",
+      "España",
+      "Suecia",
+      "Alemania",
+      "Islandia"
+    ]
+  },
+  {
+    "Continente": "Asia",
+    "Contiene": [
+      "Tartaria",
+      "Mongolia",
+      "Kamtchatka",
+      "Turquia",
+      "Iran",
+      "Israel",
+      "Taymir",
+      "Aral",
+      "Siberia",
+      "Japon",
+      "Gobi",
+      "Arabia",
+      "India",
+      "China",
+      "Malasia"
+    ]
+  },
+  {
+    "Continente": "Africa",
+    "Contiene": [
+      "Zaire",
+      "Etiopia",
+      "Egipto",
+      "Madagascar",
+      "Sahara",
+      "Sudafrica"
+    ]
+  },
+  {
+    "Continente": "America del Norte",
+    "Contiene": [
+      "Oregon",
+      "Nueva York",
+      "Terranova",
+      "California",
+      "Canada",
+      "Yukon",
+      "Groenlandia",
+      "Alaska",
+      "Mexico",
+      "Labrador"
+    ]
+  },
+  {
+    "Continente": "America del Sur",
+    "Contiene": [
+      "Chile",
+      "Argentina",
+      "Uruguay",
+      "Brasil",
+      "Colombia",
+      "Peru"
+    ]
+  }
+]

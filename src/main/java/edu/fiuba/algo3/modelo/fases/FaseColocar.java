@@ -1,28 +1,31 @@
 package edu.fiuba.algo3.modelo.fases;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
+
+import java.util.List;
 
 public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     IEstrategiaFase estrategia = new EstrategiaColocarSinCompletar();
     Boolean finDeJuego = false;
 
-    public FaseColocar(ITurno turno, IMapa mapa, Canje canje) throws EjercitosException, TurnoException,
-            FaseIncompletaException {
+    public FaseColocar(ITurno turno, IMapa mapa, Mazo mazo) throws EjercitosException, FaseIncompletaException, TurnoException {
         this.turno = turno;
         this.mapa = mapa;
-        this.canje = canje;
+        this.mazo = mazo;
         asignarNuevosEjercitosAJugadores();
     }
 
     public ITurno turno() {
         return turno;
     }
-    
+    /*
+        Agrega ejércitos a todos los jugadores en el turno de acuerdo con
+        la regla de "la mitad de sus paises, excepto si tiene menos de 6,
+        en cual caso recibe 3. No verifica la cantidad de ejércitos que
+        tenían." 
+    */ 
 	private void asignarNuevosEjercitosAJugadores() throws EjercitosException, TurnoException, FaseIncompletaException {
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++ ) {
             int cantidadDeSoldados = 
@@ -34,9 +37,19 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
 
     public void colocarEjercitosEnPais(int cantEjercitos, IPais pais) throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError {
         turno.jugadorActual().agregarEjercitosAPais(pais, cantEjercitos);
-        if(turno.jugadorActual().cantidadEjercitos() == 0)
+        if(turno.jugadorActual().cantidadEjercitosPorColocar() == 0)
             //current plyer finished task
              estrategia = estrategia.turnoCompleto(turno);
+    }
+
+    public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException,
+            PaisNoExistenteError {
+        turno.jugadorActual().activarTarjeta(tarjeta, mazo);
+    }
+
+    public void realizarCanje(IPais pais, List<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException,
+            EjercitosException {
+	    turno.jugadorActual().canjearTarjetas(tarjetas, mazo);
     }
 
     // métodos de fase
@@ -46,7 +59,7 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
     }
 
     @Override
-    public IFase siguienteFase(FabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
+    public IFase siguienteFase(IFabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException,
             TurnoException {
         return estrategia.siguienteFase(turno, fabrica);
     }
@@ -71,5 +84,9 @@ public class FaseColocar extends FaseAbstracta implements IFaseColocar {
 
     public int cantidadDeJugadores() {
         return turno.cantidadDeJugadores();
+    }
+    @Override
+    public void siguienteTurno() throws TurnoException, FaseIncompletaException {
+        estrategia.siguienteJugador(turno);
     }
 }

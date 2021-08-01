@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.Mocks;
 
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
@@ -77,6 +75,16 @@ public class PaisMockSiemprePierde implements IPais {
     public void transferirEjercitosA(int cantidad, IPais otroPais) throws TransferirEjercitosException {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public Boolean esAdyacenteA(IPais otroPais) {
+        return true;
+    }
+
+    @Override
+    public boolean sonMismoPais(IPais pais) {
+        return pais.obtenerNombre().equals(this.obtenerNombre());
     }
 
     

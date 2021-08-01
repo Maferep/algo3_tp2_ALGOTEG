@@ -54,7 +54,7 @@ public class FaseInicioTest {
         ITurno unJugador = new TurnoMockUnJugador(paises);
         Mapa mapa = new Mapa();
         mapa.definirPaises(paises);
-        FaseInicio inicio = new FaseInicio(new Mapa(), unJugador, new Canje(paises));
+        FaseInicio inicio = new FaseInicio(new Mapa(), unJugador, new Mazo(paises), null);
         assertEquals(1, inicio.cantidadDeJugadores());
     }
 }

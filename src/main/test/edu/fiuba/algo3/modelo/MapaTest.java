@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.OrdenadorAleatorio;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import org.junit.Assert;
@@ -29,7 +30,7 @@ public class MapaTest {
                 .map(color -> new Jugador(color))
                 .collect(Collectors.toList());
 
-        mapa.asignarPaises(jugadores);
+        mapa.asignarPaises(jugadores, new OrdenadorAleatorio());
 
         Assert.assertFalse(jugadores.get(0).obtenerPaises().isEmpty());
         Assert.assertFalse(jugadores.get(1).obtenerPaises().isEmpty());
