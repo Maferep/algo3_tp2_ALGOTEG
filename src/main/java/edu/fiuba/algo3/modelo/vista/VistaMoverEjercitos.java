@@ -28,7 +28,7 @@ public class VistaMoverEjercitos {
                 = new EventoMostrarAdyacentes(juego, contenedor, contenedorJuego, pais);
             contenedor.getChildren().add(paisJugador);
         }
-        contenedor.getChildren().add()
+        //contenedor.getChildren().add()
 	}
     
 }
