@@ -44,5 +44,10 @@ public class TurnoMockUnJugador implements ITurno {
     public List<String> obtenerColores() {
         return null;
     }
+
+    @Override
+    public int buscarIndiceDeJugador(IJugador jugador){
+        return 0;
+    }
     
 }

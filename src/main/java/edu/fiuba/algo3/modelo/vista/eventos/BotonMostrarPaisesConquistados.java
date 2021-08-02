@@ -2,12 +2,12 @@ package edu.fiuba.algo3.modelo.vista.eventos;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
+import edu.fiuba.algo3.modelo.vista.VisualizadorFaseInicio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent> {
@@ -15,11 +15,13 @@ public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent>
     Juego juegoActual;
     VBox contenedor;
     ContenedorJuego contenedorJuego;
+    VisualizadorFaseInicio visualizadorFaseInicio;
 
-    public BotonMostrarPaisesConquistados(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego) {
+    public BotonMostrarPaisesConquistados(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juegoActual = juego;
         this.contenedor = contenedor;
         this.contenedorJuego = contenedorJuego;
+        this.visualizadorFaseInicio = visualizadorFaseInicio;
     }
 
     @Override
@@ -33,23 +35,19 @@ public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent>
             paisesJugador.setText(juegoActual.jugadorActual().obtenerPaises().get(j).obtenerNombre());
             contenedor.getChildren().add(paisesJugador);
         }
+        mostrarBotonVolver(contenedor);
+    }
+
+    private void mostrarBotonVolver(VBox contenedor) {
+        Button botonDos = new Button();
+        botonDos.setText("Volver");
+
+        contenedor.getChildren().add(botonDos);
+        BotonVolver botonVolver = new BotonVolver(this.contenedorJuego, this.visualizadorFaseInicio);
+        botonDos.setOnAction(botonVolver);
+
         this.contenedorJuego.setRight(contenedor);
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
-
-        /*Button boton = new Button();
-        boton.setText("Volver");
-
-        this.contenedor.getChildren().add(boton);
-
-        StackPane ruta = new StackPane();
-
-        ruta.getChildren().addAll(contenedor);
-
-        BotonVolver botonVolver = new BotonVolver();
-        boton.setOnAction(botonVolver);*/
-
-        //BotonVolver botonVolver = new BotonVolver(this.contenedor, this.contenedorJuego);
-        //boton.setOnAction(botonVolver);
     }
 }

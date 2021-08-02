@@ -19,7 +19,6 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
     public BotonComenzarJuegoEventHandler(TextField campo, Label label, ContenedorJuego contenedorJuego) {
         this.campoParaTexto = campo;
         this.texto = label;
-        // TODO para que se usa el contenedorJuego?
         this.contenedor = contenedorJuego;
     }
 
@@ -41,7 +40,7 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
                 try {
                     faseInicio = new VisualizadorFaseInicio(cantidadDeJugadores, contenedor, this.contenedor);
                 } catch (Exception e) {
-                    //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
+                    e.printStackTrace();
                 }
             }
             faseInicio.visualizar();

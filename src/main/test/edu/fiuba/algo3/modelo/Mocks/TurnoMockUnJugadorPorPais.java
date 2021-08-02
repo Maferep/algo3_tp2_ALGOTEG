@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.Mocks;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Interfaces.*;
@@ -49,6 +50,11 @@ public class TurnoMockUnJugadorPorPais implements ITurno {
     @Override
     public List<String> obtenerColores() {
         return null;
+    }
+
+    @Override
+    public int buscarIndiceDeJugador(IJugador jugador){
+        return 0;
     }
     
 }
