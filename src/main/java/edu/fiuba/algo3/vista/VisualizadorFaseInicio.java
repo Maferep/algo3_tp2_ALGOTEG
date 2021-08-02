@@ -2,11 +2,9 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.vista.eventos.BotonFaseColocarEventHandler;
-import edu.fiuba.algo3.vista.eventos.BotonMostrarJugadorActual;
-import edu.fiuba.algo3.vista.eventos.BotonMostrarPaisesConquistados;
-import edu.fiuba.algo3.vista.eventos.EventoVista;
+import edu.fiuba.algo3.vista.eventos.*;
 import edu.fiuba.algo3.vista.interfases.IVista;
+import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,7 +16,7 @@ import javafx.scene.text.FontWeight;
 
 import java.util.*;
 
-public class VisualizadorFaseInicio implements IVista{
+public class VisualizadorFaseInicio implements IVista, IVistaFases {
     Juego juego;
     int cantidadDeJugadores;
     ContenedorJuego contenedorJuego;
@@ -138,6 +136,13 @@ public class VisualizadorFaseInicio implements IVista{
                 juego, this.contenedorJuego, this
         );
         boton.setOnAction(botonJugadorActual);
+    }
+
+    public void visualizarNuevaFase() {
+        //ejemplo para probar que funciona. En realidad aca tendria que ser haciaFaseAtacar
+        //pero aun no esta implementada
+        PasajeDeFases haciaFaseReagrupar = new PasajeDeFases(new VistaReagrupar(juego, contenedorJuego));
+        haciaFaseReagrupar.visualizar();
     }
 
 }

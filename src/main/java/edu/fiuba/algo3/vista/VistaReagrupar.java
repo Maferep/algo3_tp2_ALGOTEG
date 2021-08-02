@@ -7,9 +7,6 @@ import javafx.scene.layout.VBox;
 
 public class VistaReagrupar implements IVista {
 
-    VBox contenedorObjetivos;
-    Button botonSiguiente;
-    MostrarObjetivoHandler objetivoHandler;
     private Juego juego;
     private ContenedorJuego contenedorJuego;
     
