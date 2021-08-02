@@ -38,11 +38,7 @@ public class ContenedorJuego extends BorderPane {
 
         VBox contenedor = new VBox(texto,campo,boton);
 
-        StackPane ruta = new StackPane();
-
-        ruta.getChildren().addAll(contenedor);
-
-        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(campo,texto,this);
+        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(campo,texto,contenedor,this);
         boton.setOnAction(botonEnviarEventHandler);
 
         contenedor.setSpacing(10);
@@ -63,11 +59,7 @@ public class ContenedorJuego extends BorderPane {
 
         ImageView tablero = new ImageView("file:src/main/resources/tableroTEG.png");
         VBox contenedor = new VBox(tablero);
-        StackPane ruta = new StackPane();
-
         contenedor.setBackground(new Background(imagenDeFondo));
-
-        ruta.getChildren().addAll(contenedor);
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));

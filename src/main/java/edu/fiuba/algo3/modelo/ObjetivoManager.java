@@ -7,6 +7,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ObjetivoManager {
     List<IObjetivo> objetivos;
@@ -30,5 +31,13 @@ public class ObjetivoManager {
     public void agregarSuscriptorAVictoria(PropertyChangeListener suscriptor) {
         for(IObjetivo objetivo : objetivos)
             objetivo.agregarSuscriptor(suscriptor);
+    }
+
+    /*
+        Devuelve una lista de los nombres de los objetivos de cada jugador,
+        en orden, desde el primer jugador.
+    */
+    public List<String> nombresDeObjetivos() {
+        return objetivos.stream().map(o -> o.toString()).collect(Collectors.toList());
     }
 }

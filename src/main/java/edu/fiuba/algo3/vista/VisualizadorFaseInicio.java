@@ -21,6 +21,8 @@ public class VisualizadorFaseInicio {
     int cantidadDeJugadores;
     ContenedorJuego contenedorJuego;
 
+    static String ARCHIVO_FONDO = "file:src/main/resources/fondoBlanco.jpeg";
+
     List<Color> coloresParaJugadores =  Arrays.asList(
             Color.web("#0000FF",1.0),
             Color.web("#DC143C",1.0),
@@ -37,7 +39,6 @@ public class VisualizadorFaseInicio {
         juego = crearJuego(this.cantidadDeJugadores);
     }
 
-    //TODO obtener lista de colores y mostrarla a los jugadores
     public void visualizar(VBox contenedor) {
         /*
         * Mostrar los jugadores uno por uno. Cuando termina uno sigue el otro y asi.
@@ -57,22 +58,11 @@ public class VisualizadorFaseInicio {
             i++;
             juego.obtenerFaseActual().turno().siguienteJugador();
         }*/
-
-            Label nombreJugador = new Label();
-            javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
-            BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-            nombreJugador.setText("Jugador " + juego.obtenerTurno().jugadorActual().obtenerColor());
-            int indice = juego.obtenerTurno().buscarIndiceDeJugador(juego.obtenerTurno().jugadorActual());
-            nombreJugador.setTextFill(coloresParaJugadores.get(indice));
-            nombreJugador.setMinWidth(10);
-            nombreJugador.setMinSize(10,10);
-            nombreJugador.setBackground(new Background(imagenDeFondo));
-            nombreJugador.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
-            contenedor.getChildren().add(nombreJugador);
-
+            this.imprimirJugador("Jugador " + juego.obtenerTurno().jugadorActual().obtenerColor(), contenedor);
             this.mostrarCantidadDeEjercitos(contenedor);
             this.mostrarPaisesConquistados(contenedor);
             this.colocarEjercitos(contenedor);
+            this.mostrarObjetivos(contenedor);
 
             contenedor.setSpacing(10);
             contenedor.setPadding(new Insets(100));
@@ -82,11 +72,43 @@ public class VisualizadorFaseInicio {
             ruta.getChildren().addAll(contenedor);
 
             this.contenedorJuego.setRight(contenedor);
+
+            contenedor.setSpacing(10);
+            contenedor.setPadding(new Insets(100));
+    }
+
+    private void imprimirJugador(String texto, VBox contenedor) {
+        Label nombreJugador = new Label();
+        javafx.scene.image.Image imagen = new Image(ARCHIVO_FONDO);
+        BackgroundImage imagenDeFondo= new BackgroundImage(
+            imagen, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.CENTER, 
+            BackgroundSize.DEFAULT);
+        nombreJugador.setText(texto);
+        int indice = juego.obtenerTurno().buscarIndiceDeJugador(juego.obtenerTurno().jugadorActual());
+        nombreJugador.setTextFill(coloresParaJugadores.get(indice));
+        nombreJugador.setMinWidth(10);
+        nombreJugador.setMinSize(10,10);
+        nombreJugador.setBackground(new Background(imagenDeFondo));
+        nombreJugador.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
+        contenedor.getChildren().add(nombreJugador);
     }
 
     private Juego crearJuego(int cantidadJugadores) throws Exception {
         Juego juego = new Juego(cantidadJugadores);
         return juego;
+    }
+
+    private void mostrarObjetivos(VBox contenedor) {
+            Button boton = new Button();
+            boton.setText("Mostrar Objetivos");
+            contenedor.getChildren().add(boton);
+            EventoMostrarObjetivos objetivos = new EventoMostrarObjetivos(
+                juego, contenedor, this.contenedorJuego, this
+            );
+            boton.setOnAction(objetivos);
     }
 
     private void mostrarPaisesConquistados(VBox contenedor) {
@@ -95,7 +117,7 @@ public class VisualizadorFaseInicio {
 
         contenedor.getChildren().add(boton);
 
-        BotonMostrarPaisesConquistados botonMostrarPaisesConquistados = new BotonMostrarPaisesConquistados(juego,this.contenedor, this.contenedorJuego, this);
+        BotonMostrarPaisesConquistados botonMostrarPaisesConquistados = new BotonMostrarPaisesConquistados(juego,contenedor, this.contenedorJuego, this);
         boton.setOnAction(botonMostrarPaisesConquistados);
     }
 

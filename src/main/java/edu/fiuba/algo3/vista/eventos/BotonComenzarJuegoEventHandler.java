@@ -12,14 +12,16 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
 
     private Label texto;
     private TextField campoParaTexto;
-    private ContenedorJuego contenedor;
+    private ContenedorJuego contenedorJuego;
+    private VBox contenedor;
     static int minimoJugadores = 2;
     static int maximoJugadores = 6;
 
-    public BotonComenzarJuegoEventHandler(TextField campo, Label label, ContenedorJuego contenedorJuego) {
+    public BotonComenzarJuegoEventHandler(TextField campo, Label label,VBox contenedor, ContenedorJuego contenedorJuego) {
         this.campoParaTexto = campo;
         this.texto = label;
-        this.contenedor = contenedorJuego;
+        this.contenedor = contenedor;
+        this.contenedorJuego = contenedorJuego;
     }
 
     @Override
@@ -34,17 +36,15 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
         }
         else {
             int cantidadDeJugadores = (Integer.parseInt(this.campoParaTexto.getText()));
-            VBox contenedor = new VBox();
+            VBox contenedorBotones = new VBox();
             VisualizadorFaseInicio faseInicio = null;
-            while(faseInicio == null) {
-                try {
-                    faseInicio = new VisualizadorFaseInicio(cantidadDeJugadores, contenedor, this.contenedor);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            try {
+                faseInicio = new VisualizadorFaseInicio(cantidadDeJugadores, contenedorBotones, this.contenedorJuego);
+            } catch (Exception e) {
+                //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
             }
-            faseInicio.visualizar(contenedor);
-            this.contenedor.setRight(contenedor);
+            faseInicio.visualizar(contenedorBotones);
+            this.contenedorJuego.setRight(contenedorBotones);
         }
     }
 }
