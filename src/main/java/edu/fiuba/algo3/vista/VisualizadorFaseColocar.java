@@ -3,7 +3,9 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonPaisColocarEventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 import java.util.List;
@@ -20,8 +22,11 @@ public class VisualizadorFaseColocar {
     }
 
     public void visualizar() {
-        mostrarPaises();
+        Label titulo = new Label();
+        titulo.setText("Tenes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejércitos por colocar.");
+        contenedor.getChildren().add(titulo);
 
+        mostrarPaises();
     }
 
     private void mostrarPaises() {
@@ -33,6 +38,8 @@ public class VisualizadorFaseColocar {
             botonPais.setOnAction(botonColocar);
         }
 
+        contenedor.setSpacing(10);
+        contenedor.setPadding(new Insets(100));
         contenedorJuego.setRight(contenedor);
     }
 }
