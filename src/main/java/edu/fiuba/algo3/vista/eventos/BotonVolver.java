@@ -17,7 +17,6 @@ public class BotonVolver implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        VBox contenedor = new VBox();
-        this.visualizadorFaseInicio.visualizar(contenedor);
+        this.visualizadorFaseInicio.visualizar(contenedorJuego);
     }
 }

@@ -16,10 +16,10 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
     ContenedorJuego contenedorJuego;
     VisualizadorFaseInicio visualizadorFaseInicio;
 
-    public BotonMostrarJugadorActual(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego,
+    public BotonMostrarJugadorActual(Juego juego, ContenedorJuego contenedorJuego,
             VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juegoActual = juego;
-        this.contenedor = contenedor;
+        this.contenedor = contenedorJuego.obtenerBotonera();
         this.contenedorJuego = contenedorJuego;
         this.visualizadorFaseInicio = visualizadorFaseInicio;
     }
@@ -33,8 +33,7 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
             } catch (TurnoException | FaseIncompletaException e) {
                 System.exit(-1);
             }
-            VBox contenedor = new VBox();
-            this.visualizadorFaseInicio.visualizar(contenedor);
+            this.visualizadorFaseInicio.visualizar(contenedorJuego);
         }
     }
 }

@@ -17,7 +17,7 @@ public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent>
     ContenedorJuego contenedorJuego;
     VisualizadorFaseInicio visualizadorFaseInicio;
 
-    public BotonMostrarPaisesConquistados(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
+    public BotonMostrarPaisesConquistados(Juego juego, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juegoActual = juego;
         this.contenedor = contenedor;
         this.contenedorJuego = contenedorJuego;
