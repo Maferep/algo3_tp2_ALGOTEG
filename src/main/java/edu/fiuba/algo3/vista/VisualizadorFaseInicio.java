@@ -46,12 +46,12 @@ public class VisualizadorFaseInicio implements IVista{
         VBox contenedor = new VBox();
 
         //comentar para probar
-        /* this.imprimirJugador(juego.jugadorActual(), contenedor);
+        this.imprimirJugador(juego.jugadorActual(), contenedor);
         this.mostrarCantidadDeEjercitos(contenedor);
         this.mostrarPaisesConquistados(contenedor);
         this.colocarEjercitos(contenedor);
         this.mostrarObjetivos(contenedor);
-        this.mostrarSiguienteJugador(contenedor); */
+        this.mostrarSiguienteJugador(contenedor); 
 
         this.mostrarBotonRegrupar(contenedor);
 

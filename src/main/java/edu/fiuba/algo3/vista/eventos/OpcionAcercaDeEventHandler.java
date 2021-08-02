@@ -10,8 +10,8 @@ public class OpcionAcercaDeEventHandler implements EventHandler <ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Acerca de...");
-        alert.setHeaderText("mensaje de alerta");
-        String mensaje = "Hola mundo";
+        alert.setHeaderText("Información");
+        String mensaje = "ALGOTEG - Version 1.0.0";
         alert.setContentText(mensaje);
         alert.show();
     }

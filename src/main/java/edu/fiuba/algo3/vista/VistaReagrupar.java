@@ -1,12 +1,8 @@
 package edu.fiuba.algo3.vista;
-
-import java.util.List;
-
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.*;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class VistaReagrupar implements IVista {

@@ -33,7 +33,7 @@ public class VisualizadorColocarEjercitos {
         TextField campoCantidadEjercitos = new TextField();
         Button botonColocar = new Button("Colocar");
 
-        BotonColocarEventHandler colocarEvento = new BotonColocarEventHandler(pais, juego, campoCantidadEjercitos, contenedorJuego, this.visualizadorFaseInicio);
+        BotonColocarEventHandler colocarEvento = new BotonColocarEventHandler(pais, juego, campoCantidadEjercitos,titulo, contenedorJuego, this.visualizadorFaseInicio);
         botonColocar.setOnAction(colocarEvento);
 
         contenedor.getChildren().addAll(titulo, campoCantidadEjercitos, botonColocar);
