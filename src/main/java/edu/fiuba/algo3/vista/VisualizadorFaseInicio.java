@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonFaseColocarEventHandler;
 import edu.fiuba.algo3.vista.eventos.BotonMostrarJugadorActual;
 import edu.fiuba.algo3.vista.eventos.BotonMostrarPaisesConquistados;
-
+import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,8 +17,7 @@ import javafx.scene.text.FontWeight;
 
 import java.util.*;
 
-public class VisualizadorFaseInicio {
-    VBox contenedor;
+public class VisualizadorFaseInicio implements IVista{
     Juego juego;
     int cantidadDeJugadores;
     ContenedorJuego contenedorJuego;
@@ -27,8 +26,7 @@ public class VisualizadorFaseInicio {
 
     Map <String,Color> coloresParaJugadores = new HashMap <String,Color>();
 
-    public VisualizadorFaseInicio(int cantidadJugadores, VBox contenedor, ContenedorJuego contenedorJuego) throws Exception {
-        this.contenedor = contenedor;
+    public VisualizadorFaseInicio(int cantidadJugadores, ContenedorJuego contenedorJuego) throws Exception {
         this.cantidadDeJugadores = cantidadJugadores;
         this.contenedorJuego = contenedorJuego;
         this.cargarColores(this.coloresParaJugadores);
@@ -44,7 +42,8 @@ public class VisualizadorFaseInicio {
         coloresParaJugadores.put("Negro",Color.web("#000000", 1.0));
     }
 
-    public void visualizar(VBox contenedor) {
+    public void visualizar(ContenedorJuego contenedorJuego) {
+        VBox contenedor = new VBox();
         this.imprimirJugador(juego.jugadorActual(), contenedor);
         this.mostrarCantidadDeEjercitos(contenedor);
         this.mostrarPaisesConquistados(contenedor);
@@ -54,15 +53,8 @@ public class VisualizadorFaseInicio {
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
-
-        StackPane ruta = new StackPane();
-
-        ruta.getChildren().addAll(contenedor);
-
-        this.contenedorJuego.setRight(contenedor);
-
-        contenedor.setSpacing(10);
-        contenedor.setPadding(new Insets(100));
+        contenedorJuego.definirBotonera(contenedor);
+        //this.contenedorJuego.setRight(contenedor);
     }
 
     private Color obtenerColorDelJugadorActual(IJugador jugador) {
@@ -70,7 +62,6 @@ public class VisualizadorFaseInicio {
     }
 
     private void imprimirJugador(IJugador jugador, VBox contenedor) {
-        Label nombreJugador = new Label();
         javafx.scene.image.Image imagen = new Image(ARCHIVO_FONDO);
         BackgroundImage imagenDeFondo= new BackgroundImage(
             imagen, 
@@ -79,12 +70,11 @@ public class VisualizadorFaseInicio {
             BackgroundPosition.CENTER, 
             BackgroundSize.DEFAULT);
         Color color = this.obtenerColorDelJugadorActual(jugador);
-        nombreJugador.setTextFill(color);
-        nombreJugador.setText("Jugador " + jugador.obtenerColor());
-        nombreJugador.setMinWidth(10);
-        nombreJugador.setMinSize(10,10);
-        nombreJugador.setBackground(new Background(imagenDeFondo));
-        nombreJugador.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
+        Label nombreJugador = new NombreJugador(
+            color, 
+            new Background(imagenDeFondo), 
+            "Jugador " + jugador.obtenerColor());
+        
         contenedor.getChildren().add(nombreJugador);
     }
 
@@ -98,7 +88,7 @@ public class VisualizadorFaseInicio {
             boton.setText("Mostrar Objetivos");
             contenedor.getChildren().add(boton);
             EventoMostrarObjetivos objetivos = new EventoMostrarObjetivos(
-                    juego, contenedor, this.contenedorJuego, this
+                    juego, this.contenedorJuego, this
             );
             boton.setOnAction(objetivos);
     }
@@ -109,7 +99,7 @@ public class VisualizadorFaseInicio {
 
         contenedor.getChildren().add(boton);
 
-        BotonMostrarPaisesConquistados botonMostrarPaisesConquistados = new BotonMostrarPaisesConquistados(juego,contenedor, this.contenedorJuego, this);
+        BotonMostrarPaisesConquistados botonMostrarPaisesConquistados = new BotonMostrarPaisesConquistados(juego, this.contenedorJuego, this);
         boton.setOnAction(botonMostrarPaisesConquistados);
     }
 
@@ -121,7 +111,7 @@ public class VisualizadorFaseInicio {
 
     private void colocarEjercitos(VBox contenedor) {
         Button colocarEjercitos = new Button("Colocar ejércitos");
-        BotonFaseColocarEventHandler eventoColocar = new BotonFaseColocarEventHandler(juego, contenedor, contenedorJuego, this);
+        BotonFaseColocarEventHandler eventoColocar = new BotonFaseColocarEventHandler(juego, contenedorJuego, this);
         colocarEjercitos.setOnAction(eventoColocar);
         contenedor.getChildren().add(colocarEjercitos);
     }
@@ -131,7 +121,7 @@ public class VisualizadorFaseInicio {
         boton.setText("Siguiente Jugador");
         contenedor.getChildren().add(boton);
         BotonMostrarJugadorActual botonJugadorActual = new BotonMostrarJugadorActual(
-                juego, contenedor, this.contenedorJuego, this
+                juego, this.contenedorJuego, this
         );
         boton.setOnAction(botonJugadorActual);
     }

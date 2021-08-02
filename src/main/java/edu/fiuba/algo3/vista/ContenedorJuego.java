@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 public class ContenedorJuego extends BorderPane {
 
     BarraDeMenu menuBar;
+    VBox barraDeBotones;
     Stage stage;
 
     public ContenedorJuego(Stage stage) {
@@ -36,15 +37,16 @@ public class ContenedorJuego extends BorderPane {
         Button boton = new Button();
         boton.setText("Empezar juego");
 
-        VBox contenedor = new VBox(texto,campo,boton);
+        barraDeBotones = new VBox(texto,campo,boton);
 
-        BotonComenzarJuegoEventHandler botonEnviarEventHandler = new BotonComenzarJuegoEventHandler(campo,texto,contenedor,this);
+        BotonComenzarJuegoEventHandler botonEnviarEventHandler 
+            = new BotonComenzarJuegoEventHandler(campo,texto,this);
         boton.setOnAction(botonEnviarEventHandler);
 
-        contenedor.setSpacing(10);
-        contenedor.setPadding(new Insets(100));
+        barraDeBotones.setSpacing(10);
+        barraDeBotones.setPadding(new Insets(100));
 
-        this.setRight(contenedor);
+        this.setRight(barraDeBotones);
         this.setStyle("-fx-background-color: rgba(243,177,64,0.51);");
     }
 
@@ -82,4 +84,13 @@ public class ContenedorJuego extends BorderPane {
     public BarraDeMenu getBarraDeMenu() {
         return menuBar;
     }
+
+    public VBox obtenerBotonera() {
+        return barraDeBotones;
+    }
+
+    public void definirBotonera(VBox contenedor) {
+        this.setRight(contenedor);
+    }
+
 }

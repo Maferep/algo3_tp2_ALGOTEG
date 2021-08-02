@@ -8,8 +8,8 @@ import javafx.scene.layout.VBox;
 public class EventoMostrarObjetivos implements EventHandler<ActionEvent> {
     private VistaObjetivos vista;
 
-    public EventoMostrarObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio faseInicio) {
-        this.vista = new VistaObjetivos(juego, contenedor, contenedorJuego, faseInicio);
+    public EventoMostrarObjetivos(Juego juego,  ContenedorJuego contenedorJuego, VisualizadorFaseInicio faseInicio) {
+        this.vista = new VistaObjetivos(juego, contenedorJuego, faseInicio);
 	}
 
     @Override

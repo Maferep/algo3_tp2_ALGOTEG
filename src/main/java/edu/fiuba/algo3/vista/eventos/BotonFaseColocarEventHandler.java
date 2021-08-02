@@ -14,7 +14,7 @@ public class BotonFaseColocarEventHandler implements EventHandler<ActionEvent> {
     ContenedorJuego contenedorJuego;
     VisualizadorFaseInicio visualizadorFaseInicio;
 
-    public BotonFaseColocarEventHandler(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
+    public BotonFaseColocarEventHandler(Juego juego, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juego = juego;
         this.contenedor = contenedor;
         this.contenedorJuego = contenedorJuego;

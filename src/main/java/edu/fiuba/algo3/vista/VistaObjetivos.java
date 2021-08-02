@@ -23,9 +23,9 @@ public class VistaObjetivos {
     VisualizadorFaseInicio visualizadorFaseInicio;
     
 
-	public VistaObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
+	public VistaObjetivos(Juego juego, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juego = juego;
-        this.contenedor = contenedor;
+        this.contenedor = new VBox();
         this.contenedorJuego = contenedorJuego;
         botonSiguiente = new Button("Siguiente objetivo");
         objetivos = juego.obtenerObjetivos();
@@ -47,6 +47,7 @@ public class VistaObjetivos {
 
         //TODO encapsular getChildren.add
         contenedor.getChildren().add(botonMostrarObjetivo);
+        contenedorJuego.definirBotonera(contenedor);
     }
 
     /*
@@ -63,7 +64,8 @@ public class VistaObjetivos {
 
         if(indiceObjetivo >= objetivos.size()){
             contenedor.getChildren().clear();
-            botonSiguiente.setOnAction( new BotonMostrarPaisesConquistados(juego,contenedor,
+            botonSiguiente.setOnAction( new BotonMostrarPaisesConquistados(
+                juego,
                     this.contenedorJuego, this.visualizadorFaseInicio));
         }
         mostrarBotonVolver(contenedor);
