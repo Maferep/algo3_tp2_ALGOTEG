@@ -4,11 +4,12 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.*;
+import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class VistaReagrupar {
+public class VistaReagrupar implements IVista {
 
     VBox contenedorObjetivos;
     private VBox contenedor;
@@ -23,7 +24,8 @@ public class VistaReagrupar {
         this.contenedorJuego = contenedorJuego;
     }
     
-    public void visualizar(){
+    @Override
+    public void visualizar(ContenedorJuego contenedorJuego){
         Button botonMoverEjercitos = new Button("Transferir Ejercitos");
         Button botonVerTarjetas = new Button("Ver Tarjetas");
 
