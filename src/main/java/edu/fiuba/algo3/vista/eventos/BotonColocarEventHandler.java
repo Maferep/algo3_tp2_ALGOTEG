@@ -37,6 +37,7 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        //TODO poner toda esta verificación en el constructor de VisFaseColocar
         int ingresoUsuario = 0;
         this.verificarEntradaDeTexto(this.campoEjercitos);
         if (campoEjercitos.getText().isEmpty()) {
