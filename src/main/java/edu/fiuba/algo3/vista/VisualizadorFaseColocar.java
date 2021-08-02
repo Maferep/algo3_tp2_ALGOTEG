@@ -15,7 +15,7 @@ public class VisualizadorFaseColocar {
     Juego juego;
     ContenedorJuego contenedorJuego;
 
-    public VisualizadorFaseColocar(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego) {
+    public VisualizadorFaseColocar(Juego juego, ContenedorJuego contenedorJuego) {
         this.contenedor = new VBox();
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
@@ -34,7 +34,7 @@ public class VisualizadorFaseColocar {
         for (IPais pais : paisesJugador) {
             Button botonPais = new Button(pais.obtenerNombre());
             contenedor.getChildren().add(botonPais);
-            BotonPaisColocarEventHandler botonColocar = new BotonPaisColocarEventHandler(pais, this.contenedor, this.contenedorJuego);
+            BotonPaisColocarEventHandler botonColocar = new BotonPaisColocarEventHandler(pais, this.juego, this.contenedorJuego);
             botonPais.setOnAction(botonColocar);
         }
 

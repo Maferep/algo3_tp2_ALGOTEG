@@ -23,7 +23,7 @@ public class BotonFaseColocarEventHandler implements EventHandler<ActionEvent> {
         VisualizadorFaseColocar faseColocar = null;
         while(faseColocar == null) {
             try {
-                faseColocar = new VisualizadorFaseColocar(juego, contenedor, contenedorJuego);
+                faseColocar = new VisualizadorFaseColocar(juego, contenedorJuego);
             } catch (Exception e) {
                 //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
             }

@@ -2,10 +2,15 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.vista.eventos.BotonColocarEventHandler;
+import edu.fiuba.algo3.vista.eventos.BotonFaseColocarEventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+
+import java.text.Format;
 
 
 public class VisualizadorColocarEjercitos {
@@ -23,11 +28,14 @@ public class VisualizadorColocarEjercitos {
         Label titulo = new Label();
         VBox contenedor = new VBox();
 
-        titulo.setText("Tenes" + juego.jugadorActual().cantidadEjercitosPorColocar() + "ejércitos por colocar");
-        TextField campoCantidadEjercitos = new TextField("Ingrese  la cantidad de ejércitos a colocar en" + pais.obtenerNombre());
+        int cantidadEjercitosDisponibles = juego.jugadorActual().cantidadEjercitosPorColocar();
 
-        contenedor.getChildren().add(titulo);
-        contenedor.getChildren().add(campoCantidadEjercitos);
+        titulo.setText("Tenes " + cantidadEjercitosDisponibles + " ejércitos por colocar.");
+        TextField campoCantidadEjercitos = new TextField();
+        
+        Button botonColocar = new Button("Colocar");
+
+        contenedor.getChildren().addAll(titulo, campoCantidadEjercitos, botonColocar);
         contenedorJuego.setRight(contenedor);
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
