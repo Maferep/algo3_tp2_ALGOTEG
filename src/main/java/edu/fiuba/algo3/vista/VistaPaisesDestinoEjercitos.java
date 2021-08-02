@@ -29,7 +29,9 @@ public class VistaPaisesDestinoEjercitos implements IVista {
             Button botonAdyacente = new Button(adyacente.obtenerNombre());
             EventoVista moverEjercitos 
                 = new EventoVista(
-                        new MoverEjercitos(juego, contenedorJuego, pais, adyacente, botonVolver));
+                        new MoverEjercitos(
+                            juego, contenedorJuego, pais, adyacente, botonVolver));
+            botonAdyacente.setOnAction(moverEjercitos);
             contenedor.getChildren().add(botonAdyacente);
         }
         contenedor.getChildren().add(botonVolver);
