@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo.vista.eventos;
+package edu.fiuba.algo3.vista.eventos;
 
-import edu.fiuba.algo3.modelo.vista.BarraDeMenu;
+import edu.fiuba.algo3.vista.BarraDeMenu;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;

@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo.vista;
+package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.modelo.vista.eventos.BotonEntrarEventHandler;
+import edu.fiuba.algo3.vista.eventos.BotonEntrarEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

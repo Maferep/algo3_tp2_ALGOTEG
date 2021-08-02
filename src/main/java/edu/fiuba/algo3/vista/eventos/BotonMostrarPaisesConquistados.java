@@ -1,13 +1,11 @@
-package edu.fiuba.algo3.modelo.vista.eventos;
+package edu.fiuba.algo3.vista.eventos;
 
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
+import edu.fiuba.algo3.vista.ContenedorJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent> {
