@@ -26,8 +26,8 @@ public class VistaReagrupar implements IVista {
         Button botonVerTarjetas = new Button("Ver Tarjetas");
 
         //TODO refactor polimorfismo
-        MoverEjercitosHandler moverEjercitos = new MoverEjercitosHandler(juego, contenedorJuego);
-        VerTarjetasHandler verTarjetas = new VerTarjetasHandler(juego, contenedorJuego);
+        EventoVista moverEjercitos = new EventoVista(new VistaMoverEjercitos(juego, contenedorJuego));
+        EventoVista verTarjetas = new EventoVista(new VistaTarjetas(juego, contenedorJuego));
         
         botonMoverEjercitos.setOnAction(moverEjercitos);
         botonVerTarjetas.setOnAction(verTarjetas);

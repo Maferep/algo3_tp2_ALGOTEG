@@ -2,11 +2,12 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Tarjeta;
+import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class VistaTarjetas {
+public class VistaTarjetas implements IVista{
 
 	private Juego juego;
     private ContenedorJuego contenedorJuego;
@@ -16,7 +17,7 @@ public class VistaTarjetas {
         this.contenedorJuego = contenedorJuego;
     }
     
-    public void visualizar(ContenedorJuego contenedorJuego2) {
+    public void visualizar() {
         HBox tarjetasJugador = new HBox(5);
         for(Tarjeta tarjeta : juego.jugadorActual().obtenerTarjetas()){
             Label nombreTarjeta = new NombreJugador(tarjeta.obtenerPais().obtenerNombre());
