@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.vista.eventos;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
+import edu.fiuba.algo3.modelo.vista.VisualizadorFaseColocar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.vista.eventos.BotonFaseColocarEventHandler;
 import edu.fiuba.algo3.modelo.vista.eventos.BotonMostrarPaisesConquistados;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
