@@ -101,17 +101,10 @@ public class VisualizadorFaseInicio {
 
             this.mostrarCantidadDeEjercitos(contenedor);
             this.mostrarPaisesConquistados(contenedor);
-            //this.colocarEjercitos(contenedor);
+            this.colocarEjercitos(contenedor);
 
             contenedor.setSpacing(10);
             contenedor.setPadding(new Insets(100));
-
-            //para probar si la fase colocar se visualiza bien
-            Button colocarEjercitos = new Button("Colocar ejércitos");
-            BotonFaseColocarEventHandler  eventColocar = new BotonFaseColocarEventHandler (juego, contenedor, contenedorJuego);
-            colocarEjercitos.setOnAction(eventColocar);
-
-            contenedor.getChildren().add(colocarEjercitos);
 
             StackPane ruta = new StackPane();
 

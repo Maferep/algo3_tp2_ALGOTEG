@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.vista.eventos.BotonColocarEventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,8 +29,10 @@ public class VisualizadorColocarEjercitos {
 
         titulo.setText("Tenes " + cantidadEjercitosDisponibles + " ejércitos por colocar.");
         TextField campoCantidadEjercitos = new TextField();
-        
         Button botonColocar = new Button("Colocar");
+
+        BotonColocarEventHandler colocarEvento = new BotonColocarEventHandler(pais, juego, campoCantidadEjercitos, contenedorJuego);
+        botonColocar.setOnAction(colocarEvento);
 
         contenedor.getChildren().addAll(titulo, campoCantidadEjercitos, botonColocar);
         contenedorJuego.setRight(contenedor);
