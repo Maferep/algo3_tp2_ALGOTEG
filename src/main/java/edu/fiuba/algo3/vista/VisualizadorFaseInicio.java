@@ -128,7 +128,7 @@ public class VisualizadorFaseInicio {
 
     private void mostrarCantidadDeEjercitos(VBox contenedor) {
         Label texto = new Label();
-        texto.setText("Cantidad fichas para colocar: " + juego.obtenerTurno().jugadorActual().cantidadEjercitosPorColocar());
+        texto.setText("Cantidad fichas para colocar: " + juego.jugadorActual().cantidadEjercitosPorColocar());
         contenedor.getChildren().add(texto);
     }
 

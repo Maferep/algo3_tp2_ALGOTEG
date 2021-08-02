@@ -11,7 +11,10 @@ import edu.fiuba.algo3.vista.VisualizadorFaseColocar;
 import edu.fiuba.algo3.vista.VisualizadorFaseInicio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
 
 public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
@@ -50,6 +53,10 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
 
         VisualizadorFaseColocar visualizadorFaseColocar = new VisualizadorFaseColocar(juego, contenedorJuego);
         visualizadorFaseColocar.visualizar();
+
+    }
+
+    private void mostrarBotonVolver(VBox contenedor) {
 
     }
 }
