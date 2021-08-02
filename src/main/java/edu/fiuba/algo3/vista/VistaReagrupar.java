@@ -8,7 +8,6 @@ import javafx.scene.layout.VBox;
 public class VistaReagrupar implements IVista {
 
     VBox contenedorObjetivos;
-    private VBox contenedor;
     Button botonSiguiente;
     MostrarObjetivoHandler objetivoHandler;
     private Juego juego;
@@ -22,6 +21,7 @@ public class VistaReagrupar implements IVista {
     
     @Override
     public void visualizar(ContenedorJuego contenedorJuego){
+        
         Button botonMoverEjercitos = new Button("Transferir Ejercitos");
         Button botonVerTarjetas = new Button("Ver Tarjetas");
 
@@ -32,8 +32,9 @@ public class VistaReagrupar implements IVista {
         botonMoverEjercitos.setOnAction(moverEjercitos);
         botonVerTarjetas.setOnAction(verTarjetas);
         
-        contenedor.getChildren().add(botonMoverEjercitos);
-        contenedor.getChildren().add(botonVerTarjetas);
+        VBox contenedor = new VBox(botonMoverEjercitos, botonVerTarjetas);
+
+        contenedorJuego.definirBotonera(contenedor);
     }
 
     /*

@@ -10,6 +10,7 @@ public class EventoMostrarReagrupar implements EventHandler<ActionEvent> {
 
     public EventoMostrarReagrupar(Juego juego,  ContenedorJuego contenedorJuego) {
         this.vista = new VistaReagrupar(juego, contenedorJuego);
+        this.contenedor = contenedorJuego;
 	}
 
     @Override

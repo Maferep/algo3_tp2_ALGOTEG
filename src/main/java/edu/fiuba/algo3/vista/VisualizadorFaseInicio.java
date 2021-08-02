@@ -66,6 +66,9 @@ public class VisualizadorFaseInicio implements IVista{
     private void mostrarBotonRegrupar(VBox contenedor) {
         EventoMostrarReagrupar eventoReagrupar 
             = new EventoMostrarReagrupar(juego, contenedorJuego);
+        Button botonReagrupar = new Button("Fase Reagrupar");
+        botonReagrupar.setOnAction(eventoReagrupar);
+        contenedor.getChildren().add(botonReagrupar);
     }
 
     private Color obtenerColorDelJugadorActual(IJugador jugador) {
