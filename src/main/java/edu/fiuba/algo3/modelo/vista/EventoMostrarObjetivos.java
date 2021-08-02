@@ -10,16 +10,17 @@ public class EventoMostrarObjetivos implements EventHandler<ActionEvent> {
 	private Juego juego;
     private VBox contenedor;
     private ContenedorJuego contenedorJuego;
+    private VistaObjetivos vista;
 
     public EventoMostrarObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego) {
         this.juego = juego;
         this.contenedor = contenedor;
         this.contenedorJuego = contenedorJuego;
+        this.vista = new VistaObjetivos(juego, contenedor, contenedorJuego);
 	}
 
     @Override
     public void handle(ActionEvent event) {
-        VistaObjetivos vista = new VistaObjetivos(juego, contenedor, contenedorJuego);
         vista.visualizar();
     }
 

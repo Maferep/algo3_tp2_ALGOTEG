@@ -60,10 +60,6 @@ public class VisualizadorFaseInicio {
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
-
-        //StackPane ruta = new StackPane();
-
-        //ruta.getChildren().addAll(contenedor);
     }
 
     private void imprimirJugador(String texto) {
@@ -104,10 +100,6 @@ public class VisualizadorFaseInicio {
         boton.setText("Mostrar paises conquistados");
 
         contenedor.getChildren().add(boton);
-
-        //StackPane ruta = new StackPane();
-
-        //ruta.getChildren().addAll(contenedor);
 
         BotonMostrarPaisesConquistados botonMostrarPaisesConquistados 
             = new BotonMostrarPaisesConquistados(
