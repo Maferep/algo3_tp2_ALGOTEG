@@ -82,6 +82,10 @@ public class Juego implements  PropertyChangeListener {
         faseActual = faseActual.siguienteFase(fabrica);
     }
 
+    public IFase faseActual() {
+        return faseActual;
+    }
+
     
     public Mazo obtenerCanje() {
         return mazo;
