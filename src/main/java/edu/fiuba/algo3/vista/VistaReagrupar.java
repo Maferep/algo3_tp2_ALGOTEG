@@ -18,18 +18,22 @@ public class VistaReagrupar {
     private ContenedorJuego contenedorJuego;
     
 
-	public VistaReagrupar(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego) {
+	public VistaReagrupar(Juego juego, ContenedorJuego contenedorJuego) {
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
-        this.contenedor = contenedor;
     }
     
     public void visualizar(){
         Button botonMoverEjercitos = new Button("Transferir Ejercitos");
         Button botonVerTarjetas = new Button("Ver Tarjetas");
+
+        //TODO refactor polimorfismo
         MoverEjercitosHandler moverEjercitos = new MoverEjercitosHandler(juego, contenedorJuego);
-        botonMoverEjercitos.setOnAction(moverEjercitos);
         VerTarjetasHandler verTarjetas = new VerTarjetasHandler(juego, contenedorJuego);
+        
+        botonMoverEjercitos.setOnAction(moverEjercitos);
+        botonVerTarjetas.setOnAction(verTarjetas);
+        
         contenedor.getChildren().add(botonMoverEjercitos);
         contenedor.getChildren().add(botonVerTarjetas);
     }
