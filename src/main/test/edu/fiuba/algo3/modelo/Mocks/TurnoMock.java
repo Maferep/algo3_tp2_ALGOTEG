@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.Mocks;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Interfaces.*;
@@ -33,15 +32,14 @@ public class TurnoMock implements ITurno {
         // TODO Auto-generated method stub
         return false;
     }
+    
+    public IJugador jugadorDeColor(String color) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
     @Override
     public List<String> obtenerColores() {
-        return jugadores.stream()
-                .map(j -> j.obtenerColor())
-                .collect(Collectors.toList());
-    }
-    
-    public IJugador jugadorDeColor(String color) {
         // TODO Auto-generated method stub
         return null;
     }

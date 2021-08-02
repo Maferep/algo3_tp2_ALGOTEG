@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.vista;
-
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -24,6 +23,8 @@ public class VistaReagrupar {
         Button botonMoverEjercitos = new Button("Transferir Ejercitos");
         Button botonVerTarjetas = new Button("Ver Tarjetas");
         MoverEjercitosHandler moverEjercitos = new MoverEjercitosHandler(juego, contenedor, contenedorJuego);
+        botonMoverEjercitos.setOnAction(moverEjercitos);
+        VerTarjetasHandler verTarjetas = new VerTarjetasHandler(juego, contenedor, contenedorJuego);
         contenedor.getChildren().add(botonMoverEjercitos);
         contenedor.getChildren().add(botonVerTarjetas);
     }

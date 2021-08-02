@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 public class EventoMostrarObjetivos implements EventHandler<ActionEvent> {
     private VistaObjetivos vista;
 
+
 //<<<<<<< HEAD:src/main/java/edu/fiuba/algo3/vista/EventoMostrarObjetivos.java
     /*public EventoMostrarObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juego = juego;

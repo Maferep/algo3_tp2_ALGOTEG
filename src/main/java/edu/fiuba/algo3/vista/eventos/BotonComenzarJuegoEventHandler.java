@@ -20,10 +20,7 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
     public BotonComenzarJuegoEventHandler(TextField campo, Label label,VBox contenedor, ContenedorJuego contenedorJuego) {
         this.campoParaTexto = campo;
         this.texto = label;
-//<<<<<<< HEAD:src/main/java/edu/fiuba/algo3/vista/eventos/BotonComenzarJuegoEventHandler.java
         this.contenedor = contenedor;
-//=======
-//>>>>>>> interfazMafer:src/main/java/edu/fiuba/algo3/modelo/vista/eventos/BotonComenzarJuegoEventHandler.java
         this.contenedorJuego = contenedorJuego;
     }
 

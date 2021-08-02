@@ -23,8 +23,10 @@ public class AtaqueTest {
         int cantidadVictorias = 1;
         int cantidadDerrotas = 1;
 
-        Ataque ataqueFalso = new Ataque(atacante, defensor, new DadosUsadosMock(cantidadVictorias, cantidadDerrotas));
-        ataqueFalso.atacar();
+        IDado dadoMock = new DadosUsadosMock(cantidadVictorias, cantidadDerrotas);
+
+        Ataque ataque = new Ataque(atacante, defensor, dadoMock);
+        ataque.atacar();
 
         assertEquals("Rojo", defensor.obtenerConquistador().obtenerColor());
         assertEquals(2, atacante.cantidadEjercitos());

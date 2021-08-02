@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 
-public interface IDadosUsados {
+public interface IDado {
     public int cantidadDados();
     public int obtenerDado(int i);
     public void ordenarDescendientemente();
-    public void batallar(IDadosUsados rival);
+    public void batallar(IDado rival);
     public int cantidadVictorias();
     public int cantidadDerrotas();
 }
