@@ -45,19 +45,5 @@ public class VisualizadorColocar implements IVista {
         }
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
-        mostrarBotonVolver(contenedor);
-    }
-
-    private void mostrarBotonVolver(VBox contenedor) {
-        Button botonDos = new Button();
-        botonDos.setText("Volver");
-
-        contenedor.getChildren().add(botonDos);
-        BotonVolver botonVolver = new BotonVolver(this.contenedorJuego, this.visualizadorFaseColocar);
-        botonDos.setOnAction(botonVolver);
-
-        this.contenedorJuego.setRight(contenedor);
-        contenedor.setSpacing(10);
-        contenedor.setPadding(new Insets(100));
     }
 }
