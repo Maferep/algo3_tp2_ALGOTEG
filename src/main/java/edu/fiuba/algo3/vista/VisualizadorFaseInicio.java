@@ -11,8 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 import java.util.*;
 
@@ -44,7 +42,6 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     public void visualizar() {
         VBox contenedor = new VBox();
 
-        //comentar para probar
         this.imprimirJugador(juego.jugadorActual(), contenedor);
         this.mostrarCantidadDeEjercitos(contenedor);
         this.mostrarPaisesConquistados(contenedor);
@@ -54,8 +51,6 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
 
         this.mostrarBotonRegrupar(contenedor);
 
-
-
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
         contenedorJuego.definirBotonera(contenedor);
@@ -63,7 +58,7 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
 
     private void mostrarBotonRegrupar(VBox contenedor) {
         EventoVista eventoReagrupar 
-            = new EventoVista(new VistaReagrupar(juego, contenedorJuego));
+            = new EventoVista(new VisualizadorFaseReagrupar(juego, contenedorJuego));
         Button botonReagrupar = new Button("Fase Reagrupar");
         botonReagrupar.setOnAction(eventoReagrupar);
         contenedor.getChildren().add(botonReagrupar);
@@ -123,7 +118,7 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
 
     private void colocarEjercitos(VBox contenedor) {
         Button colocarEjercitos = new Button("Colocar ejércitos");
-        BotonFaseColocarEventHandler eventoColocar = new BotonFaseColocarEventHandler(juego, contenedorJuego, this);
+        BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler eventoColocar = new BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler(juego, contenedorJuego, this);
         colocarEjercitos.setOnAction(eventoColocar);
         contenedor.getChildren().add(colocarEjercitos);
     }
@@ -141,8 +136,12 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     public void visualizarNuevaFase() {
         //ejemplo para probar que funciona. En realidad aca tendria que ser haciaFaseAtacar
         //pero aun no esta implementada
-        PasajeDeFases haciaFaseReagrupar = new PasajeDeFases(new VistaReagrupar(juego, contenedorJuego));
+        PasajeDeFases haciaFaseReagrupar = new PasajeDeFases(new VisualizadorFaseReagrupar(juego, contenedorJuego));
         haciaFaseReagrupar.visualizar();
+        /* el posta es este:
+        * PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorAtacar(juego, contenedorJuego));
+        haciaFaseAtacar.visualizar();
+        * */
     }
 
 }

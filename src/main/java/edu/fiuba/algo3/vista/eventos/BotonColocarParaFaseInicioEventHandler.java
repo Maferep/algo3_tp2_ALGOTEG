@@ -7,26 +7,23 @@ import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
-import edu.fiuba.algo3.vista.VisualizadorFaseColocar;
-import edu.fiuba.algo3.vista.VisualizadorFaseInicio;
+import edu.fiuba.algo3.vista.VisualizadorColocarParaFaseInicio;
+import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 
 
-public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
+public class BotonColocarParaFaseInicioEventHandler implements EventHandler<ActionEvent> {
     IPais pais;
     Juego juego;
     TextField campoEjercitos;
     ContenedorJuego contenedorJuego;
-    VisualizadorFaseInicio visualizadorFaseInicio;
+    IVista visualizadorFaseInicio;
     Label texto;
 
-    public BotonColocarEventHandler(IPais pais, Juego juego, TextField campo, Label texto, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
+    public BotonColocarParaFaseInicioEventHandler(IPais pais, Juego juego, TextField campo, Label texto, ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio) {
         this.pais = pais;
         this.juego = juego;
         this.campoEjercitos = campo;
@@ -58,8 +55,8 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
                 e.printStackTrace();
             }
 
-            VisualizadorFaseColocar visualizadorFaseColocar = new VisualizadorFaseColocar(juego, contenedorJuego, this.visualizadorFaseInicio);
-            visualizadorFaseColocar.visualizar();
+            VisualizadorColocarParaFaseInicio visualizadorColocarParaFaseInicio = new VisualizadorColocarParaFaseInicio(juego, contenedorJuego, this.visualizadorFaseInicio);
+            visualizadorColocarParaFaseInicio.visualizar();
         }
     }
     private void verificarEntradaDeTexto(TextField texto) {

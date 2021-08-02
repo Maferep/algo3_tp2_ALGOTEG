@@ -44,7 +44,6 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
                 //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
             }
             faseInicio.visualizar();
-            
         }
     }
 

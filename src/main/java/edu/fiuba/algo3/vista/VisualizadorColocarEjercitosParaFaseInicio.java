@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonColocarParaFaseInicioEventHandler;
+import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,13 +11,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 
-public class VisualizadorColocarEjercitos {
+public class VisualizadorColocarEjercitosParaFaseInicio {
     IPais pais;
     Juego juego;
     ContenedorJuego contenedorJuego;
-    VisualizadorFaseInicio visualizadorFaseInicio;
+    IVista visualizadorFaseInicio;
 
-    public VisualizadorColocarEjercitos(IPais pais, Juego juego, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
+    public VisualizadorColocarEjercitosParaFaseInicio(IPais pais, Juego juego, ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio) {
         this.pais = pais;
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
@@ -42,4 +43,3 @@ public class VisualizadorColocarEjercitos {
         contenedor.setPadding(new Insets(100));
     }
 }
-
