@@ -2,7 +2,9 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.vista.eventos.BotonColocarEventHandler;
 import edu.fiuba.algo3.vista.eventos.BotonColocarParaFaseInicioEventHandler;
+import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,13 +16,13 @@ public class VisualizadorColocarEjercitos {
     IPais pais;
     Juego juego;
     ContenedorJuego contenedorJuego;
-    VisualizadorFaseInicio visualizadorFaseInicio;
+    IVista visualizadorFaseColocar;
 
-    public VisualizadorColocarEjercitos(IPais pais, Juego juego, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
+    public VisualizadorColocarEjercitos(IPais pais, Juego juego, ContenedorJuego contenedorJuego, IVista visualizadorFaseColocar) {
         this.pais = pais;
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
-        this.visualizadorFaseInicio = visualizadorFaseInicio;
+        this.visualizadorFaseColocar = visualizadorFaseColocar;
     }
 
     public void visualizar() {
@@ -33,7 +35,7 @@ public class VisualizadorColocarEjercitos {
         TextField campoCantidadEjercitos = new TextField();
         Button botonColocar = new Button("Colocar");
 
-        BotonColocarParaFaseInicioEventHandler colocarEvento = new BotonColocarParaFaseInicioEventHandler(pais, juego, campoCantidadEjercitos,titulo, contenedorJuego, this.visualizadorFaseInicio);
+        BotonColocarEventHandler colocarEvento = new BotonColocarEventHandler(pais, juego, campoCantidadEjercitos,titulo, contenedorJuego, this.visualizadorFaseColocar);
         botonColocar.setOnAction(colocarEvento);
 
         contenedor.getChildren().addAll(titulo, campoCantidadEjercitos, botonColocar);
