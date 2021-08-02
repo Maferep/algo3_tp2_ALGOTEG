@@ -8,8 +8,11 @@ import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
 import edu.fiuba.algo3.vista.VisualizadorFaseColocar;
+import edu.fiuba.algo3.vista.VisualizadorFaseInicio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -19,12 +22,14 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
     Juego juego;
     TextField campoEjercitos;
     ContenedorJuego contenedorJuego;
+    VisualizadorFaseInicio visualizadorFaseInicio;
 
-    public BotonColocarEventHandler(IPais pais, Juego juego, TextField campo, ContenedorJuego contenedorJuego) {
+    public BotonColocarEventHandler(IPais pais, Juego juego, TextField campo, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.pais = pais;
         this.juego = juego;
         this.campoEjercitos = campo;
         this.contenedorJuego = contenedorJuego;
+        this.visualizadorFaseInicio = visualizadorFaseInicio;
     }
 
     @Override
@@ -48,13 +53,7 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
             e.printStackTrace();
         }
 
-        VisualizadorFaseColocar visualizadorFaseColocar = new VisualizadorFaseColocar(juego, contenedorJuego);
+        VisualizadorFaseColocar visualizadorFaseColocar = new VisualizadorFaseColocar(juego, contenedorJuego, this.visualizadorFaseInicio);
         visualizadorFaseColocar.visualizar();
-
     }
-
-    /*private void mostrarBotonVolver(VBox contenedor) {
-        VBox contenedor = new VBox();
-        this.visualizadorFaseInicio.visualizar(contenedor);
-    }*/
 }

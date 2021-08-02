@@ -14,11 +14,13 @@ public class VisualizadorColocarEjercitos {
     IPais pais;
     Juego juego;
     ContenedorJuego contenedorJuego;
+    VisualizadorFaseInicio visualizadorFaseInicio;
 
-    public VisualizadorColocarEjercitos(IPais pais, Juego juego, ContenedorJuego contenedorJuego) {
+    public VisualizadorColocarEjercitos(IPais pais, Juego juego, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.pais = pais;
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
+        this.visualizadorFaseInicio = visualizadorFaseInicio;
     }
 
     public void visualizar() {
@@ -31,7 +33,7 @@ public class VisualizadorColocarEjercitos {
         TextField campoCantidadEjercitos = new TextField();
         Button botonColocar = new Button("Colocar");
 
-        BotonColocarEventHandler colocarEvento = new BotonColocarEventHandler(pais, juego, campoCantidadEjercitos, contenedorJuego);
+        BotonColocarEventHandler colocarEvento = new BotonColocarEventHandler(pais, juego, campoCantidadEjercitos, contenedorJuego, this.visualizadorFaseInicio);
         botonColocar.setOnAction(colocarEvento);
 
         contenedor.getChildren().addAll(titulo, campoCantidadEjercitos, botonColocar);

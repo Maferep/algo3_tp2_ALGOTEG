@@ -107,7 +107,7 @@ public class VisualizadorFaseInicio {
 
     private void colocarEjercitos(VBox contenedor) {
         Button colocarEjercitos = new Button("Colocar ejércitos");
-        BotonFaseColocarEventHandler eventoColocar = new BotonFaseColocarEventHandler(juego, contenedor, contenedorJuego);
+        BotonFaseColocarEventHandler eventoColocar = new BotonFaseColocarEventHandler(juego, contenedor, contenedorJuego, this);
         colocarEjercitos.setOnAction(eventoColocar);
         contenedor.getChildren().add(colocarEjercitos);
     }
