@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.vista;
+package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;

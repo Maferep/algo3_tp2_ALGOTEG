@@ -45,7 +45,7 @@ public class VisualizadorFaseInicio {
     }
 
     public void visualizar(VBox contenedor) {
-        this.imprimirJugador(juego.obtenerTurno().jugadorActual(), contenedor);
+        this.imprimirJugador(juego.jugadorActual(), contenedor);
         this.mostrarCantidadDeEjercitos(contenedor);
         this.mostrarPaisesConquistados(contenedor);
         this.colocarEjercitos(contenedor);
@@ -98,7 +98,7 @@ public class VisualizadorFaseInicio {
             boton.setText("Mostrar Objetivos");
             contenedor.getChildren().add(boton);
             EventoMostrarObjetivos objetivos = new EventoMostrarObjetivos(
-                juego, contenedor, this.contenedorJuego, this
+                    juego, contenedor, this.contenedorJuego
             );
             boton.setOnAction(objetivos);
     }
