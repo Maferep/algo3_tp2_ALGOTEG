@@ -98,12 +98,13 @@ public class ContenedorJuego extends BorderPane {
 
     //la intencion es que lo que se añada aparezca en tope del mapa
     public void definirSobreMapa(HBox contenedor) {
+        limpiarAreaMapa();
         this.sobreTablero.getChildren().add(contenedor);
     }
 
-    public void limpiarAreaMapa(HBox contenedor) {
+    public void limpiarAreaMapa() {
         this.sobreTablero.getChildren().clear();
-        this.sobreTablero = new StackPane(archivoTablero);
+        this.sobreTablero.getChildren().add(archivoTablero);
     }
 
 }

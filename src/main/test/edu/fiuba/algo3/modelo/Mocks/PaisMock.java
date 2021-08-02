@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.Mocks;
 
+import java.util.List;
+
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
@@ -7,7 +9,7 @@ import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 public class PaisMock implements IPais {
     private String nombre;
     private IJugador conquistador;
-    
+
     public PaisMock(String nombre) {
         this.nombre = nombre;
         conquistador = new Jugador("Victor el Victorioso");
@@ -80,6 +82,12 @@ public class PaisMock implements IPais {
     @Override
     public boolean sonMismoPais(IPais pais) {
         return pais.obtenerNombre().equals(this.obtenerNombre());
+    }
+
+    @Override
+    public List<IPais> obtenerAdyacentes() {
+        // TODO Auto-generated method stub
+        return null;
     }
     
 }

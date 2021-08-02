@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 
+import java.util.List;
+
 import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 
 public interface IPais {
@@ -29,4 +31,6 @@ public interface IPais {
 	public void transferirEjercitosA(int cantidad, IPais otroPais) throws TransferirEjercitosException;
 
 	public boolean sonMismoPais(IPais pais);
+
+	List<IPais> obtenerAdyacentes();
 }

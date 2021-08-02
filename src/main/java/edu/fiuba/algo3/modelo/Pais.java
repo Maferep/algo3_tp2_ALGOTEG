@@ -79,4 +79,9 @@ public class Pais implements IPais {
 	public boolean sonMismoPais(IPais pais) {
 		return ((IPais) pais).obtenerNombre().equals(obtenerNombre());
 	}
+
+	@Override
+	public List<IPais> obtenerAdyacentes() {
+		return adyacentes;
+	}
 }
