@@ -8,26 +8,38 @@ import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
 import edu.fiuba.algo3.vista.VisualizadorFaseColocar;
+import edu.fiuba.algo3.vista.VisualizadorFaseInicio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.TextField;
+
 
 public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
     IPais pais;
     Juego juego;
-    int cantidadEjercitos;
+    TextField campoEjercitos;
+    ContenedorJuego contenedorJuego;
 
-    public BotonColocarEventHandler(IPais pais, Juego juego, int cantidadEjercitos) {
+    public BotonColocarEventHandler(IPais pais, Juego juego, TextField campo, ContenedorJuego contenedorJuego) {
         this.pais = pais;
         this.juego = juego;
-        this.cantidadEjercitos = cantidadEjercitos;
+        this.campoEjercitos = campo;
+        this.contenedorJuego = contenedorJuego;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        int ingresoUsuario = 0;
+        if (campoEjercitos.getText().isEmpty()) {
+            //TODO
+            //agregar mensaje
+        }
+        ingresoUsuario = Integer.parseInt(campoEjercitos.getText());
         try {
-            juego.ubicarEjercitosEnPais(cantidadEjercitos, pais);
+            juego.ubicarEjercitosEnPais(ingresoUsuario, pais);
         } catch (FichasInsuficientesException e) {
-            e.printStackTrace();
+            //TODO
+            //agregar mensaje
         } catch (PaisNoExistenteException e) {
             e.printStackTrace();
         } catch (EjercitosException e) {
@@ -35,6 +47,9 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
         } catch (FaseErroneaException e) {
             e.printStackTrace();
         }
+
+        VisualizadorFaseColocar visualizadorFaseColocar = new VisualizadorFaseColocar(juego, contenedorJuego);
+        visualizadorFaseColocar.visualizar();
 
     }
 }
