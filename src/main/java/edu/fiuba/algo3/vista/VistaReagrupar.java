@@ -21,13 +21,17 @@ public class VistaReagrupar implements IVista {
     
     @Override
     public void visualizar(){
-        
+        contenedorJuego.limpiarAreaMapa();
+        contenedorJuego.obtenerBotonera().getChildren().clear();
         Button botonMoverEjercitos = new Button("Transferir Ejercitos");
         Button botonVerTarjetas = new Button("Ver Tarjetas");
+        Button botonVolver = new Button("Volver");
+        botonVolver.setOnAction(new EventoVista(this));
 
-        //TODO refactor polimorfismo
-        EventoVista moverEjercitos = new EventoVista(new VistaMoverEjercitos(juego, contenedorJuego));
-        EventoVista verTarjetas = new EventoVista(new VistaTarjetas(juego, contenedorJuego));
+        EventoVista moverEjercitos = new EventoVista(
+            new VistaMoverEjercitos(juego, contenedorJuego, botonVolver));
+        EventoVista verTarjetas = new EventoVista(
+            new VistaTarjetas(juego, contenedorJuego));
         
         botonMoverEjercitos.setOnAction(moverEjercitos);
         botonVerTarjetas.setOnAction(verTarjetas);

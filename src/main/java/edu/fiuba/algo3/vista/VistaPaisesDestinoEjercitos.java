@@ -27,11 +27,12 @@ public class VistaPaisesDestinoEjercitos implements IVista {
         HBox contenedor = new HBox();
         for(IPais adyacente : pais.obtenerAdyacentes()){
             Button botonAdyacente = new Button(adyacente.obtenerNombre());
-            EventoVista realizarAtaque 
+            EventoVista moverEjercitos 
                 = new EventoVista(
-                        new VistaAtaque(juego, contenedorJuego, pais, adyacente, botonVolver));
+                        new MoverEjercitos(juego, contenedorJuego, pais, adyacente, botonVolver));
             contenedor.getChildren().add(botonAdyacente);
         }
+        contenedor.getChildren().add(botonVolver);
         contenedorJuego.definirSobreMapa(contenedor);
     }
 
