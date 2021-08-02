@@ -1,11 +1,9 @@
-package edu.fiuba.algo3.modelo.vista.eventos;
+package edu.fiuba.algo3.vista.eventos;
 
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.vista.VistaJuego;
+import edu.fiuba.algo3.vista.VistaJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
 

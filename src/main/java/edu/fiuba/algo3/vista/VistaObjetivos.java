@@ -1,9 +1,11 @@
-package edu.fiuba.algo3.modelo.vista;
+package edu.fiuba.algo3.vista;
 
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.vista.eventos.BotonMostrarPaisesConquistados;
+import edu.fiuba.algo3.vista.eventos.BotonMostrarPaisesConquistados;
+import edu.fiuba.algo3.vista.eventos.BotonVolver;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -18,9 +20,10 @@ public class VistaObjetivos {
     MostrarObjetivoHandler objetivoHandler;
     private Juego juego;
     private ContenedorJuego contenedorJuego;
+    VisualizadorFaseInicio visualizadorFaseInicio;
     
 
-	public VistaObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego) {
+	public VistaObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juego = juego;
         this.contenedor = contenedor;
         this.contenedorJuego = contenedorJuego;
@@ -29,6 +32,7 @@ public class VistaObjetivos {
         contenedorObjetivos = new VBox();
         objetivoHandler = new MostrarObjetivoHandler(this);
         botonSiguiente.setOnAction(objetivoHandler);
+        this.visualizadorFaseInicio = visualizadorFaseInicio;
     }
     
     public void visualizar(){
@@ -49,6 +53,7 @@ public class VistaObjetivos {
         El evento mostrarObjetivoHandler causa que se llame a este método
     */
     public void mostrarObjetivo() {
+        VBox contenedor = new VBox();
         Label label = new Label();
         label.setText(objetivos.get(indiceObjetivo));
         contenedor.getChildren().clear();
@@ -58,9 +63,22 @@ public class VistaObjetivos {
 
         if(indiceObjetivo >= objetivos.size()){
             contenedor.getChildren().clear();
-            botonSiguiente.setOnAction( new BotonMostrarPaisesConquistados(
-                juego, contenedor, contenedorJuego));
+            botonSiguiente.setOnAction( new BotonMostrarPaisesConquistados(juego,contenedor,
+                    this.contenedorJuego, this.visualizadorFaseInicio));
         }
+        mostrarBotonVolver(contenedor);
     }
 
+    private void mostrarBotonVolver(VBox contenedor) {
+        Button botonDos = new Button();
+        botonDos.setText("Volver");
+
+        contenedor.getChildren().add(botonDos);
+        BotonVolver botonVolver = new BotonVolver(this.contenedorJuego, this.visualizadorFaseInicio);
+        botonDos.setOnAction(botonVolver);
+
+        this.contenedorJuego.setRight(contenedor);
+        contenedor.setSpacing(10);
+        contenedor.setPadding(new Insets(100));
+    }
 }

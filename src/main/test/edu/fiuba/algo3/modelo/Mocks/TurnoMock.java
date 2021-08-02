@@ -44,4 +44,9 @@ public class TurnoMock implements ITurno {
         return null;
     }
 
+    @Override
+    public int buscarIndiceDeJugador(IJugador jugador){
+        return 0;
+    }
+
 }

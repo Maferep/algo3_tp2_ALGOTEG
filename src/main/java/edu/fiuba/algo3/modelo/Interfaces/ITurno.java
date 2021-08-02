@@ -14,5 +14,9 @@ public interface ITurno {
     public int cantidadDeJugadores() ;
 
 	public boolean esUltimoJugador();
+
     public IJugador jugadorDeColor(String color) throws NoSuchElementException;
+
+    public int buscarIndiceDeJugador(IJugador jugador);
+
 }

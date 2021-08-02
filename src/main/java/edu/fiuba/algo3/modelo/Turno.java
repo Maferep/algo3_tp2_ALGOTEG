@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 //TODO corregir posicion de la clase!!
 import edu.fiuba.algo3.modelo.Interfaces.IFase;
@@ -30,6 +31,13 @@ public class Turno implements ITurno {
 
     public IJugador jugadorActual() {
         return jugadores.peekFirst();
+    }
+
+    public int buscarIndiceDeJugador(IJugador jugador){
+        int index  = IntStream.range(0, jugadores.size())
+                .filter(userInd-> jugadores.get(userInd).obtenerColor().equals(jugador.obtenerColor()))
+                .findFirst().orElse(-1);
+        return index;
     }
 
     public void siguienteJugador() {

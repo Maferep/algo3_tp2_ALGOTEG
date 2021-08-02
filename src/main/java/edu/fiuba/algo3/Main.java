@@ -1,8 +1,8 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.vista.ContenedorBienvenidos;
-import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
-import edu.fiuba.algo3.modelo.vista.eventos.BotonParaActivarOpcionDePantallaCompletaEventHandler;
+import edu.fiuba.algo3.vista.ContenedorBienvenidos;
+import edu.fiuba.algo3.vista.ContenedorJuego;
+import edu.fiuba.algo3.vista.eventos.BotonParaActivarOpcionDePantallaCompletaEventHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

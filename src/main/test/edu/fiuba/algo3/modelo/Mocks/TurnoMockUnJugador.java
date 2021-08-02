@@ -44,5 +44,10 @@ public class TurnoMockUnJugador implements ITurno {
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public int buscarIndiceDeJugador(IJugador jugador){
+        return 0;
+    }
     
 }
