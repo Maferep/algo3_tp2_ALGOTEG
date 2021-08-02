@@ -34,44 +34,15 @@ public class VisualizadorFaseInicio {
         this.contenedor = contenedor;
         this.cantidadDeJugadores = cantidadJugadores;
         this.contenedorJuego = contenedorJuego;
-    }
-
-    public void visualizarNuevamente() {
-        VBox contenedor = new VBox();
-        Label nombreJugador = new Label();
-        javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
-        BackgroundImage imagenDeFondo= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        nombreJugador.setText("Jugador " + juego.obtenerTurno().jugadorActual().obtenerColor());
-        int indice = juego.obtenerTurno().buscarIndiceDeJugador(juego.obtenerTurno().jugadorActual());
-        nombreJugador.setTextFill(coloresParaJugadores.get(indice));
-        nombreJugador.setMinWidth(10);
-        nombreJugador.setMinSize(10,10);
-        nombreJugador.setBackground(new Background(imagenDeFondo));
-        nombreJugador.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
-        contenedor.getChildren().add(nombreJugador);
-
-        this.mostrarCantidadDeEjercitos(contenedor);
-        this.mostrarPaisesConquistados(contenedor);
-        this.colocarEjercitos(contenedor);
-        contenedor.setSpacing(10);
-        contenedor.setPadding(new Insets(100));
-
-        this.contenedorJuego.setRight(contenedor);
-
+        juego = crearJuego(this.cantidadDeJugadores);
     }
 
     //TODO obtener lista de colores y mostrarla a los jugadores
-    public void visualizar() {
-        try {
-            juego = crearJuego(this.cantidadDeJugadores);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void visualizar(VBox contenedor) {
         /*
         * Mostrar los jugadores uno por uno. Cuando termina uno sigue el otro y asi.
         * Luego paso a la fase de ataque
         */
-
         /*while(i <= this.cantidadDeJugadores) {
             Label texto = new Label();
             javafx.scene.image.Image imagen = new Image("file:src/main/resources/fondoBlanco.jpeg");
@@ -109,6 +80,8 @@ public class VisualizadorFaseInicio {
             StackPane ruta = new StackPane();
 
             ruta.getChildren().addAll(contenedor);
+
+            this.contenedorJuego.setRight(contenedor);
     }
 
     private Juego crearJuego(int cantidadJugadores) throws Exception {

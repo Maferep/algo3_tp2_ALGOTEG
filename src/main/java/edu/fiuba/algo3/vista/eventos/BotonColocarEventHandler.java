@@ -8,11 +8,8 @@ import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
 import edu.fiuba.algo3.vista.VisualizadorFaseColocar;
-import edu.fiuba.algo3.vista.VisualizadorFaseInicio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -56,7 +53,8 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
 
     }
 
-    private void mostrarBotonVolver(VBox contenedor) {
-
-    }
+    /*private void mostrarBotonVolver(VBox contenedor) {
+        VBox contenedor = new VBox();
+        this.visualizadorFaseInicio.visualizar(contenedor);
+    }*/
 }

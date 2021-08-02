@@ -43,7 +43,7 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
                     e.printStackTrace();
                 }
             }
-            faseInicio.visualizar();
+            faseInicio.visualizar(contenedor);
             this.contenedor.setRight(contenedor);
         }
     }
