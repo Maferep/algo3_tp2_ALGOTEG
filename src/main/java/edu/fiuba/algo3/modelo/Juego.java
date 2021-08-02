@@ -40,10 +40,6 @@ public class Juego implements  PropertyChangeListener {
         objetivos.agregarSuscriptorAVictoria(this);
     }
 
-    public IFase obtenerFaseActual() {
-        return this.faseActual.faseActual();
-    }
-
     // inicio
 
     
@@ -96,11 +92,10 @@ public class Juego implements  PropertyChangeListener {
         return mapa;
     }
 
-    
-    public ITurno obtenerTurno() {
-        return turno;
-    }
-
+    /*
+        Obtiene los nombres de los colores de cada jugador existente en orden, 
+        empezando por el jugador actual.
+    */
     public List<String> obtenerNombresDeColores() {
         return turno.obtenerColores();
     }
@@ -117,6 +112,7 @@ public class Juego implements  PropertyChangeListener {
     public int cantidadDePaises() {
         return mapa.obtenerPaises().size();
     }
+
     
     public void propertyChange(PropertyChangeEvent evento) {
         //TODO cambiar a estrategia 'juego completado'
@@ -125,6 +121,6 @@ public class Juego implements  PropertyChangeListener {
     }
 
 	public List<String> obtenerObjetivos() {
-        return objetivos.nombresDeObjetivos();
+		return objetivos.nombresDeObjetivos();
 	}
 }

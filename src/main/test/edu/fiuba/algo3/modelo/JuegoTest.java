@@ -43,6 +43,7 @@ public class JuegoTest {
     @Test
     public void test02VerificarTurno() throws FaseErroneaException, Exception {
         int cantidadJugadores = 3;
+
         Juego juego = new Juego(cantidadJugadores);
 
         for(int i = 0; i < cantidadJugadores - 1; i++) {
@@ -57,6 +58,8 @@ public class JuegoTest {
         });
         juego.siguienteFase(); 
     }
+    
+    
 
     @Test
     public void test03TransferirEjercitos() throws FaseErroneaException, Exception {

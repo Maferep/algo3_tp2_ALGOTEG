@@ -12,13 +12,12 @@ import edu.fiuba.algo3.modelo.fases.FaseInicio;
 
 public class Turno implements ITurno {
     private LinkedList<IJugador> jugadores = new LinkedList<IJugador>();
-    private List<IJugador> listaJugadores = new LinkedList<IJugador>();
     private IJugador primero;
     Mapa mapa = new Mapa();
     int cantidadEjercitos = 8;
 
     public Turno(List<String> colores, int cantidad, Mazo mazo) throws EjercitosException {
-        listaJugadores = construirJugadores(colores, cantidad, mazo);
+        List<IJugador> listaJugadores = construirJugadores(colores, cantidad, mazo);
         this.jugadores.addAll(listaJugadores);
         definirPrimerJugador(listaJugadores.get((int) (Math.random() % listaJugadores.size())));
     }
@@ -84,10 +83,10 @@ public class Turno implements ITurno {
         return jugadorActual().equals(jugadores.get(indiceUltimo));
     }
 
+    @Override
     public List<String> obtenerColores() {
         return jugadores.stream()
-                .map(j -> j.obtenerColor())
-                .collect(Collectors.toList());
+            .map(j -> j.obtenerColor())
+            .collect(Collectors.toList());
     }
-
 }

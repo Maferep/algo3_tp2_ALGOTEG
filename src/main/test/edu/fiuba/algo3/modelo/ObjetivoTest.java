@@ -27,6 +27,12 @@ public class ObjetivoTest {
             .stream()
             .map(n -> new Pais(n))
             .collect(Collectors.toList());
+
+    List<IPais> paisesDeAsia = Arrays.asList(
+        "China", "Corea del Sur", "Japón")
+        .stream()
+        .map(n -> new Pais(n))
+        .collect(Collectors.toList());
     @Test
     public void test01SuscribirseAUnJugadorQuePierdeSusPaises() 
             throws ObjetivoException, EjercitosException {
@@ -65,9 +71,13 @@ public class ObjetivoTest {
     public void test03CantarVictoriaConContinentes() 
             throws ObjetivoException, EjercitosException {
         ITurno turno = new Turno(colores, 2,null);
+
+        List<Continente> continentes = new ArrayList<>();
+        Continente asia = new Continente("Asia", paisesDeAsia);
+        continentes.add(asia);
         
         ObjetivoConquistarPaisesYContinentes objetivo 
-                        = new ObjetivoConquistarPaisesYContinentes(null, paises);
+                        = new ObjetivoConquistarPaisesYContinentes(continentes, paises);
         assertNotEquals(null, objetivo);
 
         //Asignar el objetivo suscribe al objetivo a los paises de su duenio.
@@ -77,9 +87,15 @@ public class ObjetivoTest {
         List<IPais> paisesAConquistar = new ArrayList<IPais>();
         paisesAConquistar.addAll(paises);
         assertTrue(paisesAConquistar.size() > 2);
-        //TODO: agregar los paises de los continentes
+    
         assertEquals(false, objetivo.fueCompletado());
         for(IPais pais : paisesAConquistar)
+            turno.jugadorActual().asignarPais(pais);
+        
+        //no deberia pasar porque le faltan los paises de asia
+        assertEquals(false, objetivo.fueCompletado());
+
+        for(IPais pais : asia.obtenerPaises())
             turno.jugadorActual().asignarPais(pais);
 
         assertEquals(true, objetivo.fueCompletado());

@@ -91,12 +91,14 @@ public class FaseInicioMock implements IFaseInicio {
     }
 
     @Override
-    public ITurno turno() {
+    public IFase faseActual() {
+        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public IFase faseActual() {
+    public ITurno turno() {
+        // TODO Auto-generated method stub
         return null;
     }
     
