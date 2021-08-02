@@ -45,5 +45,11 @@ public class TurnoMockUnJugadorPorPais implements ITurno {
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public List<String> obtenerColores() {
+        // TODO Auto-generated method stub
+        return null;
+    }
     
 }
