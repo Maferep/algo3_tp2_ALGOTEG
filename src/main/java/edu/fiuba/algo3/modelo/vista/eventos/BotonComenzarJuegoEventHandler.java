@@ -19,7 +19,6 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
     public BotonComenzarJuegoEventHandler(TextField campo, Label label, ContenedorJuego contenedorJuego) {
         this.campoParaTexto = campo;
         this.texto = label;
-        // TODO para que se usa el contenedorJuego?
         this.contenedorJuego = contenedorJuego;
     }
 
