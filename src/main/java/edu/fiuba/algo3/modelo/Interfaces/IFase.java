@@ -9,6 +9,10 @@ public interface IFase {
 
 	Boolean faseCompletada();
 
+	IFase faseActual();
+
+	ITurno turno();
+
 	IFase siguienteFase(IFabricaDeFases fabrica) throws FaseIncompletaException, EjercitosException, TurnoException;
 
 	public void siguienteTurno() throws TurnoException, FaseIncompletaException;
@@ -22,4 +26,5 @@ public interface IFase {
 	FaseColocar obtenerFaseColocar() throws FaseErroneaException;
 
 	FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException;
+
 }

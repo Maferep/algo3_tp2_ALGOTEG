@@ -3,22 +3,22 @@ package edu.fiuba.algo3.modelo;
 import java.util.*;
 import java.util.stream.IntStream;
 
-import edu.fiuba.algo3.modelo.Interfaces.IDado;
+import edu.fiuba.algo3.modelo.Interfaces.IDadosUsados;
 
 import java.util.stream.Collectors;
 
 //Un conjunto de dados es una lista de valores aleatorios.
 // Estos dados siempre devuelven 1.
-public class Dado implements IDado {
+public class DadosUsados implements IDadosUsados {
     List<Integer> valores;
-    List<IDado> resultado;
+    List<IDadosUsados> resultado;
 
-    public Dado(int cantidadDeDados) {
+    public DadosUsados(int cantidadDeDados) {
         valores = new ArrayList<Integer>();
 		for(int i = 0; i < cantidadDeDados; i++) valores.add ((int)((Math.random()*6)+1));
     }
 
-    public Dado(int cantidadDeDados, int numero) {
+    public DadosUsados(int cantidadDeDados, int numero) {
         valores = new ArrayList<Integer>();
         for(int i = 0; i < cantidadDeDados; i++) valores.add (numero);
     }
@@ -36,7 +36,7 @@ public class Dado implements IDado {
     }
 
     @Override
-    public void batallar(IDado rival) {
+    public void batallar(IDadosUsados rival) {
         //ordenar dados de mayor a menor
         this.ordenarDescendientemente();
         rival.ordenarDescendientemente();

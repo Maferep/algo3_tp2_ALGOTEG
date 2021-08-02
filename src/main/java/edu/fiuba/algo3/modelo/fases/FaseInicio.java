@@ -41,6 +41,10 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         objetivos = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());
     }
 
+    public IFase faseActual() {
+        return this;
+    }
+
     public ITurno turno() {
         return turno;
     }

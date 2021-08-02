@@ -13,6 +13,10 @@ public class FaseAtacar extends FaseAbstracta {
         this.mapa = mapa;
     }
 
+    public IFase faseActual() {
+        return this;
+    }
+
     public ITurno turno() {
         return turno;
     }

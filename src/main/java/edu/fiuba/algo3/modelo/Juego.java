@@ -40,6 +40,10 @@ public class Juego implements  PropertyChangeListener {
         objetivos.agregarSuscriptorAVictoria(this);
     }
 
+    public IFase obtenerFaseActual() {
+        return this.faseActual.faseActual();
+    }
+
     // inicio
 
     
@@ -73,8 +77,8 @@ public class Juego implements  PropertyChangeListener {
 
     // datos persistentes del juego
 
-    public int cantidadDeJugadores() throws FaseErroneaException {
-        return faseActual.obtenerFaseInicio().cantidadDeJugadores();
+    public int cantidadDeJugadores()  {
+        return turno.cantidadDeJugadores();
     }
 
     // avanzar fase
@@ -92,10 +96,11 @@ public class Juego implements  PropertyChangeListener {
         return mapa;
     }
 
-    /*
-        Obtiene los nombres de los colores de cada jugador existente en orden, 
-        empezando por el jugador actual.
-    */
+    
+    public ITurno obtenerTurno() {
+        return turno;
+    }
+
     public List<String> obtenerNombresDeColores() {
         return turno.obtenerColores();
     }
@@ -112,11 +117,14 @@ public class Juego implements  PropertyChangeListener {
     public int cantidadDePaises() {
         return mapa.obtenerPaises().size();
     }
-
     
     public void propertyChange(PropertyChangeEvent evento) {
         //TODO cambiar a estrategia 'juego completado'
         //y buscar el ganador
         juegoTerminado = true;
     }
+
+	public List<String> obtenerObjetivos() {
+        return objetivos.nombresDeObjetivos();
+	}
 }
