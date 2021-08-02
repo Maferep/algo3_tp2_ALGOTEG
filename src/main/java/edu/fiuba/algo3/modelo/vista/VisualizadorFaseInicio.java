@@ -52,6 +52,7 @@ public class VisualizadorFaseInicio {
 
         this.mostrarCantidadDeEjercitos(contenedor);
         this.mostrarPaisesConquistados(contenedor);
+        this.colocarEjercitos(contenedor);
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
 
@@ -105,12 +106,6 @@ public class VisualizadorFaseInicio {
             contenedor.setSpacing(10);
             contenedor.setPadding(new Insets(100));
 
-            Button colocarEjercitos = new Button("Colocar ejércitos");
-            BotonFaseColocarEventHandler eventoColocar = new BotonFaseColocarEventHandler(juego, contenedor, contenedorJuego);
-            colocarEjercitos.setOnAction(eventoColocar);
-
-            contenedor.getChildren().add(colocarEjercitos);
-
             StackPane ruta = new StackPane();
 
             ruta.getChildren().addAll(contenedor);
@@ -138,7 +133,10 @@ public class VisualizadorFaseInicio {
     }
 
     private void colocarEjercitos(VBox contenedor) {
-
+        Button colocarEjercitos = new Button("Colocar ejércitos");
+        BotonFaseColocarEventHandler eventoColocar = new BotonFaseColocarEventHandler(juego, contenedor, contenedorJuego);
+        colocarEjercitos.setOnAction(eventoColocar);
+        contenedor.getChildren().add(colocarEjercitos);
     }
 
 }

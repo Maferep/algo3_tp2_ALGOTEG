@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.modelo.vista;
 
-        import edu.fiuba.algo3.modelo.Interfaces.IPais;
+import edu.fiuba.algo3.modelo.Interfaces.IPais;
         import edu.fiuba.algo3.modelo.Juego;
+        import edu.fiuba.algo3.modelo.vista.eventos.BotonPaisColocarEventHandler;
         import javafx.geometry.Insets;
         import javafx.scene.control.Button;
         import javafx.scene.control.Label;
@@ -9,12 +10,12 @@ package edu.fiuba.algo3.modelo.vista;
 
         import java.util.List;
 
-public class VisualizadorFaseColocar {
+public class VisualizadorColocarEnFaseInicio {
     VBox contenedor;
     Juego juego;
     ContenedorJuego contenedorJuego;
 
-    public VisualizadorFaseColocar(Juego juego, ContenedorJuego contenedorJuego) {
+    public VisualizadorColocarEnFaseInicio(Juego juego, ContenedorJuego contenedorJuego) {
         this.contenedor = new VBox();
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;

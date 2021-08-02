@@ -9,12 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-public class VisualizadorColocarEjercitos {
+public class VisualizadorColocarEjercitosEnFaseInicio {
     IPais pais;
     Juego juego;
     ContenedorJuego contenedorJuego;
 
-    public VisualizadorColocarEjercitos(IPais pais, Juego juego, ContenedorJuego contenedorJuego) {
+    public VisualizadorColocarEjercitosEnFaseInicio(IPais pais, Juego juego, ContenedorJuego contenedorJuego) {
         this.pais = pais;
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
