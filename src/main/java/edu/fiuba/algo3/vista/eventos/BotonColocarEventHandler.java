@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -23,37 +24,48 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
     TextField campoEjercitos;
     ContenedorJuego contenedorJuego;
     VisualizadorFaseInicio visualizadorFaseInicio;
+    Label texto;
 
-    public BotonColocarEventHandler(IPais pais, Juego juego, TextField campo, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
+    public BotonColocarEventHandler(IPais pais, Juego juego, TextField campo, Label texto, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.pais = pais;
         this.juego = juego;
         this.campoEjercitos = campo;
         this.contenedorJuego = contenedorJuego;
         this.visualizadorFaseInicio = visualizadorFaseInicio;
+        this.texto = texto;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         int ingresoUsuario = 0;
+        this.verificarEntradaDeTexto(this.campoEjercitos);
         if (campoEjercitos.getText().isEmpty()) {
-            //TODO
-            //agregar mensaje
+            this.texto.setText("Debe ingresar una cantidad de ejercitos");
+            this.campoEjercitos.requestFocus();
         }
-        ingresoUsuario = Integer.parseInt(campoEjercitos.getText());
-        try {
-            juego.ubicarEjercitosEnPais(ingresoUsuario, pais);
-        } catch (FichasInsuficientesException e) {
-            //TODO
-            //agregar mensaje
-        } catch (PaisNoExistenteException e) {
-            e.printStackTrace();
-        } catch (EjercitosException e) {
-            e.printStackTrace();
-        } catch (FaseErroneaException e) {
-            e.printStackTrace();
-        }
+        else {
+            ingresoUsuario = Integer.parseInt(campoEjercitos.getText());
+            try {
+                juego.ubicarEjercitosEnPais(ingresoUsuario, pais);
+            } catch (FichasInsuficientesException e) {
+                this.texto.setText("Solo tienes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejercitos para agregar");
+                this.campoEjercitos.requestFocus();
+            } catch (PaisNoExistenteException e) {
+                e.printStackTrace();
+            } catch (EjercitosException e) {
+                e.printStackTrace();
+            } catch (FaseErroneaException e) {
+                e.printStackTrace();
+            }
 
-        VisualizadorFaseColocar visualizadorFaseColocar = new VisualizadorFaseColocar(juego, contenedorJuego, this.visualizadorFaseInicio);
-        visualizadorFaseColocar.visualizar();
+            VisualizadorFaseColocar visualizadorFaseColocar = new VisualizadorFaseColocar(juego, contenedorJuego, this.visualizadorFaseInicio);
+            visualizadorFaseColocar.visualizar();
+        }
+    }
+
+    private void verificarEntradaDeTexto(TextField texto) {
+        if(!texto.getText().matches("\\d+")) {
+            texto.setText("");
+        }
     }
 }

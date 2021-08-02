@@ -26,6 +26,7 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        this.verificarEntradaDeTexto(this.campoParaTexto);
         if (this.campoParaTexto.getText().trim().equals("")) {
             this.texto.setText("Debe ingresar jugadores");
             this.campoParaTexto.requestFocus();
@@ -45,6 +46,12 @@ public class BotonComenzarJuegoEventHandler implements EventHandler<ActionEvent>
             }
             faseInicio.visualizar(contenedorBotones);
             this.contenedorJuego.setRight(contenedorBotones);
+        }
+    }
+
+    private void verificarEntradaDeTexto(TextField texto) {
+        if(!texto.getText().matches("\\d+")) {
+            texto.setText("");
         }
     }
 }
