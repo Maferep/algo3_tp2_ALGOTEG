@@ -19,13 +19,13 @@ public class VistaTarjetas {
     public void visualizar(ContenedorJuego contenedorJuego2) {
         HBox tarjetasJugador = new HBox(5);
         for(Tarjeta tarjeta : juego.jugadorActual().obtenerTarjetas()){
-            Label nombreTarjeta = new Label(tarjeta.obtenerPais().obtenerNombre());
-            Label simboloTarjeta = new Label(tarjeta.obtenerSimbolo().simbolo);
+            Label nombreTarjeta = new NombreJugador(tarjeta.obtenerPais().obtenerNombre());
+            Label simboloTarjeta = new NombreJugador(tarjeta.obtenerSimbolo().simbolo);
             VBox contenedorTarjeta = new VBox(nombreTarjeta, simboloTarjeta);
             tarjetasJugador.getChildren().add(contenedorTarjeta);
             
         }
-        contenedorJuego.definirBajoMapa(tarjetasJugador);
+        contenedorJuego.definirSobreMapa(tarjetasJugador);
     }
 
 }

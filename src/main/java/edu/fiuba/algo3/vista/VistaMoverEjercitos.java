@@ -29,7 +29,7 @@ public class VistaMoverEjercitos implements IVista {
             paisJugador.setOnAction(eventoAdyacentes);
             contenedorAdyacentes.getChildren().add(paisJugador);
         }
-        contenedorJuego.definirBajoMapa(contenedorAdyacentes);
+        contenedorJuego.definirSobreMapa(contenedorAdyacentes);
 
     }
     

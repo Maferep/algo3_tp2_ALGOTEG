@@ -17,7 +17,8 @@ public class ContenedorJuego extends BorderPane {
 
     BarraDeMenu menuBar;
     VBox barraDeBotones;
-    VBox centro;
+    StackPane sobreTablero;
+    ImageView archivoTablero;
     Stage stage;
 
     public ContenedorJuego(Stage stage) {
@@ -60,15 +61,15 @@ public class ContenedorJuego extends BorderPane {
         Image imagen = new Image("file:src/main/resources/vintageopciontres.jpeg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
 
-        ImageView tablero = new ImageView("file:src/main/resources/tableroTEG.png");
-        VBox contenedor = new VBox(tablero);
+        archivoTablero = new ImageView("file:src/main/resources/tableroTEG.png");
+        sobreTablero = new StackPane(archivoTablero);
+        VBox contenedor = new VBox(sobreTablero);
         contenedor.setBackground(new Background(imagenDeFondo));
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
 
         this.setCenter(contenedor);
-        this.centro = contenedor;
     }
 
     private void setConsola() {
@@ -95,9 +96,14 @@ public class ContenedorJuego extends BorderPane {
         this.setRight(contenedor);
     }
 
-    //la intencion es que lo que se añada aparezca bajo el mapa
-    public void definirBajoMapa(HBox contenedor) {
-        this.centro.getChildren().add(contenedor);
+    //la intencion es que lo que se añada aparezca en tope del mapa
+    public void definirSobreMapa(HBox contenedor) {
+        this.sobreTablero.getChildren().add(contenedor);
+    }
+
+    public void limpiarAreaMapa(HBox contenedor) {
+        this.sobreTablero.getChildren().clear();
+        this.sobreTablero = new StackPane(archivoTablero);
     }
 
 }
