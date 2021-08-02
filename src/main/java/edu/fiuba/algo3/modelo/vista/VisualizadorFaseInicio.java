@@ -49,6 +49,7 @@ public class VisualizadorFaseInicio {
         nombreJugador.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
         contenedor.getChildren().add(nombreJugador);
 
+        this.mostrarCantidadDeEjercitos(contenedor);
         this.mostrarPaisesConquistados(contenedor);
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
@@ -96,6 +97,7 @@ public class VisualizadorFaseInicio {
             nombreJugador.setFont(Font.font("Morganite", FontWeight.EXTRA_LIGHT, 30));
             contenedor.getChildren().add(nombreJugador);
 
+            this.mostrarCantidadDeEjercitos(contenedor);
             this.mostrarPaisesConquistados(contenedor);
 
             contenedor.setSpacing(10);
@@ -119,6 +121,12 @@ public class VisualizadorFaseInicio {
 
         BotonMostrarPaisesConquistados botonMostrarPaisesConquistados = new BotonMostrarPaisesConquistados(juego,this.contenedor, this.contenedorJuego, this);
         boton.setOnAction(botonMostrarPaisesConquistados);
+    }
+
+    private void mostrarCantidadDeEjercitos(VBox contenedor) {
+        Label texto = new Label();
+        texto.setText("Cantidad fichas: " + juego.obtenerTurno().jugadorActual().cantidadEjercitosPorColocar());
+        contenedor.getChildren().add(texto);
     }
 
 }
