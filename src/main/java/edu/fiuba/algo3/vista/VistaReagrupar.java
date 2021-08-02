@@ -27,9 +27,9 @@ public class VistaReagrupar {
     public void visualizar(){
         Button botonMoverEjercitos = new Button("Transferir Ejercitos");
         Button botonVerTarjetas = new Button("Ver Tarjetas");
-        MoverEjercitosHandler moverEjercitos = new MoverEjercitosHandler(juego, contenedor, contenedorJuego);
+        MoverEjercitosHandler moverEjercitos = new MoverEjercitosHandler(juego, contenedorJuego);
         botonMoverEjercitos.setOnAction(moverEjercitos);
-        VerTarjetasHandler verTarjetas = new VerTarjetasHandler(juego, contenedor, contenedorJuego);
+        VerTarjetasHandler verTarjetas = new VerTarjetasHandler(juego, contenedorJuego);
         contenedor.getChildren().add(botonMoverEjercitos);
         contenedor.getChildren().add(botonVerTarjetas);
     }

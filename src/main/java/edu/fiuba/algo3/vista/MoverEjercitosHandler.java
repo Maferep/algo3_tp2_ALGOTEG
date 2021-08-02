@@ -8,8 +8,8 @@ import javafx.scene.layout.VBox;
 public class MoverEjercitosHandler implements EventHandler<ActionEvent>{
     VistaMoverEjercitos vistaMoverEjercitos;
 
-    public MoverEjercitosHandler(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego) {
-        vistaMoverEjercitos = new VistaMoverEjercitos(juego, contenedor, contenedorJuego);
+    public MoverEjercitosHandler(Juego juego, ContenedorJuego contenedorJuego) {
+        vistaMoverEjercitos = new VistaMoverEjercitos(juego, contenedorJuego);
     }
 
     @Override
