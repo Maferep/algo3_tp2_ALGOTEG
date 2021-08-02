@@ -32,7 +32,8 @@ public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent>
         contenedor.getChildren().add(titulo);
         for(int j = 0 ; j < juegoActual.jugadorActual().obtenerPaises().size() ; j++ ) {
             Label paisesJugador = new Label();
-            paisesJugador.setText(juegoActual.jugadorActual().obtenerPaises().get(j).obtenerNombre());
+            paisesJugador.setText(juegoActual.jugadorActual().obtenerPaises().get(j).obtenerNombre() +
+                    " - " + juegoActual.jugadorActual().obtenerPaises().get(j).cantidadEjercitos() + " ejercitos");
             contenedor.getChildren().add(paisesJugador);
         }
         mostrarBotonVolver(contenedor);
