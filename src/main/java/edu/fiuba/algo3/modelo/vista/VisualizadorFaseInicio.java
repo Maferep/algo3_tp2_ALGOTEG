@@ -99,6 +99,7 @@ public class VisualizadorFaseInicio {
 
             this.mostrarCantidadDeEjercitos(contenedor);
             this.mostrarPaisesConquistados(contenedor);
+            this.colocarEjercitos(contenedor);
 
             contenedor.setSpacing(10);
             contenedor.setPadding(new Insets(100));
@@ -125,8 +126,12 @@ public class VisualizadorFaseInicio {
 
     private void mostrarCantidadDeEjercitos(VBox contenedor) {
         Label texto = new Label();
-        texto.setText("Cantidad fichas: " + juego.obtenerTurno().jugadorActual().cantidadEjercitosPorColocar());
+        texto.setText("Cantidad fichas para colocar: " + juego.obtenerTurno().jugadorActual().cantidadEjercitosPorColocar());
         contenedor.getChildren().add(texto);
+    }
+
+    private void colocarEjercitos(VBox contenedor) {
+
     }
 
 }
