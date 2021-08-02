@@ -1,20 +1,8 @@
-package edu.fiuba.algo3.modelo.vista;
+package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
-
-import javax.swing.*;
 
 public class VistaJuego extends Pane {
 

@@ -1,21 +1,21 @@
-package edu.fiuba.algo3.modelo.vista;
+package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
-        import edu.fiuba.algo3.modelo.Juego;
-        import edu.fiuba.algo3.modelo.vista.eventos.BotonPaisColocarEventHandler;
-        import javafx.geometry.Insets;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.layout.VBox;
+import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.vista.eventos.BotonPaisColocarEventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
-        import java.util.List;
+import java.util.List;
 
-public class VisualizadorColocarEnFaseInicio {
+public class VisualizadorFaseColocar {
     VBox contenedor;
     Juego juego;
     ContenedorJuego contenedorJuego;
 
-    public VisualizadorColocarEnFaseInicio(Juego juego, ContenedorJuego contenedorJuego) {
+    public VisualizadorFaseColocar(Juego juego, ContenedorJuego contenedorJuego) {
         this.contenedor = new VBox();
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;

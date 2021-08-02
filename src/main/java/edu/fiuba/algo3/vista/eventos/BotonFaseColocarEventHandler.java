@@ -1,8 +1,8 @@
-package edu.fiuba.algo3.modelo.vista.eventos;
+package edu.fiuba.algo3.vista.eventos;
 
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
-import edu.fiuba.algo3.modelo.vista.VisualizadorColocarEnFaseInicio;
+import edu.fiuba.algo3.vista.ContenedorJuego;
+import edu.fiuba.algo3.vista.VisualizadorFaseColocar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;
@@ -20,10 +20,10 @@ public class BotonFaseColocarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        VisualizadorColocarEnFaseInicio faseColocar = null;
+        VisualizadorFaseColocar faseColocar = null;
         while(faseColocar == null) {
             try {
-                faseColocar = new VisualizadorColocarEnFaseInicio(juego, contenedorJuego);
+                faseColocar = new VisualizadorFaseColocar(juego, contenedorJuego);
             } catch (Exception e) {
                 //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
             }
@@ -31,4 +31,3 @@ public class BotonFaseColocarEventHandler implements EventHandler<ActionEvent> {
         faseColocar.visualizar();
     }
 }
-

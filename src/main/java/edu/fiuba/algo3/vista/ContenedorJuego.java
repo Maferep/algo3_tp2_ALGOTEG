@@ -1,13 +1,7 @@
-package edu.fiuba.algo3.modelo.vista;
+package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.modelo.vista.eventos.BotonComenzarJuegoEventHandler;
-import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.vista.eventos.BotonMoverEventHandler;
-import javafx.application.Application;
+import edu.fiuba.algo3.vista.eventos.BotonComenzarJuegoEventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

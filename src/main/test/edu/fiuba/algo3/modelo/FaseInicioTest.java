@@ -32,7 +32,7 @@ public class FaseInicioTest {
 
     @Test
     public void test01NoSePuedeComenzarElJuegoConMenosDeDosJugadores() throws Exception {
-        assertThrows(CantidadDeJugadoresError.class, () ->  {
+        assertThrows(CantidadDeJugadoresException.class, () ->  {
             new FaseInicio(0);
             new FaseInicio(1);
         }
@@ -43,7 +43,7 @@ public class FaseInicioTest {
     public void test02NoSePuedeComenzarElJuegoConMasDeSeisJugadores() throws Exception {
         int cantidadJugadoresInvalida = 7;
 
-        assertThrows(CantidadDeJugadoresError.class, () ->  {
+        assertThrows(CantidadDeJugadoresException.class, () ->  {
                     new FaseInicio(cantidadJugadoresInvalida);
                 }
         );

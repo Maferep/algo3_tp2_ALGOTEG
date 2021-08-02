@@ -1,20 +1,20 @@
-package edu.fiuba.algo3.modelo.vista;
-
+package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.vista.ContenedorJuego;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-public class VisualizadorColocarEjercitosEnFaseInicio {
+
+
+public class VisualizadorColocarEjercitos {
     IPais pais;
     Juego juego;
     ContenedorJuego contenedorJuego;
 
-    public VisualizadorColocarEjercitosEnFaseInicio(IPais pais, Juego juego, ContenedorJuego contenedorJuego) {
+    public VisualizadorColocarEjercitos(IPais pais, Juego juego, ContenedorJuego contenedorJuego) {
         this.pais = pais;
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
@@ -28,7 +28,7 @@ public class VisualizadorColocarEjercitosEnFaseInicio {
 
         titulo.setText("Tenes " + cantidadEjercitosDisponibles + " ejércitos por colocar.");
         TextField campoCantidadEjercitos = new TextField();
-
+        
         Button botonColocar = new Button("Colocar");
 
         contenedor.getChildren().addAll(titulo, campoCantidadEjercitos, botonColocar);

@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.modelo.vista;
+package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.vista.eventos.BotonFaseColocarEventHandler;
-import edu.fiuba.algo3.modelo.vista.eventos.BotonMostrarPaisesConquistados;
+import edu.fiuba.algo3.vista.eventos.BotonFaseColocarEventHandler;
+import edu.fiuba.algo3.vista.eventos.BotonMostrarPaisesConquistados;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -101,10 +101,17 @@ public class VisualizadorFaseInicio {
 
             this.mostrarCantidadDeEjercitos(contenedor);
             this.mostrarPaisesConquistados(contenedor);
-            this.colocarEjercitos(contenedor);
+            //this.colocarEjercitos(contenedor);
 
             contenedor.setSpacing(10);
             contenedor.setPadding(new Insets(100));
+
+            //para probar si la fase colocar se visualiza bien
+            Button colocarEjercitos = new Button("Colocar ejércitos");
+            BotonFaseColocarEventHandler  eventColocar = new BotonFaseColocarEventHandler (juego, contenedor, contenedorJuego);
+            colocarEjercitos.setOnAction(eventColocar);
+
+            contenedor.getChildren().add(colocarEjercitos);
 
             StackPane ruta = new StackPane();
 

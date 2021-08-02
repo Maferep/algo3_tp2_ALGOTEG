@@ -4,9 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import edu.fiuba.algo3.modelo.Interfaces.*;
 //TODO corregir posicion de la clase!!
-import edu.fiuba.algo3.OrdenadorAleatorio;
 import edu.fiuba.algo3.modelo.Interfaces.IFase;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Interfaces.ITurno;

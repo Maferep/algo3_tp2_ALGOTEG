@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.excepciones;
 
-public class TurnoException extends Exception{
+public class TurnoException extends AlgoTegException {
 
     /**
      * renombrar a "JugadorException"
