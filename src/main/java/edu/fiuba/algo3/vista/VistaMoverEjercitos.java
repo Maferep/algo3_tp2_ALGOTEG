@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 
 public class VistaMoverEjercitos implements IVista {
     private Juego juego;
@@ -15,13 +16,10 @@ public class VistaMoverEjercitos implements IVista {
         this.contenedorJuego = contenedorJuego;
     }
 
-	public void visualizar() {
-        
-	}
-
     @Override
     public void visualizar(ContenedorJuego contenedor) {
         IJugador jugadorActual = juego.jugadorActual();
+        HBox contenedorAdyacentes = new HBox();
 		for(IPais pais : jugadorActual.obtenerPaises()){
             Button paisJugador = new Button(pais.obtenerNombre());
             
@@ -29,8 +27,9 @@ public class VistaMoverEjercitos implements IVista {
                 = new EventoMostrarAdyacentes(juego, contenedorJuego, pais);
 
             paisJugador.setOnAction(eventoAdyacentes);
-            contenedor.getChildren().add(paisJugador);
+            contenedorAdyacentes.getChildren().add(paisJugador);
         }
+        contenedorJuego.definirBajoMapa(contenedorAdyacentes);
 
     }
     

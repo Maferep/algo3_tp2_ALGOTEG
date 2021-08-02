@@ -6,13 +6,14 @@ import javafx.event.EventHandler;
 
 public class VerTarjetasHandler implements EventHandler<ActionEvent>{
     VistaTarjetas vista;
+
+    ContenedorJuego contenedorJuego;
     public VerTarjetasHandler(Juego juego, ContenedorJuego contenedorJuego) {
         vista = new VistaTarjetas(juego, contenedorJuego);
     }
     @Override
     public void handle(ActionEvent event) {
-        // TODO Auto-generated method stub
-
+        vista.visualizar(contenedorJuego);
     }
 
 }

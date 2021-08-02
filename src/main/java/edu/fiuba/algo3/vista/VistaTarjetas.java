@@ -16,7 +16,7 @@ public class VistaTarjetas {
         this.contenedorJuego = contenedorJuego;
     }
     
-    public void visualizar() {
+    public void visualizar(ContenedorJuego contenedorJuego2) {
         HBox tarjetasJugador = new HBox(5);
         for(Tarjeta tarjeta : juego.jugadorActual().obtenerTarjetas()){
             Label nombreTarjeta = new Label(tarjeta.obtenerPais().obtenerNombre());
