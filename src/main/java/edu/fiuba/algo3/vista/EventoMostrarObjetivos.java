@@ -6,17 +6,18 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;
 
 public class EventoMostrarObjetivos implements EventHandler<ActionEvent> {
-
-	private Juego juego;
-    private VBox contenedor;
-    private ContenedorJuego contenedorJuego;
     private VistaObjetivos vista;
 
-    public EventoMostrarObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
+//<<<<<<< HEAD:src/main/java/edu/fiuba/algo3/vista/EventoMostrarObjetivos.java
+    /*public EventoMostrarObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juego = juego;
         this.contenedor = contenedor;
         this.contenedorJuego = contenedorJuego;
+        this.vista = new VistaObjetivos(juego, contenedor, contenedorJuego, visualizadorFaseInicio);*/
+//=======
+    public EventoMostrarObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.vista = new VistaObjetivos(juego, contenedor, contenedorJuego, visualizadorFaseInicio);
+//>>>>>>> interfazMafer:src/main/java/edu/fiuba/algo3/modelo/vista/EventoMostrarObjetivos.java
 	}
 
     @Override
