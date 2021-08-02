@@ -73,7 +73,7 @@ public class FaseColocarTest {
         IPais paisNuevo = listaDePaises.get(1);
         int cantidadEjercitosInvalida = 1000;
 
-        assertThrows(FichasInsuficientesError.class, () -> {
+        assertThrows(FichasInsuficientesException.class, () -> {
             fase.colocarEjercitosEnPais(cantidadEjercitosInvalida, paisNuevo);
         });
     }
@@ -97,7 +97,7 @@ public class FaseColocarTest {
         Pais paisNuevo = new Pais("Belgica");
         int cantidadEjercitosInvalida = 1;
 
-        assertThrows(PaisNoExistenteError.class, () -> {
+        assertThrows(PaisNoExistenteException.class, () -> {
             fase.colocarEjercitosEnPais(cantidadEjercitosInvalida, paisNuevo);
         });
     }
@@ -141,7 +141,7 @@ public class FaseColocarTest {
 
     @Test
     public void colocarEjercitosEnPaisNoAfectaOtrosJugadores()
-            throws EjercitosException, FichasInsuficientesError, PaisNoExistenteError, TurnoException,
+            throws EjercitosException, FichasInsuficientesException, PaisNoExistenteException, TurnoException,
             FaseIncompletaException {
 
         // setup paises y turno
@@ -194,7 +194,7 @@ public class FaseColocarTest {
     //TODO bug misterioso
     @Test
     public void test07siguienteFase() throws EjercitosException, TurnoException, FaseIncompletaException,
-            FichasInsuficientesError, PaisNoExistenteError {
+            FichasInsuficientesException, PaisNoExistenteException {
         assertEquals(4, listaDePaises.size());
         ITurno turno = new TurnoMockUnJugador(listaDePaises);
         assertEquals(8, turno.jugadorActual().cantidadEjercitosPorColocar());

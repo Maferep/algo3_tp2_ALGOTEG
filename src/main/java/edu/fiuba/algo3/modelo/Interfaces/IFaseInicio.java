@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 public interface IFaseInicio extends IFase{
     public int cantidadDeJugadores() throws FaseErroneaException;
     public void ubicarEjercitosEnPais(int cantEjercitos, IPais pais) 
-        throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException, FaseErroneaException;
+        throws FichasInsuficientesException, PaisNoExistenteException, EjercitosException, FaseErroneaException;
     public Mazo obtenerCanje();
     public IMapa obtenerMapa();
     public ITurno obtenerTurno();

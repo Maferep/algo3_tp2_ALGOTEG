@@ -106,26 +106,26 @@ public class Jugador implements IJugador {
 		notifyListeners(this, PAISES, listaAnterior, paises);
 	}
 
-	public void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesError,
-			PaisNoExistenteError, EjercitosException {
+	public void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesException,
+			PaisNoExistenteException, EjercitosException {
 		verificarPais(pais);
 		verificarCantidadDeEjercitos(cantEjercitos);
 		pais.agregarEjercitos(cantEjercitos);
 		quitarEjercitos(cantEjercitos);
 	}
 
-	private void verificarPais(IPais pais) throws PaisNoExistenteError {
+	private void verificarPais(IPais pais) throws PaisNoExistenteException {
 		for(int i = 0 ; i < paises.size() ; i++) {
 			if( paises.get(i).sonMismoPais(pais)) 
 				return;
 			
 		}
-		throw new PaisNoExistenteError("El jugador no es conquistador del pais " + pais.obtenerNombre());
+		throw new PaisNoExistenteException("El jugador no es conquistador del pais " + pais.obtenerNombre());
 	}
 
-	private void verificarCantidadDeEjercitos(int cantEjercitos) throws FichasInsuficientesError{
+	private void verificarCantidadDeEjercitos(int cantEjercitos) throws FichasInsuficientesException {
 		if(cantEjercitos > this.cantidadEjercitosPorColocar()) {
-			throw new FichasInsuficientesError("No tienes esa cantidad de fichas para colocar en el pais");
+			throw new FichasInsuficientesException("No tienes esa cantidad de fichas para colocar en el pais");
 		}
 	}
 

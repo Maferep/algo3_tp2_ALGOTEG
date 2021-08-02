@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
-import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
+import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 
 public class Ataque implements IAtaque{
         IDado dadosAtacante;
@@ -17,7 +17,7 @@ public class Ataque implements IAtaque{
 
                 if(atacante.cantidadEjercitos() <= cantEjercitos 
                 || cantEjercitos > maxDados)
-                        throw new FichasInsuficientesError("El jugador sólo puede atacar con" + (atacante.cantidadEjercitos() - 1) + "ejércitos.");
+                        throw new FichasInsuficientesException("El jugador sólo puede atacar con" + (atacante.cantidadEjercitos() - 1) + "ejércitos.");
 
                 asignarDados(
                         new Dado(cantEjercitos),

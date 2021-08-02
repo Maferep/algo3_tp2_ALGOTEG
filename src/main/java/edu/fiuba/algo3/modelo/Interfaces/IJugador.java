@@ -2,10 +2,9 @@ package edu.fiuba.algo3.modelo.Interfaces;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
-import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesError;
-import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaException;
+import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.NoSePuedeProducirCanjeException;
-import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteError;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteException;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public interface IJugador {
 
 	int cantidadTarjetas();
 
-	void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesError, PaisNoExistenteError, EjercitosException;
+	void agregarEjercitosAPais(IPais pais, int cantEjercitos) throws FichasInsuficientesException, PaisNoExistenteException, EjercitosException;
 
 	int cantidadPaises();
 

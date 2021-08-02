@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.excepciones;
 
-public class EjercitosException extends Exception{
+public class EjercitosException extends AlgoTegException {
 
     /**
      * renombrar a "JugadorException"
