@@ -10,13 +10,11 @@ import javafx.scene.layout.VBox;
 
 public class BotonFaseColocarEventHandler implements EventHandler<ActionEvent> {
     private Juego juego;
-    private VBox contenedor;
     ContenedorJuego contenedorJuego;
     VisualizadorFaseInicio visualizadorFaseInicio;
 
     public BotonFaseColocarEventHandler(Juego juego, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juego = juego;
-        this.contenedor = contenedor;
         this.contenedorJuego = contenedorJuego;
         this.visualizadorFaseInicio = visualizadorFaseInicio;
     }
@@ -31,6 +29,6 @@ public class BotonFaseColocarEventHandler implements EventHandler<ActionEvent> {
                 //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
             }
         }
-        faseColocar.visualizar();
+        faseColocar.visualizar(contenedorJuego);
     }
 }

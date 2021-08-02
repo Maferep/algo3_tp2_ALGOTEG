@@ -54,6 +54,6 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
         }
 
         VisualizadorFaseColocar visualizadorFaseColocar = new VisualizadorFaseColocar(juego, contenedorJuego, this.visualizadorFaseInicio);
-        visualizadorFaseColocar.visualizar();
+        visualizadorFaseColocar.visualizar(contenedorJuego);
     }
 }

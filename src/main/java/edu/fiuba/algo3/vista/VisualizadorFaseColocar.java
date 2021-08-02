@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonPaisColocarEventHandler;
 import edu.fiuba.algo3.vista.eventos.BotonVolver;
+import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.List;
 
-public class VisualizadorFaseColocar {
+public class VisualizadorFaseColocar implements IVista {
     VBox contenedor;
     Juego juego;
     ContenedorJuego contenedorJuego;
@@ -24,15 +25,15 @@ public class VisualizadorFaseColocar {
         this.visualizadorFaseInicio = visualizadorFaseInicio;
     }
 
-    public void visualizar() {
+    public void visualizar(ContenedorJuego contenedorJuego) {
         Label titulo = new Label();
         titulo.setText("Tenes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejércitos por colocar.");
         contenedor.getChildren().add(titulo);
 
-        mostrarPaises();
+        mostrarPaises(contenedorJuego);
     }
 
-    private void mostrarPaises() {
+    private void mostrarPaises(ContenedorJuego contenedorJuego) {
         List<IPais> paisesJugador = juego.jugadorActual().obtenerPaises();
         for (IPais pais : paisesJugador) {
             Button botonPais = new Button(pais.obtenerNombre());
@@ -43,9 +44,8 @@ public class VisualizadorFaseColocar {
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
-        contenedorJuego.setRight(contenedor);
-
         mostrarBotonVolver(contenedor);
+        contenedorJuego.definirBotonera(contenedor);
     }
 
     private void mostrarBotonVolver(VBox contenedor) {
