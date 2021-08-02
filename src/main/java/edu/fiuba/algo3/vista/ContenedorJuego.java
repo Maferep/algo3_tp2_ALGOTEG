@@ -17,6 +17,7 @@ public class ContenedorJuego extends BorderPane {
 
     BarraDeMenu menuBar;
     VBox barraDeBotones;
+    VBox centro;
     Stage stage;
 
     public ContenedorJuego(Stage stage) {
@@ -67,6 +68,7 @@ public class ContenedorJuego extends BorderPane {
         contenedor.setPadding(new Insets(100));
 
         this.setCenter(contenedor);
+        this.centro = contenedor;
     }
 
     private void setConsola() {
@@ -91,6 +93,11 @@ public class ContenedorJuego extends BorderPane {
 
     public void definirBotonera(VBox contenedor) {
         this.setRight(contenedor);
+    }
+
+    //la intencion es que lo que se añada aparezca bajo el mapa
+    public void definirBajoMapa(HBox contenedor) {
+        this.centro.getChildren().add(contenedor);
     }
 
 }
