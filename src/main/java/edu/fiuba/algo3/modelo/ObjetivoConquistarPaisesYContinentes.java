@@ -25,4 +25,12 @@ public class ObjetivoConquistarPaisesYContinentes extends ObjetivoBase {
         this.duenio = duenio;
         duenio.agregarObjetivoSuscriptor(this);
     }
+
+    @Override
+	public String toString() {
+        String texto = "Conquistar paises: \n";
+        for(IPais pais : paisesAConquistar)
+            texto = texto.concat(pais.obtenerNombre() + "\n");
+        return texto;
+	}
 }

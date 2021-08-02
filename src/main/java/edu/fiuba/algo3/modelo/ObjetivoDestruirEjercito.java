@@ -27,4 +27,9 @@ public class ObjetivoDestruirEjercito extends ObjetivoBase {
 		this.duenio = duenio;
 		jugadorADestruir.agregarObjetivoSuscriptor(this);
 	}
+
+	@Override
+	public String toString() {
+		return "Destruir ejercitos de " + jugadorADestruir.obtenerColor();
+	}
 }
