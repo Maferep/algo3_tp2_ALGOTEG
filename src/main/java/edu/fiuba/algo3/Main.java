@@ -1,5 +1,7 @@
 package edu.fiuba.algo3;
 
+import java.io.IOException;
+
 import edu.fiuba.algo3.vista.ContenedorBienvenidos;
 import edu.fiuba.algo3.vista.ContenedorJuego;
 import edu.fiuba.algo3.vista.eventos.BotonParaActivarOpcionDePantallaCompletaEventHandler;
@@ -13,7 +15,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
         stage.setTitle("ALGOTEG");
 
         ContenedorJuego contenedorJuego = new ContenedorJuego(stage);

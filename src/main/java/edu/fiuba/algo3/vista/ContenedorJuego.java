@@ -59,9 +59,19 @@ public class ContenedorJuego extends BorderPane {
 
     private void setCentro() {
         Image imagen = new Image("file:src/main/resources/vintageopciontres.jpeg");
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
+        BackgroundSize tamanio = new BackgroundSize(
+            600, 380, false, false, false, true);
+        BackgroundImage imagenDeFondo = new BackgroundImage(
+            imagen, 
+            BackgroundRepeat.REPEAT, 
+            BackgroundRepeat.REPEAT, 
+            BackgroundPosition.CENTER,
+            tamanio);
 
         archivoTablero = new ImageView("file:src/main/resources/tableroTEG.png");
+        archivoTablero.setFitWidth(600);
+        archivoTablero.setPreserveRatio(true);
+
         sobreTablero = new StackPane(archivoTablero);
         VBox contenedor = new VBox(sobreTablero);
         contenedor.setBackground(new Background(imagenDeFondo));
