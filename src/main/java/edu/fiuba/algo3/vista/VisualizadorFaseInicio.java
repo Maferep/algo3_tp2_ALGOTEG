@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonFaseColocarEventHandler;
 import edu.fiuba.algo3.vista.eventos.BotonMostrarJugadorActual;
 import edu.fiuba.algo3.vista.eventos.BotonMostrarPaisesConquistados;
+import edu.fiuba.algo3.vista.eventos.EventoVista;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -63,8 +64,8 @@ public class VisualizadorFaseInicio implements IVista{
     }
 
     private void mostrarBotonRegrupar(VBox contenedor) {
-        EventoMostrarReagrupar eventoReagrupar 
-            = new EventoMostrarReagrupar(juego, contenedorJuego);
+        EventoVista eventoReagrupar 
+            = new EventoVista(new VistaReagrupar(juego, contenedorJuego));
         Button botonReagrupar = new Button("Fase Reagrupar");
         botonReagrupar.setOnAction(eventoReagrupar);
         contenedor.getChildren().add(botonReagrupar);
@@ -100,9 +101,9 @@ public class VisualizadorFaseInicio implements IVista{
             Button boton = new Button();
             boton.setText("Mostrar Objetivos");
             contenedor.getChildren().add(boton);
-            EventoMostrarObjetivos objetivos = new EventoMostrarObjetivos(
-                    juego, this.contenedorJuego, this
-            );
+            EventoVista objetivos 
+                = new EventoVista(new VistaObjetivos(juego, contenedorJuego, this));
+
             boton.setOnAction(objetivos);
     }
 

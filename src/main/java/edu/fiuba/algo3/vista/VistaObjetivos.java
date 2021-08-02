@@ -5,12 +5,13 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonMostrarPaisesConquistados;
 import edu.fiuba.algo3.vista.eventos.BotonVolver;
+import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class VistaObjetivos {
+public class VistaObjetivos implements IVista{
 
     VBox contenedorObjetivos;
     private VBox contenedor;
