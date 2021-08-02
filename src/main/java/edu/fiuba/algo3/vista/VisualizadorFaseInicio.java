@@ -44,17 +44,28 @@ public class VisualizadorFaseInicio implements IVista{
 
     public void visualizar(ContenedorJuego contenedorJuego) {
         VBox contenedor = new VBox();
-        this.imprimirJugador(juego.jugadorActual(), contenedor);
+
+        //comentar para probar
+        /* this.imprimirJugador(juego.jugadorActual(), contenedor);
         this.mostrarCantidadDeEjercitos(contenedor);
         this.mostrarPaisesConquistados(contenedor);
         this.colocarEjercitos(contenedor);
         this.mostrarObjetivos(contenedor);
-        this.mostrarSiguienteJugador(contenedor);
+        this.mostrarSiguienteJugador(contenedor); */
+
+        this.mostrarBotonRegrupar(contenedor);
+
+
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
         contenedorJuego.definirBotonera(contenedor);
         //this.contenedorJuego.setRight(contenedor);
+    }
+
+    private void mostrarBotonRegrupar(VBox contenedor) {
+        EventoMostrarReagrupar eventoReagrupar 
+            = new EventoMostrarReagrupar(juego, contenedorJuego);
     }
 
     private Color obtenerColorDelJugadorActual(IJugador jugador) {
