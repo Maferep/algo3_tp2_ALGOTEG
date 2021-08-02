@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.vista;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.vista.eventos.BotonMostrarPaisesConquistados;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -15,10 +16,14 @@ public class VistaObjetivos {
     List<String> objetivos;
     Button botonSiguiente;
     MostrarObjetivoHandler objetivoHandler;
+    private Juego juego;
+    private ContenedorJuego contenedorJuego;
     
 
 	public VistaObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego) {
+        this.juego = juego;
         this.contenedor = contenedor;
+        this.contenedorJuego = contenedorJuego;
         botonSiguiente = new Button("Siguiente objetivo");
         objetivos = juego.obtenerObjetivos();
         contenedorObjetivos = new VBox();
@@ -50,6 +55,12 @@ public class VistaObjetivos {
         contenedor.getChildren().add(label);
         contenedor.getChildren().add(botonSiguiente);
         indiceObjetivo++;
+
+        if(indiceObjetivo >= objetivos.size()){
+            contenedor.getChildren().clear();
+            botonSiguiente.setOnAction( new BotonMostrarPaisesConquistados(
+                juego, contenedor, contenedorJuego));
+        }
     }
 
 }
