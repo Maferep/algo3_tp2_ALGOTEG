@@ -1,0 +1,34 @@
+package edu.fiuba.algo3.vista.eventos;
+
+import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.vista.ContenedorJuego;
+import edu.fiuba.algo3.vista.VisualizadorFaseInicio;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.layout.VBox;
+
+public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
+
+    Juego juegoActual;
+    VBox contenedor;
+    ContenedorJuego contenedorJuego;
+    VisualizadorFaseInicio visualizadorFaseInicio;
+
+    public BotonMostrarJugadorActual(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
+        this.juegoActual = juego;
+        this.contenedor = contenedor;
+        this.contenedorJuego = contenedorJuego;
+        this.visualizadorFaseInicio = visualizadorFaseInicio;
+    }
+
+
+    @Override
+    public void handle(ActionEvent actionEvent) {
+        //Lo habilito cuando el jugador no tiene mas ejercitos para colocar.
+        if(juegoActual.jugadorActualNoTieneEjercitos()) {
+            this.juegoActual.obtenerTurno().siguienteJugador();
+            VBox contenedor = new VBox();
+            this.visualizadorFaseInicio.visualizar(contenedor);
+        }
+    }
+}
