@@ -33,7 +33,7 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
             } catch (TurnoException | FaseIncompletaException e) {
                 System.exit(-1);
             }
-            this.visualizadorFaseInicio.visualizar(contenedorJuego);
+            this.visualizadorFaseInicio.visualizar();
         }
     }
 }

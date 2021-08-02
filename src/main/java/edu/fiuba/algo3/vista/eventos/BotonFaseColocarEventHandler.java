@@ -29,6 +29,6 @@ public class BotonFaseColocarEventHandler implements EventHandler<ActionEvent> {
                 //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
             }
         }
-        faseColocar.visualizar(contenedorJuego);
+        faseColocar.visualizar();
     }
 }

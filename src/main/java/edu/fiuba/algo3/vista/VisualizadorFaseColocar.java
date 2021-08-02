@@ -25,15 +25,17 @@ public class VisualizadorFaseColocar implements IVista {
         this.visualizadorFaseInicio = visualizadorFaseInicio;
     }
 
-    public void visualizar(ContenedorJuego contenedorJuego) {
+    @Override
+    public void visualizar() {
         Label titulo = new Label();
         titulo.setText("Tenes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejércitos por colocar.");
         contenedor.getChildren().add(titulo);
 
-        mostrarPaises(contenedorJuego);
+        mostrarPaises();
+        contenedorJuego.definirBotonera(contenedor);
     }
 
-    private void mostrarPaises(ContenedorJuego contenedorJuego) {
+    private void mostrarPaises() {
         List<IPais> paisesJugador = juego.jugadorActual().obtenerPaises();
         for (IPais pais : paisesJugador) {
             Button botonPais = new Button(pais.obtenerNombre());
@@ -45,7 +47,7 @@ public class VisualizadorFaseColocar implements IVista {
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
         mostrarBotonVolver(contenedor);
-        contenedorJuego.definirBotonera(contenedor);
+        
     }
 
     private void mostrarBotonVolver(VBox contenedor) {

@@ -15,7 +15,7 @@ public class EventoMostrarReagrupar implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        vista.visualizar(contenedor);
+        vista.visualizar();
     }
 
 }

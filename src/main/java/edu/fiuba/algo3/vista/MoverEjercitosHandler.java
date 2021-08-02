@@ -16,7 +16,7 @@ public class MoverEjercitosHandler implements EventHandler<ActionEvent>{
 
     @Override
     public void handle(ActionEvent event) {
-        vistaMoverEjercitos.visualizar(contenedorJuego);
+        vistaMoverEjercitos.visualizar();
     }
 
 }

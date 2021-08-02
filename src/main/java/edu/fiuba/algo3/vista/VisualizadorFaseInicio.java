@@ -42,7 +42,7 @@ public class VisualizadorFaseInicio implements IVista{
         coloresParaJugadores.put("Negro",Color.web("#000000", 1.0));
     }
 
-    public void visualizar(ContenedorJuego contenedorJuego) {
+    public void visualizar() {
         VBox contenedor = new VBox();
 
         //comentar para probar
@@ -60,7 +60,6 @@ public class VisualizadorFaseInicio implements IVista{
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
         contenedorJuego.definirBotonera(contenedor);
-        //this.contenedorJuego.setRight(contenedor);
     }
 
     private void mostrarBotonRegrupar(VBox contenedor) {

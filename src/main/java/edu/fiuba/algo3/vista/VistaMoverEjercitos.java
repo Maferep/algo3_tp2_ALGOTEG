@@ -17,7 +17,7 @@ public class VistaMoverEjercitos implements IVista {
     }
 
     @Override
-    public void visualizar(ContenedorJuego contenedor) {
+    public void visualizar() {
         IJugador jugadorActual = juego.jugadorActual();
         HBox contenedorAdyacentes = new HBox();
 		for(IPais pais : jugadorActual.obtenerPaises()){

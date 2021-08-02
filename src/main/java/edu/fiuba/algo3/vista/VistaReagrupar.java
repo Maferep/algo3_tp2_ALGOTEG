@@ -20,7 +20,7 @@ public class VistaReagrupar implements IVista {
     }
     
     @Override
-    public void visualizar(ContenedorJuego contenedorJuego){
+    public void visualizar(){
         
         Button botonMoverEjercitos = new Button("Transferir Ejercitos");
         Button botonVerTarjetas = new Button("Ver Tarjetas");
