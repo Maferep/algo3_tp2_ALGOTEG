@@ -6,21 +6,23 @@ import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class MoverEjercitos implements IVista {
 
+    ContenedorJuego contenedor;
+
     //TODO URGENTE transferencia de ejercitos hardcodeada
-    public MoverEjercitos(Juego juego, ContenedorJuego contenedorJuego, IPais pais, IPais adyacente, Button botonVolver) {
-        try {
-            juego.transferirEjercitos(3, pais, adyacente);
-        } catch (FaseErroneaException | TransferirEjercitosException e) {
-            e.printStackTrace();
-        }
+    public MoverEjercitos(Juego juego, ContenedorJuego contenedorJuego, IPais pais, IPais adyacente, Button botonVolver)
+            throws FaseErroneaException, TransferirEjercitosException {
+        
+        juego.transferirEjercitos(3, pais, adyacente);
+        this.contenedor = contenedorJuego;
     }
 
 	@Override
 	public void visualizar() {
-		// TODO Auto-generated method stub
+		contenedor.obtenerBotonera().getChildren().clear();
 		
 	}
 
