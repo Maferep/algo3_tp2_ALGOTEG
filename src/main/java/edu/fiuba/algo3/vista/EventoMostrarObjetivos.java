@@ -8,9 +8,8 @@ import javafx.scene.layout.VBox;
 public class EventoMostrarObjetivos implements EventHandler<ActionEvent> {
     private VistaObjetivos vista;
 
-    public EventoMostrarObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego) {
-        //TODO visualizadorFaseInicio no se usa para nada
-        this.vista = new VistaObjetivos(juego, contenedor, contenedorJuego, null);
+    public EventoMostrarObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego, VisualizadorFaseInicio faseInicio) {
+        this.vista = new VistaObjetivos(juego, contenedor, contenedorJuego, faseInicio);
 	}
 
     @Override

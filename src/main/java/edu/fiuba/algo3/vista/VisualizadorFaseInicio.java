@@ -98,7 +98,7 @@ public class VisualizadorFaseInicio {
             boton.setText("Mostrar Objetivos");
             contenedor.getChildren().add(boton);
             EventoMostrarObjetivos objetivos = new EventoMostrarObjetivos(
-                    juego, contenedor, this.contenedorJuego
+                    juego, contenedor, this.contenedorJuego, this
             );
             boton.setOnAction(objetivos);
     }
