@@ -104,6 +104,12 @@ public class VisualizadorFaseInicio {
             contenedor.setSpacing(10);
             contenedor.setPadding(new Insets(100));
 
+            Button colocarEjercitos = new Button("Colocar ejércitos");
+            BotonFaseColocarEventHandler eventoColocar = new BotonFaseColocarEventHandler(juego, contenedor, contenedorJuego);
+            colocarEjercitos.setOnAction(eventoColocar);
+
+            contenedor.getChildren().add(colocarEjercitos);
+
             StackPane ruta = new StackPane();
 
             ruta.getChildren().addAll(contenedor);
