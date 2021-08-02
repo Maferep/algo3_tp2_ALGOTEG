@@ -13,12 +13,17 @@ public class VistaObjetivos {
     private VBox contenedor;
     private int indiceObjetivo;
     List<String> objetivos;
+    Button botonSiguiente;
+    MostrarObjetivoHandler objetivoHandler;
+    
 
 	public VistaObjetivos(Juego juego, VBox contenedor, ContenedorJuego contenedorJuego) {
         this.contenedor = contenedor;
-        
+        botonSiguiente = new Button("Siguiente objetivo");
         objetivos = juego.obtenerObjetivos();
         contenedorObjetivos = new VBox();
+        objetivoHandler = new MostrarObjetivoHandler(this);
+        botonSiguiente.setOnAction(objetivoHandler);
     }
     
     public void visualizar(){
@@ -26,9 +31,12 @@ public class VistaObjetivos {
         " Si este no es tu color, volteate");
         contenedor.getChildren().add(label);
         //TODO buscar el color
+
+        //Crear boton y darle el handler
         Button botonMostrarObjetivo = new Button("Mostrar!");
-        MostrarObjetivoHandler objetivoHandler = new MostrarObjetivoHandler(this);
         botonMostrarObjetivo.setOnAction(objetivoHandler);
+
+        //TODO encapsular getChildren.add
         contenedor.getChildren().add(botonMostrarObjetivo);
     }
 
@@ -40,6 +48,7 @@ public class VistaObjetivos {
         label.setText(objetivos.get(indiceObjetivo));
         contenedor.getChildren().clear();
         contenedor.getChildren().add(label);
+        contenedor.getChildren().add(botonSiguiente);
         indiceObjetivo++;
     }
 

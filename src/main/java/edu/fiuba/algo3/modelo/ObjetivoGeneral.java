@@ -42,4 +42,10 @@ public class ObjetivoGeneral implements IObjetivo {
         suscriptores.add(suscriptor);
     }
 
+    @Override
+    public String toString() {
+        //TODO parametrizar cantidad de paises
+        return "Conquistar" + 30 + "paises";
+    }
+
 }

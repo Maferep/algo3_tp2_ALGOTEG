@@ -50,4 +50,13 @@ public class ObjetivoConquistarPaisesYContinentes implements IObjetivo {
         // TODO Auto-generated method stub
 
     }
+
+    @Override
+    public String toString() {
+        String objetivo = "Conquistar paises:\n";
+        for(IPais pais : paisesAConquistar)
+            objetivo.concat(pais.obtenerNombre()).concat("\n");
+        
+        return objetivo;
+    }
 }
