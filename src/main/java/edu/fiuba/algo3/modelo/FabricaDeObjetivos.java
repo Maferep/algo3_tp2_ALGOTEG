@@ -37,9 +37,10 @@ public class FabricaDeObjetivos {
         List<Map<String,Integer>> nombresContinentesYMinimos 
             = lectorObjetivos.obtenerListasDeContinentesYSusMinimos();
 
-        List<Continente> continentesObligatorios = new ArrayList<>();
+        
 
         for(Map<String,Integer> objetivo : nombresContinentesYMinimos){
+            List<Continente> continentesObligatorios = new ArrayList<>();
             Map<Continente, Integer> continenteYMinimo = new HashMap<>();
 
             for(Entry<String, Integer> continente : objetivo.entrySet()) {
