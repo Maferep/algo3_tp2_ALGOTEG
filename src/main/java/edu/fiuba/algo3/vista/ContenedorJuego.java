@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.vista.eventos.BotonComenzarJuegoEventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -103,7 +104,17 @@ public class ContenedorJuego extends BorderPane {
     }
 
     public void definirBotonera(VBox contenedor) {
+        this.barraDeBotones = contenedor;
         this.setRight(contenedor);
+    }
+
+    public void agregarABotonera(Node nodo) {
+        if(!barraDeBotones.getChildrenUnmodifiable().contains(nodo))
+            barraDeBotones.getChildren().add(nodo);
+    }
+
+    public void limpiarBotonera() {
+        this.barraDeBotones.getChildren().clear();
     }
 
     //la intencion es que lo que se añada aparezca en tope del mapa
