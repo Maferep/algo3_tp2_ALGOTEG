@@ -8,6 +8,8 @@ import edu.fiuba.algo3.vista.eventos.BotonParaActivarOpcionDePantallaCompletaEve
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import java.io.File;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -17,6 +19,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("ALGOTEG");
+
+        double volumen = 0.2;
+       // MediaPlayer musica = agregarMusica(volumen);
 
         ContenedorJuego contenedorJuego = new ContenedorJuego(stage);
         Scene escenaJuego = new Scene(contenedorJuego, 640, 480);
@@ -32,4 +37,16 @@ public class Main extends Application {
 
         stage.show();
     }
+
+   /*private MediaPlayer agregarMusica(double volumen){
+        Media mp3MusicFile = new Media(new File("Kashoot/resources/mipan.mp3").toURI().toString());
+
+        MediaPlayer musica = new MediaPlayer(mp3MusicFile);
+        musica.setAutoPlay(true);
+        musica.setOnEndOfMedia(() -> musica.seek(Duration.ZERO));
+        musica.setVolume(volumen);
+        musica.play();
+
+        return musica;
+    }*/
 }
