@@ -17,8 +17,8 @@ public interface ITurno {
 
     public IJugador jugadorDeColor(String color) throws NoSuchElementException;
 
-    public int buscarIndiceDeJugador(IJugador jugador);
-
     public void actualizarListaDeJugadoresAlCambiarDeFase();
+
+	public IJugador obtenerGanador();
 
 }

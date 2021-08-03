@@ -44,13 +44,14 @@ public class TurnoMock implements ITurno {
         return null;
     }
 
-    @Override
-    public int buscarIndiceDeJugador(IJugador jugador){
-        return 0;
-    }
-
     public void actualizarListaDeJugadoresAlCambiarDeFase() {
         this.siguienteJugador();
+    }
+
+    @Override
+    public IJugador obtenerGanador() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
