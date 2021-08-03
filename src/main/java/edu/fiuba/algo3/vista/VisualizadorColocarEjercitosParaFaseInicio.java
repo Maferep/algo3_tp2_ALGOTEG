@@ -2,7 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.vista.eventos.BotonColocarEventHandler;
+import edu.fiuba.algo3.vista.eventos.BotonColocarParaFaseInicioEventHandler;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -11,17 +11,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 
-public class VisualizadorColocarEjercitos {
+public class VisualizadorColocarEjercitosParaFaseInicio {
     IPais pais;
     Juego juego;
     ContenedorJuego contenedorJuego;
-    IVista visualizadorFaseColocar;
+    IVista visualizadorFaseInicio;
 
-    public VisualizadorColocarEjercitos(IPais pais, Juego juego, ContenedorJuego contenedorJuego, IVista visualizadorFaseColocar) {
+    public VisualizadorColocarEjercitosParaFaseInicio(IPais pais, Juego juego, ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio) {
         this.pais = pais;
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
-        this.visualizadorFaseColocar = visualizadorFaseColocar;
+        this.visualizadorFaseInicio = visualizadorFaseInicio;
     }
 
     public void visualizar() {
@@ -34,7 +34,7 @@ public class VisualizadorColocarEjercitos {
         TextField campoCantidadEjercitos = new TextField();
         Button botonColocar = new Button("Colocar");
 
-        BotonColocarEventHandler colocarEvento = new BotonColocarEventHandler(pais, juego, campoCantidadEjercitos,titulo, contenedorJuego, this.visualizadorFaseColocar);
+        BotonColocarParaFaseInicioEventHandler colocarEvento = new BotonColocarParaFaseInicioEventHandler(pais, juego, campoCantidadEjercitos,titulo, contenedorJuego, this.visualizadorFaseInicio);
         botonColocar.setOnAction(colocarEvento);
 
         contenedor.getChildren().addAll(titulo, campoCantidadEjercitos, botonColocar);
@@ -43,4 +43,3 @@ public class VisualizadorColocarEjercitos {
         contenedor.setPadding(new Insets(100));
     }
 }
-

@@ -4,8 +4,8 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
-import edu.fiuba.algo3.vista.VisualizadorFaseColocar;
-import edu.fiuba.algo3.vista.VisualizadorFaseInicio;
+import edu.fiuba.algo3.vista.interfases.IVista;
+import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;
@@ -15,32 +15,29 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
     Juego juegoActual;
     VBox contenedor;
     ContenedorJuego contenedorJuego;
-    VisualizadorFaseInicio visualizadorFaseInicio;
+    IVistaFases visualizadorActual;
 
-    public BotonMostrarJugadorActual(Juego juego, ContenedorJuego contenedorJuego,
-            VisualizadorFaseInicio visualizadorFaseInicio) {
+    public BotonMostrarJugadorActual(Juego juego, ContenedorJuego contenedorJuego, IVistaFases visualizadorActual) {
         this.juegoActual = juego;
         this.contenedor = contenedorJuego.obtenerBotonera();
         this.contenedorJuego = contenedorJuego;
-        this.visualizadorFaseInicio = visualizadorFaseInicio;
+        this.visualizadorActual = visualizadorActual;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        //me sirve para la fase de inicio, cuando el jugador tiene 0 ejercitos
         if (juegoActual.jugadorActualNoTieneEjercitos()) {
-            //solo son de prueba los metodos de visualizadorFaseAtaquePrueba
             if(juegoActual.faseActual().turno().esUltimoJugador()) {
-                VisualizadorFaseColocar visualizadorFaseAtaquePrueba = new VisualizadorFaseColocar(juegoActual, contenedorJuego, visualizadorFaseInicio);
-                visualizadorFaseAtaquePrueba.visualizar();
+                visualizadorActual.visualizarNuevaFase();
             }
-            // Lo habilito cuando el jugador no tiene mas ejercitos para colocar.
             else {
                 try {
                     this.juegoActual.siguienteTurno();
                 } catch (TurnoException | FaseIncompletaException e) {
                     System.exit(-1);
                 }
-                this.visualizadorFaseInicio.visualizar();
+                this.visualizadorActual.visualizar();
             }
         }
     }

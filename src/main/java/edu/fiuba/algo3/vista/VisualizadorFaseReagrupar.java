@@ -2,19 +2,17 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.*;
 import edu.fiuba.algo3.vista.interfases.IVista;
+import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-public class VistaReagrupar implements IVista {
+public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
 
-    VBox contenedorObjetivos;
-    Button botonSiguiente;
-    MostrarObjetivoHandler objetivoHandler;
     private Juego juego;
     private ContenedorJuego contenedorJuego;
     
 
-	public VistaReagrupar(Juego juego, ContenedorJuego contenedorJuego) {
+	public VisualizadorFaseReagrupar(Juego juego, ContenedorJuego contenedorJuego) {
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
     }
@@ -50,6 +48,11 @@ public class VistaReagrupar implements IVista {
 
     public void mostrarTarjetas () {
         
+    }
+
+    public void visualizarNuevaFase() {
+        PasajeDeFases haciaFaseColocar = new PasajeDeFases(new VisualizadorFaseColocar(juego, contenedorJuego));
+        haciaFaseColocar.visualizar();
     }
 
 }

@@ -3,7 +3,9 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.vista.eventos.*;
+import edu.fiuba.algo3.vista.eventos.BotonMostrarJugadorActual;
+import edu.fiuba.algo3.vista.eventos.BotonPaisColocarEventHandler;
+import edu.fiuba.algo3.vista.eventos.PasajeDeFases;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.geometry.Insets;
@@ -17,18 +19,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class VisualizadorFaseColocar implements IVista, IVistaFases {
+public class VisualizadorColocar implements IVista, IVistaFases {
     VBox contenedor;
     Juego juego;
     ContenedorJuego contenedorJuego;
+    IVista visualizadorFaseColocar;
     static String ARCHIVO_FONDO = "file:src/main/resources/fondoBlanco.jpeg";
     Map<String,Color> coloresParaJugadores = new HashMap<String,Color>();
 
-    public VisualizadorFaseColocar(Juego juego, ContenedorJuego contenedorJuego) {
-        juego.faseActual().turno().actualizarListaDeJugadoresAlCambiarDeFase();
+    public VisualizadorColocar(Juego juego, ContenedorJuego contenedorJuego, IVista visualizadorFaseColocar) {
         this.contenedor = new VBox();
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
+        this.visualizadorFaseColocar = visualizadorFaseColocar;
         this.cargarColores(this.coloresParaJugadores);
     }
 
@@ -53,6 +56,18 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         contenedorJuego.definirBotonera(contenedor);
     }
 
+    private void mostrarPaises(VBox contenedor) {
+        List<IPais> paisesJugador = juego.jugadorActual().obtenerPaises();
+        for (IPais pais : paisesJugador) {
+            Button botonPais = new Button(pais.obtenerNombre());
+            contenedor.getChildren().add(botonPais);
+            BotonPaisColocarEventHandler botonColocar = new BotonPaisColocarEventHandler(pais, this.juego, this.contenedorJuego, this.visualizadorFaseColocar);
+            botonPais.setOnAction(botonColocar);
+        }
+        contenedor.setSpacing(10);
+        contenedor.setPadding(new Insets(100));
+    }
+
     private void imprimirJugador(IJugador jugador, VBox contenedor) {
         javafx.scene.image.Image imagen = new Image(ARCHIVO_FONDO);
         BackgroundImage imagenDeFondo= new BackgroundImage(
@@ -74,18 +89,6 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         return (this.coloresParaJugadores.get(jugador.obtenerColor()));
     }
 
-    private void mostrarPaises(VBox contenedor) {
-        List<IPais> paisesJugador = juego.jugadorActual().obtenerPaises();
-        for (IPais pais : paisesJugador) {
-            Button botonPais = new Button(pais.obtenerNombre());
-            contenedor.getChildren().add(botonPais);
-            BotonPaisColocarEventHandler botonColocar = new BotonPaisColocarEventHandler(pais, this.juego, this.contenedorJuego, this);
-            botonPais.setOnAction(botonColocar);
-        }
-        contenedor.setSpacing(10);
-        contenedor.setPadding(new Insets(100));
-    }
-
     private void mostrarSiguienteJugador(VBox contenedor) {
         Button boton = new Button();
         boton.setText("Siguiente Jugador");
@@ -100,4 +103,5 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorFaseAtacar(juego, contenedorJuego));
         haciaFaseAtacar.visualizar();
     }
+
 }

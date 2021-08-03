@@ -19,4 +19,6 @@ public interface ITurno {
 
     public int buscarIndiceDeJugador(IJugador jugador);
 
+    public void actualizarListaDeJugadoresAlCambiarDeFase();
+
 }

@@ -7,33 +7,33 @@ import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
-import edu.fiuba.algo3.vista.VisualizadorColocar;
+import edu.fiuba.algo3.vista.VisualizadorColocarParaFaseInicio;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
+
+public class BotonColocarParaFaseInicioEventHandler implements EventHandler<ActionEvent> {
     IPais pais;
     Juego juego;
     TextField campoEjercitos;
     ContenedorJuego contenedorJuego;
-    IVista visualizadorFaseColocar;
+    IVista visualizadorFaseInicio;
     Label texto;
 
-    public BotonColocarEventHandler(IPais pais, Juego juego, TextField campo, Label texto, ContenedorJuego contenedorJuego, IVista visualizadorFaseColocar) {
+    public BotonColocarParaFaseInicioEventHandler(IPais pais, Juego juego, TextField campo, Label texto, ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio) {
         this.pais = pais;
         this.juego = juego;
         this.campoEjercitos = campo;
         this.contenedorJuego = contenedorJuego;
-        this.visualizadorFaseColocar = visualizadorFaseColocar;
+        this.visualizadorFaseInicio = visualizadorFaseInicio;
         this.texto = texto;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        //TODO poner toda esta verificación en el constructor de VisFaseColocar
         int ingresoUsuario = 0;
         this.verificarEntradaDeTexto(this.campoEjercitos);
         if (campoEjercitos.getText().isEmpty()) {
@@ -55,8 +55,8 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
                 e.printStackTrace();
             }
 
-            VisualizadorColocar visualizadorColocar = new VisualizadorColocar(juego, contenedorJuego, this.visualizadorFaseColocar);
-            visualizadorColocar.visualizar();
+            VisualizadorColocarParaFaseInicio visualizadorColocarParaFaseInicio = new VisualizadorColocarParaFaseInicio(juego, contenedorJuego, this.visualizadorFaseInicio);
+            visualizadorColocarParaFaseInicio.visualizar();
         }
     }
     private void verificarEntradaDeTexto(TextField texto) {

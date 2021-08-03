@@ -49,5 +49,8 @@ public class TurnoMockUnJugador implements ITurno {
     public int buscarIndiceDeJugador(IJugador jugador){
         return 0;
     }
-    
+
+    public void actualizarListaDeJugadoresAlCambiarDeFase() {
+        this.siguienteJugador();
+    }
 }
