@@ -108,8 +108,8 @@ public class Juego implements  PropertyChangeListener {
         return turno.jugadorActual();
     }
 
-    public Boolean jugadorActualNoTieneEjercitos() {
-        return (turno.jugadorActual().cantidadEjercitosPorColocar() == 0);
+    public Boolean jugadorActualTieneEjercitos() {
+        return (turno.jugadorActual().cantidadEjercitosPorColocar() != 0);
     }
 
     public void siguienteTurno() throws TurnoException, FaseIncompletaException {

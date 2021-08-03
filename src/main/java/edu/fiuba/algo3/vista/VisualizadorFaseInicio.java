@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
+import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
+import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.*;
 import edu.fiuba.algo3.vista.interfases.IVista;
@@ -21,7 +24,7 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
 
     static String ARCHIVO_FONDO = "file:src/main/resources/fondoBlanco.jpeg";
 
-    Map <String,Color> coloresParaJugadores = new HashMap <String,Color>();
+    Map<String, Color> coloresParaJugadores = new HashMap<String, Color>();
 
     public VisualizadorFaseInicio(int cantidadJugadores, ContenedorJuego contenedorJuego) throws Exception {
         this.cantidadDeJugadores = cantidadJugadores;
@@ -30,13 +33,13 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         juego = crearJuego(this.cantidadDeJugadores);
     }
 
-    private void cargarColores(Map <String,Color> coloresParaJugadores) {
-        coloresParaJugadores.put("Azul",Color.web("#0000FF", 1.0));
-        coloresParaJugadores.put("Rojo",Color.web("#DC143C", 1.0));
-        coloresParaJugadores.put("Amarillo",Color.web("#FFD700", 1.0));
-        coloresParaJugadores.put("Verde",Color.web("#008000", 1.0));
-        coloresParaJugadores.put("Rosa",Color.web("#FF69B4", 1.0));
-        coloresParaJugadores.put("Negro",Color.web("#000000", 1.0));
+    private void cargarColores(Map<String, Color> coloresParaJugadores) {
+        coloresParaJugadores.put("Azul", Color.web("#0000FF", 1.0));
+        coloresParaJugadores.put("Rojo", Color.web("#DC143C", 1.0));
+        coloresParaJugadores.put("Amarillo", Color.web("#FFD700", 1.0));
+        coloresParaJugadores.put("Verde", Color.web("#008000", 1.0));
+        coloresParaJugadores.put("Rosa", Color.web("#FF69B4", 1.0));
+        coloresParaJugadores.put("Negro", Color.web("#000000", 1.0));
     }
 
     public void visualizar() {
@@ -47,7 +50,7 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         this.mostrarPaisesConquistados(contenedor);
         this.colocarEjercitos(contenedor);
         this.mostrarObjetivos(contenedor);
-        this.mostrarSiguienteJugador(contenedor); 
+        this.mostrarSiguienteJugador(contenedor);
 
         this.mostrarBotonRegrupar(contenedor);
 
@@ -57,8 +60,7 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     }
 
     private void mostrarBotonRegrupar(VBox contenedor) {
-        EventoVista eventoReagrupar 
-            = new EventoVista(new VisualizadorFaseReagrupar(juego, contenedorJuego));
+        EventoVista eventoReagrupar = new EventoVista(new VisualizadorFaseReagrupar(juego, contenedorJuego));
         Button botonReagrupar = new Button("Fase Reagrupar");
         botonReagrupar.setOnAction(eventoReagrupar);
         contenedor.getChildren().add(botonReagrupar);
@@ -70,18 +72,12 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
 
     private void imprimirJugador(IJugador jugador, VBox contenedor) {
         javafx.scene.image.Image imagen = new Image(ARCHIVO_FONDO);
-        BackgroundImage imagenDeFondo= new BackgroundImage(
-            imagen, 
-            BackgroundRepeat.NO_REPEAT, 
-            BackgroundRepeat.NO_REPEAT, 
-            BackgroundPosition.CENTER, 
-            BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         Color color = this.obtenerColorDelJugadorActual(jugador);
-        Label nombreJugador = new NombreJugador(
-            color, 
-            new Background(imagenDeFondo), 
-            "Jugador " + jugador.obtenerColor());
-        
+        Label nombreJugador = new NombreJugador(color, new Background(imagenDeFondo),
+                "Jugador " + jugador.obtenerColor());
+
         contenedor.getChildren().add(nombreJugador);
     }
 
@@ -91,13 +87,12 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     }
 
     private void mostrarObjetivos(VBox contenedor) {
-            Button boton = new Button();
-            boton.setText("Mostrar Objetivos");
-            contenedor.getChildren().add(boton);
-            EventoVista objetivos 
-                = new EventoVista(new VistaObjetivos(juego, contenedorJuego, this));
+        Button boton = new Button();
+        boton.setText("Mostrar Objetivos");
+        contenedor.getChildren().add(boton);
+        EventoVista objetivos = new EventoVista(new VistaObjetivos(juego, contenedorJuego, this));
 
-            boton.setOnAction(objetivos);
+        boton.setOnAction(objetivos);
     }
 
     private void mostrarPaisesConquistados(VBox contenedor) {
@@ -106,7 +101,8 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
 
         contenedor.getChildren().add(boton);
 
-        BotonMostrarPaisesConquistados botonMostrarPaisesConquistados = new BotonMostrarPaisesConquistados(juego, this.contenedorJuego, this);
+        BotonMostrarPaisesConquistados botonMostrarPaisesConquistados = new BotonMostrarPaisesConquistados(juego,
+                this.contenedorJuego, this);
         boton.setOnAction(botonMostrarPaisesConquistados);
     }
 
@@ -118,24 +114,24 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
 
     private void colocarEjercitos(VBox contenedor) {
         Button colocarEjercitos = new Button("Colocar ejércitos");
-        BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler eventoColocar = new BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler(juego, contenedorJuego, this);
+        BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler eventoColocar = new BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler(
+                juego, contenedorJuego, this);
         colocarEjercitos.setOnAction(eventoColocar);
         contenedor.getChildren().add(colocarEjercitos);
     }
 
     private void mostrarSiguienteJugador(VBox contenedor) {
-        Button boton = new Button();
-        boton.setText("Siguiente Jugador");
+        Button boton = new BotonSiguienteJugador(juego, contenedorJuego, this);
         contenedor.getChildren().add(boton);
-        BotonMostrarJugadorActual botonJugadorActual = new BotonMostrarJugadorActual(
-                juego, this.contenedorJuego, this
-        );
-        boton.setOnAction(botonJugadorActual);
     }
 
     public void visualizarNuevaFase() {
-        PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorFaseAtacar(juego, contenedorJuego));
-        haciaFaseAtacar.visualizar();
+        try {
+            juego.siguienteFase();
+        } catch (FaseIncompletaException | EjercitosException | TurnoException e) {
+            System.exit(-1);
+        }
+        (new VisualizadorFaseAtacar(juego, contenedorJuego)).visualizar();
     }
 
     public boolean esFaseInicioOColocar() {

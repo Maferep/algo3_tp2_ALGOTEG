@@ -55,8 +55,7 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
     }
 
     public void visualizarNuevaFase() {
-        PasajeDeFases haciaFaseReagrupar = new PasajeDeFases(new VisualizadorFaseReagrupar(juego, contenedorJuego));
-        haciaFaseReagrupar.visualizar();
+        new VisualizadorFaseReagrupar(juego, contenedorJuego).visualizar();
     }
 
     public boolean esFaseInicioOColocar() {
