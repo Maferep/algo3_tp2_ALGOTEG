@@ -4,8 +4,10 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
+import edu.fiuba.algo3.vista.eventos.BotonVolver;
 import edu.fiuba.algo3.vista.eventos.EventoVista;
 import edu.fiuba.algo3.vista.interfases.IVista;
+import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
@@ -15,13 +17,16 @@ public class VistaPaisesDestinoEjercitos implements IVista {
     Button botonVolver;
     private Juego juego;
     private ContenedorJuego contenedorJuego;
+    private IVistaFases fase;
 
-    public VistaPaisesDestinoEjercitos(Juego juego, ContenedorJuego contenedor, IPais pais, Button botonVolver) {
+    public VistaPaisesDestinoEjercitos(
+        Juego juego, ContenedorJuego contenedor, IPais pais, Button botonVolver, IVistaFases fase) {
 
         this.juego = juego;
         this.contenedorJuego = contenedor;
         this.pais = pais;
         this.botonVolver = botonVolver;
+        this.fase = fase;
     }
 
     //TODO usar una sola impresora de botones de paises para todo
@@ -37,6 +42,9 @@ public class VistaPaisesDestinoEjercitos implements IVista {
             contenedor.getChildren().add(botonAdyacente);
         }
         contenedor.getChildren().add(botonVolver);
+        Button boton = new Button("Volver a\n fase reagrupar");
+        boton.setOnAction(new EventoVista(fase));
+        contenedor.getChildren().add(boton);
         contenedorJuego.definirSobreMapa(contenedor);
     }
 

@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.vista.eventos.EventoVista;
 import edu.fiuba.algo3.vista.interfases.IVista;
+import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
@@ -16,11 +17,14 @@ public class VistaMoverEjercitos implements IVista {
     private Juego juego;
     private ContenedorJuego contenedorJuego;
     private Button botonVolver;
+    private IVistaFases fase;
 
-    public VistaMoverEjercitos(Juego juego, ContenedorJuego contenedorJuego, Button botonVolver) {
+    public VistaMoverEjercitos(
+        Juego juego, ContenedorJuego contenedorJuego, Button botonVolver, IVistaFases fase) {
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
         this.botonVolver = botonVolver;
+        this.fase = fase;
     }
 
     @Override
@@ -44,7 +48,7 @@ public class VistaMoverEjercitos implements IVista {
             botonVolverAColocar.setOnAction(new EventoVista(this));
             EventoVista adyacentes = new EventoVista(
                 new VistaPaisesDestinoEjercitos(
-                    juego, contenedorJuego, unPais, botonVolverAColocar)
+                    juego, contenedorJuego, unPais, botonVolverAColocar, fase)
             );
 
             paisJugador.setOnAction(adyacentes);
