@@ -12,15 +12,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 public class VisualizadorAtaque implements IVista {
-    Juego juego;
-    ContenedorJuego contenedorJuego;
-    VBox contenedor;
-    IPais atacante;
-    IPais defensor;
+    private Juego juego;
+    private ContenedorJuego contenedorJuego;
+    private VBox contenedor;
+    private IPais atacante;
+    private IPais defensor;
 
-    int ejercitosInicialesAtacante;
-    int ejercitosInicialesDefensor;
-    String conquistadorInicialDefensor;
+    private int ejercitosInicialesAtacante;
+    private int ejercitosInicialesDefensor;
+    private String conquistadorInicialDefensor;
+    private Button ataqueBtn = new Button();
 
     public VisualizadorAtaque(Juego juego, IPais atacante, IPais defensor, ContenedorJuego contenedorJuego) {
         this.juego = juego;
@@ -59,7 +60,6 @@ public class VisualizadorAtaque implements IVista {
         defensorCampo.setPromptText("Ejércitos de defensor: " + defensor.cantidadEjercitos());
         defensorCampo.setDisable(true);
 
-        Button ataqueBtn = new Button();
         ataqueBtn.setText("Realizar ataque");
 
         BotonRealizarAtaqueEventHandler ataqueEvento = new BotonRealizarAtaqueEventHandler(juego, atacante, defensor, atacanteCampo, this);
@@ -83,5 +83,20 @@ public class VisualizadorAtaque implements IVista {
 
         contenedor.getChildren().addAll(atacanteEjercitos, defensorEjercitos, conquista);
         contenedorJuego.definirBotonera(contenedor);
+    }
+
+    public void mostrarAdvertencia() {
+        int cantidadPosible = 3;
+        if ( ejercitosInicialesAtacante < 3 ) { cantidadPosible = ejercitosInicialesAtacante - 1; }
+
+        Label mensaje = new Label();
+        mensaje.setText("¡Ojo! La cantidad de ejércitos ingresada no es válida. Sólo podes atacar con " + cantidadPosible + " ejércitos.");
+
+        contenedor.getChildren().add(mensaje);
+        contenedorJuego.definirBotonera(contenedor);
+    }
+
+    public void deshabilitarBotonDeAtaque() {
+        ataqueBtn.setDisable(true);
     }
 }

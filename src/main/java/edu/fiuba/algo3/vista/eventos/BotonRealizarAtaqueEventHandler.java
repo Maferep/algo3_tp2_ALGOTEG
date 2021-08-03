@@ -32,8 +32,9 @@ public class BotonRealizarAtaqueEventHandler implements EventHandler<ActionEvent
             try {
                 juego.atacar(atacante, ejercitos, defensor);
                 visualizador.mostrarResultado();
+                visualizador.deshabilitarBotonDeAtaque();
             } catch (Exception e) {
-                e.printStackTrace();
+                visualizador.mostrarAdvertencia();
             }
         }
     }
