@@ -61,6 +61,7 @@ public class Juego implements  PropertyChangeListener {
     
     public void atacar(final IPais atacante, final int cantidadDeSoldados, final IPais defensor) throws Exception {
         faseActual.obtenerFaseAtacar().atacar(atacante, cantidadDeSoldados, defensor);
+        if (atacante.obtenerConquistador().esIgualA(defensor.obtenerConquistador())) { atacante.obtenerConquistador().agregarTarjetaAleatoria(mazo.obtenerTarjeta()); }
     }
 
     // colocar
