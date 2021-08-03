@@ -11,23 +11,21 @@ public class BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler implements
     private Juego juego;
     ContenedorJuego contenedorJuego;
     VisualizadorFaseInicio visualizadorFaseInicio;
+    VisualizadorColocarParaFaseInicio faseColocar;
 
     public BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler(Juego juego, ContenedorJuego contenedorJuego, VisualizadorFaseInicio visualizadorFaseInicio) {
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
         this.visualizadorFaseInicio = visualizadorFaseInicio;
+        try {
+            faseColocar = new VisualizadorColocarParaFaseInicio(juego, contenedorJuego, this.visualizadorFaseInicio);
+        } catch (Exception e) {
+            System.exit(-1);
+        }
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        VisualizadorColocarParaFaseInicio faseColocar = null;
-        while(faseColocar == null) {
-            try {
-                faseColocar = new VisualizadorColocarParaFaseInicio(juego, contenedorJuego, this.visualizadorFaseInicio);
-            } catch (Exception e) {
-                System.exit(-1);
-            }
-        }
         faseColocar.visualizar();
     }
 }
