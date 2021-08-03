@@ -5,7 +5,7 @@
     "tipoObjetivo": "continentes"
   },
   {
-    "continentes": ["America de Sur", "Europa"],
+    "continentes": ["America del Sur", "Europa"],
     "cantidadMinima": [-1, 3, 3],
     "tipoObjetivo": "continentes y limitrofes"
   },
