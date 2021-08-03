@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
+import java.util.List;
+
 public class FaseAtacar extends FaseAbstracta {
     IEstrategiaFase estrategia = new EstrategiaAtaqueSinConquista();
     Boolean finDeJuego = false;
@@ -55,6 +57,16 @@ public class FaseAtacar extends FaseAbstracta {
     @Override
     public FaseAtacar obtenerFaseAtacar() {
         return this;
+    }
+
+    @Override
+    public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException, PaisNoExistenteException {
+
+    }
+
+    @Override
+    public void realizarCanje(List<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException, EjercitosException {
+
     }
 
     @Override

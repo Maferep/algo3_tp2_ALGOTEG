@@ -99,6 +99,16 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
     }
 
     @Override
+    public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException, PaisNoExistenteException {
+
+    }
+
+    @Override
+    public void realizarCanje(List<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException, EjercitosException {
+
+    }
+
+    @Override
 	public Mazo obtenerCanje() {
 		return mazo;
 	}

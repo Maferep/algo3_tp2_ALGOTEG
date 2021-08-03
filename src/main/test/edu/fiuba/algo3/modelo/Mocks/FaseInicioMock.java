@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.fases.*;
 
+import java.util.List;
+
 public class FaseInicioMock implements IFaseInicio {
 
     @Override
@@ -51,6 +53,16 @@ public class FaseInicioMock implements IFaseInicio {
     public FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException, PaisNoExistenteException {
+
+    }
+
+    @Override
+    public void realizarCanje(List<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException, EjercitosException {
+
     }
 
     @Override
