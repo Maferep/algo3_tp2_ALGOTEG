@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
+import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.MostrarTarjetasCanjeEventHandler;
 import edu.fiuba.algo3.vista.eventos.MostrarTarjetasPaisEventHandler;
@@ -53,6 +54,11 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
 
     @Override
     public void visualizarNuevaFase() {
+        try {
+            juego.siguienteFase();
+        } catch (AlgoTegException e) {
+            System.exit(-1);
+        }
         new VisualizadorFaseAtacar(juego, contenedorJuego).visualizar();
     }
 

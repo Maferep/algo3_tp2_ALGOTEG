@@ -1,6 +1,10 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
+import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
+import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.vista.eventos.*;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
@@ -13,19 +17,16 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
 
     private Juego juego;
     private ContenedorJuego contenedorJuego;
-    
 
-	public VisualizadorFaseReagrupar(Juego juego, ContenedorJuego contenedorJuego) {
+    public VisualizadorFaseReagrupar(Juego juego, ContenedorJuego contenedorJuego) {
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
     }
-    
+
     @Override
-    public void visualizar(){
+    public void visualizar() {
         contenedorJuego.limpiarAreaMapa();
         contenedorJuego.obtenerBotonera().getChildren().clear();
-
-        
 
         Button botonMoverEjercitos = new Button("Transferir Ejercitos");
         Button botonVerTarjetas = new Button("Ver Tarjetas");
@@ -33,26 +34,19 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
         botonVolver.setOnAction(new EventoVista(this));
 
         EventoVista moverEjercitos = new EventoVista(
-            new VistaMoverEjercitos(juego, contenedorJuego, botonVolver, this));
-        EventoVista verTarjetas = new EventoVista(
-            new VistaTarjetas(juego, contenedorJuego));
-        
+                new VistaMoverEjercitos(juego, contenedorJuego, botonVolver, this));
+        EventoVista verTarjetas = new EventoVista(new VistaTarjetas(juego, contenedorJuego));
+
         botonMoverEjercitos.setOnAction(moverEjercitos);
         botonVerTarjetas.setOnAction(verTarjetas);
 
-
         Button siguiente = new Button("Siguiente");
-        siguiente.setOnAction(new BotonMostrarJugadorActual(
-            juego, contenedorJuego, this));
-        
-        VBox contenedor = new VBox(imprimirJugador(juego),
-            botonMoverEjercitos, 
-            botonVerTarjetas, 
-            siguiente);
+        siguiente.setOnAction(new BotonMostrarJugadorActual(juego, contenedorJuego, this));
+
+        VBox contenedor = new VBox(imprimirJugador(juego), botonMoverEjercitos, botonVerTarjetas, siguiente);
 
         contenedorJuego.definirBotonera(contenedor);
 
-        
     }
 
     private Label imprimirJugador(Juego juego) {
@@ -60,6 +54,11 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
     }
 
     public void visualizarNuevaFase() {
+        try {
+            juego.siguienteFase();
+        } catch (AlgoTegException e) {
+            System.exit(-1);
+        }
         PasajeDeFases haciaFaseColocar = new PasajeDeFases(
             new VisualizadorFaseColocar(juego, contenedorJuego));
         haciaFaseColocar.visualizar();

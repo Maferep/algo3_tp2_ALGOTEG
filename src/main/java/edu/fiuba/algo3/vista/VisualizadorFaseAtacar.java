@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
+import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 import edu.fiuba.algo3.modelo.excepciones.TurnoException;
@@ -69,7 +70,7 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
     public void visualizarNuevaFase() {
         try {
             juego.siguienteFase();
-        } catch (FaseIncompletaException | EjercitosException | TurnoException e) {
+        } catch (AlgoTegException e) {
             System.exit(-1);
         }
         new VisualizadorFaseReagrupar(juego, contenedorJuego).visualizar();
