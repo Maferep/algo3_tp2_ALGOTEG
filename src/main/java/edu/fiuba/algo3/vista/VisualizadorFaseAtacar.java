@@ -16,12 +16,11 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
 
     @Override
     public void visualizar() {
-
+        //TEMP para test
     }
 
     public void visualizarNuevaFase() {
-        PasajeDeFases haciaFaseReagrupar = new PasajeDeFases(new VisualizadorFaseReagrupar(juego, contenedorJuego));
-        haciaFaseReagrupar.visualizar();
+        new VisualizadorFaseReagrupar(juego, contenedorJuego).visualizar();
     }
 
     public boolean esFaseInicioOColocar() {
