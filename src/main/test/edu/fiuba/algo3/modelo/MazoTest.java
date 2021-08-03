@@ -1,26 +1,21 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.*;
-import java.util.stream.*;
-
-import edu.fiuba.algo3.modelo.Interfaces.*;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import edu.fiuba.algo3.modelo.Interfaces.IMapa;
+import edu.fiuba.algo3.modelo.Mapa;
+import edu.fiuba.algo3.modelo.Mazo;
+import edu.fiuba.algo3.modelo.Tarjeta;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 public class MazoTest {
+    IMapa mapa = new Mapa();
 
-    List<IPais> paises = Arrays.asList(
-            "Estados Unidos",
-            "Canadá", 
-            "Brasil", 
-            "Bolivia",
-            "Colombia",
-            "Chile",
-            "Ecuador")
-        .stream()
-        .map(pais -> new Pais(pais))
-        .collect(Collectors.toList());
+    @Test
+    public void test01AgarrarTarjeta() {
+        Mazo mazo = new Mazo(mapa);
+        Tarjeta tarjeta = mazo.obtenerTarjeta();
 
-
+        Assert.assertEquals("Francia", tarjeta.obtenerPais().obtenerNombre());
+        Assert.assertEquals("Globo", tarjeta.obtenerSimbolo().simbolo);
+    }
 }
