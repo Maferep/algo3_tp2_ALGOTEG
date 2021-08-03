@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.net.MalformedURLException;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
