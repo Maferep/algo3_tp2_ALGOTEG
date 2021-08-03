@@ -49,6 +49,7 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
 
     @Override
     public void visualizarJuegoTerminado() throws AlgoTegException {
+        VBox contenedor = new VBox();
         contenedorJuego.limpiarBotonera();
         contenedorJuego.limpiarAreaMapa();
         mostrarGanador();

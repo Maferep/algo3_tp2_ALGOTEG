@@ -27,7 +27,6 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
     Map<String, Color> coloresParaJugadores = new HashMap<String,Color>();
 
     public VisualizadorFaseColocar(Juego juego, ContenedorJuego contenedorJuego) {
-        //juego.faseActual().turno().actualizarListaDeJugadoresAlCambiarDeFase();
         this.contenedor = new VBox();
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
@@ -69,6 +68,7 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
 
     @Override
     public void visualizarJuegoTerminado() throws AlgoTegException {
+        VBox contenedor = new VBox();
         contenedorJuego.limpiarBotonera();
         contenedorJuego.limpiarAreaMapa();
         mostrarGanador();

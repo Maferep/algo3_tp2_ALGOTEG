@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
@@ -33,6 +34,10 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         this.contenedorJuego = contenedorJuego;
         this.cargarColores(this.coloresParaJugadores);
         juego = crearJuego(this.cantidadDeJugadores);
+        //de prueba para q me pase el objetivo
+        for(int i = 0 ; i < 6 ; i ++) {
+        juego.jugadorActual().asignarPais(new Pais("Arg"));
+        }
         this.contenedor = new VBox();
     }
 
@@ -64,6 +69,7 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
 
     @Override
     public void visualizarJuegoTerminado() throws AlgoTegException {
+        VBox contenedor = new VBox();
         contenedorJuego.limpiarBotonera();
         contenedorJuego.limpiarAreaMapa();
         mostrarGanador();
