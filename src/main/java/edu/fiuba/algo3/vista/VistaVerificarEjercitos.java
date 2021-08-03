@@ -36,7 +36,7 @@ public class VistaVerificarEjercitos implements IVista {
 
     @Override
     public void visualizar() {
-        Label texto = null;
+        Label texto = new Label();
         
         this.verificarEntradaDeTexto(campoEjercitos);
         if (campoEjercitos.getText().trim().equals("")) {

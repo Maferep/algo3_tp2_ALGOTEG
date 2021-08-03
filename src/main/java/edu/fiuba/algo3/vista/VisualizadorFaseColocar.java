@@ -47,6 +47,9 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
 
     @Override
     public void visualizar() {
+        contenedorJuego.limpiarAreaMapa();
+        contenedorJuego.limpiarBotonera();
+
         imprimirJugador(juego.jugadorActual());
         mostrarOpciones();
 

@@ -6,8 +6,11 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Tarjeta;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class VistaTarjetas implements IVista{
 
@@ -33,7 +36,8 @@ public class VistaTarjetas implements IVista{
             Label sinCartas = new Label("No tienes ninguna tarjeta de pais :(");
             tarjetasJugador.getChildren().add(sinCartas);
         }
+        Background fondo = new Background(new BackgroundFill(Color.KHAKI, null, null));
+        tarjetasJugador.setBackground(fondo);
         contenedorJuego.definirSobreMapa(tarjetasJugador);
     }
-
 }
