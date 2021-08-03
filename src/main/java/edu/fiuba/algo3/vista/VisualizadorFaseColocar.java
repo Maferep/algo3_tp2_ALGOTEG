@@ -112,10 +112,13 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         MostrarTarjetasPaisEventHandler tarjetasPais = new MostrarTarjetasPaisEventHandler(juego, contenedorJuego);
         activarTarjetaOpcion.setOnAction(tarjetasPais);
 
-        Button canjearOpcion = new Button();
-        canjearOpcion.setText("Canjear tarjetas");
-        MostrarTarjetasCanjeEventHandler tarjetasCanje = new MostrarTarjetasCanjeEventHandler(juego, contenedorJuego);
-        canjearOpcion.setOnAction(tarjetasCanje);
+        if (juego.jugadorActual().obtenerTarjetas().size() > 2) {
+            Button canjearOpcion = new Button();
+            canjearOpcion.setText("Canjear tarjetas");
+            MostrarTarjetasCanjeEventHandler tarjetasCanje = new MostrarTarjetasCanjeEventHandler(juego, contenedorJuego);
+            canjearOpcion.setOnAction(tarjetasCanje);
+            contenedor.getChildren().add(canjearOpcion);
+        }
 
         Button colocarOpcion = new Button();
         colocarOpcion.setText("Colocar ejércitos");
@@ -124,6 +127,6 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
 
         BotonSiguienteJugador sigJugador = new BotonSiguienteJugador(juego,  contenedorJuego, this);
 
-        contenedor.getChildren().addAll(activarTarjetaOpcion, canjearOpcion, colocarOpcion, sigJugador);
+        contenedor.getChildren().addAll(activarTarjetaOpcion, colocarOpcion, sigJugador);
     }
 }
