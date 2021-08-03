@@ -29,6 +29,13 @@ public class Turno implements ITurno {
         primero = jugadorActual();
     }
 
+    //Cuando termino una fase, el jugador se me queda siendo el ultimo. Por lo que siempre
+    //va a ser true el esUltimoJugador() y nunca voy a poder apretar el boton sigJugador
+
+    public void actualizarListaDeJugadoresAlCambiarDeFase() {
+        this.siguienteJugador();
+    }
+
     public IJugador jugadorActual() {
         return jugadores.peekFirst();
     }

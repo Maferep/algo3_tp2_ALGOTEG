@@ -26,6 +26,7 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        //me sirve para la fase de inicio, cuando el jugador tiene 0 ejercitos
         if (juegoActual.jugadorActualNoTieneEjercitos()) {
             if(juegoActual.faseActual().turno().esUltimoJugador()) {
                 visualizadorActual.visualizarNuevaFase();

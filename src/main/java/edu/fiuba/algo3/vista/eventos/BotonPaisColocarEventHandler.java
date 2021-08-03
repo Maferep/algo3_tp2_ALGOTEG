@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.ContenedorJuego;
 import edu.fiuba.algo3.vista.VisualizadorColocarEjercitos;
-import edu.fiuba.algo3.vista.VisualizadorColocarEjercitosParaFaseInicio;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
