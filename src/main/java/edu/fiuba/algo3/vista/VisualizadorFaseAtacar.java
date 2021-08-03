@@ -28,11 +28,18 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
 
     @Override
     public void visualizar() {
+        contenedorJuego.limpiarBotonera();
         mostrarJugador();
         escribirTitulo();
         mostrarPaises();
-        pasarTurno();
+        mostrarSiguienteJugador();
         contenedorJuego.definirBotonera(contenedor);
+    }
+
+    private void mostrarSiguienteJugador() {
+        BotonSiguienteJugador boton 
+            = new BotonSiguienteJugador(juego, contenedorJuego, this);
+        contenedor.getChildren().add(boton);
     }
 
     private void escribirTitulo() {
