@@ -104,7 +104,7 @@ public class AtaqueTest {
         ataqueFalso.atacar();
 
         assertEquals(atacante.obtenerConquistador().obtenerColor(), defensor.obtenerConquistador().obtenerColor());
-        assertEquals(0, defensor.cantidadEjercitos());
+        assertEquals(1, defensor.cantidadEjercitos());
     }
 
     @Test
