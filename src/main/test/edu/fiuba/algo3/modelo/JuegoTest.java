@@ -208,5 +208,6 @@ public class JuegoTest {
         
         assertTrue(jugador.cantidadPaises() > 30);
         assertTrue(juego.juegoTerminado());
+        assertEquals(jugador, juego.obtenerGanador());
     }
 }

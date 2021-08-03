@@ -15,7 +15,7 @@ public class VistaObjetivos implements IVista{
 
     VBox contenedorObjetivos;
     private VBox contenedor;
-    private int indiceObjetivo;
+    private int indiceObjetivo = 0;
     List<String> objetivos;
     Button botonSiguiente;
     MostrarObjetivoHandler objetivoHandler;
@@ -60,16 +60,13 @@ public class VistaObjetivos implements IVista{
         Label label = new Label();
         label.setText(objetivos.get(indiceObjetivo));
         contenedor.getChildren().clear();
-        contenedor.getChildren().add(label);
-        contenedor.getChildren().add(botonSiguiente);
-        indiceObjetivo++;
 
-        if(indiceObjetivo >= objetivos.size()){
-            contenedor.getChildren().clear();
-            botonSiguiente.setOnAction( new BotonMostrarPaisesConquistados(
-                juego,
-                    this.contenedorJuego, this.visualizadorFaseInicio));
+        if(indiceObjetivo < objetivos.size()){
+            contenedor.getChildren().add(label);
+            if (indiceObjetivo < (objetivos.size() - 1))
+                contenedor.getChildren().add(botonSiguiente);
         }
+        indiceObjetivo++;
         mostrarBotonVolver(contenedor);
     }
 
@@ -78,7 +75,8 @@ public class VistaObjetivos implements IVista{
         botonDos.setText("Volver");
 
         contenedor.getChildren().add(botonDos);
-        BotonVolver botonVolver = new BotonVolver(this.contenedorJuego, this.visualizadorFaseInicio);
+        BotonVolver botonVolver 
+            = new BotonVolver(this.contenedorJuego, this.visualizadorFaseInicio);
         botonDos.setOnAction(botonVolver);
 
         this.contenedorJuego.setRight(contenedor);

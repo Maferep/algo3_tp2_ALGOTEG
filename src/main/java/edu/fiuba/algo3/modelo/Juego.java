@@ -133,7 +133,7 @@ public class Juego implements  PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evento) {
         //TODO cambiar a estrategia 'juego completado'
         //y buscar el ganador
-        juegoTerminado = true;
+        this.juegoTerminado = true;
     }
 
 	public List<String> obtenerObjetivos() {

@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
+import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 
 public class TurnoMockUnJugador implements ITurno {
     Jugador miJugador = new Jugador("Color");
@@ -50,8 +51,8 @@ public class TurnoMockUnJugador implements ITurno {
     }
 
     @Override
-    public IJugador obtenerGanador() {
-        // TODO Auto-generated method stub
-        return null;
+    public IJugador obtenerGanador() throws TurnoException {
+        if(miJugador.cumplioObjetivo()) return miJugador;
+        else throw new TurnoException("No hay ganador aun.");
     }
 }

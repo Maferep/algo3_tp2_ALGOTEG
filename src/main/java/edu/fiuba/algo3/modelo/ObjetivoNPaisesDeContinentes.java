@@ -49,9 +49,9 @@ public class ObjetivoNPaisesDeContinentes extends ObjetivoBase {
         for(IPais pais : paisesAConquistar)
             texto = texto.concat(pais.obtenerNombre() + "\n");
 
-        texto.concat("\n y obtener minimo de ejercitos:\n");
+        texto = texto.concat("\n y obtener minimo de ejercitos:\n");
         for(Entry<Continente, Integer> continente : continentesConMinimoPaises.entrySet()) {
-            texto.concat(continente.getKey().obtenerNombre() 
+            texto = texto.concat(continente.getKey().obtenerNombre() 
                 + ": " + continente.getValue());
         }
         return texto;

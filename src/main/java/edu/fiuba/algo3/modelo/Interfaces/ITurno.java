@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo.Interfaces;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import edu.fiuba.algo3.modelo.excepciones.TurnoException;
+
 public interface ITurno {
 
     public List<String> obtenerColores();
@@ -19,6 +21,6 @@ public interface ITurno {
 
     public void actualizarListaDeJugadoresAlCambiarDeFase();
 
-	public IJugador obtenerGanador();
+	public IJugador obtenerGanador() throws TurnoException;
 
 }

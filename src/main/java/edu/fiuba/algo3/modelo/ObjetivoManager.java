@@ -3,14 +3,14 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 import edu.fiuba.algo3.modelo.excepciones.ObjetivoException;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ObjetivoManager {
-    List<IObjetivo> objetivos;
+    private List<IObjetivo> objetivos;
+    private List<IObjetivo> objetivosDeJugadores = new ArrayList<>();
     public ObjetivoManager(ITurno turno, List<IObjetivo> objetivosCreados) throws ObjetivoException {
         this.objetivos = objetivosCreados;
         this.asignarObjetivos(turno);
@@ -22,6 +22,7 @@ public class ObjetivoManager {
         
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++) {
             turno.jugadorActual().asignarObjetivo(objetivos.get(i));
+            objetivosDeJugadores.add(objetivos.get(i));
             turno.siguienteJugador();
         }
     }
@@ -38,6 +39,9 @@ public class ObjetivoManager {
         en orden, desde el primer jugador.
     */
     public List<String> nombresDeObjetivos() {
-        return objetivos.stream().map(o -> o.toString()).collect(Collectors.toList());
+        return objetivosDeJugadores 
+            .stream()
+            .map(o -> o.toString())
+            .collect(Collectors.toList());
     }
 }
