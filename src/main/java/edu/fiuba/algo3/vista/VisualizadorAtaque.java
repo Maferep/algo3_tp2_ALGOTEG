@@ -60,11 +60,10 @@ public class VisualizadorAtaque implements IVista {
         Button ataqueBtn = new Button();
         ataqueBtn.setText("Realizar ataque");
 
-        contenedor.getChildren().addAll(atacanteCampo, defensorCampo, ataqueBtn);
-
         BotonRealizarAtaqueEventHandler ataqueEvento = new BotonRealizarAtaqueEventHandler(juego, atacante, defensor, atacanteCampo, this);
         ataqueBtn.setOnAction(ataqueEvento);
 
+        contenedor.getChildren().addAll(atacanteCampo, defensorCampo, ataqueBtn);
     }
 
     public void mostrarResultado() {

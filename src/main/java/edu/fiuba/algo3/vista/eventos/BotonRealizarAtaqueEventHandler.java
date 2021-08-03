@@ -28,13 +28,13 @@ public class BotonRealizarAtaqueEventHandler implements EventHandler<ActionEvent
         int ejercitos = 0;
         if (atacanteCampo.getText().matches("\\d+")) {
             ejercitos = Integer.parseInt(atacanteCampo.getText());
-        }
 
-        try {
-            juego.atacar(atacante, ejercitos, defensor);
-            visualizador.mostrarResultado();
-        } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                juego.atacar(atacante, ejercitos, defensor);
+                visualizador.mostrarResultado();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
