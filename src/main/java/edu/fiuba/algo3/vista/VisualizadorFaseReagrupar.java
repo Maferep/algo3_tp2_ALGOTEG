@@ -39,24 +39,9 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
         contenedorJuego.definirBotonera(contenedor);
     }
 
-    /*
-        El evento mostrarObjetivoHandler causa que se llame a este método
-    */
-    public void mostrarEjercitos () {
-        
-    }
-
-    public void mostrarTarjetas () {
-        
-    }
-
     public void visualizarNuevaFase() {
         PasajeDeFases haciaFaseColocar = new PasajeDeFases(new VisualizadorFaseColocar(juego, contenedorJuego));
         haciaFaseColocar.visualizar();
-    }
-
-    public boolean esFaseInicioOColocar() {
-        return false;
     }
 
 }

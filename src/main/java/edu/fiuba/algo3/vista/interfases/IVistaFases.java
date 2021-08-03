@@ -11,5 +11,4 @@ public interface IVistaFases {
 
     public void visualizar();
     public void visualizarNuevaFase();
-    public boolean esFaseInicioOColocar();
 }
