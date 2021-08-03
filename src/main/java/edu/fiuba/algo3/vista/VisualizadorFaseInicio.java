@@ -125,7 +125,8 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         Button boton = new Button();
         boton.setText("Siguiente Jugador");
         contenedor.getChildren().add(boton);
-        BotonMostrarJugadorActual botonJugadorActual = new BotonMostrarJugadorActual(juego, this.contenedorJuego, this);
+        BotonMostrarJugadorActual botonJugadorActual 
+            = new BotonMostrarJugadorActual(juego, this.contenedorJuego, this);
         boton.setOnAction(botonJugadorActual);
     }
 
