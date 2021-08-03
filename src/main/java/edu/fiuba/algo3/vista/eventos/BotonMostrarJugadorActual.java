@@ -18,7 +18,8 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
     ContenedorJuego contenedorJuego;
     IVistaFases visualizadorActual;
 
-    public BotonMostrarJugadorActual(Juego juego, ContenedorJuego contenedorJuego, IVistaFases visualizadorActual) {
+    public BotonMostrarJugadorActual(Juego juego, 
+            ContenedorJuego contenedorJuego, IVistaFases visualizadorActual) {
         this.juegoActual = juego;
         this.contenedor = contenedorJuego.obtenerBotonera();
         this.contenedorJuego = contenedorJuego;
