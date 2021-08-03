@@ -16,12 +16,15 @@ public class FabricaDeObjetivos {
     IMapa mapa;
     ITurno turno;
     LectorObjetivos lectorObjetivos = new LectorObjetivos();
+    public IOrdenador ordenador = new OrdenadorAleatorio();
     public FabricaDeObjetivos(ITurno turno, IMapa mapa) {
         this.turno = turno;
         this.mapa = mapa;
         crearObjetivosMinimoPaises();
         for(String color : turno.obtenerColores())
             agregarObjetivoDeEjercitos(color);
+        
+        ordenador.ordenar(objetivos);
     }
 
     public List<IObjetivo> crearObjetivos() {
