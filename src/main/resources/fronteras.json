@@ -2,251 +2,250 @@
  {
    "Pais": "Francia",
    "Continente": "Europa",
-   "Limita con": "Alemania,España,Italia"
- },
+   "Limita con": "Alemania,España,Italia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Gran Bretaña",
    "Continente": "Europa",
-   "Limita con": "Islandia,Alemania,España"
- },
+   "Limita con": "Islandia,Alemania,España",
+   "Simbolo":"Globo"},
  {
    "Pais": "Tartaria",
    "Continente": "Asia",
-   "Limita con": "Aral,Taymir,Siberia"
- },
+   "Limita con": "Aral,Taymir,Siberia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Mongolia",
    "Continente": "Asia",
-   "Limita con": "Aral,Siberia,Iran,Gobi,China"
- },
+   "Limita con": "Aral,Siberia,Iran,Gobi,China",
+   "Simbolo":"Globo"},
  {
    "Pais": "Zaire",
    "Continente": "Africa",
-   "Limita con": "Madagascar,Sudafrica,Etiopia,Sahara"
- },
+   "Limita con": "Madagascar,Sudafrica,Etiopia,Sahara",
+   "Simbolo":"Globo"},
  {
    "Pais": "Polonia",
    "Continente": "Europa",
-   "Limita con": "Alemania,Rusia,Turquia,Egipto"
- },
+   "Limita con": "Alemania,Rusia,Turquia,Egipto",
+   "Simbolo":"Globo"},
  {
    "Pais": "Oregon",
    "Continente": "America del Norte",
-   "Limita con": "Alaska,Yukon,Canada,Nueva York,California"
- },
+   "Limita con": "Alaska,Yukon,Canada,Nueva York,California",
+   "Simbolo":"Globo"},
  {
    "Pais": "Etiopia",
    "Continente": "Africa",
-   "Limita con": "Sahara,Egipto,Zaire,Sudafrica"
- },
+   "Limita con": "Sahara,Egipto,Zaire,Sudafrica",
+   "Simbolo":"Globo"},
  {
    "Pais": "Chile",
    "Continente": "America del Sur",
-   "Limita con": "Argentina,Peru,Australia"
- },
+   "Limita con": "Argentina,Peru,Australia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Australia",
    "Continente": "Oceania",
-   "Limita con": "Chile,Sumatra,Java,Borneo"
- },
+   "Limita con": "Chile,Sumatra,Java,Borneo",
+   "Simbolo":"Globo"},
  {
    "Pais": "Kamtchatka",
    "Continente": "Asia",
-   "Limita con": "Siberia,China,Japon,Alaska"
- },
+   "Limita con": "Siberia,China,Japon,Alaska",
+   "Simbolo":"Globo"},
  {
    "Pais": "Egipto",
    "Continente": "Africa",
-   "Limita con": "Polonia,Turquia,Israel,Madagascar,Etiopia,Sahara"
- },
+   "Limita con": "Polonia,Turquia,Israel,Madagascar,Etiopia,Sahara",
+   "Simbolo":"Globo"},
  {
    "Pais": "Turquia",
    "Continente": "Asia",
-   "Limita con": "Egipto,Polonia,Rusia,Iran,Israel,Arabia"
- },
+   "Limita con": "Egipto,Polonia,Rusia,Iran,Israel,Arabia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Nueva York",
    "Continente": "America del Norte",
-   "Limita con": "Groenlandia,Canada,Oregon,California,Terranova"
- },
+   "Limita con": "Groenlandia,Canada,Oregon,California,Terranova",
+   "Simbolo":"Globo"},
  {
    "Pais": "Terranova",
    "Continente": "America del Norte",
-   "Limita con": "Labrador,Canada,Nueva York"
- },
+   "Limita con": "Labrador,Canada,Nueva York",
+   "Simbolo":"Globo"},
  {
    "Pais": "Iran",
    "Continente": "Asia",
-   "Limita con": "Aral,Mongolia,Gobi,China,India,Turquia,Rusia"
- },
+   "Limita con": "Aral,Mongolia,Gobi,China,India,Turquia,Rusia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Madagascar",
    "Continente": "Africa",
-   "Limita con": "Egipto,Zaire"
- },
+   "Limita con": "Egipto,Zaire",
+   "Simbolo":"Globo"},
  {
    "Pais": "Argentina",
    "Continente": "America del Sur",
-   "Limita con": "Chile,Peru,Brasil,Uruguay"
- },
+   "Limita con": "Chile,Peru,Brasil,Uruguay",
+   "Simbolo":"Globo"},
  {
    "Pais": "Israel",
    "Continente": "Asia",
-   "Limita con": "Turquia,Arabia,Egipto"
- },
+   "Limita con": "Turquia,Arabia,Egipto",
+   "Simbolo":"Globo"},
  {
    "Pais": "Rusia",
    "Continente": "Europa",
-   "Limita con": "Suecia,Aral,Iran,Turquia,Polonia"
- },
+   "Limita con": "Suecia,Aral,Iran,Turquia,Polonia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Borneo",
    "Continente": "Oceania",
-   "Limita con": "Australia,Malasia"
- },
+   "Limita con": "Australia,Malasia",
+   "Simbolo":"Globo"},
  {
    "Pais": "California",
    "Continente": "America del Norte",
-   "Limita con": "Oregon,Nueva York,Mexico"
- },
+   "Limita con": "Oregon,Nueva York,Mexico",
+   "Simbolo":"Globo"},
  {
    "Pais": "Taymir",
    "Continente": "Asia",
-   "Limita con": "Tartaria,Siberia"
- },
+   "Limita con": "Tartaria,Siberia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Aral",
    "Continente": "Asia",
-   "Limita con": "Rusia,Iran,Mongolia,Siberia,Tartaria"
- },
+   "Limita con": "Rusia,Iran,Mongolia,Siberia,Tartaria",
+   "Simbolo":"Globo"},
  {
    "Pais": "Siberia",
    "Continente": "Asia",
-   "Limita con": "Aral,Tartaria,Taymir,Kamtchatka,China,Mongolia"
- },
+   "Limita con": "Aral,Tartaria,Taymir,Kamtchatka,China,Mongolia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Canada",
    "Continente": "America del Norte",
-   "Limita con": "Yukon,Oregon,Nueva York,Terranova"
- },
+   "Limita con": "Yukon,Oregon,Nueva York,Terranova",
+   "Simbolo":"Globo"},
  {
    "Pais": "Sahara",
    "Continente": "Africa",
-   "Limita con": "Brasil,España,Egipto,Etiopia,Zaire"
- },
+   "Limita con": "Brasil,España,Egipto,Etiopia,Zaire",
+   "Simbolo":"Globo"},
  {
    "Pais": "Yukon",
    "Continente": "America del Norte",
-   "Limita con": "Alaska,Canada,Oregon"
- },
+   "Limita con": "Alaska,Canada,Oregon",
+   "Simbolo":"Globo"},
  {
    "Pais": "Uruguay",
    "Continente": "America del Sur",
-   "Limita con": "Argentina,Brasil"
- },
+   "Limita con": "Argentina,Brasil",
+   "Simbolo":"Globo"},
  {
    "Pais": "Groenlandia",
    "Continente": "America del Norte",
-   "Limita con": "Labrador,Nueva York,Islandia"
- },
+   "Limita con": "Labrador,Nueva York,Islandia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Japon",
    "Continente": "Asia",
-   "Limita con": "Kamtchatka,China"
- },
+   "Limita con": "Kamtchatka,China",
+   "Simbolo":"Globo"},
  {
    "Pais": "Sumatra",
    "Continente": "Oceania",
-   "Limita con": "Australia,India"
- },
+   "Limita con": "Australia,India",
+   "Simbolo":"Globo"},
  {
    "Pais": "Alaska",
    "Continente": "America del Norte",
-   "Limita con": "Yukon,Oregon,Kamtchatka"
- },
+   "Limita con": "Yukon,Oregon,Kamtchatka",
+   "Simbolo":"Globo"},
  {
    "Pais": "Brasil",
    "Continente": "America del Sur",
-   "Limita con": "Colombia,Peru,Argentina,Uruguay,Sahara"
- },
+   "Limita con": "Colombia,Peru,Argentina,Uruguay,Sahara",
+   "Simbolo":"Globo"},
  {
    "Pais": "Gobi",
    "Continente": "Asia",
-   "Limita con": "Mongolia,China,Iran"
- },
+   "Limita con": "Mongolia,China,Iran",
+   "Simbolo":"Globo"},
  {
    "Pais": "Italia",
    "Continente": "Europa",
-   "Limita con": "Alemania,Francia"
- },
+   "Limita con": "Alemania,Francia",
+   "Simbolo":"Globo"},
  {
    "Pais": "España",
    "Continente": "Europa",
-   "Limita con": "Sahara,Francia,Gran Bretaña"
- },
+   "Limita con": "Sahara,Francia,Gran Bretaña",
+   "Simbolo":"Globo"},
  {
    "Pais": "Colombia",
    "Continente": "America del Sur",
-   "Limita con": "Mexico,Peru,Brasil"
- },
+   "Limita con": "Mexico,Peru,Brasil",
+   "Simbolo":"Globo"},
  {
    "Pais": "Suecia",
    "Continente": "Europa",
-   "Limita con": "Rusia,Islandia"
- },
+   "Limita con": "Rusia,Islandia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Sudafrica",
    "Continente": "Africa",
-   "Limita con": "Zaire,Etiopia"
- },
+   "Limita con": "Zaire,Etiopia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Arabia",
    "Continente": "Asia",
-   "Limita con": "Turquia,Israel"
- },
+   "Limita con": "Turquia,Israel",
+   "Simbolo":"Globo"},
  {
    "Pais": "India",
    "Continente": "Asia",
-   "Limita con": "China,Malasia,Iran,Sumatra"
- },
+   "Limita con": "China,Malasia,Iran,Sumatra",
+   "Simbolo":"Globo"},
  {
    "Pais": "Java",
    "Continente": "Oceania",
-   "Limita con": "Australia"
- },
+   "Limita con": "Australia",
+   "Simbolo":"Globo"},
  {
    "Pais": "Mexico",
    "Continente": "America del Norte",
-   "Limita con": "Colombia,California"
- },
+   "Limita con": "Colombia,California",
+   "Simbolo":"Globo"},
  {
    "Pais": "Peru",
    "Continente": "America del Sur",
-   "Limita con": "Colombia,Brasil,Chile,Argentina"
- },
+   "Limita con": "Colombia,Brasil,Chile,Argentina",
+   "Simbolo":"Globo"},
  {
    "Pais": "Alemania",
    "Continente": "Europa",
-   "Limita con": "Polonia,Italia,Gran Bretaña,Francia"
- },
+   "Limita con": "Polonia,Italia,Gran Bretaña,Francia",
+   "Simbolo":"Globo"},
  {
    "Pais": "China",
    "Continente": "Asia",
-   "Limita con": "Kamtchatka,Siberia,Mongolia,Gobi,Iran,India,Malasia,Japon"
- },
+   "Limita con": "Kamtchatka,Siberia,Mongolia,Gobi,Iran,India,Malasia,Japon",
+   "Simbolo":"Globo"},
  {
    "Pais": "Labrador",
    "Continente": "America del Norte",
-   "Limita con": "Groenlandia,Terranova"
- },
+   "Limita con": "Groenlandia,Terranova",
+   "Simbolo":"Globo"},
  {
    "Pais": "Islandia",
    "Continente": "Europa",
-   "Limita con": "Groenlandia,Suecia,Gran Bretaña"
- },
+   "Limita con": "Groenlandia,Suecia,Gran Bretaña",
+   "Simbolo":"Globo"},
  {
    "Pais": "Malasia",
    "Continente": "Asia",
-   "Limita con": "China,India,Borneo"
- }
+   "Limita con": "China,India,Borneo","":""}
 ]
