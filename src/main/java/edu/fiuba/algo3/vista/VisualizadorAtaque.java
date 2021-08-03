@@ -90,7 +90,7 @@ public class VisualizadorAtaque implements IVista {
         if ( ejercitosInicialesAtacante < 3 ) { cantidadPosible = ejercitosInicialesAtacante - 1; }
 
         Label mensaje = new Label();
-        mensaje.setText("¡Ojo! La cantidad de ejércitos ingresada no es válida. Sólo podes atacar con " + cantidadPosible + " ejércitos.");
+        mensaje.setText("¡Ojo! La cantidad de ejércitos ingresada no es válida. \nSólo podes atacar con " + cantidadPosible + " ejércitos.");
 
         contenedor.getChildren().add(mensaje);
         contenedorJuego.definirBotonera(contenedor);
