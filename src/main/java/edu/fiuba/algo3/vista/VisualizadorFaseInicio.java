@@ -122,12 +122,8 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     }
 
     private void mostrarSiguienteJugador(VBox contenedor) {
-        Button boton = new Button();
-        boton.setText("Siguiente Jugador");
+        Button boton = new BotonSiguienteJugador(juego, contenedorJuego, this);
         contenedor.getChildren().add(boton);
-        BotonMostrarJugadorActual botonJugadorActual 
-            = new BotonMostrarJugadorActual(juego, this.contenedorJuego, this);
-        boton.setOnAction(botonJugadorActual);
     }
 
     public void visualizarNuevaFase() {
