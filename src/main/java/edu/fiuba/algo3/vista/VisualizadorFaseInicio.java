@@ -34,11 +34,11 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         this.contenedorJuego = contenedorJuego;
         this.cargarColores(this.coloresParaJugadores);
         juego = crearJuego(this.cantidadDeJugadores);
-        // TODO de prueba para q me pase el objetivo
-        for(int i = 0 ; i < 6 ; i ++) {
+        // TODO de prueba para q me pase el objetivo si o si y no tener que estar jugando mucho tiempo
+        /*for(int i = 0 ; i < 6 ; i ++) {
         juego.jugadorActual().asignarPais(new Pais("Arg"));
         }
-        this.contenedor = new VBox();
+        this.contenedor = new VBox();*/
     }
 
     private void cargarColores(Map<String, Color> coloresParaJugadores) {
@@ -72,18 +72,18 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         VBox contenedor = new VBox();
         contenedorJuego.limpiarBotonera();
         contenedorJuego.limpiarAreaMapa();
-        mostrarGanador();
-        contenedorJuego.definirSobreMapa(contenedor);
+        mostrarGanador(contenedor);
+        contenedorJuego.definirBotonera(contenedor);
     }
 
-    private void mostrarGanador() throws AlgoTegException {
+    private void mostrarGanador(VBox contenedor) throws AlgoTegException {
         Label texto = new Label();
         texto.setText("GANASTE!!! \n" +
-                "Jugador" +juego.obtenerGanador().obtenerColor() + "eres el ganador!");
-        contenedor.getChildren().add(texto);
+                "Jugador " +juego.obtenerGanador().obtenerColor() + " eres el ganador!");
         Button opcionSalir = new Button("Finalizar Partida");
         OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
         opcionSalir.setOnAction(opcionSalirHandler);
+        contenedor.getChildren().addAll(texto, opcionSalir);
     }
 
     private Color obtenerColorDelJugadorActual(IJugador jugador) {

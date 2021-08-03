@@ -71,18 +71,18 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         VBox contenedor = new VBox();
         contenedorJuego.limpiarBotonera();
         contenedorJuego.limpiarAreaMapa();
-        mostrarGanador();
-        contenedorJuego.definirSobreMapa(contenedor);
+        mostrarGanador(contenedor);
+        contenedorJuego.definirBotonera(contenedor);
     }
 
-    private void mostrarGanador() throws AlgoTegException {
+    private void mostrarGanador(VBox contenedor) throws AlgoTegException {
         Label texto = new Label();
         texto.setText("GANASTE!!! \n" +
-                "Jugador" +juego.obtenerGanador().obtenerColor() + "eres el ganador!");
-        contenedor.getChildren().add(texto);
+                "Jugador " +juego.obtenerGanador().obtenerColor() + " eres el ganador!");
         Button opcionSalir = new Button("Finalizar Partida");
         OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
         opcionSalir.setOnAction(opcionSalirHandler);
+        contenedor.getChildren().addAll(texto, opcionSalir);
     }
 
     private void imprimirJugador(IJugador jugador) {

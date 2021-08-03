@@ -30,7 +30,6 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         if(juegoActual.juegoTerminado()) {
-            System.exit(-1); //TODO para probar que juegoTerminado() no me funciona
             try {
                 visualizadorActual.visualizarJuegoTerminado();
             } catch (AlgoTegException e) {
