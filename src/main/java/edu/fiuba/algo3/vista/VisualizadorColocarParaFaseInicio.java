@@ -34,17 +34,26 @@ public class VisualizadorColocarParaFaseInicio implements IVista {
 
     @Override
     public void visualizar() {
+        
+        if(juego.jugadorActual().cantidadEjercitosPorColocar() <= 0){
+            visualizadorFaseInicio.visualizar();
+            return;
+        }
+            
+
         contenedorJuego.limpiarAreaMapa();
         Label titulo = new Label();
-        titulo.setText("Tenes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejércitos por colocar.");
+        titulo.setText("Tenes " 
+            + juego.jugadorActual().cantidadEjercitosPorColocar() 
+            + " ejércitos por colocar.");
         contenedor.getChildren().add(titulo);
-
+        contenedorJuego.definirSobreMapa(mostrarPaises());
         mostrarBotonVolver(contenedor);
-
+        
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(40));
         contenedorJuego.definirBotonera(contenedor);
-        contenedorJuego.definirSobreMapa(mostrarPaises());
+        
     }
 
     private TilePane mostrarPaises() {
