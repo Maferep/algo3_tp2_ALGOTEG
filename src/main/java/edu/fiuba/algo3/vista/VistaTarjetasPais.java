@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Tarjeta;
 import edu.fiuba.algo3.vista.eventos.ActivarTarjetaEventHandler;
+import edu.fiuba.algo3.vista.eventos.BotonVolver;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -23,6 +24,7 @@ public class VistaTarjetasPais implements IVista {
     @Override
     public void visualizar() {
         mostrarTarjetas();
+        mostrarBotonVolver();
         contenedorJuego.definirBotonera(contenedor);
     }
 
@@ -37,5 +39,15 @@ public class VistaTarjetasPais implements IVista {
 
             contenedor.getChildren().add(tarjetaBtn);
         }
+    }
+
+    private void mostrarBotonVolver() {
+        Button volverBtn = new Button();
+        volverBtn.setText("Volver");
+
+        BotonVolver volver = new BotonVolver(contenedorJuego, new VisualizadorFaseColocar(juego, contenedorJuego));
+        volverBtn.setOnAction(volver);
+
+        contenedor.getChildren().add(volverBtn);
     }
 }
