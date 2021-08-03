@@ -23,7 +23,7 @@ public class VisualizadorAtaque implements IVista {
     private int ejercitosInicialesDefensor;
     private String conquistadorInicialDefensor;
     private Button ataqueBtn = new Button();
-    private Button siguienteBtn = new Button();
+    BotonSiguienteJugador siguienteBtn = new BotonSiguienteJugador(juego, contenedorJuego, new VisualizadorFaseAtacar(juego, contenedorJuego));
 
 
     public VisualizadorAtaque(Juego juego, IPais atacante, IPais defensor, ContenedorJuego contenedorJuego) {
@@ -107,12 +107,7 @@ public class VisualizadorAtaque implements IVista {
     }
 
     private void agregarBotonSiguienteJugador() {
-        siguienteBtn.setText("Siguiente Jugador");
         siguienteBtn.setDisable(true);
-
-        BotonMostrarJugadorActual siguiente = new BotonMostrarJugadorActual(juego, contenedorJuego, new VisualizadorFaseAtacar(juego, contenedorJuego));
-        siguienteBtn.setOnAction(siguiente);
-
         contenedor.getChildren().add(siguienteBtn);
     }
 
