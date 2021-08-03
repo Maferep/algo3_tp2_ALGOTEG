@@ -3,6 +3,9 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
+import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
+import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.vista.eventos.BotonMostrarJugadorActual;
 import edu.fiuba.algo3.vista.eventos.BotonPaisColocarEventHandler;
 import edu.fiuba.algo3.vista.eventos.PasajeDeFases;
@@ -100,6 +103,11 @@ public class VisualizadorColocar implements IVista, IVistaFases {
     }
 
     public void visualizarNuevaFase() {
+        try {
+            juego.siguienteFase();
+        } catch (FaseIncompletaException | EjercitosException | TurnoException e) {
+            System.exit(-1);
+        } //prueba
         PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorFaseAtacar(juego, contenedorJuego));
         haciaFaseAtacar.visualizar();
     }

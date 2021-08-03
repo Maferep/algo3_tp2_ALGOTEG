@@ -1,7 +1,13 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
+import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
+import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
+import edu.fiuba.algo3.modelo.excepciones.TurnoException;
+import edu.fiuba.algo3.vista.eventos.BotonColocarEventHandler;
+import edu.fiuba.algo3.vista.eventos.BotonLlamaAVisualizadorColocarParaFaseColocarEventHandler;
 import edu.fiuba.algo3.vista.eventos.MostrarTarjetasCanjeEventHandler;
 import edu.fiuba.algo3.vista.eventos.MostrarTarjetasPaisEventHandler;
 import edu.fiuba.algo3.vista.interfases.IVista;
@@ -9,6 +15,7 @@ import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -53,6 +60,11 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
 
     @Override
     public void visualizarNuevaFase() {
+        try {
+            juego.siguienteFase();
+        } catch (FaseIncompletaException | EjercitosException | TurnoException e) {
+            System.exit(-1);
+        }
         new VisualizadorFaseAtacar(juego, contenedorJuego).visualizar();
     }
 
@@ -90,6 +102,8 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
 
         Button colocarOpcion = new Button();
         colocarOpcion.setText("Colocar ejércitos");
+        BotonLlamaAVisualizadorColocarParaFaseColocarEventHandler colocar = new BotonLlamaAVisualizadorColocarParaFaseColocarEventHandler(juego, contenedorJuego,this);
+        colocarOpcion.setOnAction(colocar);
 
         contenedor.getChildren().addAll(activarTarjetaOpcion, canjearOpcion, colocarOpcion);
     }
