@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.vista;
+
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.*;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
@@ -21,6 +24,9 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
     public void visualizar(){
         contenedorJuego.limpiarAreaMapa();
         contenedorJuego.obtenerBotonera().getChildren().clear();
+
+        
+
         Button botonMoverEjercitos = new Button("Transferir Ejercitos");
         Button botonVerTarjetas = new Button("Ver Tarjetas");
         Button botonVolver = new Button("Volver");
@@ -39,12 +45,18 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
         siguiente.setOnAction(new BotonMostrarJugadorActual(
             juego, contenedorJuego, this));
         
-        VBox contenedor = new VBox(botonMoverEjercitos, botonVerTarjetas, siguiente);
-
+        VBox contenedor = new VBox(imprimirJugador(juego),
+            botonMoverEjercitos, 
+            botonVerTarjetas, 
+            siguiente);
 
         contenedorJuego.definirBotonera(contenedor);
 
         
+    }
+
+    private Label imprimirJugador(Juego juego) {
+        return new NombreJugador(juego.jugadorActual().obtenerColor());
     }
 
     public void visualizarNuevaFase() {
