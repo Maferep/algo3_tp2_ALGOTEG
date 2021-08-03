@@ -8,6 +8,13 @@ import edu.fiuba.algo3.vista.eventos.BotonParaActivarOpcionDePantallaCompletaEve
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import java.io.File;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -18,7 +25,10 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("ALGOTEG");
 
-        ContenedorJuego contenedorJuego = new ContenedorJuego(stage);
+        double volumen = 0.2;
+        MediaPlayer musica = agregarMusica(volumen);
+
+        ContenedorJuego contenedorJuego = new ContenedorJuego(musica, stage);
         Scene escenaJuego = new Scene(contenedorJuego, 640, 480);
 
         BotonParaActivarOpcionDePantallaCompletaEventHandler BotonParaActivarOpcionDePantallaCompletaEventHandler = new BotonParaActivarOpcionDePantallaCompletaEventHandler(stage, contenedorJuego.getBarraDeMenu());
@@ -31,5 +41,17 @@ public class Main extends Application {
         stage.setFullScreen(true);
 
         stage.show();
+    }
+
+    private MediaPlayer agregarMusica(double volumen){
+        Media mp3MusicFile = new Media(new File("Kashoot/resources/mipan.mp3").toURI().toString());
+
+        MediaPlayer musica = new MediaPlayer(mp3MusicFile);
+        musica.setAutoPlay(true);
+        musica.setOnEndOfMedia(() -> musica.seek(Duration.ZERO));
+        musica.setVolume(volumen);
+        musica.play();
+
+        return musica;
     }
 }
