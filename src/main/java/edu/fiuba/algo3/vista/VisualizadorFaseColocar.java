@@ -65,7 +65,7 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         } catch (FaseIncompletaException | EjercitosException | TurnoException e) {
             System.exit(-1);
         }
-        new VisualizadorFaseAtacar(juego, contenedorJuego).visualizar();
+        (new VisualizadorFaseAtacar(juego, contenedorJuego)).visualizar();
     }
 
     private void imprimirJugador(IJugador jugador) {
