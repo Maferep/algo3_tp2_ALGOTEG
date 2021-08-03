@@ -91,6 +91,6 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         Button colocarOpcion = new Button();
         colocarOpcion.setText("Colocar ejércitos");
 
-        contenedorJuego.getChildren().addAll(activarTarjetaOpcion, canjearOpcion, colocarOpcion);
+        contenedor.getChildren().addAll(activarTarjetaOpcion, canjearOpcion, colocarOpcion);
     }
 }
