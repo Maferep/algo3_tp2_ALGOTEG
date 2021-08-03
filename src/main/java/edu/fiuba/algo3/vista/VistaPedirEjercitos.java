@@ -60,8 +60,4 @@ public class VistaPedirEjercitos implements IVista {
         contenedorBotones = new VBox(texto, campoEjercitos, aceptar, botonVolver);
         contenedorJuego.agregarABotonera(contenedorBotones);
     }
-
-/*     
-    } */
-
 }

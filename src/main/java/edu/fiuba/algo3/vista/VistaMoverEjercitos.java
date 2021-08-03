@@ -30,12 +30,10 @@ public class VistaMoverEjercitos implements IVista {
     @Override
     public void visualizar() {
         contenedorJuego.limpiarAreaMapa();
-        //TODO limpiar botonera
         contenedorJuego.obtenerBotonera().getChildren().clear();
         IJugador jugadorActual = juego.jugadorActual();
         
         TilePane contenedorAdyacentes = new TilePane();
-        //todo jugador.paisesConSoldadosMovibles
         List<IPais> paisesMovibles = jugadorActual.obtenerPaises()
             .stream()
             .filter(p -> (p.cantidadEjercitos() >= 2))
@@ -43,7 +41,6 @@ public class VistaMoverEjercitos implements IVista {
         
 		for(IPais unPais : paisesMovibles){
             Button paisJugador = new Button(unPais.obtenerNombre());
-            //TODO usar BotonVolver
             Button botonVolverAColocar = new Button("Volver");
             botonVolverAColocar.setOnAction(new EventoVista(this));
             EventoVista adyacentes = new EventoVista(

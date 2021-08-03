@@ -119,7 +119,6 @@ public class ContenedorJuego extends BorderPane {
         this.barraDeBotones.getChildren().clear();
     }
 
-    //la intencion es que lo que se añada aparezca en tope del mapa
     public void definirSobreMapa(Node contenedor) {
         limpiarAreaMapa();
         this.sobreTablero.getChildren().add(contenedor);

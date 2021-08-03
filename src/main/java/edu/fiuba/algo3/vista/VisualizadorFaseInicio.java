@@ -23,7 +23,6 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     Juego juego;
     int cantidadDeJugadores;
     ContenedorJuego contenedorJuego;
-    VBox contenedor;
 
     static String ARCHIVO_FONDO = "file:src/main/resources/fondoBlanco.jpeg";
 
@@ -154,9 +153,5 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
             System.exit(-1);
         }
         (new VisualizadorFaseAtacar(juego, contenedorJuego)).visualizar();
-    }
-
-    public boolean esFaseInicioOColocar() {
-        return true;
     }
 }

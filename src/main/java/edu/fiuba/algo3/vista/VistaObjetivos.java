@@ -41,20 +41,14 @@ public class VistaObjetivos implements IVista{
         Label label = new Label("Vamos a mostrar los objetivos.\n"+
         " Si este no es tu color, volteate");
         contenedor.getChildren().add(label);
-        //TODO buscar el color
 
-        //Crear boton y darle el handler
         Button botonMostrarObjetivo = new Button("Mostrar!");
         botonMostrarObjetivo.setOnAction(objetivoHandler);
 
-        //TODO encapsular getChildren.add
         contenedor.getChildren().add(botonMostrarObjetivo);
         contenedorJuego.definirBotonera(contenedor);
     }
 
-    /*
-        El evento mostrarObjetivoHandler causa que se llame a este método
-    */
     public void mostrarObjetivo() {
         VBox contenedor = new VBox();
         Label label = new Label();

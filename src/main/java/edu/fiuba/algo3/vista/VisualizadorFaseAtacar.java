@@ -95,10 +95,6 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
         new VisualizadorFaseReagrupar(juego, contenedorJuego).visualizar();
     }
 
-    public boolean esFaseInicioOColocar() {
-        return false;
-    }
-
     private void pasarTurno() {
         BotonSiguienteJugador botonSiguienteJugador = new BotonSiguienteJugador(juego, contenedorJuego, new VisualizadorFaseAtacar(juego, contenedorJuego));
         contenedor.getChildren().add(botonSiguienteJugador);
