@@ -44,8 +44,8 @@ public class Main extends Application {
         stage.show();
     }
 
-   private MediaPlayer agregarMusica(double volumen) throws MalformedURLException {
-        Media mp3MusicFile = new Media(new File("src/main/resources/super-mario-bros-main-theme.mp3").toURI().toURL().toString());
+   private MediaPlayer agregarMusica(double volumen) {
+        Media mp3MusicFile = new Media(new File("src/main/resources/super-mario-bros-main-theme.mp3").toURI().toString());
         MediaPlayer musica = new MediaPlayer(mp3MusicFile);
         musica.setAutoPlay(true);
         musica.setOnEndOfMedia(() -> musica.seek(Duration.ZERO));
