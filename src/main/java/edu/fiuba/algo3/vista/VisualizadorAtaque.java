@@ -2,8 +2,9 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.vista.eventos.BotonAtaqueEventHandler;
+import edu.fiuba.algo3.vista.eventos.BotonMostrarJugadorActual;
 import edu.fiuba.algo3.vista.eventos.BotonRealizarAtaqueEventHandler;
+import edu.fiuba.algo3.vista.eventos.BotonVolver;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -22,6 +23,8 @@ public class VisualizadorAtaque implements IVista {
     private int ejercitosInicialesDefensor;
     private String conquistadorInicialDefensor;
     private Button ataqueBtn = new Button();
+    BotonSiguienteJugador siguienteBtn = new BotonSiguienteJugador(juego, contenedorJuego, new VisualizadorFaseAtacar(juego, contenedorJuego));
+
 
     public VisualizadorAtaque(Juego juego, IPais atacante, IPais defensor, ContenedorJuego contenedorJuego) {
         this.juego = juego;
@@ -41,6 +44,8 @@ public class VisualizadorAtaque implements IVista {
     public void visualizar() {
         escribirTitulo();
         realizarAtaque();
+        agregarBotonSiguienteJugador();
+        agregarBotonVolver();
 
         contenedorJuego.definirBotonera(contenedor);
     }
@@ -98,5 +103,21 @@ public class VisualizadorAtaque implements IVista {
 
     public void deshabilitarBotonDeAtaque() {
         ataqueBtn.setDisable(true);
+        siguienteBtn.setDisable(false);
+    }
+
+    private void agregarBotonSiguienteJugador() {
+        siguienteBtn.setDisable(true);
+        contenedor.getChildren().add(siguienteBtn);
+    }
+
+    private void agregarBotonVolver() {
+        Button volverBtn = new Button();
+        volverBtn.setText("Volver");
+
+        BotonVolver volver = new BotonVolver(contenedorJuego, new VisualizadorAdyacentes(juego, atacante, contenedorJuego));
+        volverBtn.setOnAction(volver);
+
+        contenedor.getChildren().add(volverBtn);
     }
 }

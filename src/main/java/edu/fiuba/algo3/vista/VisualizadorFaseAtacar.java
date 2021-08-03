@@ -6,10 +6,7 @@ import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.fases.FaseInicio;
-import edu.fiuba.algo3.vista.eventos.BotonPaisAtacarEventHandler;
-import edu.fiuba.algo3.vista.eventos.BotonPaisColocarEventHandler;
-import edu.fiuba.algo3.vista.eventos.BotonVolver;
-import edu.fiuba.algo3.vista.eventos.PasajeDeFases;
+import edu.fiuba.algo3.vista.eventos.*;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.geometry.Insets;
@@ -36,6 +33,7 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
     @Override
     public void visualizar() {
         contenedorJuego.limpiarBotonera();
+        mostrarJugador();
         escribirTitulo();
         mostrarPaises();
         mostrarSiguienteJugador();
@@ -79,5 +77,17 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
 
     public boolean esFaseInicioOColocar() {
         return false;
+    }
+
+    private void pasarTurno() {
+        BotonSiguienteJugador botonSiguienteJugador = new BotonSiguienteJugador(juego, contenedorJuego, new VisualizadorFaseAtacar(juego, contenedorJuego));
+        contenedor.getChildren().add(botonSiguienteJugador);
+    }
+
+    private void mostrarJugador() {
+        Label jugador = new Label();
+        jugador.setText(juego.jugadorActual().obtenerColor());
+
+        contenedor.getChildren().add(jugador);
     }
 }

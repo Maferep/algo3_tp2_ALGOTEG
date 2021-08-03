@@ -34,7 +34,7 @@ public class FabricaDeFasesMock implements IFabricaDeFases {
     }
 
     @Override
-    public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception {
+    public IFase crearFaseInicio(int cantidadDeJugadores) throws AlgoTegException {
         return new FaseInicio(
             new MapaMock(null), 
             turno, 
