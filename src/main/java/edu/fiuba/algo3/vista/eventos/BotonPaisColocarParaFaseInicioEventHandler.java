@@ -28,7 +28,8 @@ public class BotonPaisColocarParaFaseInicioEventHandler implements EventHandler<
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        VisualizadorColocarEjercitosParaFaseInicio vistaColocarEjercitosEnPais = new VisualizadorColocarEjercitosParaFaseInicio(pais, juego, contenedorJuego, visualizadorFaseInicio);
+        VisualizadorColocarEjercitosParaFaseInicio vistaColocarEjercitosEnPais 
+            = new VisualizadorColocarEjercitosParaFaseInicio(pais, juego, contenedorJuego, visualizadorFaseInicio);
         vistaColocarEjercitosEnPais.visualizar();
     }
 }

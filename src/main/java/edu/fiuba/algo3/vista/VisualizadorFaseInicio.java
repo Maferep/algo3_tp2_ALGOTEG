@@ -116,6 +116,8 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     }
 
     private void colocarEjercitos(VBox contenedor) {
+        if(juego.jugadorActual().cantidadEjercitosPorColocar() <= 0)
+            return;
         Button colocarEjercitos = new Button("Colocar ejércitos");
         BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler eventoColocar = new BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler(
                 juego, contenedorJuego, this);

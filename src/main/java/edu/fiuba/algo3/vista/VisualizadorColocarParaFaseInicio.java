@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
+import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonPaisColocarParaFaseInicioEventHandler;
 import edu.fiuba.algo3.vista.eventos.BotonVolver;
@@ -20,11 +21,15 @@ public class VisualizadorColocarParaFaseInicio implements IVista {
     ContenedorJuego contenedorJuego;
     IVista visualizadorFaseInicio;
 
-    public VisualizadorColocarParaFaseInicio(Juego juego, ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio) {
+    public VisualizadorColocarParaFaseInicio(
+            Juego juego, 
+            ContenedorJuego contenedorJuego, 
+            IVista visualizadorFaseInicio){
         this.contenedor = new VBox();
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
         this.visualizadorFaseInicio = visualizadorFaseInicio;
+        
     }
 
     @Override
@@ -33,8 +38,6 @@ public class VisualizadorColocarParaFaseInicio implements IVista {
         Label titulo = new Label();
         titulo.setText("Tenes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejércitos por colocar.");
         contenedor.getChildren().add(titulo);
-
-        mostrarPaises();
 
         mostrarBotonVolver(contenedor);
 

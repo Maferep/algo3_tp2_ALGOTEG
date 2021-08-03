@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
+import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonColocarParaFaseInicioEventHandler;
 import edu.fiuba.algo3.vista.interfases.IVista;
@@ -17,7 +18,9 @@ public class VisualizadorColocarEjercitosParaFaseInicio {
     ContenedorJuego contenedorJuego;
     IVista visualizadorFaseInicio;
 
-    public VisualizadorColocarEjercitosParaFaseInicio(IPais pais, Juego juego, ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio) {
+    public VisualizadorColocarEjercitosParaFaseInicio(
+                IPais pais, Juego juego, 
+                ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio){
         this.pais = pais;
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;

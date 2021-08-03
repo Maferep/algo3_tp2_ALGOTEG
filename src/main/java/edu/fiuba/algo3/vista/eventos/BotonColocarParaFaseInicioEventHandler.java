@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista.eventos;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
@@ -14,7 +15,6 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-
 public class BotonColocarParaFaseInicioEventHandler implements EventHandler<ActionEvent> {
     IPais pais;
     Juego juego;
@@ -23,7 +23,8 @@ public class BotonColocarParaFaseInicioEventHandler implements EventHandler<Acti
     IVista visualizadorFaseInicio;
     Label texto;
 
-    public BotonColocarParaFaseInicioEventHandler(IPais pais, Juego juego, TextField campo, Label texto, ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio) {
+    public BotonColocarParaFaseInicioEventHandler(IPais pais, Juego juego, TextField campo, Label texto,
+            ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio) {
         this.pais = pais;
         this.juego = juego;
         this.campoEjercitos = campo;
@@ -34,18 +35,20 @@ public class BotonColocarParaFaseInicioEventHandler implements EventHandler<Acti
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        
         int ingresoUsuario = 0;
         this.verificarEntradaDeTexto(this.campoEjercitos);
         if (campoEjercitos.getText().isEmpty()) {
             this.texto.setText("Debe ingresar una cantidad de ejercitos");
             this.campoEjercitos.requestFocus();
-        }
-        else {
+        } else {
             ingresoUsuario = Integer.parseInt(campoEjercitos.getText());
             try {
                 juego.ubicarEjercitosEnPais(ingresoUsuario, pais);
             } catch (FichasInsuficientesException e) {
-                this.texto.setText("Solo tienes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejercitos para agregar");
+                this.texto.setText("Solo tienes " 
+                        + juego.jugadorActual().cantidadEjercitosPorColocar()
+                        + " ejercitos para agregar");
                 this.campoEjercitos.requestFocus();
             } catch (PaisNoExistenteException e) {
                 e.printStackTrace();
@@ -55,8 +58,12 @@ public class BotonColocarParaFaseInicioEventHandler implements EventHandler<Acti
                 e.printStackTrace();
             }
 
-            VisualizadorColocarParaFaseInicio visualizadorColocarParaFaseInicio = new VisualizadorColocarParaFaseInicio(juego, contenedorJuego, this.visualizadorFaseInicio);
+            VisualizadorColocarParaFaseInicio visualizadorColocarParaFaseInicio;
+
+            visualizadorColocarParaFaseInicio = new VisualizadorColocarParaFaseInicio(juego, contenedorJuego,
+                    this.visualizadorFaseInicio);
             visualizadorColocarParaFaseInicio.visualizar();
+            
         }
     }
     private void verificarEntradaDeTexto(TextField texto) {
