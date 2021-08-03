@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 
-public class VistaCantidadEjercitosAColocarFaseInicio {
+public class VistaCantidadEjercitosAColocarFaseInicio implements IVista{
     IPais pais;
     Juego juego;
     ContenedorJuego contenedorJuego;
