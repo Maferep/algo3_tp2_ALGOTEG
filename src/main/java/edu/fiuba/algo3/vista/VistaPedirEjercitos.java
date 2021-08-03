@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.vista.eventos.EventoVista;
 import edu.fiuba.algo3.vista.interfases.IVista;
+import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,13 +19,13 @@ public class VistaPedirEjercitos implements IVista {
     private IPais pais;
     private IPais adyacente;
     private Button botonVolver;
-
     private VBox contenedorBotones;
+    private IVistaFases fase;
 
     public VistaPedirEjercitos(
             Juego juego, 
             ContenedorJuego contenedor, 
-            IPais pais, IPais adyacente, Button botonVolver) {
+            IPais pais, IPais adyacente, Button botonVolver, IVistaFases fase) {
 
         
         this.juego = juego;
@@ -32,6 +33,7 @@ public class VistaPedirEjercitos implements IVista {
         this.pais = pais;
         this.adyacente = adyacente;
         this.botonVolver = botonVolver;
+        this.fase = fase;
     }
 
     @Override
@@ -48,7 +50,12 @@ public class VistaPedirEjercitos implements IVista {
         Button aceptar = new Button("aceptar");
         IVista ejercitos = 
             new VistaVerificarEjercitos(
-                juego, contenedorJuego, pais, adyacente, campoEjercitos, botonVolverPedirEjercitos);
+                juego, 
+                contenedorJuego, 
+                pais, adyacente, 
+                campoEjercitos, 
+                botonVolverPedirEjercitos,
+                fase);
         aceptar.setOnAction(new EventoVista(ejercitos));
         contenedorBotones = new VBox(texto, campoEjercitos, aceptar, botonVolver);
         contenedorJuego.agregarABotonera(contenedorBotones);
