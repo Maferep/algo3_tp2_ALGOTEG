@@ -101,7 +101,7 @@ public class RondaTest {
         fabrica.definirCanje(new Mazo(mapa));
         fabrica.definirMapa(mapa);
         fase = fase.siguienteFase(fabrica);
-        assertEquals(1, turnoMock.jugadorActual().cantidadTarjetas());
+        assertEquals(0, turnoMock.jugadorActual().cantidadTarjetas());
     }
     @Test
     public void test05NoAtaqueImplicaNoTarjetas() throws FaseErroneaException, Exception {
