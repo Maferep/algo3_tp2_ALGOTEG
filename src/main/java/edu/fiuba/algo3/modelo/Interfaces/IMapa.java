@@ -9,4 +9,5 @@ public interface IMapa {
     public List<IPais> obtenerPaises();
     public List<String> obtenerNombresDeContinentes();
     public Continente buscarContinente(String nombre);
+    IPais obtenerPais(String pais);
 }

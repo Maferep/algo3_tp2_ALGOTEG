@@ -11,12 +11,10 @@ import java.util.stream.*;
 */
 public class Mazo {
     LinkedList<Tarjeta> mazo = new LinkedList<Tarjeta>();
-    public Mazo(List<IPais> paises) {
-        mazo.addAll(
-            paises.stream()
-                .map(p -> new Tarjeta(p,null))
-                .collect(Collectors.toList())
-        );
+
+    public Mazo(IMapa mapa) {
+        MazoFachada mazoFachada = new MazoFachada(mapa);
+        mazo = mazoFachada.obtenerTarjetas();
     }
     public Tarjeta obtenerTarjeta() {
         return mazo.remove();

@@ -33,5 +33,10 @@ public class MapaMock implements IMapa {
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public IPais obtenerPais(String pais) {
+        return null;
+    }
 }
 

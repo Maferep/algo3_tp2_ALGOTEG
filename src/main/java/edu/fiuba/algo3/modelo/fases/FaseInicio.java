@@ -35,7 +35,7 @@ public class FaseInicio extends FaseAbstracta implements IFaseInicio {
         }
         mapa = new Mapa();
         paises = mapa.obtenerPaises();
-        mazo = new Mazo(paises);
+        mazo = new Mazo(mapa);
         turno = new Turno(colores, cantJugadores, mazo);
         fabricaObjetivos = new FabricaDeObjetivos(turno, mapa);
         objetivos = new ObjetivoManager(turno, fabricaObjetivos.crearObjetivos());

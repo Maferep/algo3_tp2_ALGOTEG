@@ -62,4 +62,10 @@ public class Mapa implements IMapa {
             .filter(c -> c.obtenerNombre().equals(nombre))
             .findAny().get();
     }
+
+    public IPais obtenerPais(String pais) {
+        return paises.stream()
+                .filter(c -> c.obtenerNombre().equals(pais))
+                .findAny().get();
+    }
 }

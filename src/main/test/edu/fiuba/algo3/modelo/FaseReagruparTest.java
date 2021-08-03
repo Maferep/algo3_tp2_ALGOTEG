@@ -32,11 +32,11 @@ public class FaseReagruparTest {
 
     @Test
     public void test00Reagrupar() throws EjercitosException, TransferirEjercitosException, AdyacenciaException {
-        
+        Mapa mapa = new Mapa();
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
-            new Mapa(), 
-            new Mazo(paises));
+            mapa,
+            new Mazo(mapa));
         IPais paisRojo = new Pais("Rojo");
         IPais paisAzul = new Pais("Azul");
         paisRojo.agregarAdyacente(paisAzul);
@@ -52,10 +52,11 @@ public class FaseReagruparTest {
     @Test
     public void test01SiNoSonAdyacentesNoTransfiere() 
             throws EjercitosException {
+        Mapa mapa = new Mapa();
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
-            new Mapa(), 
-            new Mazo(paises));
+            mapa,
+            new Mazo(mapa));
 
         IPais paisRojo = new Pais("Rojo");
         IPais paisAzul = new Pais("Azul");
@@ -73,10 +74,11 @@ public class FaseReagruparTest {
     @Test
     public void test02SiNoTieneEjercitosParaTransferirNoTransfiere() 
             throws EjercitosException, TransferirEjercitosException {
+        Mapa mapa = new Mapa();
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
-            new Mapa(), 
-            new Mazo(paises));
+            mapa,
+            new Mazo(mapa));
 
         IPais paisRojo = new Pais("Rojo");
         IPais paisAzul = new Pais("Azul");

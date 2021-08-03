@@ -52,9 +52,8 @@ public class FaseInicioTest {
     @Test
     public void test03QueUsaMocks() throws Exception {
         ITurno unJugador = new TurnoMockUnJugador(paises);
-        Mapa mapa = new Mapa();
-        mapa.definirPaises(paises);
-        FaseInicio inicio = new FaseInicio(new Mapa(), unJugador, new Mazo(paises), null);
+        MapaMock mapa = new MapaMock(paises);
+        FaseInicio inicio = new FaseInicio(new Mapa(), unJugador, new Mazo(mapa), null);
         assertEquals(1, inicio.cantidadDeJugadores());
     }
 }
