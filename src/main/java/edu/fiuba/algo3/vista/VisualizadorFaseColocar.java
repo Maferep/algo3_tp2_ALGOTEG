@@ -26,7 +26,7 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
     Map<String, Color> coloresParaJugadores = new HashMap<String,Color>();
 
     public VisualizadorFaseColocar(Juego juego, ContenedorJuego contenedorJuego) {
-        juego.faseActual().turno().actualizarListaDeJugadoresAlCambiarDeFase();
+        //juego.faseActual().turno().actualizarListaDeJugadoresAlCambiarDeFase();
         this.contenedor = new VBox();
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
@@ -103,6 +103,8 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         BotonLlamaAVisualizadorColocarParaFaseColocarEventHandler colocar = new BotonLlamaAVisualizadorColocarParaFaseColocarEventHandler(juego, contenedorJuego,this);
         colocarOpcion.setOnAction(colocar);
 
-        contenedor.getChildren().addAll(activarTarjetaOpcion, canjearOpcion, colocarOpcion);
+        BotonSiguienteJugador sigJugador = new BotonSiguienteJugador(juego,  contenedorJuego, this);
+
+        contenedor.getChildren().addAll(activarTarjetaOpcion, canjearOpcion, colocarOpcion, sigJugador);
     }
 }

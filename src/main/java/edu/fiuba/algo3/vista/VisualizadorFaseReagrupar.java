@@ -55,6 +55,7 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
         } catch (AlgoTegException e) {
             System.exit(-1);
         }
+        //juego.faseActual().turno().actualizarListaDeJugadoresAlCambiarDeFase();
         PasajeDeFases haciaFaseColocar = new PasajeDeFases(
             new VisualizadorFaseColocar(juego, contenedorJuego));
         haciaFaseColocar.visualizar();
