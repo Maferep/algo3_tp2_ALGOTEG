@@ -3,7 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.vista.eventos.BotonPaisColocarParaFaseInicioEventHandler;
+import edu.fiuba.algo3.vista.eventos.PaisSeleccionadoColocarHandler;
 import edu.fiuba.algo3.vista.eventos.BotonVolver;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
@@ -53,8 +53,8 @@ public class VisualizadorColocarParaFaseInicio implements IVista {
         for (IPais pais : paisesJugador) {
             Button botonPais = new Button(pais.obtenerNombre());
             contenedorPaises.getChildren().add(botonPais);
-            BotonPaisColocarParaFaseInicioEventHandler botonColocar 
-                = new BotonPaisColocarParaFaseInicioEventHandler(
+            PaisSeleccionadoColocarHandler botonColocar 
+                = new PaisSeleccionadoColocarHandler(
                         pais, this.juego, 
                         this.contenedorJuego, 
                         this.visualizadorFaseInicio);

@@ -12,13 +12,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 
-public class VisualizadorColocarEjercitosParaFaseInicio {
+public class VistaCantidadEjercitosAColocarFaseInicio {
     IPais pais;
     Juego juego;
     ContenedorJuego contenedorJuego;
     IVista visualizadorFaseInicio;
 
-    public VisualizadorColocarEjercitosParaFaseInicio(
+    public VistaCantidadEjercitosAColocarFaseInicio(
                 IPais pais, Juego juego, 
                 ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio){
         this.pais = pais;
@@ -33,9 +33,11 @@ public class VisualizadorColocarEjercitosParaFaseInicio {
         Label titulo = new Label();
         VBox contenedor = new VBox();
 
-        int cantidadEjercitosDisponibles = juego.jugadorActual().cantidadEjercitosPorColocar();
+        int cantidadEjercitosDisponibles 
+            = juego.jugadorActual().cantidadEjercitosPorColocar();
 
-        titulo.setText("Tenes " + cantidadEjercitosDisponibles + " ejércitos por colocar.");
+        titulo.setText("Tenes " 
+            + cantidadEjercitosDisponibles + " ejércitos por colocar.");
         TextField campoCantidadEjercitos = new TextField();
         Button botonColocar = new Button("Colocar");
 
