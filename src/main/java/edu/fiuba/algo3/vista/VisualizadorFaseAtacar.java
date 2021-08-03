@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class VisualizadorFaseAtacar implements IVista, IVistaFases {
     VBox contenedor;
@@ -51,15 +52,21 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
     }
 
     private void mostrarPaises() {
-        List<IPais> paisesJugador = juego.jugadorActual().obtenerPaises();
-        for (IPais pais : paisesJugador) {
+        //un pais puede atacar si tiene mas de dos ejercitos
+        //TODO usar metodo juego.jugadorActual().obtenerPaisesAtacantes();
+        List<IPais> paisesAtacantes = juego
+            .jugadorActual()
+            .obtenerPaises()
+            .stream()
+            .filter(p -> p.cantidadEjercitos() >= 2)
+            .collect(Collectors.toList());
+
+        for (IPais pais : paisesAtacantes) {
             Button botonPais = new Button();
             botonPais.setText(pais.obtenerNombre() + " (" + pais.cantidadEjercitos() + ")");
             contenedor.getChildren().add(botonPais);
-
             BotonPaisAtacarEventHandler evento = new BotonPaisAtacarEventHandler(pais, juego, contenedorJuego);
-
-            if (pais.cantidadEjercitos() > 1 ) { botonPais.setOnAction(evento); }
+            botonPais.setOnAction(evento); 
         }
     }
 
