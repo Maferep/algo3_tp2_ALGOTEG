@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.vista.eventos.MostrarTarjetasCanjeEventHandler;
 import edu.fiuba.algo3.vista.eventos.MostrarTarjetasPaisEventHandler;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
@@ -55,11 +56,6 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         new VisualizadorFaseAtacar(juego, contenedorJuego).visualizar();
     }
 
-    @Override
-    public boolean esFaseInicioOColocar() {
-        return true;
-    }
-
     private void imprimirJugador(IJugador jugador) {
         javafx.scene.image.Image imagen = new Image(ARCHIVO_FONDO);
         BackgroundImage imagenDeFondo= new BackgroundImage(
@@ -85,9 +81,12 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         Button activarTarjetaOpcion = new Button();
         activarTarjetaOpcion.setText("Activar tarjetas");
         MostrarTarjetasPaisEventHandler tarjetasPais = new MostrarTarjetasPaisEventHandler(juego, contenedorJuego);
+        activarTarjetaOpcion.setOnAction(tarjetasPais);
 
         Button canjearOpcion = new Button();
         canjearOpcion.setText("Canjear tarjetas");
+        MostrarTarjetasCanjeEventHandler tarjetasCanje = new MostrarTarjetasCanjeEventHandler(juego, contenedorJuego);
+        canjearOpcion.setOnAction(tarjetasCanje);
 
         Button colocarOpcion = new Button();
         colocarOpcion.setText("Colocar ejércitos");
