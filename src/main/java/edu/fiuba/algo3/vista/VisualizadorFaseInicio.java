@@ -50,7 +50,6 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         this.mostrarSiguienteJugador(contenedor); 
 
         this.mostrarBotonRegrupar(contenedor);
-        this.atacar(contenedor);
 
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
@@ -141,11 +140,5 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
 
     public boolean esFaseInicioOColocar() {
         return true;
-    }
-
-    private void atacar(VBox contenedor) {
-        Button atacarBtn = new Button("Atacar");
-        atacarBtn.setOnAction(new BotonAtacarEventHandler(juego, contenedorJuego));
-        contenedor.getChildren().add(atacarBtn);
     }
 }

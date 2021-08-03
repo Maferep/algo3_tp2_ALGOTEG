@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonAtaqueEventHandler;
+import edu.fiuba.algo3.vista.eventos.BotonVolver;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -12,13 +13,13 @@ import javafx.scene.layout.VBox;
 import java.util.List;
 
 
-public class VisualizadorAdyacentesEventHandler implements IVista {
+public class VisualizadorAdyacentes implements IVista {
     VBox contenedor;
     ContenedorJuego contenedorJuego;
     IPais pais;
     Juego juego;
 
-    public VisualizadorAdyacentesEventHandler(Juego juego, IPais pais, ContenedorJuego contenedorJuego) {
+    public VisualizadorAdyacentes(Juego juego, IPais pais, ContenedorJuego contenedorJuego) {
         this.juego = juego;
         this.pais = pais;
         this.contenedorJuego = contenedorJuego;
@@ -31,6 +32,7 @@ public class VisualizadorAdyacentesEventHandler implements IVista {
     public void visualizar() {
         escribirTitulo();
         mostrarAdyacentes();
+        agregarBotonVolver();
 
         contenedorJuego.definirBotonera(contenedor);
     }
@@ -55,6 +57,16 @@ public class VisualizadorAdyacentesEventHandler implements IVista {
                 contenedor.getChildren().add(botonAdyacente);
             }
         }
+    }
+
+    private void agregarBotonVolver() {
+        Button volverBtn = new Button();
+        volverBtn.setText("Volver");
+
+        BotonVolver volver = new BotonVolver(contenedorJuego, new VisualizadorFaseAtacar(juego, contenedorJuego));
+        volverBtn.setOnAction(volver);
+
+        contenedor.getChildren().add(volverBtn);
     }
 
 }
