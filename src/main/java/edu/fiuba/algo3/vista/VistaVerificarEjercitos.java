@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
+import edu.fiuba.algo3.modelo.excepciones.AdyacenciaException;
 import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 import edu.fiuba.algo3.vista.interfases.IVista;
@@ -50,6 +51,8 @@ public class VistaVerificarEjercitos implements IVista {
             return;
         } catch (FaseErroneaException e) {
             System.exit(-1);
+        } catch (AdyacenciaException e) {
+            e.printStackTrace();
         }
         contenedorJuego.limpiarBotonera();
         contenedorJuego.agregarABotonera(botonVolver);

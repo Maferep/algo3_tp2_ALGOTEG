@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
-import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.vista.eventos.*;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.geometry.Insets;
@@ -14,7 +12,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class VisualizadorFaseColocar implements IVista, IVistaFases {
@@ -22,14 +19,17 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
     Juego juego;
     ContenedorJuego contenedorJuego;
     static String ARCHIVO_FONDO = "file:src/main/resources/fondoBlanco.jpeg";
-    Map<String,Color> coloresParaJugadores = new HashMap<String,Color>();
+    Map<String, Color> coloresParaJugadores = new HashMap<String,Color>();
 
     public VisualizadorFaseColocar(Juego juego, ContenedorJuego contenedorJuego) {
         juego.faseActual().turno().actualizarListaDeJugadoresAlCambiarDeFase();
         this.contenedor = new VBox();
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
-        this.cargarColores(this.coloresParaJugadores);
+        cargarColores(this.coloresParaJugadores);
+
+        contenedor.setSpacing(10);
+        contenedor.setPadding(new Insets(100));
     }
 
     private void cargarColores(Map <String,Color> coloresParaJugadores) {
@@ -43,17 +43,23 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
 
     @Override
     public void visualizar() {
-        VBox contenedor = new VBox();
-        this.imprimirJugador(juego.jugadorActual(), contenedor);
-        Label titulo = new Label();
-        titulo.setText("Tenes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejércitos por colocar.");
-        contenedor.getChildren().add(titulo);
-        mostrarPaises(contenedor);
-        this.mostrarSiguienteJugador(contenedor);
+        imprimirJugador(juego.jugadorActual());
+        mostrarOpciones();
+
         contenedorJuego.definirBotonera(contenedor);
     }
 
-    private void imprimirJugador(IJugador jugador, VBox contenedor) {
+    @Override
+    public void visualizarNuevaFase() {
+        new VisualizadorFaseAtacar(juego, contenedorJuego).visualizar();
+    }
+
+    @Override
+    public boolean esFaseInicioOColocar() {
+        return true;
+    }
+
+    private void imprimirJugador(IJugador jugador) {
         javafx.scene.image.Image imagen = new Image(ARCHIVO_FONDO);
         BackgroundImage imagenDeFondo= new BackgroundImage(
                 imagen,
@@ -74,34 +80,14 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         return (this.coloresParaJugadores.get(jugador.obtenerColor()));
     }
 
-    private void mostrarPaises(VBox contenedor) {
-        List<IPais> paisesJugador = juego.jugadorActual().obtenerPaises();
-        for (IPais pais : paisesJugador) {
-            Button botonPais = new Button(pais.obtenerNombre());
-            contenedor.getChildren().add(botonPais);
-            BotonPaisColocarEventHandler botonColocar = new BotonPaisColocarEventHandler(pais, this.juego, this.contenedorJuego, this);
-            botonPais.setOnAction(botonColocar);
-        }
-        contenedor.setSpacing(10);
-        contenedor.setPadding(new Insets(100));
-    }
+    private void mostrarOpciones() {
+        Button activarTarjetaOpcion = new Button();
+        activarTarjetaOpcion.setText("Activar tarjeta país");
 
-    private void mostrarSiguienteJugador(VBox contenedor) {
-        Button boton = new Button();
-        boton.setText("Siguiente Jugador");
-        contenedor.getChildren().add(boton);
-        BotonMostrarJugadorActual botonJugadorActual = new BotonMostrarJugadorActual(
-                juego, this.contenedorJuego, this
-        );
-        boton.setOnAction(botonJugadorActual);
-    }
+        Button canjearOpcion = new Button();
+        canjearOpcion.setText("Canjear tarjetas");
 
-    public void visualizarNuevaFase() {
-        PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorFaseAtacar(juego, contenedorJuego));
-        haciaFaseAtacar.visualizar();
-    }
-
-    public boolean esFaseInicioOColocar() {
-        return true;
+        Button colocarOpcion = new Button();
+        colocarOpcion.setText("Colocar ejércitos");
     }
 }
