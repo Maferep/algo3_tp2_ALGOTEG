@@ -12,7 +12,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class LectorObjetivos {
-    private List<Map<String, Integer>> listasDeContinentesYSusMinimos;
+    private List<Map<String, Integer>> listasDeContinentesYSusMinimos = new ArrayList<>();
 
     public List<Map<String,Integer>> obtenerListasDeContinentesYSusMinimos() {
         return this.listasDeContinentesYSusMinimos;
@@ -47,7 +47,7 @@ public class LectorObjetivos {
             JSONArray arregloContinentes = (JSONArray) continentes;
 
             //obtener respectivos minimos
-            Object minimos =  ((JSONObject) objetivo).get("minimos");
+            Object minimos =  ((JSONObject) objetivo).get("cantidadMinima");
             JSONArray arregloMinimos = (JSONArray) minimos;
 
             //recorrer y guardar en un mapa los pares de continente y minimo
@@ -55,7 +55,7 @@ public class LectorObjetivos {
             Map<String, Integer> continentesYMinimos = new HashMap<>();
             for(Object continente : arregloContinentes) {
                 String nombreContinente = ((String) continente);
-                Integer minimo =  (Integer) (arregloMinimos.get(indice));
+                Integer minimo =  Math.toIntExact((long) arregloMinimos.get(indice));
                 continentesYMinimos.put(nombreContinente, minimo);
                 indice++;
             }
