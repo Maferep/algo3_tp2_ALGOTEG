@@ -34,13 +34,10 @@ public class VisualizadorColocarParaFaseInicio implements IVista {
 
     @Override
     public void visualizar() {
-        
         if(juego.jugadorActual().cantidadEjercitosPorColocar() <= 0){
             visualizadorFaseInicio.visualizar();
             return;
         }
-            
-
         contenedorJuego.limpiarAreaMapa();
         Label titulo = new Label();
         titulo.setText("Tenes " 

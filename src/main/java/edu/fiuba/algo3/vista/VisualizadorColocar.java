@@ -3,12 +3,16 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
+import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
+import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.vista.eventos.BotonMostrarJugadorActual;
 import edu.fiuba.algo3.vista.eventos.BotonPaisColocarEventHandler;
 import edu.fiuba.algo3.vista.eventos.PasajeDeFases;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -52,20 +56,28 @@ public class VisualizadorColocar implements IVista, IVistaFases {
         titulo.setText("Tenes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejércitos por colocar.");
         contenedor.getChildren().add(titulo);
         mostrarPaises(contenedor);
-        this.mostrarSiguienteJugador(contenedor);
         contenedorJuego.definirBotonera(contenedor);
     }
 
     private void mostrarPaises(VBox contenedor) {
         List<IPais> paisesJugador = juego.jugadorActual().obtenerPaises();
+
+        Label titulo = new Label();
+        titulo.setText("Colocar Ejercitos");
+
+        TilePane lista = new TilePane(Orientation.VERTICAL);
         for (IPais pais : paisesJugador) {
-            Button botonPais = new Button(pais.obtenerNombre());
-            contenedor.getChildren().add(botonPais);
-            BotonPaisColocarEventHandler botonColocar = new BotonPaisColocarEventHandler(pais, this.juego, this.contenedorJuego, this.visualizadorFaseColocar);
-            botonPais.setOnAction(botonColocar);
+           Button botonPais = new Button(pais.obtenerNombre());
+           contenedor.getChildren().add(botonPais);
+           BotonPaisColocarEventHandler botonColocar = new BotonPaisColocarEventHandler(pais, this.juego, this.contenedorJuego, this.visualizadorFaseColocar);
+           botonPais.setOnAction(botonColocar);
+           lista.getChildren().add(botonPais);
         }
+
         contenedor.setSpacing(10);
-        contenedor.setPadding(new Insets(100));
+        contenedor.setPadding(new Insets(30));
+        contenedor.setBackground(new Background(new BackgroundFill(Color.GOLDENROD , null, null)));
+        contenedor.getChildren().addAll(titulo, lista);
     }
 
     private void imprimirJugador(IJugador jugador, VBox contenedor) {
@@ -100,6 +112,11 @@ public class VisualizadorColocar implements IVista, IVistaFases {
     }
 
     public void visualizarNuevaFase() {
+        try {
+            juego.siguienteFase();
+        } catch (FaseIncompletaException | EjercitosException | TurnoException e) {
+            System.exit(-1);
+        } //prueba
         PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorFaseAtacar(juego, contenedorJuego));
         haciaFaseAtacar.visualizar();
     }

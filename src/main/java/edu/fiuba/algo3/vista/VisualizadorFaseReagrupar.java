@@ -2,15 +2,11 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
-import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
-import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
-import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.vista.eventos.*;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class VisualizadorFaseReagrupar implements IVista, IVistaFases {

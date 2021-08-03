@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.vista.eventos.BotonLlamaAVisualizadorColocarParaFaseColocarEventHandler;
 import edu.fiuba.algo3.vista.eventos.MostrarTarjetasCanjeEventHandler;
 import edu.fiuba.algo3.vista.eventos.MostrarTarjetasPaisEventHandler;
 import edu.fiuba.algo3.vista.interfases.IVista;
@@ -96,6 +97,8 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
 
         Button colocarOpcion = new Button();
         colocarOpcion.setText("Colocar ejércitos");
+        BotonLlamaAVisualizadorColocarParaFaseColocarEventHandler colocar = new BotonLlamaAVisualizadorColocarParaFaseColocarEventHandler(juego, contenedorJuego,this);
+        colocarOpcion.setOnAction(colocar);
 
         contenedor.getChildren().addAll(activarTarjetaOpcion, canjearOpcion, colocarOpcion);
     }
