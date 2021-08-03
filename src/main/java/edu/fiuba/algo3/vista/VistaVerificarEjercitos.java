@@ -13,14 +13,26 @@ public class VistaVerificarEjercitos implements IVista {
 
     Button botonVolver;
     ContenedorJuego contenedorJuego;
+    private TextField campoEjercitos;
+    private Juego juego;
+    private IPais pais;
+    private IPais adyacente;
     public VistaVerificarEjercitos(
         Juego juego, ContenedorJuego contenedorJuego, IPais pais, IPais adyacente,
             TextField campoEjercitos, Button botonVolver) {
 
         this.contenedorJuego = contenedorJuego;
         this.botonVolver = botonVolver;
+        this.campoEjercitos = campoEjercitos;
+        this.juego = juego;
+        this.pais = pais;
+        this.adyacente = adyacente;
+        
+	}
 
-        Label texto = new Label();
+	@Override
+    public void visualizar() {
+        Label texto = new Label("default!");
         contenedorJuego.agregarABotonera(texto);
         this.verificarEntradaDeTexto(campoEjercitos);
         if (campoEjercitos.getText().trim().equals("")) {
@@ -34,15 +46,11 @@ public class VistaVerificarEjercitos implements IVista {
             juego.transferirEjercitos(cantidadDeEjercitos, pais, adyacente);
         } catch (TransferirEjercitosException e) {
             texto.setText("Numero de ejercitos es invalido!");
-            contenedorJuego.agregarABotonera(texto);
+            campoEjercitos.requestFocus();
             return;
         } catch (FaseErroneaException e) {
             System.exit(-1);
         }
-	}
-
-	@Override
-    public void visualizar() {
         contenedorJuego.limpiarBotonera();
         contenedorJuego.agregarABotonera(botonVolver);
         

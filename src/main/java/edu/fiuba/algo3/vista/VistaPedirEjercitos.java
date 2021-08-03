@@ -50,8 +50,8 @@ public class VistaPedirEjercitos implements IVista {
             new VistaVerificarEjercitos(
                 juego, contenedorJuego, pais, adyacente, campoEjercitos, botonVolverPedirEjercitos);
         aceptar.setOnAction(new EventoVista(ejercitos));
-        contenedorBotones = new VBox(texto, campoEjercitos, aceptar);
-        contenedorJuego.definirBotonera(contenedorBotones);
+        contenedorBotones = new VBox(texto, campoEjercitos, aceptar, botonVolver);
+        contenedorJuego.agregarABotonera(contenedorBotones);
     }
 
 /*     
