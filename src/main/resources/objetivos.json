@@ -1,0 +1,27 @@
+[
+  {
+    "continentes": ["Africa", "America del Norte", "Europa"],
+    "cantidadMinima": [-1, 5, 4],
+    "tipoObjetivo": "continentes"
+  },
+  {
+    "continentes": ["America de Sur", "Europa"],
+    "cantidadMinima": [-1, 3, 3],
+    "tipoObjetivo": "continentes y limitrofes"
+  },
+  {
+    "continentes": ["Asia", "America del Sur"],
+    "cantidadMinima": [-1, 2, -1],
+    "tipoObjetivo": "continentes"
+  },
+  {
+    "continentes": ["Europa", "Asia", "America del Sur"],
+    "cantidadMinima": [-1, 4, 2],
+    "tipoObjetivo": "continentes"
+  },
+  {
+    "continentes": ["America del Norte", "Oceania", "Asia"],
+    "cantidadMinima": [-1, 2, 4],
+    "tipoObjetivo": "continentes"
+  }
+]

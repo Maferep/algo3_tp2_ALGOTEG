@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.Interfaces.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Mapa implements IMapa {
     private List<IPais> paises;
@@ -47,4 +49,17 @@ public class Mapa implements IMapa {
         return continentesConquistados;
     }
 
+    @Override
+    public List<String> obtenerNombresDeContinentes() {
+        return continentes.stream()
+            .map(c -> c.obtenerNombre())
+            .collect(Collectors.toList());
+    }
+
+    @Override
+    public Continente buscarContinente(String nombre) throws NoSuchElementException {
+        return continentes.stream()
+            .filter(c -> c.obtenerNombre().equals(nombre))
+            .findAny().get();
+    }
 }
