@@ -20,6 +20,7 @@ public class VisualizadorAtaque implements IVista {
 
     int ejercitosInicialesAtacante;
     int ejercitosInicialesDefensor;
+    String conquistadorInicialDefensor;
 
     public VisualizadorAtaque(Juego juego, IPais atacante, IPais defensor, ContenedorJuego contenedorJuego) {
         this.juego = juego;
@@ -32,6 +33,7 @@ public class VisualizadorAtaque implements IVista {
 
         ejercitosInicialesAtacante = atacante.cantidadEjercitos();
         ejercitosInicialesDefensor = defensor.cantidadEjercitos();
+        conquistadorInicialDefensor = defensor.obtenerConquistador().obtenerColor();
     }
 
     @Override
@@ -73,13 +75,13 @@ public class VisualizadorAtaque implements IVista {
 
         Label defensorEjercitos = new Label();
         int ejercitosActualesDefensor = ejercitosInicialesDefensor - defensor.cantidadEjercitos();
-        defensorEjercitos.setText(defensor.obtenerConquistador().obtenerColor() + " perdió " + ejercitosActualesDefensor + ".");
+        defensorEjercitos.setText(conquistadorInicialDefensor + " perdió " + ejercitosActualesDefensor + ".");
 
         Label conquista = new Label();
 
         if (defensor.cantidadEjercitos() == 0) { conquista.setText(atacante.obtenerConquistador().obtenerColor() + " conquistó " + defensor.obtenerNombre() + "."); }
 
-        contenedor.getChildren().addAll(atacanteEjercitos, defensorEjercitos);
+        contenedor.getChildren().addAll(atacanteEjercitos, defensorEjercitos, conquista);
         contenedorJuego.definirBotonera(contenedor);
     }
 }

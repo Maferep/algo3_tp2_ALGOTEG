@@ -45,13 +45,15 @@ public class VisualizadorAdyacentesEventHandler implements IVista {
     private void mostrarAdyacentes() {
         List<IPais> adyacentes = pais.obtenerAdyacentes();
         for (IPais adyacente : adyacentes) {
-            Button botonAdyacente = new Button();
-            botonAdyacente.setText(adyacente.obtenerNombre() + " (" + adyacente.cantidadEjercitos() + " )");
+            if (!adyacente.obtenerConquistador().esIgualA(pais.obtenerConquistador())) {
+                Button botonAdyacente = new Button();
+                botonAdyacente.setText(adyacente.obtenerNombre() + " (" + adyacente.cantidadEjercitos() + " )");
 
-            BotonAtaqueEventHandler ataqueEvento = new BotonAtaqueEventHandler(juego, pais, adyacente, contenedorJuego);
-            botonAdyacente.setOnAction(ataqueEvento);
+                BotonAtaqueEventHandler ataqueEvento = new BotonAtaqueEventHandler(juego, pais, adyacente, contenedorJuego);
+                botonAdyacente.setOnAction(ataqueEvento);
 
-            contenedor.getChildren().add(botonAdyacente);
+                contenedor.getChildren().add(botonAdyacente);
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.eventos;
 
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
@@ -33,6 +34,15 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
             if (juegoActual.jugadorActualNoTieneEjercitos()) {
                 if(juegoActual.faseActual().turno().esUltimoJugador()) {
                     visualizadorActual.visualizarNuevaFase();
+                    try {
+                        juegoActual.siguienteFase();
+                    } catch (FaseIncompletaException e) {
+                        e.printStackTrace();
+                    } catch (EjercitosException e) {
+                        e.printStackTrace();
+                    } catch (TurnoException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else {
                     try {
