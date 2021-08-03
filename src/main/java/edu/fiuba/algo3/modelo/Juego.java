@@ -96,6 +96,14 @@ public class Juego implements  PropertyChangeListener {
         return mapa;
     }
 
+    public void activarTarjeta(Tarjeta tarjeta) throws NoExisteTarjetaException, NoSePuedeProducirCanjeException, PaisNoExistenteException {
+        faseActual.activarTarjeta(tarjeta);
+    }
+
+    public void realizarCanje(List<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException, EjercitosException {
+        faseActual.realizarCanje(tarjetas);
+    }
+
     /*
         Obtiene los nombres de los colores de cada jugador existente en orden, 
         empezando por el jugador actual.

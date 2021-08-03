@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
 import edu.fiuba.algo3.vista.VisualizadorColocar;
+import edu.fiuba.algo3.vista.VisualizadorFaseColocar;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -55,8 +56,14 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
                 e.printStackTrace();
             }
 
-            VisualizadorColocar visualizadorColocar = new VisualizadorColocar(juego, contenedorJuego, this.visualizadorFaseColocar);
-            visualizadorColocar.visualizar();
+            IVista visualizador;
+            if (juego.jugadorActualTieneEjercitos()) {
+                visualizador = new VisualizadorColocar(juego, contenedorJuego, this.visualizadorFaseColocar);
+
+            } else {
+                visualizador = new VisualizadorFaseColocar(juego, contenedorJuego);
+            }
+            visualizador.visualizar();
         }
     }
     private void verificarEntradaDeTexto(TextField texto) {

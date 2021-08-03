@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IJugador;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.vista.eventos.MostrarTarjetasPaisEventHandler;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.geometry.Insets;
@@ -82,7 +83,8 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
 
     private void mostrarOpciones() {
         Button activarTarjetaOpcion = new Button();
-        activarTarjetaOpcion.setText("Activar tarjeta país");
+        activarTarjetaOpcion.setText("Activar tarjetas");
+        MostrarTarjetasPaisEventHandler tarjetasPais = new MostrarTarjetasPaisEventHandler(juego, contenedorJuego);
 
         Button canjearOpcion = new Button();
         canjearOpcion.setText("Canjear tarjetas");

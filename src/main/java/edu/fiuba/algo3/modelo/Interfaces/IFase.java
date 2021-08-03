@@ -1,7 +1,11 @@
 package edu.fiuba.algo3.modelo.Interfaces;
 
+import edu.fiuba.algo3.modelo.Mazo;
+import edu.fiuba.algo3.modelo.Tarjeta;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.fases.*;
+
+import java.util.List;
 
 public interface IFase {
 
@@ -25,4 +29,7 @@ public interface IFase {
 
 	FaseReagrupar obtenerFaseReagrupar() throws FaseErroneaException;
 
+	void activarTarjeta(Tarjeta tarjeta) throws NoSePuedeProducirCanjeException, NoExisteTarjetaException, PaisNoExistenteException;
+
+	void realizarCanje(List<Tarjeta> tarjetas) throws NoSePuedeProducirCanjeException, EjercitosException;
 }
