@@ -134,7 +134,8 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     }
 
     public void visualizarNuevaFase() {
-        PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorFaseAtacar(juego, contenedorJuego));
+        PasajeDeFases haciaFaseAtacar = new PasajeDeFases(
+            new VisualizadorFaseAtacar(juego, contenedorJuego));
         haciaFaseAtacar.visualizar();
     }
 
