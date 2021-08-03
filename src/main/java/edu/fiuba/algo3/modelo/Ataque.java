@@ -49,7 +49,10 @@ public class Ataque implements IAtaque{
                 atacante.quitarEjercitos(cantDerrotas);
                 defensor.quitarEjercitos(cantVictorias);
                 
-                if (cantVictorias >= defensor.cantidadEjercitos()) 
+                if (cantVictorias >= defensor.cantidadEjercitos()) {
                         atacante.conquistar(defensor);
+                        defensor.agregarEjercitos(1);
+                }
+
         }
 }

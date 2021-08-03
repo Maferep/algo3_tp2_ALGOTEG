@@ -80,11 +80,11 @@ public class VisualizadorAtaque implements IVista {
 
         Label defensorEjercitos = new Label();
         int ejercitosActualesDefensor = ejercitosInicialesDefensor - defensor.cantidadEjercitos();
-        defensorEjercitos.setText(conquistadorInicialDefensor + " perdió " + ejercitosActualesDefensor + ".");
+        defensorEjercitos.setText(conquistadorInicialDefensor + " perdió " + ejercitosActualesDefensor + 1 + ".");
 
         Label conquista = new Label();
 
-        if (defensor.cantidadEjercitos() == 0) { conquista.setText(atacante.obtenerConquistador().obtenerColor() + " conquistó " + defensor.obtenerNombre() + "."); }
+        if (defensor.obtenerConquistador().esIgualA(juego.jugadorActual())) { conquista.setText(atacante.obtenerConquistador().obtenerColor() + " conquistó " + defensor.obtenerNombre() + "."); }
 
         contenedor.getChildren().addAll(atacanteEjercitos, defensorEjercitos, conquista);
         contenedorJuego.definirBotonera(contenedor);
