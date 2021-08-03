@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonLlamaAVisualizadorColocarParaFaseColocarEventHandler;
 import edu.fiuba.algo3.vista.eventos.MostrarTarjetasCanjeEventHandler;
 import edu.fiuba.algo3.vista.eventos.MostrarTarjetasPaisEventHandler;
+import edu.fiuba.algo3.vista.eventos.OpcionSalirEventHandler;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.geometry.Insets;
@@ -64,6 +65,24 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
             System.exit(-1);
         }
         new VisualizadorFaseAtacar(juego, contenedorJuego).visualizar();
+    }
+
+    @Override
+    public void visualizarJuegoTerminado() throws AlgoTegException {
+        contenedorJuego.limpiarBotonera();
+        contenedorJuego.limpiarAreaMapa();
+        mostrarGanador();
+        contenedorJuego.definirSobreMapa(contenedor);
+    }
+
+    private void mostrarGanador() throws AlgoTegException {
+        Label texto = new Label();
+        texto.setText("GANASTE!!! \n" +
+                "Jugador" +juego.obtenerGanador().obtenerColor() + "eres el ganador!");
+        contenedor.getChildren().add(texto);
+        Button opcionSalir = new Button("Finalizar Partida");
+        OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
+        opcionSalir.setOnAction(opcionSalirHandler);
     }
 
     private void imprimirJugador(IJugador jugador) {

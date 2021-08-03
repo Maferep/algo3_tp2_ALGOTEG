@@ -28,9 +28,10 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        //fase atacar: se puede ir al sig jugador cuando se quiera
-        //reagrupar idem atacar
-        //me sirve para la fase de inicio y la de colocar, cuando el jugador tiene 0 ejercitos
+        if(juegoActual.juegoTerminado()) {
+            visualizadorActual.visualizarJuegoTerminado();
+            return;
+        }
         if(juegoActual.jugadorActualTieneEjercitos())
             return;
         if(juegoActual.faseActual().turno().esUltimoJugador()) {

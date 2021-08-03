@@ -22,6 +22,7 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     Juego juego;
     int cantidadDeJugadores;
     ContenedorJuego contenedorJuego;
+    VBox contenedor;
 
     static String ARCHIVO_FONDO = "file:src/main/resources/fondoBlanco.jpeg";
 
@@ -32,6 +33,7 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         this.contenedorJuego = contenedorJuego;
         this.cargarColores(this.coloresParaJugadores);
         juego = crearJuego(this.cantidadDeJugadores);
+        this.contenedor = new VBox();
     }
 
     private void cargarColores(Map<String, Color> coloresParaJugadores) {
@@ -58,6 +60,24 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
         contenedorJuego.definirBotonera(contenedor);
+    }
+
+    @Override
+    public void visualizarJuegoTerminado() throws AlgoTegException {
+        contenedorJuego.limpiarBotonera();
+        contenedorJuego.limpiarAreaMapa();
+        mostrarGanador();
+        contenedorJuego.definirSobreMapa(contenedor);
+    }
+
+    private void mostrarGanador() throws AlgoTegException {
+        Label texto = new Label();
+        texto.setText("GANASTE!!! \n" +
+                "Jugador" +juego.obtenerGanador().obtenerColor() + "eres el ganador!");
+        contenedor.getChildren().add(texto);
+        Button opcionSalir = new Button("Finalizar Partida");
+        OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
+        opcionSalir.setOnAction(opcionSalirHandler);
     }
 
     private Color obtenerColorDelJugadorActual(IJugador jugador) {

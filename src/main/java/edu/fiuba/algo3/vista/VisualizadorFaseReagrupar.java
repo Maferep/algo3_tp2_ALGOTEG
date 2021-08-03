@@ -13,10 +13,12 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
 
     private Juego juego;
     private ContenedorJuego contenedorJuego;
+    VBox contenedor;
 
     public VisualizadorFaseReagrupar(Juego juego, ContenedorJuego contenedorJuego) {
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
+        this.contenedor = new VBox();
     }
 
     @Override
@@ -45,6 +47,24 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
 
     }
 
+    @Override
+    public void visualizarJuegoTerminado() throws AlgoTegException {
+        contenedorJuego.limpiarBotonera();
+        contenedorJuego.limpiarAreaMapa();
+        mostrarGanador();
+        contenedorJuego.definirSobreMapa(contenedor);
+    }
+
+    private void mostrarGanador() throws AlgoTegException {
+        Label texto = new Label();
+        texto.setText("GANASTE!!! \n" +
+                "Jugador" +juego.obtenerGanador().obtenerColor() + "eres el ganador!");
+        contenedor.getChildren().add(texto);
+        Button opcionSalir = new Button("Finalizar Partida");
+        OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
+        opcionSalir.setOnAction(opcionSalirHandler);
+    }
+
     private Label imprimirJugador(Juego juego) {
         return new NombreJugador(juego.jugadorActual().obtenerColor());
     }
@@ -55,7 +75,6 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
         } catch (AlgoTegException e) {
             System.exit(-1);
         }
-        //juego.faseActual().turno().actualizarListaDeJugadoresAlCambiarDeFase();
         PasajeDeFases haciaFaseColocar = new PasajeDeFases(
             new VisualizadorFaseColocar(juego, contenedorJuego));
         haciaFaseColocar.visualizar();

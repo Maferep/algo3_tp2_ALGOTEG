@@ -41,6 +41,24 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
         contenedorJuego.definirBotonera(contenedor);
     }
 
+    @Override
+    public void visualizarJuegoTerminado() throws AlgoTegException {
+        contenedorJuego.limpiarBotonera();
+        contenedorJuego.limpiarAreaMapa();
+        mostrarGanador();
+        contenedorJuego.definirSobreMapa(contenedor);
+    }
+
+    private void mostrarGanador() throws AlgoTegException {
+        Label texto = new Label();
+        texto.setText("GANASTE!!! \n" +
+        "Jugador" +juego.obtenerGanador().obtenerColor() + "eres el ganador!");
+        contenedor.getChildren().add(texto);
+        Button opcionSalir = new Button("Finalizar Partida");
+        OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
+        opcionSalir.setOnAction(opcionSalirHandler);
+    }
+
     private void mostrarSiguienteJugador() {
         BotonSiguienteJugador boton = new BotonSiguienteJugador(juego, contenedorJuego, this);
         contenedor.getChildren().add(boton);
@@ -91,4 +109,6 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
 
         contenedor.getChildren().add(jugador);
     }
+
+
 }
