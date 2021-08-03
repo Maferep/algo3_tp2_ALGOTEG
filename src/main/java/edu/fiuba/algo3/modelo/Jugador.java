@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Jugador implements IJugador {
 	public static final String CANTIDAD_PAISES = "cantidadPaises";
 	public static final String PAISES = "paises";
-	IObjetivo objetivo;
+	List<IObjetivo> objetivos = new ArrayList<>();
 
 	private String color;
 	private List<IPais> paises;
@@ -170,7 +170,7 @@ public class Jugador implements IJugador {
 	//para objetivos
 	public void asignarObjetivo(IObjetivo objetivoAsignado) {
 		objetivoAsignado.inicializar(this);
-		objetivo = objetivoAsignado;
+		objetivos.add(objetivoAsignado);
 	}
 
 	//metodo para notificar a los listeners de todo evento
@@ -191,7 +191,7 @@ public class Jugador implements IJugador {
 
 	@Override
 	public Boolean cumplioObjetivo() {
-		return objetivo.fueCompletado();
+		return objetivos.stream().anyMatch(o -> o.fueCompletado());
 	}
 
 }

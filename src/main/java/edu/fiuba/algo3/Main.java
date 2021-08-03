@@ -45,7 +45,10 @@ public class Main extends Application {
 
    private MediaPlayer agregarMusica(double volumen) {
         Media mp3MusicFile = new Media(new File("src/main/resources/super-mario-bros-main-theme.mp3").toURI().toString());
-        MediaPlayer musica = new MediaPlayer(mp3MusicFile);
+        MediaPlayer musica;
+        try{
+            musica = new MediaPlayer(mp3MusicFile);
+        }catch(Exception e) { return null; }
         musica.setAutoPlay(true);
         musica.setOnEndOfMedia(() -> musica.seek(Duration.ZERO));
         musica.setVolume(volumen);

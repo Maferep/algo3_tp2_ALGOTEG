@@ -9,20 +9,26 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ObjetivoManager {
-    private List<IObjetivo> objetivos;
+    private List<IObjetivo> objetivosSecretos = new ArrayList<>();
     private List<IObjetivo> objetivosDeJugadores = new ArrayList<>();
     public ObjetivoManager(ITurno turno, List<IObjetivo> objetivosCreados) throws ObjetivoException {
-        this.objetivos = objetivosCreados;
+        this.objetivosSecretos = objetivosCreados;
         this.asignarObjetivos(turno);
     }
 
     private void asignarObjetivos(ITurno turno) throws ObjetivoException {
-        if(objetivos.size() < turno.cantidadDeJugadores()) 
+        if(objetivosSecretos.size() < turno.cantidadDeJugadores()) 
             throw new ObjetivoException("No hay suficientes objetivos para iniciar el juego");
         
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++) {
-            turno.jugadorActual().asignarObjetivo(objetivos.get(i));
-            objetivosDeJugadores.add(objetivos.get(i));
+            turno.jugadorActual().asignarObjetivo(objetivosSecretos.get(i));
+            objetivosDeJugadores.add(objetivosSecretos.get(i));
+
+            IObjetivo general = new ObjetivoGeneral();
+            turno.jugadorActual().asignarObjetivo(general);
+            objetivosDeJugadores.add(general);
+
+            
             turno.siguienteJugador();
         }
     }
@@ -30,7 +36,7 @@ public class ObjetivoManager {
         Suscribe al Listener recibido a todos los objetivos
     */
     public void agregarSuscriptorAVictoria(PropertyChangeListener suscriptor) {
-        for(IObjetivo objetivo : objetivos)
+        for(IObjetivo objetivo : objetivosDeJugadores)
             objetivo.agregarSuscriptor(suscriptor);
     }
 
@@ -39,7 +45,7 @@ public class ObjetivoManager {
         en orden, desde el primer jugador.
     */
     public List<String> nombresDeObjetivos() {
-        return objetivosDeJugadores 
+        return objetivosSecretos 
             .stream()
             .map(o -> o.toString())
             .collect(Collectors.toList());
