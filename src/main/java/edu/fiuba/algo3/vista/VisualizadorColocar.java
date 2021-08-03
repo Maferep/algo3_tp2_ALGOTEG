@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class VisualizadorColocar implements IVista, IVistaFases {
+public class VisualizadorColocar implements IVista {
     VBox contenedor;
     Juego juego;
     ContenedorJuego contenedorJuego;
@@ -99,29 +99,6 @@ public class VisualizadorColocar implements IVista, IVistaFases {
 
     private Color obtenerColorDelJugadorActual(IJugador jugador) {
         return (this.coloresParaJugadores.get(jugador.obtenerColor()));
-    }
-
-    private void mostrarSiguienteJugador(VBox contenedor) {
-        Button boton = new Button();
-        boton.setText("Siguiente Jugador");
-        contenedor.getChildren().add(boton);
-        BotonMostrarJugadorActual botonJugadorActual = new BotonMostrarJugadorActual(
-                juego, this.contenedorJuego, this
-        );
-        boton.setOnAction(botonJugadorActual);
-    }
-
-    public void visualizarNuevaFase() {
-        try {
-            juego.siguienteFase();
-        } catch (FaseIncompletaException | EjercitosException | TurnoException e) {
-            System.exit(-1);
-        } //prueba
-        PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorFaseAtacar(juego, contenedorJuego));
-        haciaFaseAtacar.visualizar();
-    }
-    public boolean esFaseInicioOColocar() {
-        return true;
     }
 
 }

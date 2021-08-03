@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.eventos;
 
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 import edu.fiuba.algo3.modelo.excepciones.TurnoException;
@@ -29,7 +30,11 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         if(juegoActual.juegoTerminado()) {
-            visualizadorActual.visualizarJuegoTerminado();
+            try {
+                visualizadorActual.visualizarJuegoTerminado();
+            } catch (AlgoTegException e) {
+                e.printStackTrace();
+            }
             return;
         }
         if(juegoActual.jugadorActualTieneEjercitos())
