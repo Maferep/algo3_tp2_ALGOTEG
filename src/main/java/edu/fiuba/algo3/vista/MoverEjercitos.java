@@ -13,11 +13,15 @@ public class MoverEjercitos implements IVista {
 
     ContenedorJuego contenedor;
 
-    //TODO URGENTE transferencia de ejercitos hardcodeada
+    // TODO URGENTE transferencia de ejercitos hardcodeada
     public MoverEjercitos(Juego juego, ContenedorJuego contenedorJuego, IPais pais, IPais adyacente, Button botonVolver)
-            throws FaseErroneaException, TransferirEjercitosException, AdyacenciaException {
-        
-        juego.transferirEjercitos(3, pais, adyacente);
+            throws FaseErroneaException, TransferirEjercitosException {
+
+        try {
+            juego.transferirEjercitos(3, pais, adyacente);
+        } catch (AdyacenciaException e) {
+            System.exit(-1);
+        }
         this.contenedor = contenedorJuego;
     }
 

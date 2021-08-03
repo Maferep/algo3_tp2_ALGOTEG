@@ -1,15 +1,12 @@
 package edu.fiuba.algo3.vista.interfases;
 
-public interface IVistaFases {
-    /*
+public interface IVistaFases extends IVista{
+    /*d
     * Implementada por:
     * VisualizadorFaseInicio
     * VisualizadorFaseAtacar
     * VisualizadorFaseReagrupar
     * VisualizadorFaseColocar
     * */
-
-    public void visualizar();
     public void visualizarNuevaFase();
-    public boolean esFaseInicioOColocar();
 }

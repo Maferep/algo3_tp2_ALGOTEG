@@ -20,7 +20,8 @@ public class BotonPaisAtacarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        VisualizadorAdyacentes visualizadorAdyacentes = new VisualizadorAdyacentes(juego, pais, contenedorJuego);
+        VisualizadorAdyacentes visualizadorAdyacentes = 
+            new VisualizadorAdyacentes(juego, pais, contenedorJuego);
         visualizadorAdyacentes.visualizar();
     }
 }

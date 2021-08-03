@@ -79,7 +79,8 @@ public class VisualizadorColocarParaFaseInicio implements IVista {
         botonDos.setText("Volver");
 
         contenedor.getChildren().add(botonDos);
-        BotonVolver botonVolver = new BotonVolver(this.contenedorJuego, this.visualizadorFaseInicio);
+        BotonVolver botonVolver = new BotonVolver(
+            this.contenedorJuego, this.visualizadorFaseInicio);
         botonDos.setOnAction(botonVolver);
 
         this.contenedorJuego.setRight(contenedor);

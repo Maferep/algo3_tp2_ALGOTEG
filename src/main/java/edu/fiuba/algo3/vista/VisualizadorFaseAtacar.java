@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
+import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
+import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.fases.FaseInicio;
 import edu.fiuba.algo3.vista.eventos.*;
@@ -12,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class VisualizadorFaseAtacar implements IVista, IVistaFases {
     VBox contenedor;
@@ -37,8 +41,7 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
     }
 
     private void mostrarSiguienteJugador() {
-        BotonSiguienteJugador boton 
-            = new BotonSiguienteJugador(juego, contenedorJuego, this);
+        BotonSiguienteJugador boton = new BotonSiguienteJugador(juego, contenedorJuego, this);
         contenedor.getChildren().add(boton);
     }
 
@@ -49,19 +52,26 @@ public class VisualizadorFaseAtacar implements IVista, IVistaFases {
     }
 
     private void mostrarPaises() {
-        List<IPais> paisesJugador = juego.jugadorActual().obtenerPaises();
-        for (IPais pais : paisesJugador) {
+        // un pais puede atacar si tiene mas de dos ejercitos
+        // TODO usar metodo juego.jugadorActual().obtenerPaisesAtacantes();
+        List<IPais> paisesAtacantes = juego.jugadorActual().obtenerPaises().stream()
+                .filter(p -> p.cantidadEjercitos() >= 2).collect(Collectors.toList());
+
+        for (IPais pais : paisesAtacantes) {
             Button botonPais = new Button();
             botonPais.setText(pais.obtenerNombre() + " (" + pais.cantidadEjercitos() + ")");
             contenedor.getChildren().add(botonPais);
-
             BotonPaisAtacarEventHandler evento = new BotonPaisAtacarEventHandler(pais, juego, contenedorJuego);
-
-            if (pais.cantidadEjercitos() > 1 ) { botonPais.setOnAction(evento); }
+            botonPais.setOnAction(evento);
         }
     }
 
     public void visualizarNuevaFase() {
+        try {
+            juego.siguienteFase();
+        } catch (FaseIncompletaException | EjercitosException | TurnoException e) {
+            System.exit(-1);
+        }
         new VisualizadorFaseReagrupar(juego, contenedorJuego).visualizar();
     }
 
