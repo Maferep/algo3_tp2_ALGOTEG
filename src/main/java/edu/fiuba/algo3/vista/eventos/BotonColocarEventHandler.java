@@ -44,7 +44,7 @@ public class BotonColocarEventHandler implements EventHandler<ActionEvent> {
         else {
             ingresoUsuario = Integer.parseInt(campoEjercitos.getText());
             try {
-                juego.ubicarEjercitosEnPais(ingresoUsuario, pais);
+                juego.colocarEjercitosEnPais(ingresoUsuario, pais);
             } catch (FichasInsuficientesException e) {
                 this.texto.setText("Solo tienes " + juego.jugadorActual().cantidadEjercitosPorColocar() + " ejercitos para agregar");
                 this.campoEjercitos.requestFocus();
