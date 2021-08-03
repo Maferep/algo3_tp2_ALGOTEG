@@ -19,7 +19,7 @@ public class Juego implements  PropertyChangeListener {
     Mazo mazo;
     ObjetivoManager objetivos;
 
-    public Juego(final int cantidadDeJugadores) throws Exception {
+    public Juego(final int cantidadDeJugadores) throws AlgoTegException {
         faseActual = fabrica.crearFaseInicio(cantidadDeJugadores);
 
         mapa = faseActual.obtenerFaseInicio().obtenerMapa();
@@ -52,7 +52,7 @@ public class Juego implements  PropertyChangeListener {
 
     
     public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais)
-            throws FaseErroneaException, TransferirEjercitosException {
+            throws FaseErroneaException, TransferirEjercitosException, AdyacenciaException {
         faseActual.obtenerFaseReagrupar().transferirEjercitos(cantidad, unPais, otroPais);
     }
 

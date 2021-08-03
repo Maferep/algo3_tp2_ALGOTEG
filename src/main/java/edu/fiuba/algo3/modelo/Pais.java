@@ -46,10 +46,9 @@ public class Pais implements IPais {
 
 	public IJugador obtenerConquistador() { return this.conquistador; }
 
-	public void atacar(IPais defensor, int numeroEjercitos) throws Exception {
-		if(!adyacentes.stream().anyMatch(a -> a == defensor)) 
-			//TODO crear excepción de adyacencia
-			throw new Exception("No es adyacente");
+	public void atacar(IPais defensor, int numeroEjercitos) throws AlgoTegException {
+		if(!adyacentes.stream().anyMatch(a -> a == defensor))
+			throw new AdyacenciaException("No es adyacente");
 		IAtaque ataque = new Ataque(this, defensor, numeroEjercitos);
 		atacar(ataque);
 	}

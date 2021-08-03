@@ -31,7 +31,7 @@ public class FaseReagruparTest {
             .collect(Collectors.toList());
 
     @Test
-    public void test00Reagrupar() throws EjercitosException, TransferirEjercitosException {
+    public void test00Reagrupar() throws EjercitosException, TransferirEjercitosException, AdyacenciaException {
         
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
@@ -51,7 +51,7 @@ public class FaseReagruparTest {
 
     @Test
     public void test01SiNoSonAdyacentesNoTransfiere() 
-            throws EjercitosException, TransferirEjercitosException {
+            throws EjercitosException {
         FaseReagrupar reagrupar = new FaseReagruparSinConquista(
             new TurnoMockUnJugador(paises), 
             new Mapa(), 
@@ -66,7 +66,7 @@ public class FaseReagruparTest {
 
         int cantidadEjercitosInvalida = 3;
 
-        assertThrows(TransferirEjercitosException.class, 
+        assertThrows(TransferirEjercitosException.class,
             () -> reagrupar.transferirEjercitos(cantidadEjercitosInvalida, paisRojo, paisAzul));
     }
 
