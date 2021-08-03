@@ -6,6 +6,7 @@ import edu.fiuba.algo3.vista.eventos.ActivarTarjetaEventHandler;
 import edu.fiuba.algo3.vista.eventos.BotonVolver;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 import java.util.List;
@@ -33,8 +34,7 @@ public class VistaTarjetasPais implements IVista {
         for (Tarjeta tarjeta : tarjetas ) {
             Button tarjetaBtn = new Button();
             tarjetaBtn.setText(tarjeta.obtenerPais().obtenerNombre());
-
-            ActivarTarjetaEventHandler activarTarjetaEventHandler = new ActivarTarjetaEventHandler(juego, tarjeta, tarjetaBtn);
+            ActivarTarjetaEventHandler activarTarjetaEventHandler = new ActivarTarjetaEventHandler(juego, tarjeta, tarjetaBtn, this);
             tarjetaBtn.setOnAction(activarTarjetaEventHandler);
 
             contenedor.getChildren().add(tarjetaBtn);
@@ -49,5 +49,11 @@ public class VistaTarjetasPais implements IVista {
         volverBtn.setOnAction(volver);
 
         contenedor.getChildren().add(volverBtn);
+    }
+
+    public void mostrarAlerta() {
+        Label mensaje = new Label("No sos conquistador de ese país.");
+        contenedor.getChildren().add(mensaje);
+        contenedorJuego.definirBotonera(contenedor);
     }
 }

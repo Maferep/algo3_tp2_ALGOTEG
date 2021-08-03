@@ -26,10 +26,8 @@ public class FaseAtacar extends FaseAbstracta {
     // métodos públicos
 
     public void atacar(IPais atacante, int cantidadDeSoldados, IPais defensor) throws Exception {
-        //TODO: validar existencia de paises y turno correcto
         atacante.atacar(defensor, cantidadDeSoldados);
-        //TODO: corregir if ambiguo
-        if(defensor.obtenerConquistador() == atacante.obtenerConquistador())
+        if(defensor.obtenerConquistador().esIgualA(defensor.obtenerConquistador()))
             estrategia = estrategia.turnoCompleto(turno);
     }
 

@@ -12,11 +12,6 @@ import java.util.List;
 public class FaseReagruparConConquista extends FaseReagrupar {
     public FaseReagruparConConquista(ITurno turno, IMapa paises, Mazo mazo) {
         super(turno, paises, mazo);
-        turno
-            .jugadorActual()
-            .agregarTarjetaAleatoria(
-                mazo.obtenerTarjeta()
-            );
     }
     public IFase faseActual() {
         return this;
