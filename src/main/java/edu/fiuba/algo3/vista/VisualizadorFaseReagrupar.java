@@ -33,10 +33,18 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
         
         botonMoverEjercitos.setOnAction(moverEjercitos);
         botonVerTarjetas.setOnAction(verTarjetas);
+
+
+        Button siguiente = new Button("Siguiente");
+        siguiente.setOnAction(new BotonMostrarJugadorActual(
+            juego, contenedorJuego, this));
         
-        VBox contenedor = new VBox(botonMoverEjercitos, botonVerTarjetas);
+        VBox contenedor = new VBox(botonMoverEjercitos, botonVerTarjetas, siguiente);
+
 
         contenedorJuego.definirBotonera(contenedor);
+
+        
     }
 
     public void visualizarNuevaFase() {
