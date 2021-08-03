@@ -34,7 +34,7 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         this.contenedorJuego = contenedorJuego;
         this.cargarColores(this.coloresParaJugadores);
         juego = crearJuego(this.cantidadDeJugadores);
-        //de prueba para q me pase el objetivo
+        // TODO de prueba para q me pase el objetivo
         for(int i = 0 ; i < 6 ; i ++) {
         juego.jugadorActual().asignarPais(new Pais("Arg"));
         }
