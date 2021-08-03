@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.MalformedURLException;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -42,8 +44,8 @@ public class Main extends Application {
         stage.show();
     }
 
-   private MediaPlayer agregarMusica(double volumen){
-        Media mp3MusicFile = new Media(new File("src/main/resources/super-mario-bros-main-theme.mp3").toURI().toString());
+   private MediaPlayer agregarMusica(double volumen) throws MalformedURLException {
+        Media mp3MusicFile = new Media(new File("src/main/resources/super-mario-bros-main-theme.mp3").toURI().toURL().toString());
         MediaPlayer musica = new MediaPlayer(mp3MusicFile);
         musica.setAutoPlay(true);
         musica.setOnEndOfMedia(() -> musica.seek(Duration.ZERO));
