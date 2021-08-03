@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Jugador implements IJugador {
 	public static final String CANTIDAD_PAISES = "cantidadPaises";
 	public static final String PAISES = "paises";
-	List<IObjetivo> objetivos;
+	List<IObjetivo> objetivos = new ArrayList<>();
 
 	private String color;
 	private List<IPais> paises;
