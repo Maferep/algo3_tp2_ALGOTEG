@@ -55,7 +55,8 @@ public class RondaTest {
     @Test
     public void test01agregarEjercitos() throws Exception {
         ITurno unJugador = new TurnoMockUnJugador(paisesJugadorUno);
-        FaseInicio fase = new FaseInicio(null, unJugador, new Mazo(paises), null);
+        MapaMock mapa = new MapaMock(paises);
+        FaseInicio fase = new FaseInicio(null, unJugador, new Mazo(mapa), null);
         assertFalse(fase.faseCompletada());
 
         int primerCantidadEjercitos = 3;
@@ -70,7 +71,8 @@ public class RondaTest {
     public void test02PasarPorEtapasDistintas() throws Exception {
         //genera una etapa de inicio en estado 'finalizado' de ejemplo
         ITurno unJugador = new TurnoMockUnJugador(paisesJugadorDos);
-        IFase fase = new FaseInicio(null, unJugador, new Mazo(paises), null);
+        MapaMock mapa = new MapaMock(paises);
+        IFase fase = new FaseInicio(null, unJugador, new Mazo(mapa), null);
         assertFalse(fase.faseCompletada());
 
         int cantidadEjercitos = 3;
@@ -83,8 +85,7 @@ public class RondaTest {
     @Test
     public void test04ConquistaCausaAsignacionDeTarjeta() throws FaseErroneaException, Exception {
         ITurno turnoMock = new TurnoMockUnJugador(paises);
-        IMapa mapa = new Mapa();
-        mapa.definirPaises(paises);
+        IMapa mapa = new MapaMock(paises);
         IFase fase = new FaseAtacar(turnoMock, mapa);
         IPais mockAtacanteSiempreGana = new PaisMock("Rojo");
         IPais mockDefensor = new PaisMock("Azul");
@@ -97,7 +98,7 @@ public class RondaTest {
 
         FabricaDeFases fabrica = new FabricaDeFases();
         fabrica.definirTurno(turnoMock);
-        fabrica.definirCanje(new Mazo(paises));
+        fabrica.definirCanje(new Mazo(mapa));
         fabrica.definirMapa(mapa);
         fase = fase.siguienteFase(fabrica);
         assertEquals(1, turnoMock.jugadorActual().cantidadTarjetas());

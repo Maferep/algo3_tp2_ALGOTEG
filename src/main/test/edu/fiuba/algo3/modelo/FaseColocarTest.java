@@ -35,10 +35,11 @@ public class FaseColocarTest {
     @Test
     public void test00RondaDeDosJugadoresSinAtaques() throws Exception {
         ITurno unJugador = new TurnoMockUnJugadorPorPais(listaDePaises);
+        MapaMock mapa = new MapaMock(listaDePaises);
         FaseColocar fase = new FaseColocar(
             unJugador,
-            new MapaMock(listaDePaises), 
-            new Mazo(listaDePaises));
+            mapa,
+            new Mazo(mapa));
         IPais pais = listaDePaises.get(0);
         int cantidadEjercitos = 3;
 
@@ -57,10 +58,11 @@ public class FaseColocarTest {
     @Test
     public void test01RondaDeDosJugadoresNoHaySuficientesFichasParaAgregarAUnPais() throws Exception {
         ITurno unJugador = new TurnoMockUnJugadorPorPais(listaDePaises);
+        MapaMock mapa = new MapaMock(listaDePaises);
         FaseColocar fase = new FaseColocar(
             unJugador,
-            new MapaMock(listaDePaises), 
-            new Mazo(listaDePaises));
+            mapa,
+            new Mazo(mapa));
         IPais pais = listaDePaises.get(0);
         int cantidadEjercitos = 3;
 
@@ -81,10 +83,11 @@ public class FaseColocarTest {
     @Test
     public void test03NoExistePaisError() throws Exception {
         ITurno unJugador = new TurnoMockUnJugadorPorPais(listaDePaises);
+        MapaMock mapa = new MapaMock(listaDePaises);
         FaseColocar fase = new FaseColocar(
             unJugador,
-            new MapaMock(listaDePaises), 
-            new Mazo(listaDePaises));
+            mapa,
+            new Mazo(mapa));
         Pais pais = new Pais("Estados Unidos");
         int cantidadEjercitos = 3;
 

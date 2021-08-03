@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JugadorTest {
-    Mazo mazo = new Mazo(new ArrayList<IPais>());
+    Mazo mazo = new Mazo(new Mapa());
 
     IPais argentina = new Pais("Argentina");
 
