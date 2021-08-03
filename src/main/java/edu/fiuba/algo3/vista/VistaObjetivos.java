@@ -37,6 +37,7 @@ public class VistaObjetivos implements IVista{
     }
     
     public void visualizar(){
+        contenedor.setMinWidth(300);
         Label label = new Label("Vamos a mostrar los objetivos.\n"+
         " Si este no es tu color, volteate");
         contenedor.getChildren().add(label);
