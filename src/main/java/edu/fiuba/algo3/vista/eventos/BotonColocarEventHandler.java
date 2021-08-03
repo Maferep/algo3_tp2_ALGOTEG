@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExistenteException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
 import edu.fiuba.algo3.vista.VisualizadorColocar;
-import edu.fiuba.algo3.vista.VisualizadorColocarParaFaseInicio;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

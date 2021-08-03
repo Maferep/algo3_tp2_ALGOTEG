@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.excepciones.FaseIncompletaException;
 import edu.fiuba.algo3.modelo.excepciones.TurnoException;
 import edu.fiuba.algo3.vista.ContenedorJuego;
+import edu.fiuba.algo3.vista.interfases.IVista;
 import edu.fiuba.algo3.vista.interfases.IVistaFases;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,6 +26,7 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        //me sirve para la fase de inicio, cuando el jugador tiene 0 ejercitos
         if (juegoActual.jugadorActualNoTieneEjercitos()) {
             if(juegoActual.faseActual().turno().esUltimoJugador()) {
                 visualizadorActual.visualizarNuevaFase();

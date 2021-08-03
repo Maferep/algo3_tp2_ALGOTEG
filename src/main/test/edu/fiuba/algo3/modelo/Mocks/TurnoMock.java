@@ -49,5 +49,8 @@ public class TurnoMock implements ITurno {
         return 0;
     }
 
+    public void actualizarListaDeJugadoresAlCambiarDeFase() {
+        this.siguienteJugador();
+    }
 
 }
