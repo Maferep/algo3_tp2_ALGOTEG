@@ -69,5 +69,12 @@
       "Colombia",
       "Peru"
     ]
+  },
+
+  {
+    "Continente": "Oceania",
+    "Contiene": [
+      "Sumatra", "Borno", "Java", "Australia"
+    ]
   }
 ]

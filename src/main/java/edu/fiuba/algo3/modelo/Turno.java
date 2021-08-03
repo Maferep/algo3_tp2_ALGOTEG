@@ -104,4 +104,13 @@ public class Turno implements ITurno {
             .map(j -> j.obtenerColor())
             .collect(Collectors.toList());
     }
+
+    @Override
+    public IJugador obtenerGanador() {
+        return jugadores
+            .stream()
+            .filter(jugador -> jugador.cumplioObjetivo())
+            .findFirst()
+            .get();
+    }
 }

@@ -17,7 +17,7 @@ import edu.fiuba.algo3.modelo.Mocks.*;
 public class JuegoTest {
     
     @Test
-    public void test00avanzarFaseAvanzaJugador() throws Exception {
+    public void test00avanzarFaseAvanzaJugador() throws AlgoTegException {
         int cantidadJugadores = 3;
         Juego juego = new Juego(cantidadJugadores);
         IJugador primerJugador = juego.jugadorActual();
@@ -37,7 +37,7 @@ public class JuegoTest {
     public void test01NoPuedeSeguirTurnoSinAsignarSusEjercitos() throws Exception {
         int cantidadJugadores = 3;
         Juego juego = new Juego(cantidadJugadores);
-        assertThrows(Exception.class, () -> juego.siguienteTurno());
+        assertThrows(AlgoTegException.class, () -> juego.siguienteTurno());
     }
 
     @Test
@@ -207,6 +207,6 @@ public class JuegoTest {
             pais.definirConquistador(jugador);
         
         assertTrue(jugador.cantidadPaises() > 30);
-        assertTrue(juego.juegoTerminado);
+        assertTrue(juego.juegoTerminado());
     }
 }

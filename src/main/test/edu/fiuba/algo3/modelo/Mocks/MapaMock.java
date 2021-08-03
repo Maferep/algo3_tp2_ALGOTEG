@@ -1,4 +1,6 @@
 package edu.fiuba.algo3.modelo.Mocks;
+
+import edu.fiuba.algo3.modelo.Continente;
 import edu.fiuba.algo3.modelo.Interfaces.*;
 
 import java.util.List;
@@ -18,6 +20,18 @@ public class MapaMock implements IMapa {
     @Override
     public void definirPaises(List<IPais> paises) {
         this.paises = paises;
+    }
+
+    @Override
+    public List<String> obtenerNombresDeContinentes() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Continente buscarContinente(String nombre) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
 

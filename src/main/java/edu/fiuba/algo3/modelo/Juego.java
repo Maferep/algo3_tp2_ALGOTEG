@@ -9,7 +9,7 @@ import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class Juego implements  PropertyChangeListener {
     //TODO reemplazar por estrategia
-    Boolean juegoTerminado = false;
+    private Boolean juegoTerminado = false;
     
     IFase faseActual;
     IFabricaDeFases fabrica = new FabricaDeFases();
@@ -138,5 +138,16 @@ public class Juego implements  PropertyChangeListener {
 
 	public List<String> obtenerObjetivos() {
 		return objetivos.nombresDeObjetivos();
+    }
+    
+    public Boolean juegoTerminado() {
+		return this.juegoTerminado;
+    }
+    
+    public IJugador obtenerGanador() throws AlgoTegException {
+        if(!this.juegoTerminado()) 
+            throw new AlgoTegException("No hay ganador aun");
+        
+        return turno.obtenerGanador();
 	}
 }

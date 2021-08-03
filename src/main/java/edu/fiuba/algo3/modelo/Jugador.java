@@ -189,4 +189,9 @@ public class Jugador implements IJugador {
 		suscriptores.add(suscriptor);
 	}
 
+	@Override
+	public Boolean cumplioObjetivo() {
+		return objetivo.fueCompletado();
+	}
+
 }
