@@ -134,18 +134,12 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     }
 
     public void visualizarNuevaFase() {
-        //ejemplo para probar que funciona. En realidad aca tendria que ser haciaFaseAtacar
-        //pero aun no esta implementada
-        //PasajeDeFases haciaFaseReagrupar = new PasajeDeFases(new VisualizadorFaseReagrupar(juego, contenedorJuego));
-        //haciaFaseReagrupar.visualizar();
-
-        PasajeDeFases haciaFaseColocar = new PasajeDeFases(new VisualizadorFaseColocar(juego, contenedorJuego));
-        haciaFaseColocar.visualizar();
-        //probar con mostrar la fase de colocar con el boton de volver
-        /* el posta es este:
-        * PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorAtacar(juego, contenedorJuego));
+        PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorFaseAtacar(juego, contenedorJuego));
         haciaFaseAtacar.visualizar();
-        * */
+    }
+
+    public boolean esFaseInicioOColocar() {
+        return true;
     }
 
 }

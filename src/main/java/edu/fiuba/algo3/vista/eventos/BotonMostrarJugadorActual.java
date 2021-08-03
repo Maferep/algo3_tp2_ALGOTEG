@@ -26,19 +26,31 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        //me sirve para la fase de inicio, cuando el jugador tiene 0 ejercitos
-        if (juegoActual.jugadorActualNoTieneEjercitos()) {
-            if(juegoActual.faseActual().turno().esUltimoJugador()) {
-                visualizadorActual.visualizarNuevaFase();
-            }
-            else {
-                try {
-                    this.juegoActual.siguienteTurno();
-                } catch (TurnoException | FaseIncompletaException e) {
-                    System.exit(-1);
+        //fase atacar: se puede ir al sig jugador cuando se quiera
+        //reagrupar idem atacar
+        //me sirve para la fase de inicio y la de colocar, cuando el jugador tiene 0 ejercitos
+        if(visualizadorActual.esFaseInicioOColocar()) {
+            if (juegoActual.jugadorActualNoTieneEjercitos()) {
+                if(juegoActual.faseActual().turno().esUltimoJugador()) {
+                    visualizadorActual.visualizarNuevaFase();
                 }
-                this.visualizadorActual.visualizar();
+                else {
+                    try {
+                        this.juegoActual.siguienteTurno();
+                    } catch (TurnoException | FaseIncompletaException e) {
+                        System.exit(-1);
+                    }
+                    this.visualizadorActual.visualizar();
+                }
             }
+        }
+        else {
+            try {
+                this.juegoActual.siguienteTurno();
+            } catch (TurnoException | FaseIncompletaException e) {
+                System.exit(-1);
+            }
+            this.visualizadorActual.visualizar();
         }
     }
 }

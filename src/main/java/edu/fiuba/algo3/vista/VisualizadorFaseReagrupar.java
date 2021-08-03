@@ -55,4 +55,8 @@ public class VisualizadorFaseReagrupar implements IVista, IVistaFases {
         haciaFaseColocar.visualizar();
     }
 
+    public boolean esFaseInicioOColocar() {
+        return false;
+    }
+
 }
