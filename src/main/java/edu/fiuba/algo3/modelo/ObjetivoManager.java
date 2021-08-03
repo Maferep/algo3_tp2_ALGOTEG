@@ -9,20 +9,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ObjetivoManager {
-    private List<IObjetivo> objetivos;
+    private List<IObjetivo> objetivosCreados;
     private List<IObjetivo> objetivosDeJugadores = new ArrayList<>();
     public ObjetivoManager(ITurno turno, List<IObjetivo> objetivosCreados) throws ObjetivoException {
-        this.objetivos = objetivosCreados;
+        this.objetivosCreados = objetivosCreados;
         this.asignarObjetivos(turno);
     }
 
     private void asignarObjetivos(ITurno turno) throws ObjetivoException {
-        if(objetivos.size() < turno.cantidadDeJugadores()) 
+        if(objetivosCreados.size() < turno.cantidadDeJugadores()) 
             throw new ObjetivoException("No hay suficientes objetivos para iniciar el juego");
         
         for(int i = 0 ; i < turno.cantidadDeJugadores() ; i++) {
-            turno.jugadorActual().asignarObjetivo(objetivos.get(i));
-            objetivosDeJugadores.add(objetivos.get(i));
+            turno.jugadorActual().asignarObjetivo(objetivosCreados.get(i));
+            objetivosDeJugadores.add(objetivosCreados.get(i));
+            objetivosDeJugadores.add(new ObjetivoGeneral());
             turno.siguienteJugador();
         }
     }
@@ -30,7 +31,7 @@ public class ObjetivoManager {
         Suscribe al Listener recibido a todos los objetivos
     */
     public void agregarSuscriptorAVictoria(PropertyChangeListener suscriptor) {
-        for(IObjetivo objetivo : objetivos)
+        for(IObjetivo objetivo : objetivosCreados)
             objetivo.agregarSuscriptor(suscriptor);
     }
 
