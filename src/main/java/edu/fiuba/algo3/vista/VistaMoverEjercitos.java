@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Interfaces.*;
@@ -8,6 +9,8 @@ import edu.fiuba.algo3.vista.eventos.EventoVista;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 
 public class VistaMoverEjercitos implements IVista {
     private Juego juego;
@@ -26,11 +29,17 @@ public class VistaMoverEjercitos implements IVista {
         //TODO limpiar botonera
         contenedorJuego.obtenerBotonera().getChildren().clear();
         IJugador jugadorActual = juego.jugadorActual();
-        HBox contenedorAdyacentes = new HBox();
-        List<IPais> paises = jugadorActual.obtenerPaises();
-		for(IPais unPais : paises){
+        
+        TilePane contenedorAdyacentes = new TilePane();
+        //todo jugador.paisesConSoldadosMovibles
+        List<IPais> paisesMovibles = jugadorActual.obtenerPaises()
+            .stream()
+            .filter(p -> (p.cantidadEjercitos() >= 2))
+            .collect(Collectors.toList());
+        
+		for(IPais unPais : paisesMovibles){
             Button paisJugador = new Button(unPais.obtenerNombre());
-            //TODO
+            //TODO usar BotonVolver
             Button botonVolverAColocar = new Button("Volver");
             botonVolverAColocar.setOnAction(new EventoVista(this));
             EventoVista adyacentes = new EventoVista(
@@ -41,8 +50,8 @@ public class VistaMoverEjercitos implements IVista {
             paisJugador.setOnAction(adyacentes);
             contenedorAdyacentes.getChildren().add(paisJugador);
         }
-        contenedorAdyacentes.getChildren().add(botonVolver);
-        contenedorJuego.definirSobreMapa(contenedorAdyacentes);
+        VBox contenedorBotones = new VBox(contenedorAdyacentes, botonVolver);
+        contenedorJuego.definirSobreMapa(contenedorBotones);
 
     }
     

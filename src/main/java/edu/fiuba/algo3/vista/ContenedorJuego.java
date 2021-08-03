@@ -104,6 +104,8 @@ public class ContenedorJuego extends BorderPane {
     }
 
     public void definirBotonera(VBox contenedor) {
+        contenedor.setSpacing(10);
+        contenedor.setPadding(new Insets(100));
         this.barraDeBotones = contenedor;
         this.setRight(contenedor);
     }

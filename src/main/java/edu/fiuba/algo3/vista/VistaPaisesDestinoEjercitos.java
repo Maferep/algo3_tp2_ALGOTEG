@@ -8,6 +8,7 @@ import edu.fiuba.algo3.vista.eventos.EventoVista;
 import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 
 public class VistaPaisesDestinoEjercitos implements IVista {
     IPais pais;
@@ -23,9 +24,10 @@ public class VistaPaisesDestinoEjercitos implements IVista {
         this.botonVolver = botonVolver;
     }
 
+    //TODO usar una sola impresora de botones de paises para todo
     @Override
     public void visualizar() {
-        HBox contenedor = new HBox();
+        TilePane contenedor = new TilePane();
         for (IPais adyacente : pais.obtenerAdyacentes()) {
             Button botonAdyacente = new Button(adyacente.obtenerNombre());
             EventoVista pedirEjercitos = 
