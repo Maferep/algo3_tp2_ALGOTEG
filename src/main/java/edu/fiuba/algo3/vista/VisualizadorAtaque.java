@@ -99,4 +99,8 @@ public class VisualizadorAtaque implements IVista {
     public void deshabilitarBotonDeAtaque() {
         ataqueBtn.setDisable(true);
     }
+
+    private void agregarBotonSiguienteJugador() {
+
+    }
 }
