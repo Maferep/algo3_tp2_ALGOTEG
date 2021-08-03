@@ -25,6 +25,8 @@ public class VisualizadorColocarEjercitosParaFaseInicio {
     }
 
     public void visualizar() {
+        contenedorJuego.limpiarAreaMapa();
+        contenedorJuego.limpiarBotonera();
         Label titulo = new Label();
         VBox contenedor = new VBox();
 

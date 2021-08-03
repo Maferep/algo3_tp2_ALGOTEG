@@ -25,7 +25,7 @@ public class BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler implements
             try {
                 faseColocar = new VisualizadorColocarParaFaseInicio(juego, contenedorJuego, this.visualizadorFaseInicio);
             } catch (Exception e) {
-                //TODO pedir cantidad de jugadores de nuevo / reportar error fatal
+                System.exit(-1);
             }
         }
         faseColocar.visualizar();

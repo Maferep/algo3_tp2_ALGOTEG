@@ -7,9 +7,14 @@ import edu.fiuba.algo3.vista.interfases.IVista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent> {
 
@@ -30,14 +35,22 @@ public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent>
         Label titulo = new Label();
         VBox contenedor = new VBox();
         titulo.setText("Paises conquistados");
-        contenedor.getChildren().add(titulo);
+        
+        TilePane lista = new TilePane(Orientation.VERTICAL);
         for(int j = 0 ; j < juegoActual.jugadorActual().obtenerPaises().size() ; j++ ) {
             Label paisesJugador = new Label();
             paisesJugador.setText(juegoActual.jugadorActual().obtenerPaises().get(j).obtenerNombre() +
                     " - " + juegoActual.jugadorActual().obtenerPaises().get(j).cantidadEjercitos() + " ejercitos");
-            contenedor.getChildren().add(paisesJugador);
+            lista.getChildren().add(paisesJugador);
         }
         mostrarBotonVolver(contenedor);
+        contenedor.setSpacing(10);
+        contenedor.setPadding(new Insets(30));
+        contenedor.setBackground(
+            new Background(
+                new BackgroundFill(Color.KHAKI, null, null)));
+        contenedor.getChildren().addAll(titulo, lista);
+        this.contenedorJuego.definirSobreMapa(contenedor);
     }
 
     private void mostrarBotonVolver(VBox contenedor) {
@@ -47,9 +60,5 @@ public class BotonMostrarPaisesConquistados implements EventHandler<ActionEvent>
         contenedor.getChildren().add(botonDos);
         BotonVolver botonVolver = new BotonVolver(this.contenedorJuego, this.visualizadorFaseInicio);
         botonDos.setOnAction(botonVolver);
-
-        this.contenedorJuego.setRight(contenedor);
-        contenedor.setSpacing(10);
-        contenedor.setPadding(new Insets(100));
     }
 }

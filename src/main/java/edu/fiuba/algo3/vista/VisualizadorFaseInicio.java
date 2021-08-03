@@ -43,6 +43,8 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     }
 
     public void visualizar() {
+        contenedorJuego.limpiarAreaMapa();
+        contenedorJuego.limpiarBotonera();
         VBox contenedor = new VBox();
 
         this.imprimirJugador(juego.jugadorActual(), contenedor);
