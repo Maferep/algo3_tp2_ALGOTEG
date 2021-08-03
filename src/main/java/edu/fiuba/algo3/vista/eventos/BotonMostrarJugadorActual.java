@@ -33,19 +33,16 @@ public class BotonMostrarJugadorActual implements EventHandler<ActionEvent> {
         if(juegoActual.jugadorActualTieneEjercitos())
             return;
             
-        if(visualizadorActual.esFaseInicioOColocar()) {
-            if(juegoActual.faseActual().turno().esUltimoJugador()) {
-                visualizadorActual.visualizarNuevaFase();
+        if(juegoActual.faseActual().turno().esUltimoJugador()) {
+            visualizadorActual.visualizarNuevaFase();
+        }
+        else {
+            try {
+                this.juegoActual.siguienteTurno();
+            } catch (TurnoException | FaseIncompletaException e) {
+                System.exit(-1);
             }
-            else {
-                try {
-                    this.juegoActual.siguienteTurno();
-                } catch (TurnoException | FaseIncompletaException e) {
-                    System.exit(-1);
-                }
-                this.visualizadorActual.visualizar();
-            }
-            
+            this.visualizadorActual.visualizar();
         }
     }
 }
