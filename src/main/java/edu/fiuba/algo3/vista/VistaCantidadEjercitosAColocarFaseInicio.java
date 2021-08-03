@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
+import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.vista.eventos.BotonColocarParaFaseInicioEventHandler;
 import edu.fiuba.algo3.vista.interfases.IVista;
@@ -11,13 +12,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 
-public class VisualizadorColocarEjercitosParaFaseInicio {
+public class VistaCantidadEjercitosAColocarFaseInicio {
     IPais pais;
     Juego juego;
     ContenedorJuego contenedorJuego;
     IVista visualizadorFaseInicio;
 
-    public VisualizadorColocarEjercitosParaFaseInicio(IPais pais, Juego juego, ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio) {
+    public VistaCantidadEjercitosAColocarFaseInicio(
+                IPais pais, Juego juego, 
+                ContenedorJuego contenedorJuego, IVista visualizadorFaseInicio){
         this.pais = pais;
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
@@ -25,12 +28,16 @@ public class VisualizadorColocarEjercitosParaFaseInicio {
     }
 
     public void visualizar() {
+        contenedorJuego.limpiarAreaMapa();
+        contenedorJuego.limpiarBotonera();
         Label titulo = new Label();
         VBox contenedor = new VBox();
 
-        int cantidadEjercitosDisponibles = juego.jugadorActual().cantidadEjercitosPorColocar();
+        int cantidadEjercitosDisponibles 
+            = juego.jugadorActual().cantidadEjercitosPorColocar();
 
-        titulo.setText("Tenes " + cantidadEjercitosDisponibles + " ejércitos por colocar.");
+        titulo.setText("Tenes " 
+            + cantidadEjercitosDisponibles + " ejércitos por colocar.");
         TextField campoCantidadEjercitos = new TextField();
         Button botonColocar = new Button("Colocar");
 

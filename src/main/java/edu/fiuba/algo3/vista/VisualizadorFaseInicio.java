@@ -43,6 +43,8 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     }
 
     public void visualizar() {
+        contenedorJuego.limpiarAreaMapa();
+        contenedorJuego.limpiarBotonera();
         VBox contenedor = new VBox();
 
         this.imprimirJugador(juego.jugadorActual(), contenedor);
@@ -113,6 +115,8 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
     }
 
     private void colocarEjercitos(VBox contenedor) {
+        if(juego.jugadorActual().cantidadEjercitosPorColocar() <= 0)
+            return;
         Button colocarEjercitos = new Button("Colocar ejércitos");
         BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler eventoColocar = new BotonLlamaAVisualizadorColocarParaFaseInicioEventHandler(
                 juego, contenedorJuego, this);
