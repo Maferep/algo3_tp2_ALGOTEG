@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
@@ -76,8 +78,9 @@ public class ObjetivoTest {
         Continente asia = new Continente("Asia", paisesDeAsia);
         continentes.add(asia);
         
-        ObjetivoConquistarPaisesYContinentes objetivo 
-                        = new ObjetivoConquistarPaisesYContinentes(continentes, paises);
+        ObjetivoNPaisesDeContinentes objetivo 
+            = new ObjetivoNPaisesDeContinentes(
+                continentes, new HashMap<Continente, Integer>());
         assertNotEquals(null, objetivo);
 
         //Asignar el objetivo suscribe al objetivo a los paises de su duenio.
