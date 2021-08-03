@@ -12,14 +12,19 @@ import javafx.scene.layout.HBox;
 public class VistaMoverEjercitos implements IVista {
     private Juego juego;
     private ContenedorJuego contenedorJuego;
+    private Button botonVolver;
 
-    public VistaMoverEjercitos(Juego juego, ContenedorJuego contenedorJuego) {
+    public VistaMoverEjercitos(Juego juego, ContenedorJuego contenedorJuego, Button botonVolver) {
         this.juego = juego;
         this.contenedorJuego = contenedorJuego;
+        this.botonVolver = botonVolver;
     }
 
     @Override
     public void visualizar() {
+        contenedorJuego.limpiarAreaMapa();
+        //TODO limpiar botonera
+        contenedorJuego.obtenerBotonera().getChildren().clear();
         IJugador jugadorActual = juego.jugadorActual();
         HBox contenedorAdyacentes = new HBox();
         List<IPais> paises = jugadorActual.obtenerPaises();
@@ -27,13 +32,16 @@ public class VistaMoverEjercitos implements IVista {
             Button paisJugador = new Button(unPais.obtenerNombre());
             //TODO
             Button botonVolverAColocar = new Button("Volver");
+            botonVolverAColocar.setOnAction(new EventoVista(this));
             EventoVista adyacentes = new EventoVista(
-                new VistaPaisesDestinoEjercitos(juego, contenedorJuego, unPais, botonVolverAColocar)
+                new VistaPaisesDestinoEjercitos(
+                    juego, contenedorJuego, unPais, botonVolverAColocar)
             );
 
             paisJugador.setOnAction(adyacentes);
             contenedorAdyacentes.getChildren().add(paisJugador);
         }
+        contenedorAdyacentes.getChildren().add(botonVolver);
         contenedorJuego.definirSobreMapa(contenedorAdyacentes);
 
     }

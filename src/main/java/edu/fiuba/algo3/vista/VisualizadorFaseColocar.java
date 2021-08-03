@@ -100,4 +100,8 @@ public class VisualizadorFaseColocar implements IVista, IVistaFases {
         PasajeDeFases haciaFaseAtacar = new PasajeDeFases(new VisualizadorFaseAtacar(juego, contenedorJuego));
         haciaFaseAtacar.visualizar();
     }
+
+    public boolean esFaseInicioOColocar() {
+        return true;
+    }
 }
