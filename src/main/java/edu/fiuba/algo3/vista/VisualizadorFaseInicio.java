@@ -55,18 +55,9 @@ public class VisualizadorFaseInicio implements IVista, IVistaFases {
         this.mostrarObjetivos(contenedor);
         this.mostrarSiguienteJugador(contenedor);
 
-        this.mostrarBotonRegrupar(contenedor);
-
         contenedor.setSpacing(10);
         contenedor.setPadding(new Insets(100));
         contenedorJuego.definirBotonera(contenedor);
-    }
-
-    private void mostrarBotonRegrupar(VBox contenedor) {
-        EventoVista eventoReagrupar = new EventoVista(new VisualizadorFaseReagrupar(juego, contenedorJuego));
-        Button botonReagrupar = new Button("Fase Reagrupar");
-        botonReagrupar.setOnAction(eventoReagrupar);
-        contenedor.getChildren().add(botonReagrupar);
     }
 
     private Color obtenerColorDelJugadorActual(IJugador jugador) {
