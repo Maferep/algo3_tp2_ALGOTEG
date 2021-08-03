@@ -11,10 +11,12 @@ import java.util.stream.*;
 */
 public class Mazo {
     LinkedList<Tarjeta> mazo = new LinkedList<Tarjeta>();
+    IOrdenador ordenador = new OrdenadorAleatorio();
 
     public Mazo(IMapa mapa) {
         MazoFachada mazoFachada = new MazoFachada(mapa);
         mazo = mazoFachada.obtenerTarjetas();
+        ordenador.ordenar(mazo);
     }
     public Tarjeta obtenerTarjeta() {
         return mazo.remove();
