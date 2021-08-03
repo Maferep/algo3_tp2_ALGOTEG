@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Interfaces.IPais;
+import edu.fiuba.algo3.modelo.excepciones.AdyacenciaException;
 import edu.fiuba.algo3.modelo.excepciones.FaseErroneaException;
 import edu.fiuba.algo3.modelo.excepciones.TransferirEjercitosException;
 import edu.fiuba.algo3.vista.interfases.IVista;
@@ -17,8 +18,8 @@ public class VistaVerificarEjercitos implements IVista {
     private Juego juego;
     private IPais pais;
     private IPais adyacente;
-    public VistaVerificarEjercitos(
-        Juego juego, ContenedorJuego contenedorJuego, IPais pais, IPais adyacente,
+
+    public VistaVerificarEjercitos(Juego juego, ContenedorJuego contenedorJuego, IPais pais, IPais adyacente,
             TextField campoEjercitos, Button botonVolver) {
 
         this.contenedorJuego = contenedorJuego;
@@ -27,10 +28,10 @@ public class VistaVerificarEjercitos implements IVista {
         this.juego = juego;
         this.pais = pais;
         this.adyacente = adyacente;
-        
-	}
 
-	@Override
+    }
+
+    @Override
     public void visualizar() {
         Label texto = new Label("default!");
         contenedorJuego.agregarABotonera(texto);
@@ -48,9 +49,9 @@ public class VistaVerificarEjercitos implements IVista {
             texto.setText("Numero de ejercitos es invalido!");
             campoEjercitos.requestFocus();
             return;
-        } catch (FaseErroneaException e) {
+        } catch (FaseErroneaException | AdyacenciaException e) {
             System.exit(-1);
-        }
+        } ;
         contenedorJuego.limpiarBotonera();
         contenedorJuego.agregarABotonera(botonVolver);
         
