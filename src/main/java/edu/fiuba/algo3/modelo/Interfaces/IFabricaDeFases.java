@@ -13,7 +13,7 @@ public interface IFabricaDeFases {
 
     void definirObjetivo(ObjetivoManager objetivo);
 
-    public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception;
+    public IFase crearFaseInicio(int cantidadDeJugadores) throws AlgoTegException;
 
     public IFase crearFaseAtacar(ITurno turno, IMapa mapa);
 

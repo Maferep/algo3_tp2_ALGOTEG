@@ -18,7 +18,7 @@ public class FabricaDeFases implements IFabricaDeFases {
         this.mapa = mapa;
     }
 
-    public IFase crearFaseInicio(int cantidadDeJugadores) throws Exception {
+    public IFase crearFaseInicio(int cantidadDeJugadores) throws AlgoTegException {
         IFaseInicio fase;
         //si se configura algun elemento primero, lo usa
         if(turno != null || mapa != null || mazo != null || objetivo != null)

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Interfaces.*;
+import edu.fiuba.algo3.modelo.excepciones.AlgoTegException;
+import edu.fiuba.algo3.modelo.excepciones.EjercitosException;
 import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
 
 public class Ataque implements IAtaque{
@@ -11,7 +13,7 @@ public class Ataque implements IAtaque{
 
         static int maxDados = 3;
 
-        public Ataque(IPais atacante, IPais defensor, int cantEjercitos) throws Exception {
+        public Ataque(IPais atacante, IPais defensor, int cantEjercitos) throws AlgoTegException {
                 this.atacante = atacante;
                 this.defensor = defensor;
 
@@ -32,9 +34,9 @@ public class Ataque implements IAtaque{
                 asignarDados(dado, dado);
         }
 
-        private void asignarDados(IDado dadosAtacante, IDado dadosDefensor) throws Exception {
+        private void asignarDados(IDado dadosAtacante, IDado dadosDefensor) throws EjercitosException {
                 if(dadosAtacante.cantidadDados() > maxDados || dadosAtacante.cantidadDados() > maxDados)
-                        throw new Exception("no puedes tirar más de" + maxDados + "dados");
+                        throw new EjercitosException("no puedes tirar más de" + maxDados + "dados");
                 this.dadosAtacante = dadosAtacante;
                 this.dadosDefensor = dadosDefensor;
         }

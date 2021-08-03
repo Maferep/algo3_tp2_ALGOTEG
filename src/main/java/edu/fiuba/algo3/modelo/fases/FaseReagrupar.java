@@ -19,7 +19,7 @@ public abstract class FaseReagrupar extends FaseAbstracta  implements IFaseReagr
         return turno;
     }
 
-    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws TransferirEjercitosException {
+    public void transferirEjercitos(int cantidad, IPais unPais, IPais otroPais) throws TransferirEjercitosException, AdyacenciaException {
         unPais.transferirEjercitosA(cantidad, otroPais);
         estrategia = estrategia.turnoCompleto(turno);
     }
