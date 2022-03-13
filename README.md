@@ -2,7 +2,8 @@
 
 # TP2 Algoritmos 3: A.L.T.E.G.O.
 
-Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
+Implementación en Java del juego de estrategia [T.E.G.](https://es.wikipedia.org/wiki/TEG).
+Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA.
 
 ## Grupo 10
 
